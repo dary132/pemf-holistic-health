@@ -8,7 +8,7 @@
   --brand-light: #e5f2ef;
   --accent: #b98a2f;
   --accent-light: #f6ecd8;
-  --ink-soft: #52625f;
+  --ink-soft: #3f4f4c;
 }
 
 @theme inline {
@@ -24,8 +24,16 @@
   --font-display: var(--font-display);
 }
 
+/* Larger base type for readability (older audience) */
 html {
   scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {

@@ -9,17 +9,14 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50">
       {/* Top contact bar */}
-      <div className="bg-brand-dark text-white text-xs sm:text-sm">
+      <div className="bg-brand-dark text-white text-sm sm:text-base">
         <div className="mx-auto max-w-6xl px-4 py-1.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 sm:justify-between">
-          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <p>
             <a href={site.phoneHref} className="hover:text-accent-light">
-              Office {site.phone}
-            </a>
-            <a href={site.whatsappHref} className="hover:text-accent-light">
-              WhatsApp {site.whatsapp}
+              Call / Text / WhatsApp {site.phone}
             </a>
           </p>
-          <p className="hidden md:block text-white/80">
+          <p className="hidden md:block text-white/90">
             {site.address.join(", ")} · Office and Home Visits Available
           </p>
         </div>
@@ -34,7 +31,7 @@ export default function Header() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-5 text-sm text-ink-soft">
+          <nav className="hidden lg:flex items-center gap-5 text-base text-ink-soft">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} className="hover:text-brand transition-colors">
                 {link.label}
@@ -60,7 +57,7 @@ export default function Header() {
         </div>
 
         {open && (
-          <nav className="lg:hidden border-t border-brand/10 bg-white px-4 py-3 grid grid-cols-2 gap-2 text-sm text-ink-soft">
+          <nav className="lg:hidden border-t border-brand/10 bg-white px-4 py-3 grid grid-cols-2 gap-2 text-base text-ink-soft">
             {navLinks.map((link) => (
               <a
                 key={link.href}

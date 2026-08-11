@@ -1,11 +1,10 @@
 export const site = {
   name: "PEMF for Holistic Health",
   tagline: "A Holistic Approach to Health and Wellness",
-  phone: "(949) 600 7899",
-  phoneHref: "tel:+19496007899",
+  phone: "(949) 891 5572",
+  phoneHref: "tel:+19498915572",
   whatsapp: "(949) 891 5572",
   whatsappHref: "https://wa.me/19498915572",
-  email: "SharonWong168@gmail.com",
   address: ["22706 Aspan St, Suite 504", "Lake Forest, CA 92630"],
   consultant: {
     name: "Sharon Wong",

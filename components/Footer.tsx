@@ -7,27 +7,22 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-3">
         <div>
           <p className="font-display text-xl mb-3">{site.name}</p>
-          <p className="text-white/80 text-sm leading-relaxed">
+          <p className="text-white/90 text-base leading-relaxed">
             {site.address[0]}
             <br />
             {site.address[1]}
           </p>
-          <p className="text-white/80 text-sm mt-3">Office and Home Visits Available</p>
+          <p className="text-white/90 text-base mt-3">Office and Home Visits Available</p>
         </div>
 
         <div>
           <p className="font-display text-xl mb-3">Call / Text / WhatsApp</p>
-          <p className="text-white/80 text-sm leading-relaxed">
+          <p className="text-white/90 text-base leading-relaxed">
             {site.consultant.title} {site.consultant.name.split(" ")[0]} for Appointment
           </p>
           <a href={site.phoneHref} className="mt-1 inline-block text-lg text-accent-light hover:underline">
             {site.phone}
           </a>
-          <p className="text-white/80 text-sm mt-2">
-            <a href={`mailto:${site.email}`} className="hover:underline">
-              {site.email}
-            </a>
-          </p>
         </div>
 
         <div>
@@ -43,7 +38,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/15">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-white/60 space-y-2">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-white/80 space-y-2.5">
           <p>{site.deviceNote}</p>
           <p>Disclaimer: {site.disclaimer}</p>
           <p>

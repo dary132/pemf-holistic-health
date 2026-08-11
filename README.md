@@ -1,4 +1,4 @@
-# PEMF for Holistic Health — Landing Page
+# PEMF for Holistic Health Landing Page
 
 Sample landing page template for **PEMF for Holistic Health** (Lake Forest, CA), built from the
 client's "Website 2025" specification (`docs/Website 2025.docx`).
@@ -22,15 +22,15 @@ npm run build    # production build
 
 ## Structure
 
-- `app/page.tsx` — the landing page (all sections)
-- `components/` — Header, Footer, ContactForm, Section, VideoEmbed
-- `lib/site.ts` — business info, nav links, disclaimer (edit client details here)
-- `public/images/` — assets extracted from the client's document
-- `docs/` — original client specification
+- `app/page.tsx`: the landing page (all sections)
+- `components/`: Header, Footer, Section, VideoEmbed
+- `lib/site.ts`: business info, nav links, disclaimer (edit client details here)
+- `public/images/`: assets extracted from the client's document
+- `docs/`: original client specification
 
 ## Notes
 
-- The contact form composes an email via `mailto:` (no backend required). Swap in a form
-  service or API route when the project moves past the template stage.
+- Per client request there is no contact form or email on the page. All contact prompts point
+  to the main phone number in `lib/site.ts`.
 - All health-related copy comes from the client's document verbatim or lightly edited, and the
   client's medical disclaimer is shown in the footer.

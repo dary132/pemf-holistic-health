@@ -12,8 +12,8 @@ export function VideoEmbed({ videoId, title, credit }: { videoId: string; title:
         />
       </div>
       <figcaption className="px-4 py-3">
-        <p className="font-medium text-sm text-brand-dark">{title}</p>
-        <p className="text-xs text-ink-soft mt-0.5">Video credit: {credit}</p>
+        <p className="font-medium text-base text-brand-dark">{title}</p>
+        <p className="text-sm text-ink-soft mt-0.5">Video credit: {credit}</p>
       </figcaption>
     </figure>
   );

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ContactForm from "@/components/ContactForm";
 import { Section } from "@/components/Section";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { site } from "@/lib/site";
@@ -52,7 +51,7 @@ const sportsBenefits = [
   {
     image: "/images/rejuvenation.png",
     title: "Rejuvenation",
-    text: "The iMRS Prime accelerates rejuvenation after physical activity — train harder, perform better, compete more often.",
+    text: "The iMRS Prime accelerates rejuvenation after physical activity, so you can train harder, perform better, and compete more often.",
   },
   {
     image: "/images/performance.png",
@@ -65,12 +64,12 @@ const products = [
   {
     image: "/images/imrs-prime-set.jpg",
     name: "iMRS Prime",
-    text: "Intelligent Magnetic Resonance Stimulation — the most advanced and comprehensive PEMF technology for wellness use in the world.",
+    text: "Intelligent Magnetic Resonance Stimulation, the most advanced and comprehensive PEMF technology for wellness use in the world.",
   },
   {
     image: "/images/omnium-on-the-go.jpg",
     name: "PEMF on the Go",
-    text: "A full-size PEMF wellness system on the go — enjoy whole-body sessions at home, in the office, or outdoors.",
+    text: "A full-size PEMF wellness system on the go. Enjoy whole-body sessions at home, in the office, or outdoors.",
   },
   {
     image: "/images/imrs-consultation.jpg",
@@ -97,16 +96,20 @@ export default function Home() {
             alt="Whole-body PEMF mat session at home"
             fill
             priority
-            className="object-cover opacity-30"
+            className="object-cover opacity-40"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-brand-dark/85 via-brand-dark/60 to-brand-dark/25"
           />
           <div className="relative mx-auto max-w-6xl px-4 py-24 sm:py-32">
             <p className="text-accent-light tracking-widest uppercase text-sm mb-4">
               Pulsed Electro Magnetic Field
             </p>
             <h1 className="font-display text-4xl sm:text-6xl leading-tight max-w-3xl">
-              PEMF — A Holistic Approach to Health and Wellness
+              PEMF: A Holistic Approach to Health and Wellness
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-white/85 leading-relaxed">
+            <p className="mt-6 max-w-2xl text-lg text-white/95 leading-relaxed">
               Still feeling stressed out? Low energy? Not sleeping well? Nothing else seems to work
               anymore? Try adding a holistic approach by laying on the PEMF whole-body mat.
             </p>
@@ -124,7 +127,7 @@ export default function Home() {
                 Learn About PEMF
               </a>
             </div>
-            <p className="mt-6 text-sm text-white/60">
+            <p className="mt-6 text-base text-white/85">
               Office and home visits available · Lake Forest, CA
             </p>
           </div>
@@ -135,7 +138,7 @@ export default function Home() {
           id="pemf"
           eyebrow="PEMF for a Healthy Lifestyle"
           title="The 5th Element of Health"
-          intro="Air, food, water, sunshine — and Earth's magnetic field energy — are natural essentials for human health. But Earth's magnetic field is weakening and electro-smog is increasing. PEMF mimics Earth's natural magnetic field energy for general health and wellness."
+          intro="Air, food, water, sunshine, and Earth's magnetic field energy are natural essentials for human health. But Earth's magnetic field is weakening and electro-smog is increasing. PEMF mimics Earth's natural magnetic field energy for general health and wellness."
         >
           <div className="grid gap-8 md:grid-cols-2">
             <figure className="rounded-xl overflow-hidden border border-brand/10 bg-white shadow-sm">
@@ -146,9 +149,9 @@ export default function Home() {
                 height={450}
                 className="w-full object-cover"
               />
-              <figcaption className="px-4 py-3 text-sm text-ink-soft">
+              <figcaption className="px-4 py-3 text-base text-ink-soft">
                 Our Earth&apos;s magnetic field shields us from radiation.{" "}
-                <span className="text-xs">Credit: National Geographic</span>
+                <span className="text-sm">Credit: National Geographic</span>
               </figcaption>
             </figure>
             <figure className="rounded-xl overflow-hidden border border-brand/10 bg-white shadow-sm">
@@ -159,9 +162,9 @@ export default function Home() {
                 height={450}
                 className="w-full object-cover"
               />
-              <figcaption className="px-4 py-3 text-sm text-ink-soft">
+              <figcaption className="px-4 py-3 text-base text-ink-soft">
                 A weakening magnetic field impacts life on Earth.{" "}
-                <span className="text-xs">Credit: Curious Minds</span>
+                <span className="text-sm">Credit: Curious Minds</span>
               </figcaption>
             </figure>
           </div>
@@ -172,12 +175,12 @@ export default function Home() {
                 Why is Earth&apos;s Magnetic Field Vital?
               </h3>
               <p className="mt-3 text-ink-soft leading-relaxed">
-                The Earth&apos;s magnetic field creates a protective shield — the magnetosphere — that
+                The Earth&apos;s magnetic field creates a protective shield, the magnetosphere, that
                 protects us from harmful solar and cosmic radiation. It is an essential environmental
                 factor for human existence, supporting and protecting all life on Earth.
               </p>
               <p className="mt-3 text-ink-soft leading-relaxed">
-                Electromagnetic force is the fundamental power train of our Earth — an inevitable
+                Electromagnetic force is the fundamental power train of our Earth and an inevitable
                 source of energy and vitality for our sense of wellness. PEMF utilizes the
                 electromagnetic spectrum to help retain our overall well-being.
               </p>
@@ -194,7 +197,7 @@ export default function Home() {
           {/* FDA timeline */}
           <div className="mt-14 rounded-2xl bg-brand-dark text-white p-8 sm:p-10">
             <h3 className="font-display text-2xl">FDA-Approved PEMF Applications</h3>
-            <p className="mt-2 text-sm text-white/70 max-w-2xl">
+            <p className="mt-2 text-base text-white/85 max-w-2xl">
               PEMF technology has been FDA-approved for specific medical applications over the
               decades. In 2014, Health Canada approved iMRS PEMF for increased blood circulation and
               relief of aches and pains.
@@ -203,7 +206,7 @@ export default function Home() {
               {fdaMilestones.map((m) => (
                 <div key={m.year} className="border-l-2 border-accent pl-3">
                   <p className="font-display text-xl text-accent-light">{m.year}</p>
-                  <p className="text-sm text-white/80 mt-1">{m.label}</p>
+                  <p className="text-base text-white/90 mt-1">{m.label}</p>
                 </div>
               ))}
             </div>
@@ -225,7 +228,7 @@ export default function Home() {
           id="holistic-health"
           eyebrow="Whole-Person Wellness"
           title="PEMF for Holistic Health"
-          intro="Holistic health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person — interconnected parts of overall well-being. Imbalances in one area can affect the others. PEMF is a holistic approach to promote a state of total wellness."
+          intro="Holistic health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person, viewing them as interconnected parts of overall well-being. Imbalances in one area can affect the others. PEMF is a holistic approach to promote a state of total wellness."
           tinted
         >
           <div className="grid gap-10 lg:grid-cols-2 items-center">
@@ -240,7 +243,7 @@ export default function Home() {
               {holisticAspects.map((a) => (
                 <div key={a.title} className="rounded-xl bg-white border border-brand/10 p-5 shadow-sm">
                   <p className="font-display text-lg text-brand-dark">{a.title}</p>
-                  <p className="mt-1.5 text-sm text-ink-soft leading-relaxed">{a.text}</p>
+                  <p className="mt-1.5 text-base text-ink-soft leading-relaxed">{a.text}</p>
                 </div>
               ))}
             </div>
@@ -252,14 +255,14 @@ export default function Home() {
           id="qi-energy"
           eyebrow="Vitality"
           title="PEMF Enhances Qi Energy"
-          intro="Try this holistic approach using the PEMF system to enhance your Qi energy, stamina, and power — and you will feel the difference."
+          intro="Try this holistic approach using the PEMF system to enhance your Qi energy, stamina, and power, and you will feel the difference."
         >
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div className="grid gap-4 sm:grid-cols-2">
               {energyBenefits.map((b) => (
                 <div key={b.title} className="rounded-xl bg-white border border-brand/10 p-5 shadow-sm">
                   <p className="font-medium text-brand-dark">{b.title}</p>
-                  <p className="mt-1.5 text-sm text-ink-soft leading-relaxed">{b.text}</p>
+                  <p className="mt-1.5 text-base text-ink-soft leading-relaxed">{b.text}</p>
                 </div>
               ))}
             </div>
@@ -295,7 +298,7 @@ export default function Home() {
                 better quality and quantity of sleep. Wake up less often during the night.
               </p>
               <p className="mt-4 text-ink-soft leading-relaxed">
-                Deep sleep is crucial for physical and mental rejuvenation — and a foundation of
+                Deep sleep is crucial for physical and mental rejuvenation, and a foundation of
                 holistic wellness.
               </p>
             </div>
@@ -307,7 +310,7 @@ export default function Home() {
           id="mental-health"
           eyebrow="Spa for the Mind"
           title="PEMF Improves Mental Acuity"
-          intro="Brain health is a vital component of overall well-being. Intelligent Magnetic Resonance Stimulation PEMF with Brainwave Entrainment is a safe, non-invasive, non-addictive, affordable application to improve mental acuity and learning ability — promoting brain health and wellness."
+          intro="Brain health is a vital component of overall well-being. Intelligent Magnetic Resonance Stimulation PEMF with Brainwave Entrainment is a safe, non-invasive, non-addictive, affordable application to improve mental acuity and learning ability, promoting brain health and wellness."
         >
           <div className="grid gap-10 lg:grid-cols-2 items-center mb-12">
             <Image
@@ -320,7 +323,7 @@ export default function Home() {
             <div>
               <h3 className="font-display text-2xl text-brand-dark">Brainwave Entrainment</h3>
               <p className="mt-3 text-ink-soft leading-relaxed">
-                A holistic experience for the brain — also known as a Spa for the Mind. Brainwave
+                A holistic experience for the brain, also known as a Spa for the Mind. Brainwave
                 Entrainment reduces stress, resulting in relaxation, calm, and ease. It supports
                 clear thinking, coping with stress, and achieving your goals.
               </p>
@@ -333,9 +336,9 @@ export default function Home() {
                 <Image src="/images/stress-meter.png" alt="Stress level illustration" width={72} height={72} className="rounded-lg" />
                 <h3 className="font-display text-xl text-brand-dark">PEMF Helps Manage Stress</h3>
               </div>
-              <p className="mt-4 text-sm text-ink-soft leading-relaxed">
+              <p className="mt-4 text-base text-ink-soft leading-relaxed">
                 Stress is a natural response to perceived or real challenges. Choose a holistic
-                approach using PEMF as your healthy coping mechanism — safe, effective, non-invasive,
+                approach using PEMF as your healthy coping mechanism. It is safe, effective, non-invasive,
                 and non-addictive. Use it anytime in the comfort of your own home or office.
               </p>
             </div>
@@ -344,10 +347,10 @@ export default function Home() {
                 <Image src="/images/relax-poolside.jpg" alt="Relaxing poolside PEMF session" width={72} height={72} className="rounded-lg object-cover h-[72px]" />
                 <h3 className="font-display text-xl text-brand-dark">PEMF for Relaxation</h3>
               </div>
-              <p className="mt-4 text-sm text-ink-soft leading-relaxed">
+              <p className="mt-4 text-base text-ink-soft leading-relaxed">
                 Relaxation is the state of being calm, comfortable, and free from stress. PEMF can be
                 effective for relaxation within minutes, aiding your body in returning to a calm and
-                balanced state — improving sleep, mood, focus, and emotional well-being.
+                balanced state, improving sleep, mood, focus, and emotional well-being.
               </p>
             </div>
           </div>
@@ -358,7 +361,7 @@ export default function Home() {
           id="sports"
           eyebrow="Performance & Endurance"
           title="PEMF Enhances Athletic Performance"
-          intro="Within elite and mass sports, iMRS Prime PEMF is an effective tool to promote holistic wellness for performance and endurance enhancement — for anyone who works out or is in training. Combined with Brainwave Entrainment, it enhances visualization, mindfulness, focus, and reaction times."
+          intro="Within elite and mass sports, iMRS Prime PEMF is an effective tool to promote holistic wellness for performance and endurance enhancement for anyone who works out or is in training. Combined with Brainwave Entrainment, it enhances visualization, mindfulness, focus, and reaction times."
           tinted
         >
           <div className="grid gap-6 md:grid-cols-3">
@@ -372,7 +375,7 @@ export default function Home() {
                   className="mx-auto rounded-xl"
                 />
                 <h3 className="mt-4 font-display text-xl text-brand-dark">{b.title}</h3>
-                <p className="mt-2 text-sm text-ink-soft leading-relaxed">{b.text}</p>
+                <p className="mt-2 text-base text-ink-soft leading-relaxed">{b.text}</p>
               </div>
             ))}
           </div>
@@ -383,7 +386,7 @@ export default function Home() {
           id="animals"
           eyebrow="For Every Companion"
           title="PEMF for Animals"
-          intro="iMRS Fauna PEMF for animals is a non-invasive tool shown to promote well-being in various animal species — at home or in zoos and sanctuaries. Many animals experience PEMF as soothing, promoting a sense of calm."
+          intro="iMRS Fauna PEMF for animals is a non-invasive tool shown to promote well-being in various animal species, at home or in zoos and sanctuaries. Many animals experience PEMF as soothing, promoting a sense of calm."
         >
           <div className="grid gap-6 md:grid-cols-3">
             <figure className="rounded-xl overflow-hidden bg-white border border-brand/10 shadow-sm">
@@ -394,9 +397,9 @@ export default function Home() {
                 height={420}
                 className="w-full object-cover aspect-[4/3]"
               />
-              <figcaption className="px-4 py-3 text-sm text-ink-soft">
+              <figcaption className="px-4 py-3 text-base text-ink-soft">
                 <span className="font-medium text-brand-dark block">PEMF for Pets</span>
-                Pets love to be on the PEMF mat for relaxation — and they always look forward to the
+                Pets love to be on the PEMF mat for relaxation, and they always look forward to the
                 next session.
               </figcaption>
             </figure>
@@ -408,7 +411,7 @@ export default function Home() {
                 height={420}
                 className="w-full object-cover aspect-[4/3]"
               />
-              <figcaption className="px-4 py-3 text-sm text-ink-soft">
+              <figcaption className="px-4 py-3 text-base text-ink-soft">
                 <span className="font-medium text-brand-dark block">Stress-Free Body Applicator</span>
                 Many animals tolerate the stress-free PEMF technique and benefit from PEMF.
               </figcaption>
@@ -421,9 +424,9 @@ export default function Home() {
                 height={420}
                 className="w-full object-cover aspect-[4/3]"
               />
-              <figcaption className="px-4 py-3 text-sm text-ink-soft">
+              <figcaption className="px-4 py-3 text-base text-ink-soft">
                 <span className="font-medium text-brand-dark block">PEMF for Racehorses</span>
-                Supports conditioning, stamina, and training — with proper warm-ups, gradual
+                Supports conditioning, stamina, and training, with proper warm-ups, gradual
                 workloads, and sufficient rest.
               </figcaption>
             </figure>
@@ -435,7 +438,7 @@ export default function Home() {
           id="products"
           eyebrow="Wellness Systems"
           title="Intelligent Magnetic Resonance Stimulation PEMF"
-          intro="The most advanced and comprehensive PEMF technology for wellness use in the world — engineered by Swiss Bionic Solutions."
+          intro="The most advanced and comprehensive PEMF technology for wellness use in the world, engineered by Swiss Bionic Solutions."
           tinted
         >
           <div className="grid gap-6 md:grid-cols-3">
@@ -450,7 +453,7 @@ export default function Home() {
                 />
                 <div className="p-6 flex flex-col grow">
                   <h3 className="font-display text-xl text-brand-dark">{p.name}</h3>
-                  <p className="mt-2 text-sm text-ink-soft leading-relaxed grow">{p.text}</p>
+                  <p className="mt-2 text-base text-ink-soft leading-relaxed grow">{p.text}</p>
                   <a
                     href={site.phoneHref}
                     className="mt-5 inline-block rounded-full bg-brand px-6 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-dark transition-colors"
@@ -468,47 +471,44 @@ export default function Home() {
           id="contact"
           eyebrow="Get in Touch"
           title="Contact Us"
-          intro="Questions about PEMF or ready to book a session? Reach out — office and home visits are available."
+          intro="Questions about PEMF or ready to book a session? Reach out. Office and home visits are available."
         >
-          <div className="grid gap-10 lg:grid-cols-5">
-            <div className="lg:col-span-2 rounded-2xl bg-brand-dark text-white p-8">
-              <p className="font-display text-2xl">{site.consultant.name}</p>
-              <p className="text-white/80 mt-1">
-                {site.consultant.title} · ID #{site.consultant.id}
-              </p>
-              <div className="mt-6 space-y-3 text-sm">
-                <p>
-                  <span className="text-white/60 block text-xs uppercase tracking-wide">Call / Text / WhatsApp</span>
-                  <a href={site.phoneHref} className="text-accent-light text-lg hover:underline">
-                    {site.phone}
-                  </a>
+          <div className="rounded-2xl bg-brand-dark text-white p-8 sm:p-12">
+            <div className="grid gap-10 md:grid-cols-2 items-center">
+              <div>
+                <p className="font-display text-3xl">{site.consultant.name}</p>
+                <p className="text-white/90 mt-1 text-lg">
+                  {site.consultant.title} · ID #{site.consultant.id}
                 </p>
-                <p>
-                  <span className="text-white/60 block text-xs uppercase tracking-wide">Email</span>
-                  <a href={`mailto:${site.email}`} className="hover:underline">
-                    {site.email}
-                  </a>
+                <p className="mt-6 text-white/85 text-sm uppercase tracking-wide">
+                  Call / Text / WhatsApp for Appointment
                 </p>
-                <p>
-                  <span className="text-white/60 block text-xs uppercase tracking-wide">Visit</span>
+                <a
+                  href={site.phoneHref}
+                  className="mt-2 inline-block rounded-full bg-accent px-10 py-4 font-display text-2xl text-white hover:brightness-110 transition"
+                >
+                  {site.phone}
+                </a>
+                <p className="mt-6 text-base text-white/90 leading-relaxed">
                   {site.address[0]}
                   <br />
                   {site.address[1]}
+                  <br />
+                  Office and Home Visits Available
                 </p>
               </div>
-              <div className="mt-6">
-                <p className="text-white/60 text-xs uppercase tracking-wide mb-2">WeChat</p>
+              <div className="md:justify-self-end text-center">
+                <p className="text-white/85 text-sm uppercase tracking-wide mb-3">
+                  Or scan to connect on WeChat
+                </p>
                 <Image
                   src="/images/wechat-qr.png"
                   alt="WeChat QR code"
-                  width={120}
-                  height={120}
-                  className="rounded-md bg-white p-1.5"
+                  width={180}
+                  height={180}
+                  className="rounded-lg bg-white p-2 mx-auto"
                 />
               </div>
-            </div>
-            <div className="lg:col-span-3">
-              <ContactForm />
             </div>
           </div>
         </Section>
