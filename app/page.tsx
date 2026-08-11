@@ -465,53 +465,6 @@ export default function Home() {
             ))}
           </div>
         </Section>
-
-        {/* ============ CONTACT ============ */}
-        <Section
-          id="contact"
-          eyebrow="Get in Touch"
-          title="Contact Us"
-          intro="Questions about PEMF or ready to book a session? Reach out. Office and home visits are available."
-        >
-          <div className="rounded-2xl bg-brand-dark text-white p-8 sm:p-12">
-            <div className="grid gap-10 md:grid-cols-2 items-center">
-              <div>
-                <p className="font-display text-3xl">{site.consultant.name}</p>
-                <p className="text-white/90 mt-1 text-lg">
-                  {site.consultant.title} · ID #{site.consultant.id}
-                </p>
-                <p className="mt-6 text-white/85 text-sm uppercase tracking-wide">
-                  Call / Text / WhatsApp for Appointment
-                </p>
-                <a
-                  href={site.phoneHref}
-                  className="mt-2 inline-block rounded-full bg-accent px-10 py-4 font-display text-2xl text-white hover:brightness-110 transition"
-                >
-                  {site.phone}
-                </a>
-                <p className="mt-6 text-base text-white/90 leading-relaxed">
-                  {site.address[0]}
-                  <br />
-                  {site.address[1]}
-                  <br />
-                  Office and Home Visits Available
-                </p>
-              </div>
-              <div className="md:justify-self-end text-center">
-                <p className="text-white/85 text-sm uppercase tracking-wide mb-3">
-                  Or scan to connect on WeChat
-                </p>
-                <Image
-                  src="/images/wechat-qr.png"
-                  alt="WeChat QR code"
-                  width={180}
-                  height={180}
-                  className="rounded-lg bg-white p-2 mx-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </Section>
       </main>
       <Footer />
     </>

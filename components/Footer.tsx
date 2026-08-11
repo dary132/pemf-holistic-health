@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark text-white mt-auto">
+    <footer id="contact" className="bg-brand-dark text-white mt-auto scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-3">
         <div>
           <p className="font-display text-xl mb-3">{site.name}</p>
