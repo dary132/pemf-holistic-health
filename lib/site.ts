@@ -24,8 +24,4 @@ export const navLinks = [
   { label: "Qi Energy", href: "#qi-energy" },
   { label: "Sleep", href: "#sleep" },
   { label: "Mental Health", href: "#mental-health" },
-  { label: "Sports", href: "#sports" },
-  { label: "Animals", href: "#animals" },
-  { label: "Products", href: "#products" },
-  { label: "Contact", href: "#contact" },
 ];

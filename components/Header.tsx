@@ -31,9 +31,13 @@ export default function Header() {
             </span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-5 text-base text-ink-soft">
+          <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-ink-soft">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-brand transition-colors">
+              <a
+                key={link.href}
+                href={link.href}
+                className="whitespace-nowrap hover:text-brand transition-colors"
+              >
                 {link.label}
               </a>
             ))}
