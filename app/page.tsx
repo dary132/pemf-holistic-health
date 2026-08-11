@@ -64,7 +64,7 @@ const products = [
   {
     image: "/images/imrs-prime-set.jpg",
     name: "iMRS Prime",
-    text: "Intelligent Magnetic Resonance Stimulation, the most advanced and comprehensive PEMF technology for wellness use in the world.",
+    text: "Intelligent Magnetic Resonance Stimulation. Extremely low-frequency and low-intensity PEMF systems for wellness, the most advanced and comprehensive PEMF technology in the world.",
   },
   {
     image: "/images/omnium-on-the-go.jpg",
