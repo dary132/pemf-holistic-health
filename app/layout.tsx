@@ -15,6 +15,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pemfforholistichealth.com"),
   title: `${site.name} | Lake Forest, CA`,
   description:
     "PEMF, a holistic approach to health and wellness. Whole-body PEMF sessions for energy, sleep, relaxation, sports performance, and pets. Office and home visits available in Lake Forest, CA.",

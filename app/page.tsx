@@ -87,13 +87,13 @@ export default function Home() {
             alt="Whole-body PEMF mat session at home"
             fill
             priority
-            className="object-cover opacity-40"
+            className="object-cover object-[70%_center] md:object-center"
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-r from-brand-dark/85 via-brand-dark/60 to-brand-dark/25"
+            className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/45 to-brand-dark/5"
           />
-          <div className="relative mx-auto max-w-6xl px-4 py-24 sm:py-32">
+          <div className="relative mx-auto max-w-6xl px-4 pt-24 pb-52 sm:py-32">
             <p className="text-accent-light tracking-widest uppercase text-sm mb-4">
               Pulsed Electro Magnetic Field
             </p>
