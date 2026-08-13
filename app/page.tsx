@@ -14,15 +14,6 @@ const holisticAspects = [
   { title: "Spiritual", text: "A sense of purpose, values, and beliefs that give life meaning." },
 ];
 
-const fdaMilestones = [
-  { year: "1979", label: "Bone Growth" },
-  { year: "1991", label: "Post-Op Pain" },
-  { year: "1998", label: "Urinary Incontinence" },
-  { year: "2004", label: "Risk of Non-Cervical Fusion" },
-  { year: "2006", label: "Depression" },
-  { year: "2011", label: "Brain Cancer" },
-];
-
 const energyBenefits = [
   {
     title: "Increased Alertness and Focus",
@@ -192,24 +183,6 @@ export default function Home() {
               height={420}
               className="w-full rounded-xl border border-brand/10 shadow-sm"
             />
-          </div>
-
-          {/* FDA timeline */}
-          <div className="mt-14 rounded-2xl bg-brand-dark text-white p-8 sm:p-10">
-            <h3 className="font-display text-2xl">FDA-Approved PEMF Applications</h3>
-            <p className="mt-2 text-base text-white/85 max-w-2xl">
-              PEMF technology has been FDA-approved for specific medical applications over the
-              decades. In 2014, Health Canada approved iMRS PEMF for increased blood circulation and
-              relief of aches and pains.
-            </p>
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-              {fdaMilestones.map((m) => (
-                <div key={m.year} className="border-l-2 border-accent pl-3">
-                  <p className="font-display text-xl text-accent-light">{m.year}</p>
-                  <p className="text-base text-white/90 mt-1">{m.label}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Videos */}
