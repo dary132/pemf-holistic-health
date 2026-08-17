@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, site } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname === href;
 
   return (
     <div className="sticky top-0 z-50">
@@ -25,21 +30,26 @@ export default function Header() {
       {/* Main nav */}
       <header className="bg-white/95 backdrop-blur border-b border-brand/10 shadow-sm">
         <div className="mx-auto max-w-6xl px-4 flex items-center justify-between gap-4 py-3">
-          <a href="#home" className="shrink-0">
+          <Link href="/" className="shrink-0">
             <span className="font-display text-xl sm:text-2xl text-brand-dark tracking-wide">
               PEMF <span className="text-accent">for Holistic Health</span>
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-ink-soft">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                className="whitespace-nowrap hover:text-brand transition-colors"
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={
+                  isActive(link.href)
+                    ? "whitespace-nowrap font-semibold text-brand"
+                    : "whitespace-nowrap hover:text-brand transition-colors"
+                }
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -63,14 +73,19 @@ export default function Header() {
         {open && (
           <nav className="lg:hidden border-t border-brand/10 bg-white px-4 py-3 grid grid-cols-2 gap-2 text-base text-ink-soft">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-brand-light hover:text-brand"
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={
+                  isActive(link.href)
+                    ? "rounded-md px-3 py-2 bg-brand-light font-semibold text-brand"
+                    : "rounded-md px-3 py-2 hover:bg-brand-light hover:text-brand"
+                }
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         )}

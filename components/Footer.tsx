@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { site } from "@/lib/site";
+import Link from "next/link";
+import { navLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-brand-dark text-white mt-auto scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 md:grid-cols-3">
+    <footer id="contact-footer" className="bg-brand-dark text-white mt-auto scroll-mt-24">
+      <div className="mx-auto max-w-6xl px-4 py-12 grid gap-10 sm:grid-cols-2 md:grid-cols-4">
         <div>
           <p className="font-display text-xl mb-3">{site.name}</p>
           <p className="text-white/90 text-base leading-relaxed">
@@ -23,6 +24,19 @@ export default function Footer() {
           <a href={site.phoneHref} className="mt-1 inline-block text-lg text-accent-light hover:underline">
             {site.phone}
           </a>
+        </div>
+
+        <div>
+          <p className="font-display text-xl mb-3">Explore</p>
+          <ul className="space-y-1.5 text-base text-white/90">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-accent-light">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>
