@@ -18,6 +18,10 @@ const fail = (m) => {
   failures++;
 };
 const pass = (m) => console.log(`  ok   ${m}`);
+const check = (cond, okMsg, failMsg) => {
+  if (cond) pass(okMsg);
+  else fail(failMsg);
+};
 
 const titles = new Map();
 const linkCache = new Map();
@@ -38,7 +42,7 @@ async function checkRoute({ path, jsonLd }) {
   const html = await res.text();
 
   const h1s = [...html.matchAll(/<h1[\s>]/g)].length;
-  h1s === 1 ? pass("exactly one h1") : fail(`${h1s} h1 elements, expected 1`);
+  check(h1s === 1, "exactly one h1", `${h1s} h1 elements, expected 1`);
 
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   if (!title) fail("no <title>");
@@ -53,7 +57,7 @@ async function checkRoute({ path, jsonLd }) {
   else if (desc.length > 160) fail(`description ${desc.length} chars, max 160`);
   else pass(`description ${desc.length} chars`);
 
-  html.includes('rel="canonical"') ? pass("canonical") : fail("no canonical");
+  check(html.includes('rel="canonical"'), "canonical", "no canonical");
 
   const blocks = [
     ...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs),
@@ -68,14 +72,14 @@ async function checkRoute({ path, jsonLd }) {
     }
   }
   for (const want of jsonLd) {
-    types.includes(want) ? pass(`JSON-LD ${want}`) : fail(`missing JSON-LD ${want}`);
+    check(types.includes(want), `JSON-LD ${want}`, `missing JSON-LD ${want}`);
   }
 
   const hrefs = [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1]);
   for (const href of [...new Set(hrefs)]) {
     if (!href || /\.(png|jpe?g|svg|ico|webp|xml|txt)$/.test(href)) continue;
     const status = await linkStatus(href);
-    status === 200 ? pass(`link ${href}`) : fail(`link ${href} -> ${status}`);
+    check(status === 200, `link ${href}`, `link ${href} -> ${status}`);
   }
 }
 
@@ -87,14 +91,14 @@ if (sm.status !== 200) fail(`/sitemap.xml -> ${sm.status}`);
 else {
   const body = await sm.text();
   const locs = [...body.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-  locs.length === ROUTES.length
-    ? pass(`sitemap has ${locs.length} urls`)
-    : fail(`sitemap has ${locs.length} urls, expected ${ROUTES.length}`);
+  check(
+    locs.length === ROUTES.length,
+    `sitemap has ${locs.length} urls`,
+    `sitemap has ${locs.length} urls, expected ${ROUTES.length}`
+  );
   for (const { path } of ROUTES) {
     if (path === "/") continue;
-    locs.some((l) => l.endsWith(path))
-      ? pass(`sitemap ${path}`)
-      : fail(`sitemap missing ${path}`);
+    check(locs.some((l) => l.endsWith(path)), `sitemap ${path}`, `sitemap missing ${path}`);
   }
 }
 
@@ -102,7 +106,7 @@ const rb = await fetch(BASE + "/robots.txt");
 if (rb.status !== 200) fail(`/robots.txt -> ${rb.status}`);
 else {
   const body = await rb.text();
-  body.includes("Sitemap:") ? pass("robots links sitemap") : fail("robots has no Sitemap:");
+  check(body.includes("Sitemap:"), "robots links sitemap", "robots has no Sitemap:");
 }
 
 console.log(failures ? `\n${failures} FAILURE(S)` : "\nAll checks passed");
