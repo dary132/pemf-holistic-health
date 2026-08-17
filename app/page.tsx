@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Section } from "@/components/Section";
 import { Banner, Card, FrequencyCard } from "@/components/Card";
-import { VideoEmbed } from "@/components/VideoEmbed";
 import { site } from "@/lib/site";
 import {
   alsoAvailable,
@@ -15,7 +14,6 @@ import {
   sleepBenefits,
   smartPulserFeatures,
   sportsBenefits,
-  videos,
 } from "@/lib/content";
 
 const learnMore = {
@@ -82,82 +80,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      {/* ============ PEMF ============ */}
-      <Section
-        id="pemf"
-        eyebrow="PEMF for a Healthy Lifestyle"
-        title="The 5th Element of Health"
-        intro="Air, food, water, sunshine, and Earth's magnetic field energy are natural essentials for human health. But Earth's magnetic field is weakening and electro-smog is increasing. PEMF mimics Earth's natural magnetic field energy for general health and wellness."
-      >
-        <div className="grid gap-8 md:grid-cols-2">
-          <figure className="rounded-xl overflow-hidden border border-brand/10 bg-white shadow-sm">
-            <Image
-              src="/images/magnetosphere.jpg"
-              alt="Earth's magnetosphere shielding the planet from solar radiation"
-              width={800}
-              height={450}
-              className="w-full object-cover"
-            />
-            <figcaption className="px-4 py-3 text-base text-ink-soft">
-              Our Earth&apos;s magnetic field shields us from radiation.{" "}
-              <span className="text-sm">Credit: National Geographic</span>
-            </figcaption>
-          </figure>
-          <figure className="rounded-xl overflow-hidden border border-brand/10 bg-white shadow-sm">
-            <Image
-              src="/images/solar-wind.jpg"
-              alt="Solar wind interacting with Earth's magnetic field"
-              width={800}
-              height={450}
-              className="w-full object-cover"
-            />
-            <figcaption className="px-4 py-3 text-base text-ink-soft">
-              A weakening magnetic field impacts life on Earth.{" "}
-              <span className="text-sm">Credit: Curious Minds</span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 items-center">
-          <div>
-            <h3 className="font-display text-2xl text-brand-dark">
-              Why is Earth&apos;s Magnetic Field Vital?
-            </h3>
-            <p className="mt-3 text-ink-soft leading-relaxed">
-              The Earth&apos;s magnetic field creates a protective shield, the
-              magnetosphere, that protects us from harmful solar and cosmic
-              radiation. It is an essential environmental factor for human
-              existence, supporting and protecting all life on Earth.
-            </p>
-            <p className="mt-3 text-ink-soft leading-relaxed">
-              Electromagnetic force is the fundamental power train of our Earth
-              and an inevitable source of energy and vitality for our sense of
-              wellness. PEMF utilizes the electromagnetic spectrum to help
-              retain our overall well-being.
-            </p>
-          </div>
-          <Image
-            src="/images/em-spectrum.jpg"
-            alt="The electromagnetic spectrum from ionizing to non-ionizing radiation"
-            width={800}
-            height={420}
-            className="w-full rounded-xl border border-brand/10 shadow-sm"
-          />
-        </div>
-
-        {/* Videos */}
-        <div className="mt-14">
-          <h3 className="font-display text-2xl text-brand-dark mb-6">
-            Watch and Learn
-          </h3>
-          <div className="grid gap-6 md:grid-cols-3">
-            {videos.map((v) => (
-              <VideoEmbed key={v.videoId} {...v} />
-            ))}
-          </div>
-        </div>
-      </Section>
 
       {/* ============ HOLISTIC HEALTH ============ */}
       <Section
