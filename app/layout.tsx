@@ -3,7 +3,9 @@ import { Marcellus, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { localBusinessSchema, websiteSchema } from "@/lib/seo";
 
 const display = Marcellus({
   variable: "--font-display",
@@ -34,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <Footer />
+        <JsonLd data={[localBusinessSchema(), websiteSchema()]} />
       </body>
     </html>
   );
