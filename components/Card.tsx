@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 const shell =
@@ -12,6 +13,7 @@ export function Card({
   body,
   imageAspect = "aspect-[4/3]",
   imageFit = "cover",
+  href,
   cta,
   children,
 }: {
@@ -24,11 +26,13 @@ export function Card({
   imageAspect?: string;
   /** Banner artwork with text baked in needs `contain` so nothing is cropped. */
   imageFit?: "cover" | "contain";
+  /** When set, the card title becomes a link to this route. */
+  href?: string;
   cta?: { href: string; label: string };
   children?: ReactNode;
 }) {
   return (
-    <div className={shell}>
+    <div className={href ? `${shell} transition-shadow hover:shadow-md` : shell}>
       {image && (
         <Image
           src={image}
@@ -46,7 +50,15 @@ export function Card({
             {eyebrow}
           </p>
         )}
-        <h3 className="font-display text-xl text-brand-dark">{title}</h3>
+        <h3 className="font-display text-xl text-brand-dark">
+          {href ? (
+            <Link href={href} className="hover:text-brand">
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+        </h3>
         {body && <p className="mt-2 grow text-base leading-relaxed text-ink-soft">{body}</p>}
         {children}
         {cta && (

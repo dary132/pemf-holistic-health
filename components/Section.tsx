@@ -4,6 +4,7 @@ export function Section({
   id,
   eyebrow,
   title,
+  titleAs: Heading = "h2",
   intro,
   tinted = false,
   children,
@@ -11,6 +12,8 @@ export function Section({
   id: string;
   eyebrow?: string;
   title: string;
+  /** The page's leading Section uses "h1"; every other Section stays "h2". */
+  titleAs?: "h1" | "h2";
   intro?: string;
   tinted?: boolean;
   children: ReactNode;
@@ -22,7 +25,7 @@ export function Section({
           {eyebrow && (
             <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">{eyebrow}</p>
           )}
-          <h2 className="font-display text-3xl sm:text-4xl text-brand-dark">{title}</h2>
+          <Heading className="font-display text-3xl sm:text-4xl text-brand-dark">{title}</Heading>
           {intro && <p className="mt-4 text-ink-soft leading-relaxed">{intro}</p>}
         </div>
         <div className="mt-10">{children}</div>

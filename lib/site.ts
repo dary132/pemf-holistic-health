@@ -1,6 +1,8 @@
 export const site = {
   name: "PEMF for Holistic Health",
   tagline: "A Holistic Approach to Health and Wellness",
+  url: "https://pemfforholistichealth.com",
+  areaServed: "Orange County, California",
   phone: "(949) 891 5572",
   phoneHref: "tel:+19498915572",
   whatsapp: "(949) 891 5572",
@@ -18,10 +20,9 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "PEMF", href: "#pemf" },
-  { label: "Holistic Health", href: "#holistic-health" },
-  { label: "Qi Energy", href: "#qi-energy" },
-  { label: "Sleep", href: "#sleep" },
-  { label: "Mental Health", href: "#mental-health" },
+  { label: "Home", href: "/" },
+  { label: "What is PEMF", href: "/what-is-pemf" },
+  { label: "Benefits", href: "/benefits" },
+  { label: "Products", href: "/products" },
+  { label: "Contact", href: "/contact" },
 ];

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Marcellus, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { localBusinessSchema, websiteSchema } from "@/lib/seo";
 
 const display = Marcellus({
   variable: "--font-display",
@@ -15,16 +19,25 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pemfforholistichealth.com"),
-  title: `${site.name} | Lake Forest, CA`,
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Lake Forest, CA`,
+    template: `%s | ${site.name}`,
+  },
   description:
-    "PEMF, a holistic approach to health and wellness. Whole-body PEMF sessions for energy, sleep, relaxation, sports performance, and pets. Office and home visits available in Lake Forest, CA.",
+    "Whole-body PEMF sessions in Lake Forest, CA. A holistic approach to energy, sleep, and relaxation. Office and home visits available.",
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        {children}
+        <Footer />
+        <JsonLd data={[localBusinessSchema(), websiteSchema()]} />
+      </body>
     </html>
   );
 }
