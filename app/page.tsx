@@ -2,78 +2,35 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Section } from "@/components/Section";
+import { Banner, Card, FrequencyCard } from "@/components/Card";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { site } from "@/lib/site";
+import {
+  alsoAvailable,
+  animalCards,
+  energyBenefits,
+  exagonAccessories,
+  frequencyZones,
+  holisticAspects,
+  racehorseBenefits,
+  racehorseCards,
+  sleepBenefits,
+  smartPulserFeatures,
+  sportsBenefits,
+  videos,
+} from "@/lib/content";
 
-const holisticAspects = [
-  { title: "Physical", text: "Vibrant energy, stamina, and the body's natural balance." },
-  { title: "Mental", text: "Clarity, focus, quick thinking, problem-solving, and memory." },
-  { title: "Emotional", text: "Awareness and healthy management of feelings and moods." },
-  { title: "Intellectual", text: "Curiosity, lifelong learning, creativity, and adaptability." },
-  { title: "Social", text: "Building and maintaining healthy, effective relationships." },
-  { title: "Spiritual", text: "A sense of purpose, values, and beliefs that give life meaning." },
-];
+const learnMore = { href: site.phoneHref, label: "Learn More · Text / Call / WhatsApp" };
 
-const energyBenefits = [
-  {
-    title: "Increased Alertness and Focus",
-    text: "Feel more awake, sharp, and focused on the task at hand.",
-  },
-  {
-    title: "Greater Motivation and Productivity",
-    text: "Be more inclined to start and complete tasks, prepared to tackle anything.",
-  },
-  {
-    title: "Improved Mood and Enthusiasm",
-    text: "High energy levels correlate with feeling enthusiastic, fun-loving, and sociable.",
-  },
-  {
-    title: "Physical Vitality",
-    text: "Feel vibrant and ready to move, with more stamina and power in performance.",
-  },
-];
-
-const sportsBenefits = [
-  {
-    image: "/images/passive-warmup.png",
-    title: "Passive Warm-Up",
-    text: "Combining active and passive warm-up with PEMF offers a faster, more comprehensive approach.",
-  },
-  {
-    image: "/images/rejuvenation.png",
-    title: "Rejuvenation",
-    text: "The iMRS Prime accelerates rejuvenation after physical activity, so you can train harder, perform better, and compete more often.",
-  },
-  {
-    image: "/images/performance.png",
-    title: "Enhanced Performance",
-    text: "A safe, efficient, and comprehensive holistic approach towards enhanced performance and endurance.",
-  },
-];
-
-const products = [
-  {
-    image: "/images/imrs-prime-set.jpg",
-    name: "iMRS Prime",
-    text: "Intelligent Magnetic Resonance Stimulation. Extremely low-frequency and low-intensity PEMF systems for wellness, the most advanced and comprehensive PEMF technology in the world.",
-  },
-  {
-    image: "/images/omnium-on-the-go.jpg",
-    name: "PEMF on the Go",
-    text: "A full-size PEMF wellness system on the go. Enjoy whole-body sessions at home, in the office, or outdoors.",
-  },
-  {
-    image: "/images/imrs-consultation.jpg",
-    name: "Swiss Bionic Solutions",
-    text: "Premium Swiss-engineered PEMF systems for home use, backed by certified consultation and personal support.",
-  },
-];
-
-const videos = [
-  { videoId: "WyqVIM6O3II", title: "What is PEMF?", credit: "Bryant Meyers" },
-  { videoId: "Et8VJ3psSF8", title: "Why Do We Need PEMF?", credit: "Swiss Bionic Solutions" },
-  { videoId: "2_O_3D4P4Bg", title: "Dr. Oz & Pain Specialist Dr. Dillard Talk on PEMF", credit: "Dr. Oz" },
-];
+/** Heading that opens a product family inside the Products section. */
+function FamilyHeading({ name, tagline }: { name: string; tagline: string }) {
+  return (
+    <div className="mb-6 border-t border-brand/15 pt-8">
+      <h3 className="font-display text-2xl text-brand-dark sm:text-3xl">{name}</h3>
+      <p className="mt-2 max-w-2xl text-ink-soft leading-relaxed">{tagline}</p>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -259,8 +216,8 @@ export default function Home() {
         >
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <Image
-              src="/images/pemf-mat-session.jpg"
-              alt="Relaxing whole-body PEMF mat session"
+              src="/images/sleep-mat-tablet.png"
+              alt="Restful PEMF mat session guided from the control unit"
               width={800}
               height={520}
               className="w-full rounded-xl shadow-sm object-cover"
@@ -275,6 +232,15 @@ export default function Home() {
                 holistic wellness.
               </p>
             </div>
+          </div>
+
+          <h3 className="mt-14 mb-6 font-display text-2xl text-brand-dark">
+            Benefits of Adequate Sleep
+          </h3>
+          <div className="grid gap-6 md:grid-cols-3">
+            {sleepBenefits.map((b) => (
+              <Card key={b.title} title={b.title} body={b.text} />
+            ))}
           </div>
         </Section>
 
@@ -297,7 +263,7 @@ export default function Home() {
               <h3 className="font-display text-2xl text-brand-dark">Brainwave Entrainment</h3>
               <p className="mt-3 text-ink-soft leading-relaxed">
                 A holistic experience for the brain, also known as a Spa for the Mind. Brainwave
-                Entrainment reduces stress, resulting in relaxation, calm, and ease. It supports
+                Entrainment reduces stress, resulting in relaxation, calmness, and ease. It supports
                 clear thinking, coping with stress, and achieving your goals.
               </p>
             </div>
@@ -358,51 +324,42 @@ export default function Home() {
         <Section
           id="animals"
           eyebrow="For Every Companion"
-          title="PEMF for Animals"
-          intro="iMRS Fauna PEMF for animals is a non-invasive tool shown to promote well-being in various animal species, at home or in zoos and sanctuaries. Many animals experience PEMF as soothing, promoting a sense of calm."
+          title="PEMF for Pets and Animals"
+          intro="iMRS Fauna PEMF for animals is a non-invasive tool shown to promote well-being in various animal species. Many animals experience PEMF as soothing, promoting a sense of calm, and tolerate the stress-free technique well."
         >
+          <Banner
+            image="/images/imrs-fauna-horses.png"
+            alt="Horses on open range under the iMRS Fauna banner"
+            aspect="aspect-[2/1] sm:aspect-[4/1]"
+          />
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {animalCards.map((c) => (
+              <Card key={c.title} {...c} />
+            ))}
+          </div>
+
+          <h3 className="mt-14 mb-6 font-display text-2xl text-brand-dark">PEMF for Racehorses</h3>
           <div className="grid gap-6 md:grid-cols-3">
-            <figure className="rounded-xl overflow-hidden bg-white border border-brand/10 shadow-sm">
-              <Image
-                src="/images/pemf-pets.jpg"
-                alt="Puppy, kitten, and rabbit"
-                width={640}
-                height={420}
-                className="w-full object-cover aspect-[4/3]"
-              />
-              <figcaption className="px-4 py-3 text-base text-ink-soft">
-                <span className="font-medium text-brand-dark block">PEMF for Pets</span>
-                Pets love to be on the PEMF mat for relaxation, and they always look forward to the
-                next session.
-              </figcaption>
-            </figure>
-            <figure className="rounded-xl overflow-hidden bg-white border border-brand/10 shadow-sm">
-              <Image
-                src="/images/horse-body-applicator.jpg"
-                alt="Horse with stress-free PEMF body applicator"
-                width={640}
-                height={420}
-                className="w-full object-cover aspect-[4/3]"
-              />
-              <figcaption className="px-4 py-3 text-base text-ink-soft">
-                <span className="font-medium text-brand-dark block">Stress-Free Body Applicator</span>
-                Many animals tolerate the stress-free PEMF technique and benefit from PEMF.
-              </figcaption>
-            </figure>
-            <figure className="rounded-xl overflow-hidden bg-white border border-brand/10 shadow-sm">
-              <Image
-                src="/images/racehorses.jpg"
-                alt="Racehorses in competition"
-                width={640}
-                height={420}
-                className="w-full object-cover aspect-[4/3]"
-              />
-              <figcaption className="px-4 py-3 text-base text-ink-soft">
-                <span className="font-medium text-brand-dark block">PEMF for Racehorses</span>
-                Supports conditioning, stamina, and training, with proper warm-ups, gradual
-                workloads, and sufficient rest.
-              </figcaption>
-            </figure>
+            <Card {...racehorseCards[0]} />
+            <div className="flex flex-col justify-center rounded-2xl border border-brand/10 bg-white p-7 shadow-sm">
+              <h4 className="font-display text-xl text-brand-dark">Stress-Free Technique</h4>
+              <p className="mt-2 text-base text-ink-soft leading-relaxed">
+                Benefits of racehorses using hands-free Intelligent Magnetic Resonance Stimulation
+                PEMF:
+              </p>
+              <ul className="mt-4 space-y-2">
+                {racehorseBenefits.map((b) => (
+                  <li key={b} className="flex gap-2.5 text-base text-ink-soft">
+                    <span aria-hidden="true" className="text-accent">
+                      ✓
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Card {...racehorseCards[1]} />
           </div>
         </Section>
 
@@ -410,31 +367,126 @@ export default function Home() {
         <Section
           id="products"
           eyebrow="Wellness Systems"
-          title="Intelligent Magnetic Resonance Stimulation PEMF"
-          intro="The most advanced and comprehensive PEMF technology for wellness use in the world, engineered by Swiss Bionic Solutions."
+          title="PEMF Systems for Home and Office"
+          intro="The most advanced and comprehensive PEMF technology for wellness use in the world, engineered by Swiss Bionic Solutions. Two systems, each built around extremely low frequency and low intensity."
           tinted
         >
-          <div className="grid gap-6 md:grid-cols-3">
-            {products.map((p) => (
-              <div key={p.name} className="rounded-2xl overflow-hidden bg-white border border-brand/10 shadow-sm flex flex-col">
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  width={640}
-                  height={420}
-                  className="w-full object-cover aspect-[4/3]"
-                />
-                <div className="p-6 flex flex-col grow">
-                  <h3 className="font-display text-xl text-brand-dark">{p.name}</h3>
-                  <p className="mt-2 text-base text-ink-soft leading-relaxed grow">{p.text}</p>
-                  <a
-                    href={site.phoneHref}
-                    className="mt-5 inline-block rounded-full bg-brand px-6 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-dark transition-colors"
-                  >
-                    Learn More · Text / Call / WhatsApp
-                  </a>
-                </div>
-              </div>
+          {/* ---- iMRS Prime ---- */}
+          <FamilyHeading
+            name="iMRS Prime"
+            tagline="The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing. The world's only 6-dimensional PEMF wellness system."
+          />
+
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <Image
+              src="/images/imrs-prime-modes.jpg"
+              alt="The iMRS Prime set: control unit, whole-body mat, applicators, and operating modes"
+              width={900}
+              height={500}
+              className="w-full rounded-2xl border border-brand/10 bg-white shadow-sm"
+            />
+            <div>
+              <p className="text-ink-soft leading-relaxed">
+                Extremely low frequency and low intensity PEMF for wellness, with manual operation,
+                fast start programs, program mode, split mode, iGUIDE, and hybrid application all
+                driven from one control unit.
+              </p>
+              <a
+                href={learnMore.href}
+                className="mt-6 inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-dark"
+              >
+                {learnMore.label}
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <Banner
+              image="/images/brainwave-poolside.png"
+              alt="Brainwave Entrainment session on a lounger beside a pool"
+              caption="Brainwave Entrainment: a holistic experience for the mind."
+              aspect="aspect-[16/9] sm:aspect-[3/1]"
+            />
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {exagonAccessories.map((a) => (
+              <Card key={a.title} {...a} />
+            ))}
+          </div>
+
+          {/* ---- Smart Pulser ---- */}
+          <div className="mt-16">
+            <FamilyHeading
+              name="Smart Pulser"
+              tagline="Total Body Optimization with Excellence. The new, affordable global benchmark PEMF for use at home or abroad."
+            />
+          </div>
+
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <Image
+              src="/images/smart-pulser-set.png"
+              alt="The Smart Pulser set: whole-body mat, control unit, power supply, and carry bag"
+              width={900}
+              height={520}
+              className="w-full rounded-2xl border border-brand/10 bg-white shadow-sm"
+            />
+            <div>
+              <p className="text-ink-soft leading-relaxed">
+                The Smart Pulser helps you move effortlessly between rest, balance, and peak
+                performance, using the world&apos;s first Inductive Fiber Coil Technology.
+              </p>
+              <a
+                href={learnMore.href}
+                className="mt-6 inline-block rounded-full bg-brand px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-dark"
+              >
+                {learnMore.label}
+              </a>
+            </div>
+          </div>
+
+          <h4 className="mt-12 font-display text-2xl text-brand-dark">Spectrum of Vitality</h4>
+          <p className="mt-2 max-w-3xl text-ink-soft leading-relaxed">
+            Within this narrow, powerful range and its circadian alignment, different frequencies
+            support different states of well-being.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {frequencyZones.map((z) => (
+              <FrequencyCard key={z.range} {...z} />
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {smartPulserFeatures.map((f) => (
+              <Card key={f.title} {...f} />
+            ))}
+            <div className="rounded-2xl border border-brand/10 bg-white p-6 shadow-sm">
+              <h3 className="font-display text-xl text-brand-dark">
+                Why Low Frequency is High Impact
+              </h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-soft">
+                In the world of holistic PEMF, less is always more. High-frequency radiation, like
+                Wi-Fi or cellular signals, can be stressful to the body. The Smart Pulser stays
+                strictly within the risk-free Extremely Low Frequency (ELF) range.
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink-soft">
+                By operating between 0.5 and 25 Hz, the energy delivered is gentle, non-invasive, and
+                tuned to the natural windows of cellular communication. It is not about overwhelming
+                the body with power, but supporting it with resonance.
+              </p>
+            </div>
+          </div>
+
+          {/* ---- Also available ---- */}
+          <div className="mt-16">
+            <FamilyHeading
+              name="Also Available"
+              tagline="Additional systems and support from your certified PEMF consultant."
+            />
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {alsoAvailable.map((p) => (
+              <Card key={p.title} image={p.image} title={p.title} body={p.body} cta={learnMore} />
             ))}
           </div>
         </Section>
