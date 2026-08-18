@@ -6,10 +6,10 @@ const BASE = process.env.BASE_URL || "http://localhost:3000";
 // Add a route here BEFORE building it, so the harness fails first.
 const ROUTES = [
   { path: "/", jsonLd: ["LocalBusiness", "WebSite"] },
-  { path: "/what-is-pemf", jsonLd: ["BreadcrumbList", "FAQPage"] },
-  { path: "/benefits", jsonLd: ["BreadcrumbList", "FAQPage"] },
-  { path: "/products", jsonLd: ["BreadcrumbList", "FAQPage", "Product"] },
-  { path: "/contact", jsonLd: ["BreadcrumbList", "FAQPage"] },
+  { path: "/what-is-pemf", jsonLd: ["BreadcrumbList"] },
+  { path: "/benefits", jsonLd: ["BreadcrumbList"] },
+  { path: "/products", jsonLd: ["BreadcrumbList", "Product"] },
+  { path: "/contact", jsonLd: ["BreadcrumbList"] },
 ];
 
 let failures = 0;
@@ -58,6 +58,12 @@ async function checkRoute({ path, jsonLd }) {
   else pass(`description ${desc.length} chars`);
 
   check(html.includes('rel="canonical"'), "canonical", "no canonical");
+
+  check(
+    !/youtube|youtu\.be/i.test(html),
+    "no YouTube embed",
+    "page contains a YouTube embed"
+  );
 
   const blocks = [
     ...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs),

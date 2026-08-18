@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Banner, Card, FrequencyCard } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
-import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { Section } from "@/components/Section";
 import { pageMetadata, productSchema } from "@/lib/seo";
@@ -12,7 +11,6 @@ import {
   alsoAvailable,
   exagonAccessories,
   frequencyZones,
-  productFaqs,
   smartPulserFeatures,
 } from "@/lib/content";
 
@@ -197,7 +195,6 @@ export default function ProductsPage() {
         </div>
       </Section>
 
-      <FAQ heading="Common questions about our PEMF systems" items={productFaqs} />
       <CTA />
 
       <JsonLd

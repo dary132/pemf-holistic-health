@@ -23,7 +23,7 @@ npm run build    # production build
 ## Structure
 
 - `app/page.tsx`: the landing page (all sections)
-- `components/`: Header, Footer, Section, VideoEmbed
+- `components/`: Header, Footer, Section
 - `lib/site.ts`: business info, nav links, disclaimer (edit client details here)
 - `public/images/`: assets extracted from the client's document
 - `docs/`: original client specification

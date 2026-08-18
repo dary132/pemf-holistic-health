@@ -2,11 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
-import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
-import { VideoEmbed } from "@/components/VideoEmbed";
 import { pageMetadata } from "@/lib/seo";
-import { pemfFaqs, videos } from "@/lib/content";
 
 export const metadata = pageMetadata({
   title: "What is PEMF?",
@@ -94,15 +91,6 @@ export default function WhatIsPemfPage() {
           />
         </div>
 
-        <div className="mt-14">
-          <h2 className="mb-6 font-display text-2xl text-brand-dark">Watch and Learn</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {videos.map((v) => (
-              <VideoEmbed key={v.videoId} {...v} />
-            ))}
-          </div>
-        </div>
-
         <p className="mt-12 max-w-3xl leading-relaxed text-ink-soft">
           Once the mechanism makes sense, the useful question is what it changes day to day. Read{" "}
           <Link href="/benefits" className="text-brand underline hover:text-brand-dark">
@@ -116,7 +104,6 @@ export default function WhatIsPemfPage() {
         </p>
       </Section>
 
-      <FAQ heading="Common questions about PEMF" items={pemfFaqs} />
       <CTA />
     </main>
   );

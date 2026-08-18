@@ -8,11 +8,6 @@ export type CardContent = {
   imageFit?: "cover" | "contain";
 };
 
-export type FaqItem = {
-  q: string;
-  a: string;
-};
-
 export type Teaser = {
   title: string;
   body: string;

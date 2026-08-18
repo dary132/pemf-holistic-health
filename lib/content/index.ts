@@ -3,4 +3,3 @@ export * from "./home";
 export * from "./pemf";
 export * from "./benefits";
 export * from "./products";
-export * from "./faqs";

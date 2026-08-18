@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { site } from "./site";
-import type { FaqItem } from "./content/types";
 
 /**
  * Builds page metadata one way, so titles, canonicals and Open Graph tags
@@ -77,18 +76,6 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
       position: i + 1,
       name: item.name,
       item: `${site.url}${item.path}`,
-    })),
-  };
-}
-
-export function faqSchema(items: FaqItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
     })),
   };
 }

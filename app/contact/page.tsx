@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { contactFaqs } from "@/lib/content";
 
 export const metadata = pageMetadata({
   title: "Contact",
@@ -84,8 +82,6 @@ export default function ContactPage() {
           />
         </div>
       </Section>
-
-      <FAQ heading="Visiting us" items={contactFaqs} />
     </main>
   );
 }

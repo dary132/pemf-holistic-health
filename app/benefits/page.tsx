@@ -3,12 +3,10 @@ import Link from "next/link";
 import { Banner, Card } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
-import { FAQ } from "@/components/FAQ";
 import { Section } from "@/components/Section";
 import { pageMetadata } from "@/lib/seo";
 import {
   animalCards,
-  benefitsFaqs,
   energyBenefits,
   racehorseBenefits,
   racehorseCards,
@@ -264,7 +262,6 @@ export default function BenefitsPage() {
         </div>
       </Section>
 
-      <FAQ heading="Common questions about PEMF benefits" items={benefitsFaqs} />
       <CTA />
     </main>
   );
