@@ -17,7 +17,7 @@ Every task's requirements implicitly include this section.
 - **Language must be exact.** Every visible string is reproduced verbatim from `Website Exiga Jasmin 2026.docx`. No paraphrasing, no summarising, no invented sentences. The client cites FDA exposure. The only permitted deviations are in Appendix B of the spec: the `PRMF` → `PEMF` fix, and adding a terminal period where a sentence ends without one.
 - **No YouTube.** No video embeds anywhere on the site.
 - **No health claims added.** Never write a sentence that says or implies PEMF diagnoses, cures, mitigates, prevents or treats any disease.
-- **WCAG AAA (7:1) on every text pair.** Tokens: `--cream #FAF6EF`, `--sand #F0E7D8`, `--ink #2A2E27`, `--ink-soft #3A4237`, `--sage #2F4A37`, `--clay #7E3F20`, `--rule #E2D5BF`. `--sage-soft #6E8F70` and `--clay-soft #C9784F` are **decorative only** — never text, never a button fill behind text.
+- **WCAG AAA (7:1) on every text pair.** Tokens: `--cream #FAF6EF`, `--sand #F0E7D8`, `--ink #2A2E27`, `--ink-soft #3A4237`, `--sage #2F4A37`, `--clay #763A1D`, `--rule #E2D5BF`. `--sage-soft #6E8F70` and `--clay-soft #C9784F` are **decorative only** — never text, never a button fill behind text.
 - **Type:** Lora 600 headings (`--font-display`), Nunito Sans body (`--font-body`), base `20px` desktop / `19px` under 640px, body line-height `1.75`, measure capped `62ch`. No weight below 400. No italic body text.
 - **Targets:** buttons `min-height: 56px`; every interactive element at least `48px` in both axes; prose links always underlined; focus ring `3px solid var(--clay)` with `2px` offset; never `outline: none`.
 - **No hover-only menus.** Disclosures open on click, close on `Escape` and outside click, carry `aria-expanded` and `aria-controls`.
@@ -635,7 +635,7 @@ Overwrite `app/globals.css`:
   --ink: #2A2E27;
   --ink-soft: #3A4237;
   --sage: #2F4A37;
-  --clay: #7E3F20;
+  --clay: #763A1D;
 
   /* Decorative only. Never a text colour, never a fill behind text.
      scripts/verify-contrast.mjs fails the build if that rule is broken. */

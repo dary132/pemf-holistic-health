@@ -100,7 +100,7 @@ Every text pair meets **WCAG AAA (7:1)**. Ratios were measured, not estimated.
 | `--ink` | `#2A2E27` | body text | 12.8 : 1 on cream · 11.3 : 1 on sand |
 | `--ink-soft` | `#3A4237` | secondary text, captions | 9.7 : 1 on cream · 8.5 : 1 on sand |
 | `--sage` | `#2F4A37` | headings, top bar, footer | 9.0 : 1 on cream · 8.0 : 1 on sand · white on it 9.7 : 1 |
-| `--clay` | `#7E3F20` | links, buttons, eyebrows | 7.4 : 1 on cream · white on it 8.0 : 1 |
+| `--clay` | `#763A1D` | links, buttons, eyebrows | 8.2 : 1 on cream · 7.2 : 1 on sand · white on it 8.8 : 1 |
 | `--sage-soft` | `#6E8F70` | **decorative only** | 3.4 : 1 — never text |
 | `--clay-soft` | `#C9784F` | **decorative only** | 3.1 : 1 — never text |
 | `--rule` | `#E2D5BF` | hairlines, borders | non-text |
@@ -108,6 +108,12 @@ Every text pair meets **WCAG AAA (7:1)**. Ratios were measured, not estimated.
 The two `-soft` tokens are the original direction-C colours. They survive as rules, icon
 fills and image mats. Using either for text or a button is a defect, and
 `scripts/verify-contrast.mjs` (§6) fails the build if it happens.
+
+> **Correction, 2026-08-18 (during implementation).** `--clay` was originally specified as
+> `#7E3F20`. That value was validated against `--cream` only; against the `--sand` band it
+> measures **6.54 : 1**, below the AAA floor this table claims. It is corrected to `#763A1D`,
+> which clears both grounds. Every text token is now verified against *both* `--cream` and
+> `--sand`, not just the page ground.
 
 ### Type
 
