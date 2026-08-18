@@ -2,6 +2,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
+import { TriPanel } from "@/components/TriPanel";
+import { benefits, intro, sleep } from "@/lib/content/sleep-health";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -20,7 +22,9 @@ export default function SleepHealthPage() {
           { name: "Sleep Health", path: "/sleep-health" },
         ]}
       />
-      <Section id="sleep-health" title="PEMF Promotes Good Sleep" titleAs="h1" />
+      <Section id="sleep-health" title={intro.title} titleAs="h1" />
+      <TriPanel panels={sleep} tinted />
+      <TriPanel heading={benefits.heading} panels={benefits.panels} />
       <CTA />
       <Disclaimer />
     </main>

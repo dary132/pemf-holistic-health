@@ -52,7 +52,11 @@ const ROUTES = [
       "The IMRS Prime accelerates rejuvenation after physical activity, thus allowing you to train harder, perform better and compete more often.",
     ],
   },
-  { path: "/sleep-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/sleep-health",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: ["Deep sleep is crucial for physical and mental rejuvenation."],
+  },
   { path: "/pets-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/products", jsonLd: ["BreadcrumbList", "Product"], mustContain: [] },
   { path: "/contact", jsonLd: ["BreadcrumbList"], mustContain: [] },
