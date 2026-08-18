@@ -4,8 +4,27 @@
 //   npm run verify:copy                     check lib/content against the document
 //   npm run verify:copy -- --self-test      prove the checker actually rejects bad copy
 //   npm run verify:copy -- --file home.ts   check only that one module in lib/content
+//
+// What this guarantees, and what it does not:
+//   It verifies that every visitor-facing string collected from lib/content/
+//   is exact text copied from the client document (docs/exiga-jasmin-2026.txt
+//   and docs/exiga-jasmin-2026-image-text.txt), modulo whitespace/quote
+//   normalisation and the one documented terminal-punctuation allowance.
+//   It does NOT verify that the surrounding framing preserves the document's
+//   meaning: matching is substring-based, so any exact fragment of the
+//   document passes, down to a single word, even if the fragment is quoted
+//   out of a longer sentence and recombined with other fragments in a way
+//   that changes what it implies. (See the self-test case "accepts a
+//   document fragment (known limitation, see header)".) That trade-off is
+//   deliberate: content modules legitimately quote sentence fragments out of
+//   the document's table cells, and requiring sentence-boundary matching
+//   would produce constant false rejections, pressuring future edits to
+//   weaken the guard instead. Catching invented and paraphrased copy is this
+//   script's job; verifying semantic fidelity of how genuine fragments are
+//   recombined remains a human review responsibility.
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const SOURCES = [
   "docs/exiga-jasmin-2026.txt",
@@ -85,7 +104,15 @@ async function main() {
   let files = readdirSync(dir).filter(
     (f) => f.endsWith(".ts") && !["types.ts", "index.ts", "images.ts"].includes(f)
   );
-  if (onlyFile) files = files.filter((f) => f === onlyFile);
+  if (onlyFile) {
+    files = files.filter((f) => f === onlyFile);
+    if (files.length === 0) {
+      console.error(
+        `FAIL --file ${onlyFile}: no such module in ${dir}/ (typo? this would silently pass without this check)`
+      );
+      process.exit(1);
+    }
+  }
 
   let failures = 0;
   for (const file of files) {
@@ -111,6 +138,11 @@ function selfTest(haystack) {
     ["accepts an added terminal period", "PEMF for Health and Wellness.", true],
     ["accepts an allow-listed fix", "PEMF for Pets Health", true],
     ["accepts transcribed image text", "The Earth Resonance (7.83 Hz):", true],
+    [
+      "accepts a document fragment (known limitation, see header)",
+      "PEMF is safe",
+      true,
+    ],
     ["rejects invented copy", "PEMF cures chronic pain in six weeks", false],
     ["rejects a paraphrase", "PEMF is great for your overall health and wellness", false],
     ["rejects a reworded heading", "PEMF for Health & Wellness", false],
@@ -128,4 +160,9 @@ function selfTest(haystack) {
   process.exit(failures ? 1 : 0);
 }
 
-main();
+// Only run the CLI when this file is the entry point — importing the
+// exports above (e.g. from another script) must not trigger a full run
+// and a process.exit() as a side effect.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main();
+}
