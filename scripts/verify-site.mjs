@@ -78,6 +78,23 @@ const check = (cond, okMsg, failMsg) => {
   else fail(failMsg);
 };
 
+// React SSR escapes text-node punctuation as HTML entities (an apostrophe
+// in genuine body copy renders as `&#x27;`, not `'`), so the raw fetched
+// HTML never contains the plain characters a mustContain phrase is written
+// with even when that exact sentence is really on the page. Decode before
+// matching so this stays a check on rendered content, not on markup escaping.
+function decodeEntities(s) {
+  return s
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ");
+}
+
 // A route added to lib/routes.ts (nav/sitemap) but not to ROUTES above (this
 // harness), or vice versa, must fail loudly rather than silently go unchecked.
 if (ROUTES.length !== routes.length) {
@@ -146,8 +163,22 @@ async function checkRoute({ path, jsonLd, mustContain = [] }) {
     check(types.includes(want), `JSON-LD ${want}`, `missing JSON-LD ${want}`);
   }
 
-  // Strip tags so a phrase split across elements still matches.
-  const visible = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  // Next embeds the full page metadata (title, description) as serialized
+  // text inside a hydration/RSC-payload <script> tag on every page, and
+  // that same title/description text can also sit in <head>. Simply
+  // stripping tags (as an earlier version of this check did) leaves that
+  // script/head text behind as "visible" content, so a mustContain phrase
+  // that only ever exists in a page's <meta name="description"> can match
+  // there and pass even when the page body renders nothing at all -- the
+  // per-page proof of real content silently stops proving anything. Cut
+  // out <head>, <script> and <style> bodies (any attributes, case-
+  // insensitive, dot-matches-newline) before stripping tags, so only
+  // genuine body text remains.
+  const bodyOnly = html
+    .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, " ")
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ");
+  const visible = decodeEntities(bodyOnly.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
   for (const phrase of mustContain) {
     check(
       visible.includes(phrase),
