@@ -19,10 +19,18 @@ export const images = {
     alt: "Chart of body systems and their roles, from brain and heart to bones and pituitary gland",
     contain: true,
   },
-  essentialAir: { src: "/images/essential-air.png", alt: "Air", contain: true },
+  essentialAir: {
+    src: "/images/essential-air.png",
+    alt: "Five smiling people in blue polo shirts, with the caption 'People need air to live and survive.'",
+    contain: true,
+  },
   essentialFood: { src: "/images/essential-food.png", alt: "Food", contain: true },
   essentialWater: { src: "/images/essential-water.png", alt: "Water", contain: true },
-  essentialSunshine: { src: "/images/essential-sunshine.png", alt: "Sunshine", contain: true },
+  essentialSunshine: {
+    src: "/images/essential-sunshine.png",
+    alt: "Illustrated poster of a silhouetted figure raising their arms toward the sun above a barn and trees, headlined 'The Sunshine Vitamin: Why Sunlight Is Crucial to Your Health.'",
+    contain: true,
+  },
   essentialEarthField: {
     src: "/images/essential-earth-field.jpeg",
     alt: "Diagram of Earth's magnetic field lines running between the magnetic north and south poles",
@@ -107,7 +115,10 @@ export const images = {
     src: "/images/sleep-mat-tablet.png",
     alt: "A person asleep on the PEMF mat with the tablet control unit beside the bed",
   },
-  showAnimals: { src: "/images/show-animals.png", alt: "Show animals" },
+  showAnimals: {
+    src: "/images/show-animals.png",
+    alt: "Cartoon collage of animals including a giraffe, panda, elephant, zebra, rhino and lion, captioned 'PEMF is good 4 us.'",
+  },
   pemfDogPad: {
     src: "/images/pemf-dog-pad.png",
     alt: "A dog lying on a PEMF pad",
