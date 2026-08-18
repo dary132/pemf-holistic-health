@@ -38,7 +38,13 @@ const ROUTES = [
     ],
   },
   { path: "/mental-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
-  { path: "/energy", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/energy",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: [
+      "Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference.",
+    ],
+  },
   { path: "/sports-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/sleep-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/pets-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
