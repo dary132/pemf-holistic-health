@@ -1,7 +1,8 @@
 // Fails the build if any text/background pair drops below WCAG AAA (7:1), or if
 // a decorative-only token is used for text. The audience is elderly; AAA is the
 // requirement, not an aspiration.
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
 
 const AAA = 7;
 
@@ -22,6 +23,9 @@ const TEXT_PAIRS = [
 // Never legal as a text colour or as a fill behind text.
 const DECORATIVE_ONLY = ["--sage-soft", "--clay-soft", "--rule"];
 
+// Decorative tokens in Tailwind class names (without the text- or bg- prefix)
+const DECORATIVE_TAILWIND = ["sage-soft", "clay-soft", "rule"];
+
 export function luminance(hex) {
   const h = hex.replace("#", "");
   const rgb = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
@@ -40,13 +44,102 @@ export function parseTokens(css) {
   return tokens;
 }
 
-/** Find decorative tokens used in a colour-bearing declaration. */
+/** Find decorative tokens used in a colour-bearing declaration in CSS. */
 export function findDecorativeMisuse(css) {
   const bad = [];
+
+  // Check for decorative tokens as text color
   for (const token of DECORATIVE_ONLY) {
     const re = new RegExp(`(^|[^-])color:\\s*var\\(${token}\\)`, "gm");
     if (re.test(css)) bad.push(`${token} used as a text colour`);
   }
+
+  // Check for decorative tokens as background when also used for text
+  // Pattern: a rule that has both background: var(decorative) and color:
+  for (const token of DECORATIVE_ONLY) {
+    // Match rules that contain both background/background-color and color declarations
+    const bgColorRe = new RegExp(
+      `\\{[^}]*(?:background(?:-color)?:\\s*var\\(${token}\\)[^}]*color:|color:[^}]*background(?:-color)?:\\s*var\\(${token}\\))[^}]*\\}`,
+      "gm"
+    );
+    if (bgColorRe.test(css)) bad.push(`${token} used as background for text`);
+  }
+
+  return bad;
+}
+
+/** Check a Tailwind className string for decorative token misuse. */
+export function checkTailwindClassName(className) {
+  const problems = [];
+
+  // Check for decorative tokens used as text color
+  for (const token of DECORATIVE_TAILWIND) {
+    if (className.includes(`text-${token}`)) {
+      problems.push(`text-${token} not allowed`);
+    }
+  }
+
+  // Check for decorative tokens as background WITH text in same className
+  for (const token of DECORATIVE_TAILWIND) {
+    if (className.includes(`bg-${token}`)) {
+      // Check if there's any text- utility in the same className
+      if (/\btext-[a-z0-9-]+/.test(className)) {
+        problems.push(`bg-${token} used with text utility`);
+      }
+    }
+  }
+
+  return problems;
+}
+
+/** Recursively walk directories, collecting TSX file paths. */
+function collectTsxFiles(dir) {
+  const files = [];
+  try {
+    const entries = readdirSync(dir);
+    for (const entry of entries) {
+      if (entry === "node_modules" || entry === ".next") continue;
+      const path = join(dir, entry);
+      const stat = statSync(path);
+      if (stat.isDirectory()) {
+        files.push(...collectTsxFiles(path));
+      } else if (entry.endsWith(".tsx")) {
+        files.push(path);
+      }
+    }
+  } catch (e) {
+    // Directory doesn't exist, skip
+  }
+  return files;
+}
+
+/** Find decorative token misuse in Tailwind classes within TSX files. */
+export function findDecorativeMisuseTailwind() {
+  const bad = [];
+  const files = [];
+
+  // Collect all TSX files from components and app directories
+  files.push(...collectTsxFiles("components"));
+  files.push(...collectTsxFiles("app"));
+
+  for (const file of files) {
+    try {
+      const content = readFileSync(file, "utf8");
+
+      // Find all className attributes (handles single quotes, double quotes, and backticks)
+      const classNameMatches = content.matchAll(/className=["'`]([^"'`]+)["'`]/g);
+      for (const match of classNameMatches) {
+        const className = match[1];
+        const problems = checkTailwindClassName(className);
+        for (const problem of problems) {
+          bad.push(`${file}: ${problem}`);
+        }
+      }
+    } catch (e) {
+      // Skip files that can't be read
+    }
+  }
+
   return bad;
 }
 
@@ -74,6 +167,10 @@ function main() {
     console.error(`  FAIL ${problem}`);
     failures++;
   }
+  for (const problem of findDecorativeMisuseTailwind()) {
+    console.error(`  FAIL ${problem}`);
+    failures++;
+  }
   console.log(failures ? `\n${failures} CONTRAST FAILURE(S)` : "\nAll pairs AAA");
   process.exit(failures ? 1 : 0);
 }
@@ -86,8 +183,28 @@ function selfTest() {
     ["old clay-soft on cream fails", ratio("#C9784F", "#FAF6EF") >= 7, false],
     ["old sage-soft on cream fails", ratio("#6E8F70", "#FAF6EF") >= 7, false],
     [
-      "decorative misuse is caught",
+      "decorative misuse in CSS color is caught",
       findDecorativeMisuse("a { color: var(--clay-soft); }").length === 1,
+      true,
+    ],
+    [
+      "decorative token as text color in Tailwind is caught",
+      checkTailwindClassName("px-4 text-clay-soft font-bold").length > 0,
+      true,
+    ],
+    [
+      "decorative bg with text utility in Tailwind is caught",
+      checkTailwindClassName("bg-clay-soft text-ink px-4").length > 0,
+      true,
+    ],
+    [
+      "decorative bg alone in Tailwind is allowed",
+      checkTailwindClassName("bg-clay-soft px-4 py-2").length === 0,
+      true,
+    ],
+    [
+      "non-decorative properties are not false-positives",
+      findDecorativeMisuse("a { border-color: var(--rule); }").length === 0,
       true,
     ],
   ];
