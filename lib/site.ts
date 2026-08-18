@@ -1,6 +1,8 @@
 export const site = {
   name: "PEMF for Holistic Health",
   tagline: "A Holistic Approach to Health and Wellness",
+  officePhone: "(949) 600 7899",
+  officePhoneHref: "tel:+19496007899",
   url: "https://pemfforholistichealth.com",
   areaServed: "Orange County, California",
   phone: "(949) 891 5572",
