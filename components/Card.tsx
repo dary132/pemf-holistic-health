@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const shell =
-  "flex flex-col overflow-hidden rounded-2xl border border-brand/10 bg-white shadow-sm";
+  "flex flex-col overflow-hidden rounded-3xl border border-rule bg-white shadow-sm";
 
 export function Card({
   image,
@@ -46,13 +46,13 @@ export function Card({
       )}
       <div className="flex grow flex-col p-6">
         {eyebrow && (
-          <p className="mb-1 text-xs font-medium uppercase tracking-widest text-accent">
+          <p className="mb-1 text-xs font-medium uppercase tracking-widest text-clay">
             {eyebrow}
           </p>
         )}
-        <h3 className="font-display text-xl text-brand-dark">
+        <h3 className="text-xl text-sage">
           {href ? (
-            <Link href={href} className="hover:text-brand">
+            <Link href={href} className="hover:text-clay">
               {title}
             </Link>
           ) : (
@@ -64,7 +64,7 @@ export function Card({
         {cta && (
           <a
             href={cta.href}
-            className="mt-5 inline-block rounded-full bg-brand px-6 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-brand-dark"
+            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-clay px-6 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-sage"
           >
             {cta.label}
           </a>
@@ -85,9 +85,9 @@ export function FrequencyCard({
   body: string;
 }) {
   return (
-    <div className="rounded-2xl border border-brand/10 bg-white p-5 shadow-sm">
-      <p className="font-display text-2xl text-accent">{range}</p>
-      <p className="mt-1 font-medium text-brand-dark">{name}</p>
+    <div className="rounded-3xl border border-rule bg-white p-5 shadow-sm">
+      <p className="text-2xl text-clay">{range}</p>
+      <p className="mt-1 font-medium text-sage">{name}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink-soft">{body}</p>
     </div>
   );
@@ -106,7 +106,7 @@ export function Banner({
   aspect?: string;
 }) {
   return (
-    <figure className="overflow-hidden rounded-2xl border border-brand/10 bg-white shadow-sm">
+    <figure className="overflow-hidden rounded-3xl border border-rule bg-white shadow-sm">
       <Image
         src={image}
         alt={alt}

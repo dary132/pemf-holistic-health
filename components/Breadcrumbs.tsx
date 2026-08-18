@@ -11,11 +11,11 @@ export function Breadcrumbs({ trail }: { trail: { name: string; path: string }[]
           return (
             <li key={item.path} className="flex items-center gap-2">
               {last ? (
-                <span aria-current="page" className="text-brand-dark">
+                <span aria-current="page" className="text-sage">
                   {item.name}
                 </span>
               ) : (
-                <Link href={item.path} className="hover:text-brand">
+                <Link href={item.path} className="hover:text-clay">
                   {item.name}
                 </Link>
               )}

@@ -16,17 +16,17 @@ export function Section({
   titleAs?: "h1" | "h2";
   intro?: string;
   tinted?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
 }) {
   return (
-    <section id={id} className={tinted ? "bg-brand-light/60" : undefined}>
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
+    <section id={id} className={tinted ? "bg-sand" : undefined}>
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:py-16">
         <div className="max-w-3xl">
           {eyebrow && (
-            <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">{eyebrow}</p>
+            <p className="text-clay font-medium tracking-widest uppercase text-sm mb-2">{eyebrow}</p>
           )}
-          <Heading className="font-display text-3xl sm:text-4xl text-brand-dark">{title}</Heading>
-          {intro && <p className="mt-4 text-ink-soft leading-relaxed">{intro}</p>}
+          <Heading className="text-3xl sm:text-4xl text-sage">{title}</Heading>
+          {intro && <p className="mt-4 max-w-[62ch] text-ink-soft leading-relaxed">{intro}</p>}
         </div>
         <div className="mt-10">{children}</div>
       </div>
