@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "verify": "node scripts/verify-site.mjs",
+    "verify:copy": "node --experimental-strip-types scripts/verify-copy.mjs",
     "extract:doc": "python3 scripts/extract-doc.py"
   },
   "dependencies": {

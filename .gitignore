@@ -45,3 +45,8 @@ next-env.d.ts
 
 # claude code worktrees
 /.claude/worktrees/
+
+# client-supplied source document: contains the client's address and phone
+# numbers, is 11MB, and is deliberately kept out of version control. Do not
+# remove this — later tasks run unscoped `git add -A`, which would commit it.
+Website Exiga Jasmin 2026.docx
