@@ -18,7 +18,7 @@ import {
 export const metadata = pageMetadata({
   title: "PEMF Systems: iMRS Prime & Smart Pulser",
   description:
-    "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing.",
+    "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing!",
   path: "/products",
 });
 

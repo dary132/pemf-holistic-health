@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Pets Health",
   description:
-    "Benefits of racehorses using hands free Intelligent Magnetic Resonance Stimulation PEMF.",
+    "Benefits of racehorses using hands free Intelligent Magnetic Resonance Stimulation PEMF",
   path: "/pets-health",
 });
 
