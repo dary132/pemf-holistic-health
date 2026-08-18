@@ -45,7 +45,13 @@ const ROUTES = [
       "Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference.",
     ],
   },
-  { path: "/sports-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/sports-health",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: [
+      "The IMRS Prime accelerates rejuvenation after physical activity, thus allowing you to train harder, perform better and compete more often.",
+    ],
+  },
   { path: "/sleep-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/pets-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/products", jsonLd: ["BreadcrumbList", "Product"], mustContain: [] },

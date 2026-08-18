@@ -2,6 +2,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
+import { TriPanel } from "@/components/TriPanel";
+import { athletic, boosts, intro } from "@/lib/content/sports-health";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -20,7 +22,9 @@ export default function SportsHealthPage() {
           { name: "Sports Health", path: "/sports-health" },
         ]}
       />
-      <Section id="sports-health" title="Sports Health" titleAs="h1" />
+      <Section id="sports-health" title={intro.title} titleAs="h1" />
+      <TriPanel heading={athletic.heading} panels={athletic.panels} tinted />
+      <TriPanel heading={boosts.heading} panels={boosts.panels} />
       <CTA />
       <Disclaimer />
     </main>
