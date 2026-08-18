@@ -1,92 +1,143 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks, site } from "@/lib/site";
+import { navGroups } from "@/lib/routes";
+import { site } from "@/lib/site";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [groupOpen, setGroupOpen] = useState(false);
   const pathname = usePathname();
+  const groupRef = useRef<HTMLDivElement>(null);
 
-  const isActive = (href: string) => pathname === href;
+  // A hover-only menu is unusable with an unsteady hand, so the group opens on
+  // click. It must therefore also close on Escape and on an outside click.
+  useEffect(() => {
+    if (!groupOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setGroupOpen(false);
+    const onClick = (e: MouseEvent) => {
+      if (groupRef.current && !groupRef.current.contains(e.target as Node))
+        setGroupOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
+    };
+  }, [groupOpen]);
+
+  const linkClass = (href: string) =>
+    `inline-flex min-h-[48px] items-center px-2 font-bold no-underline ${
+      pathname === href ? "text-clay underline underline-offset-8" : "text-ink-soft hover:text-clay"
+    }`;
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Top contact bar */}
-      <div className="bg-brand-dark text-white text-sm sm:text-base">
-        <div className="mx-auto max-w-6xl px-4 py-1.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 sm:justify-between">
+      <div className="bg-sage text-white">
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-x-8 gap-y-1 px-5 py-2.5 text-base font-semibold">
           <p>
-            <a href={site.phoneHref} className="hover:text-accent-light">
-              Call / Text / WhatsApp {site.phone}
+            <a href={site.officePhoneHref} className="no-underline hover:underline">
+              Office {site.officePhone}
+            </a>
+            {" · "}
+            <a href={site.whatsappHref} className="no-underline hover:underline">
+              WhatsApp {site.whatsapp}
             </a>
           </p>
-          <p className="hidden md:block text-white/90">
-            {site.address.join(", ")} · Office and Home Visits Available
-          </p>
+          <p className="hidden md:block">{site.address.join(", ")}</p>
         </div>
       </div>
 
-      {/* Main nav */}
-      <header className="bg-white/95 backdrop-blur border-b border-brand/10 shadow-sm">
-        <div className="mx-auto max-w-6xl px-4 flex items-center justify-between gap-4 py-3">
-          <Link href="/" className="shrink-0">
-            <span className="font-display text-xl sm:text-2xl text-brand-dark tracking-wide">
-              PEMF <span className="text-accent">for Holistic Health</span>
+      <header className="border-b-2 border-rule bg-cream">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
+          <Link href="/" className="shrink-0 text-2xl font-semibold no-underline">
+            <span className="font-[family-name:var(--font-display)] text-sage">PEMF </span>
+            <span className="font-[family-name:var(--font-display)] text-clay">
+              for Holistic Health
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 text-base font-medium text-ink-soft">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={
-                  isActive(link.href)
-                    ? "whitespace-nowrap font-semibold text-brand"
-                    : "whitespace-nowrap hover:text-brand transition-colors"
-                }
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+            {navGroups.map((entry) =>
+              entry.kind === "link" ? (
+                <Link
+                  key={entry.route.path}
+                  href={entry.route.path}
+                  aria-current={pathname === entry.route.path ? "page" : undefined}
+                  className={linkClass(entry.route.path)}
+                >
+                  {entry.route.label}
+                </Link>
+              ) : (
+                <div key={entry.label} ref={groupRef} className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setGroupOpen(!groupOpen)}
+                    aria-expanded={groupOpen}
+                    aria-controls="wellness-menu"
+                    className="inline-flex min-h-[48px] items-center px-2 font-bold text-ink-soft hover:text-clay"
+                  >
+                    {entry.label} <span aria-hidden="true">&nbsp;▾</span>
+                  </button>
+                  {groupOpen && (
+                    <ul
+                      id="wellness-menu"
+                      className="absolute left-0 top-full z-50 min-w-[15rem] rounded-2xl border-2 border-rule bg-white p-2 shadow-lg"
+                    >
+                      {entry.children.map((child) => (
+                        <li key={child.path}>
+                          <Link
+                            href={child.path}
+                            onClick={() => setGroupOpen(false)}
+                            className="flex min-h-[48px] items-center rounded-xl px-4 font-bold text-ink-soft no-underline hover:bg-sand hover:text-clay"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )
+            )}
           </nav>
 
           <button
             type="button"
-            onClick={() => setOpen(!open)}
-            className="lg:hidden rounded-md border border-brand/20 p-2 text-brand-dark"
-            aria-label="Toggle menu"
-            aria-expanded={open}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border-2 border-sage px-4 font-bold text-sage lg:hidden"
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              {open ? (
-                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              ) : (
-                <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              )}
-            </svg>
+            {menuOpen ? "Close" : "Menu"}
           </button>
         </div>
 
-        {open && (
-          <nav className="lg:hidden border-t border-brand/10 bg-white px-4 py-3 grid grid-cols-2 gap-2 text-base text-ink-soft">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={
-                  isActive(link.href)
-                    ? "rounded-md px-3 py-2 bg-brand-light font-semibold text-brand"
-                    : "rounded-md px-3 py-2 hover:bg-brand-light hover:text-brand"
-                }
-              >
-                {link.label}
-              </Link>
-            ))}
+        {menuOpen && (
+          <nav
+            id="mobile-menu"
+            aria-label="Main"
+            className="border-t-2 border-rule bg-white px-5 py-3 lg:hidden"
+          >
+            <ul>
+              {navGroups.flatMap((entry) =>
+                entry.kind === "link" ? [entry.route] : [...entry.children]
+              ).map((route) => (
+                <li key={route.path}>
+                  <Link
+                    href={route.path}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={pathname === route.path ? "page" : undefined}
+                    className="flex min-h-[56px] items-center border-b border-rule font-bold text-ink-soft no-underline"
+                  >
+                    {route.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         )}
       </header>
