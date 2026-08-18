@@ -38,11 +38,10 @@ export default function Home() {
         </div>
       </section>
 
-      <Figure
-        image={images.imrsModel3}
-        caption="The IMRS prime whole-body mat and its tablet control unit."
-        tinted
-      />
+      {/* Deliberately no caption: the document contains no sentence describing
+          this photograph, and the FDA-exposure copy rule forbids inventing one.
+          images.imrsModel3.alt already carries the description for screen readers. */}
+      <Figure image={images.imrsModel3} tinted />
 
       <SplitBand
         image={images.holisticFlower}

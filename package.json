@@ -9,6 +9,7 @@
     "lint": "eslint",
     "verify": "node --experimental-strip-types scripts/verify-site.mjs",
     "verify:copy": "node --experimental-strip-types scripts/verify-copy.mjs",
+    "verify:jsx": "node --experimental-strip-types scripts/verify-jsx-copy.mjs",
     "verify:contrast": "node scripts/verify-contrast.mjs",
     "extract:doc": "python3 scripts/extract-doc.py"
   },
