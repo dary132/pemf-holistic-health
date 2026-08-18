@@ -14,7 +14,14 @@ const BASE = process.env.BASE_URL || "http://localhost:3000";
 // and not the other would silently go unchecked — the length assertion
 // just below closes that gap.
 const ROUTES = [
-  { path: "/", jsonLd: ["LocalBusiness", "WebSite"], mustContain: [] },
+  {
+    path: "/",
+    jsonLd: ["LocalBusiness", "WebSite"],
+    mustContain: [
+      "Try adding a holistic approach by laying on the PEMF body mat.",
+      "A holistic approach recognizes that your physical, mental, emotional, and spiritual well-being are deeply intertwined.",
+    ],
+  },
   { path: "/pemf", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/holistic-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/mental-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
