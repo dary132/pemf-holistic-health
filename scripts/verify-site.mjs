@@ -22,7 +22,14 @@ const ROUTES = [
       "A holistic approach recognizes that your physical, mental, emotional, and spiritual well-being are deeply intertwined.",
     ],
   },
-  { path: "/pemf", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/pemf",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: [
+      "Air, food, water, sunshine and Earth's Magnetic Field Energy are natural essentials for human health.",
+      "Magnetic field is an essential environmental factor for human existence.",
+    ],
+  },
   { path: "/holistic-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/mental-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/energy", jsonLd: ["BreadcrumbList"], mustContain: [] },
