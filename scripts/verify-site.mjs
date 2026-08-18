@@ -30,7 +30,13 @@ const ROUTES = [
       "Magnetic field is an essential environmental factor for human existence.",
     ],
   },
-  { path: "/holistic-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/holistic-health",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: [
+      "Holistic health is a wellness approach that considers a person's physical, intellectual, mental, emotional, social, and spiritual well-being, recognizing these interconnected aspects as essential for optimal health and balance.",
+    ],
+  },
   { path: "/mental-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/energy", jsonLd: ["BreadcrumbList"], mustContain: [] },
   { path: "/sports-health", jsonLd: ["BreadcrumbList"], mustContain: [] },

@@ -65,12 +65,12 @@ export const images = {
   },
   wellnessPractices: {
     src: "/images/wellness-practices.png",
-    alt: "Illustration of healthy lifestyle practices",
+    alt: "Illustration of physical, mental, and emotional wellness practices, including restorative sleep, nourishing foods, hydration, exercise, gratitude, meaningful connections, time in nature, mindfulness, supportive relationships, rest, personal growth, and reflection",
     contain: true,
   },
   eightDimensions: {
     src: "/images/eight-dimensions.png",
-    alt: "Wheel of the dimensions of wellness",
+    alt: "Wheel of eight dimensions of wellness — environmental, financial, emotional, vocational, spiritual, social, physical, and intellectual — each with a short description of what it involves",
     contain: true,
   },
   exagonBrainBanner: {
