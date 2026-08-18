@@ -23,7 +23,7 @@ export const metadata = pageMetadata({
 
 export default function BenefitsPage() {
   return (
-    <main>
+    <main id="main">
       <Breadcrumbs
         trail={[
           { name: "Home", path: "/" },

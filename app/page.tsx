@@ -8,7 +8,7 @@ import { holisticAspects, teasers } from "@/lib/content";
 
 export default function Home() {
   return (
-    <main id="home">
+    <main id="main">
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-brand-dark text-white">
         <Image

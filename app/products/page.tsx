@@ -35,7 +35,7 @@ function FamilyHeading({ name, tagline }: { name: string; tagline: string }) {
 
 export default function ProductsPage() {
   return (
-    <main>
+    <main id="main">
       <Breadcrumbs
         trail={[
           { name: "Home", path: "/" },

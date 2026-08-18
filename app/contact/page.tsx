@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 
 export default function ContactPage() {
   return (
-    <main>
+    <main id="main">
       <Breadcrumbs
         trail={[
           { name: "Home", path: "/" },

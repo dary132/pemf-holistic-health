@@ -1,6 +1,30 @@
 @import "tailwindcss";
 
 :root {
+  /* Ground */
+  --cream: #FAF6EF;
+  --sand: #F0E7D8;
+  --white: #FFFFFF;
+
+  /* Text — every pair against cream and sand is >= 7:1 (AAA) */
+  --ink: #2A2E27;
+  --ink-soft: #3A4237;
+  --sage: #2F4A37;
+  /* Darkened from the brief's #7E3F20: that value measures 6.54:1 on --sand,
+     short of the 7:1 AAA floor this block claims. #763A1D clears --sand at
+     7.16:1 and --cream at 8.15:1. See task-5-report.md for the full ratios. */
+  --clay: #763A1D;
+
+  /* Decorative only. Never a text colour, never a fill behind text.
+     scripts/verify-contrast.mjs fails the build if that rule is broken. */
+  --sage-soft: #6E8F70;
+  --clay-soft: #C9784F;
+  --rule: #E2D5BF;
+
+  /* Legacy tokens — kept only until Task 8 retokenises the existing
+     components (bg-brand-light, text-brand-dark, text-accent, bg-accent,
+     border-brand/10, etc.) onto the new sand-and-sage palette above.
+     DELETE this block and its @theme inline mappings in Task 8. */
   --background: #faf8f4;
   --foreground: #1f2a2a;
   --brand: #0f6b62;
@@ -8,10 +32,24 @@
   --brand-light: #e5f2ef;
   --accent: #b98a2f;
   --accent-light: #f6ecd8;
-  --ink-soft: #3f4f4c;
 }
 
 @theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-sage: var(--sage);
+  --color-clay: var(--clay);
+  --color-sage-soft: var(--sage-soft);
+  --color-clay-soft: var(--clay-soft);
+  --color-rule: var(--rule);
+  --color-white: var(--white);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  /* Legacy tokens — kept only until Task 8 retokenises the existing
+     components. DELETE alongside the :root block above in Task 8. */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
@@ -19,30 +57,53 @@
   --color-brand-light: var(--brand-light);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
-  --color-ink-soft: var(--ink-soft);
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
 }
 
-/* Larger base type for readability (older audience) */
+/* Large base type. The audience is elderly; this is the single highest-impact
+   legibility decision on the site. */
 html {
+  font-size: 19px;
   scroll-behavior: smooth;
-  font-size: 17px;
 }
 
 @media (min-width: 640px) {
-  html {
-    font-size: 18px;
-  }
+  html { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--cream);
+  color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.75;
 }
 
-/* Offset anchor targets below the sticky header */
-section[id] {
-  scroll-margin-top: 5.5rem;
+h1, h2, h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  color: var(--sage);
+  line-height: 1.2;
+}
+
+/* Prose links are always underlined — colour alone is not a sufficient cue. */
+main a:not([class]) {
+  color: var(--clay);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 2px;
+}
+
+/* Anchor targets clear the sticky header. */
+section[id] { scroll-margin-top: 7rem; }
+
+/* Transitions are opt-in, never imposed on someone who asked for stillness. */
+@media (prefers-reduced-motion: no-preference) {
+  a, button { transition: background-color 150ms, color 150ms; }
 }
