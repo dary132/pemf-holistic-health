@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "verify": "node scripts/verify-site.mjs",
+    "verify": "node --experimental-strip-types scripts/verify-site.mjs",
     "verify:copy": "node --experimental-strip-types scripts/verify-copy.mjs",
     "verify:contrast": "node scripts/verify-contrast.mjs",
     "extract:doc": "python3 scripts/extract-doc.py"

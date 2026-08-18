@@ -1,15 +1,34 @@
 // Crawls a running dev server and enforces the SEO checks from
 // docs/superpowers/specs/2026-08-17-multipage-seo-design.md
 // Usage: npm run dev, then npm run verify
+import { routes } from "../lib/routes.ts";
+
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 
-// Add a route here BEFORE building it, so the harness fails first.
+// This ROUTES array is hand-maintained here, separate from lib/routes.ts,
+// because it carries two things the nav/sitemap source has no use for:
+// `jsonLd`, the structured-data types each route must emit, and
+// `mustContain`, a verbatim phrase from the client document that proves the
+// page's real content has landed. Each page task adds its own before
+// building it. Because the two lists are independent, a route added to one
+// and not the other would silently go unchecked — the length assertion
+// just below closes that gap.
 const ROUTES = [
-  { path: "/", jsonLd: ["LocalBusiness", "WebSite"] },
-  { path: "/what-is-pemf", jsonLd: ["BreadcrumbList"] },
-  { path: "/benefits", jsonLd: ["BreadcrumbList"] },
-  { path: "/products", jsonLd: ["BreadcrumbList", "Product"] },
-  { path: "/contact", jsonLd: ["BreadcrumbList"] },
+  { path: "/", jsonLd: ["LocalBusiness", "WebSite"], mustContain: [] },
+  { path: "/pemf", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/holistic-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/mental-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/energy", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/sports-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/sleep-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/pets-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  { path: "/products", jsonLd: ["BreadcrumbList", "Product"], mustContain: [] },
+  { path: "/contact", jsonLd: ["BreadcrumbList"], mustContain: [] },
+];
+
+const REDIRECTS = [
+  { from: "/what-is-pemf", to: "/pemf" },
+  { from: "/benefits", to: "/holistic-health" },
 ];
 
 let failures = 0;
@@ -23,6 +42,16 @@ const check = (cond, okMsg, failMsg) => {
   else fail(failMsg);
 };
 
+// A route added to lib/routes.ts (nav/sitemap) but not to ROUTES above (this
+// harness), or vice versa, must fail loudly rather than silently go unchecked.
+if (ROUTES.length !== routes.length) {
+  console.error(
+    `\nFAIL ROUTES (scripts/verify-site.mjs) has ${ROUTES.length} entries but ` +
+      `routes (lib/routes.ts) has ${routes.length}. Keep them in sync.`
+  );
+  process.exit(1);
+}
+
 const titles = new Map();
 const linkCache = new Map();
 
@@ -34,7 +63,7 @@ async function linkStatus(href) {
   return linkCache.get(href);
 }
 
-async function checkRoute({ path, jsonLd }) {
+async function checkRoute({ path, jsonLd, mustContain = [] }) {
   console.log(`\n${path}`);
   const res = await fetch(BASE + path);
   if (res.status !== 200) return fail(`status ${res.status}`);
@@ -81,6 +110,16 @@ async function checkRoute({ path, jsonLd }) {
     check(types.includes(want), `JSON-LD ${want}`, `missing JSON-LD ${want}`);
   }
 
+  // Strip tags so a phrase split across elements still matches.
+  const visible = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  for (const phrase of mustContain) {
+    check(
+      visible.includes(phrase),
+      `contains "${phrase.slice(0, 40)}…"`,
+      `missing verbatim phrase: "${phrase}"`
+    );
+  }
+
   const hrefs = [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1]);
   for (const href of [...new Set(hrefs)]) {
     if (!href || /\.(png|jpe?g|svg|ico|webp|xml|txt)$/.test(href)) continue;
@@ -113,6 +152,14 @@ if (rb.status !== 200) fail(`/robots.txt -> ${rb.status}`);
 else {
   const body = await rb.text();
   check(body.includes("Sitemap:"), "robots links sitemap", "robots has no Sitemap:");
+}
+
+console.log("\nredirects");
+for (const { from, to } of REDIRECTS) {
+  const res = await fetch(BASE + from, { redirect: "manual" });
+  check(res.status === 308, `${from} -> 308`, `${from} returned ${res.status}, expected 308`);
+  const location = res.headers.get("location") ?? "";
+  check(location.endsWith(to), `${from} -> ${to}`, `${from} points at ${location}`);
 }
 
 console.log(failures ? `\n${failures} FAILURE(S)` : "\nAll checks passed");

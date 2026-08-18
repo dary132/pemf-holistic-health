@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
+import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/what-is-pemf", "/benefits", "/products", "/contact"];
   return routes.map((route) => ({
-    url: `${site.url}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.8,
+    url: `${site.url}${route.path}`,
+    changeFrequency: "monthly",
+    priority: route.path === "/" ? 1 : 0.8,
   }));
 }

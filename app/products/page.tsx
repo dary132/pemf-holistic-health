@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Banner, Card, FrequencyCard } from "@/components/Card";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
+import { Disclaimer } from "@/components/Disclaimer";
 import { JsonLd } from "@/components/JsonLd";
 import { Section } from "@/components/Section";
 import { pageMetadata, productSchema } from "@/lib/seo";
@@ -17,7 +18,7 @@ import {
 export const metadata = pageMetadata({
   title: "PEMF Systems: iMRS Prime & Smart Pulser",
   description:
-    "iMRS Prime with Exagon applicators and the Smart Pulser. Swiss-engineered extremely low frequency PEMF wellness systems for home and office.",
+    "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing.",
   path: "/products",
 });
 
@@ -74,14 +75,14 @@ export default function ProductsPage() {
             <p className="mt-3 leading-relaxed text-ink-soft">
               Most often chosen by people focused on{" "}
               <Link
-                href="/benefits#sports"
+                href="/sports-health"
                 className="text-brand underline hover:text-brand-dark"
               >
                 training and recovery
               </Link>{" "}
               or on{" "}
               <Link
-                href="/benefits#mental-health"
+                href="/mental-health"
                 className="text-brand underline hover:text-brand-dark"
               >
                 stress and mental clarity
@@ -135,7 +136,7 @@ export default function ProductsPage() {
             </p>
             <p className="mt-3 leading-relaxed text-ink-soft">
               A common starting point for people whose priority is{" "}
-              <Link href="/benefits#sleep" className="text-brand underline hover:text-brand-dark">
+              <Link href="/sleep-health" className="text-brand underline hover:text-brand-dark">
                 sleep and winding down
               </Link>
               .
@@ -196,6 +197,7 @@ export default function ProductsPage() {
       </Section>
 
       <CTA />
+      <Disclaimer />
 
       <JsonLd
         data={[

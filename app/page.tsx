@@ -1,10 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/Card";
 import { CTA } from "@/components/CTA";
+import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
 import { site } from "@/lib/site";
 import { holisticAspects, teasers } from "@/lib/content";
+
+export const metadata: Metadata = {
+  description: "Try adding a holistic approach by laying on the PEMF body mat.",
+};
 
 export default function Home() {
   return (
@@ -117,6 +123,7 @@ export default function Home() {
       </Section>
 
       <CTA />
+      <Disclaimer />
     </main>
   );
 }

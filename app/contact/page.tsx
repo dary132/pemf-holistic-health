@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description:
-    "Book a PEMF session in Lake Forest, CA. Call, text, or WhatsApp (949) 891 5572. Office and home visits available across Orange County.",
+  description: "22706 Aspan St, Suite 504, Lake Forest, CA.",
   path: "/contact",
 });
 
@@ -82,6 +82,7 @@ export default function ContactPage() {
           />
         </div>
       </Section>
+      <Disclaimer />
     </main>
   );
 }
