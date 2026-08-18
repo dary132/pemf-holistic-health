@@ -1,7 +1,11 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 
-/** Full-width captioned artwork, shown whole and never cropped. */
+/** Full-width captioned artwork, shown whole and never cropped.
+ *  No `object-fit` or height constraint is applied, so nothing is ever
+ *  cropped here regardless of `Img.contain` — that flag has no effect on
+ *  this component. It only changes behaviour in `SplitBand` and `TriPanel`,
+ *  which do constrain image height. */
 export function Figure({
   image,
   caption,

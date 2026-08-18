@@ -18,8 +18,11 @@ export function TriPanel({
         {heading && <h2 className="mb-10 text-3xl">{heading}</h2>}
         <div className="grid gap-8 lg:grid-cols-3">
           {panels.map((panel, i) => (
+            // Index key is safe: panels is a static list, never reordered or
+            // filtered, and only changes when the page's content module changes.
+            // Keying on title/image would collide if two panels shared a title.
             <div
-              key={panel.title ?? panel.image?.src ?? i}
+              key={i}
               className="rounded-3xl border border-rule bg-white p-6"
             >
               {panel.image && (
