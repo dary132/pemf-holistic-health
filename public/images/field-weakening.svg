@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <title>Earth's magnetic field weakening over time</title>
+  <defs>
+    <marker id="fw-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#763A1D" />
+    </marker>
+  </defs>
+
+  <!-- Field strength drawn as open shells around the planet rather than as
+       closed loops: closed loops read as concentric circles and lose the
+       sense of a field radiating outward. Left is the field as it was. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M196 116 A 108 108 0 1 1 196 304" stroke-width="6" opacity="0.95" />
+    <path d="M186  84 A 140 140 0 1 1 186 336" stroke-width="5.5" opacity="0.75" />
+    <path d="M176  52 A 172 172 0 1 1 176 368" stroke-width="5" opacity="0.55" />
+    <path d="M168  22 A 204 204 0 1 1 168 398" stroke-width="4.5" opacity="0.35" />
+  </g>
+  <circle cx="214" cy="210" r="46" fill="#2F4A37" />
+  <circle cx="214" cy="210" r="46" fill="none" stroke="#FAF6EF" stroke-width="2.5" />
+  <path d="M198 196 C 210 202, 206 214, 216 218 C 224 221, 222 230, 212 233"
+        fill="none" stroke="#FAF6EF" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+
+  <!-- Right: the same field today. Fewer shells, and fainter. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M568 116 A 108 108 0 1 1 568 304" stroke-width="6" opacity="0.42" />
+    <path d="M558  84 A 140 140 0 1 1 558 336" stroke-width="5.5" opacity="0.20" />
+  </g>
+  <circle cx="586" cy="210" r="46" fill="#2F4A37" opacity="0.82" />
+  <circle cx="586" cy="210" r="46" fill="none" stroke="#FAF6EF" stroke-width="2.5" />
+  <path d="M570 196 C 582 202, 578 214, 588 218 C 596 221, 594 230, 584 233"
+        fill="none" stroke="#FAF6EF" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+
+  <!-- Time passing, between the two states. -->
+  <path d="M368 210 L 452 210" fill="none" stroke="#763A1D" stroke-width="6"
+        stroke-linecap="round" marker-end="url(#fw-arrow)" />
+</svg>

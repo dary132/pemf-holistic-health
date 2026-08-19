@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
+import { isSvg } from "@/lib/content/images";
 
 /** Two-column image and text band. Stacks to one column below 900px. */
 export function SplitBand({
@@ -27,6 +28,7 @@ export function SplitBand({
                 src={image.src}
                 alt={image.decorative ? "" : image.alt}
                 aria-hidden={image.decorative || undefined}
+                unoptimized={isSvg(image.src)}
                 width={900}
                 height={700}
                 className={

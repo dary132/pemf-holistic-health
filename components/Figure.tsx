@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
+import { isSvg } from "@/lib/content/images";
 
 /** Full-width captioned artwork, shown whole and never cropped.
  *  No `object-fit` or height constraint is applied, so nothing is ever
@@ -23,6 +24,7 @@ export function Figure({
             src={image.src}
             alt={image.decorative ? "" : image.alt}
             aria-hidden={image.decorative || undefined}
+            unoptimized={isSvg(image.src)}
             width={1200}
             height={800}
             className="w-full rounded-3xl"

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <title>Moving air</title>
+
+  <!-- A soft field for the currents to move across. -->
+  <circle cx="300" cy="200" r="152" fill="#2F4A37" opacity="0.07" />
+  <circle cx="300" cy="200" r="108" fill="#2F4A37" opacity="0.05" />
+
+  <!-- Air currents: open curves that leave the frame, so the movement reads
+       as passing through rather than contained. -->
+  <g fill="none" stroke="#2F4A37" stroke-width="11" stroke-linecap="round">
+    <path d="M78 132 C 196 96, 300 96, 372 118 C 424 134, 424 186, 372 190
+             C 336 193, 330 152, 372 146" opacity="0.9" />
+    <path d="M62 210 C 210 178, 356 182, 452 200" opacity="0.72" />
+    <path d="M104 282 C 220 314, 330 316, 402 296 C 452 282, 452 232, 404 228
+             C 370 225, 364 264, 404 270" opacity="0.55" />
+  </g>
+
+  <!-- Lighter trailing currents. -->
+  <g fill="none" stroke="#2F4A37" stroke-width="7" stroke-linecap="round" opacity="0.3">
+    <path d="M140 168 C 236 148, 316 148, 372 158" />
+    <path d="M148 250 C 244 270, 326 268, 380 258" />
+  </g>
+
+  <!-- Individual motes carried on the current. -->
+  <circle cx="470" cy="146" r="9" fill="#763A1D" opacity="0.65" />
+  <circle cx="506" cy="214" r="7" fill="#763A1D" opacity="0.45" />
+  <circle cx="452" cy="292" r="6" fill="#763A1D" opacity="0.35" />
+</svg>

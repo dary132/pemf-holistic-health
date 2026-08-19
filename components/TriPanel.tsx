@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Panel } from "@/lib/content/types";
+import { isSvg } from "@/lib/content/images";
 
 /** The document's recurring three-column block: text, image, text.
  *  Collapses to a single column below 900px so nothing is squeezed. */
@@ -39,6 +40,7 @@ export function TriPanel({
                   src={panel.image.src}
                   alt={panel.image.decorative ? "" : panel.image.alt}
                   aria-hidden={panel.image.decorative || undefined}
+                  unoptimized={isSvg(panel.image.src)}
                   width={700}
                   height={520}
                   className={

@@ -4,6 +4,15 @@
  *  so announcing them again would only make a screen reader repeat itself. */
 import type { Img } from "./types.ts";
 
+/** next/image refuses to send SVG through its optimizer unless the global
+ *  `dangerouslyAllowSVG` config flag is set. That flag also loosens handling
+ *  for every remote source, which is a wider blast radius than this needs:
+ *  the only SVGs here are our own committed diagrams. Serving just those
+ *  unoptimized gets the same result without flipping a security flag. */
+export function isSvg(src: string) {
+  return src.endsWith(".svg");
+}
+
 export const images = {
   imrsModel3: {
     src: "/images/imrs-model-3.png",
@@ -20,15 +29,15 @@ export const images = {
     contain: true,
   },
   essentialAir: {
-    src: "/images/essential-air.png",
-    alt: "Five smiling people in blue polo shirts, with the caption 'People need air to live and survive.'",
+    src: "/images/essential-air.svg",
+    alt: "Currents of moving air",
     contain: true,
   },
   essentialFood: { src: "/images/essential-food.png", alt: "Food", contain: true },
   essentialWater: { src: "/images/essential-water.png", alt: "Water", contain: true },
   essentialSunshine: {
-    src: "/images/essential-sunshine.png",
-    alt: "Illustrated poster of a silhouetted figure raising their arms toward the sun above a barn and trees, headlined 'The Sunshine Vitamin: Why Sunlight Is Crucial to Your Health.'",
+    src: "/images/essential-sunshine.svg",
+    alt: "The sun shining over open ground",
     contain: true,
   },
   essentialEarthField: {
@@ -37,13 +46,13 @@ export const images = {
     contain: true,
   },
   earthShield: {
-    src: "/images/earth-magnetic-field-shield.png",
+    src: "/images/earth-shield.svg",
     alt: "",
     decorative: true,
     contain: true,
   },
   fieldWeakening: {
-    src: "/images/magnetic-field-weakening.png",
+    src: "/images/field-weakening.svg",
     alt: "",
     decorative: true,
     contain: true,
@@ -177,21 +186,9 @@ export const images = {
     alt: "Comparison of inductive fiber coils against solid copper coils",
     contain: true,
   },
-  spectrumOfVitality: {
-    src: "/images/spectrum-of-vitality.png",
-    alt: "",
-    decorative: true,
-    contain: true,
-  },
   biomimeticEarth: {
     src: "/images/biomimetic-earth.jpg",
     alt: "Earth seen from space with its natural electromagnetic pulses",
-  },
-  whyLowFrequency: {
-    src: "/images/why-low-frequency.png",
-    alt: "",
-    decorative: true,
-    contain: true,
   },
   wechatQr: { src: "/images/wechat-qr.png", alt: "WeChat QR code", contain: true },
 } satisfies Record<string, Img>;

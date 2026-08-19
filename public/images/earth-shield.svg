@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <title>Earth's magnetic field deflecting the solar wind</title>
+  <defs>
+    <marker id="es-arrow" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#763A1D" />
+    </marker>
+  </defs>
+
+  <!-- Sun, off the left edge: the source of the wind. -->
+  <circle cx="-30" cy="210" r="168" fill="#763A1D" opacity="0.10" />
+  <circle cx="-30" cy="210" r="124" fill="#763A1D" opacity="0.22" />
+  <circle cx="-40" cy="210" r="92" fill="#763A1D" />
+
+  <!-- Solar wind: straight until it meets the shield, then turned aside.
+       The bend is the whole point of the picture, so it is drawn large. -->
+  <g fill="none" stroke="#763A1D" stroke-width="5" stroke-linecap="round"
+     marker-end="url(#es-arrow)">
+    <path d="M100 60  C 240 58, 330 74, 392 22"  opacity="0.9" />
+    <path d="M100 136 C 250 136, 344 150, 404 96" opacity="0.9" />
+    <path d="M100 284 C 250 284, 344 270, 404 324" opacity="0.9" />
+    <path d="M100 360 C 240 362, 330 346, 392 398" opacity="0.9" />
+  </g>
+
+  <!-- The shield itself: a bow shock wrapping the planet. -->
+  <path d="M470 34 C 344 96, 344 324, 470 386"
+        fill="none" stroke="#2F4A37" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Field shells around the planet. Drawn as open shells rather than closed
+       dipole loops for the same reason as field-weakening.svg: closed loops
+       render as concentric ellipses and stop reading as a field. Keeping both
+       diagrams on the same shell idiom also makes them look like one set. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M548 152 A 64 64 0 1 1 548 268" stroke-width="5" opacity="0.7" />
+    <path d="M540 122 A 92 92 0 1 1 540 298" stroke-width="4.5" opacity="0.45" />
+    <path d="M532  92 A 120 120 0 1 1 532 328" stroke-width="4" opacity="0.25" />
+  </g>
+
+  <!-- Earth. -->
+  <circle cx="560" cy="210" r="38" fill="#2F4A37" />
+  <circle cx="560" cy="210" r="38" fill="none" stroke="#FAF6EF" stroke-width="2.5" />
+  <path d="M544 196 C 556 202, 552 214, 562 218 C 570 221, 568 230, 558 233"
+        fill="none" stroke="#FAF6EF" stroke-width="3" stroke-linecap="round" opacity="0.7" />
+</svg>
