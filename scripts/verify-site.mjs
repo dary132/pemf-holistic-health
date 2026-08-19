@@ -73,7 +73,15 @@ const ROUTES = [
       "Dog knows PEMF is good for his health and wellness.",
     ],
   },
-  { path: "/products", jsonLd: ["BreadcrumbList", "Product"], mustContain: [] },
+  {
+    path: "/products",
+    jsonLd: ["BreadcrumbList", "Product"],
+    mustContain: [
+      "World's only 6-dimensional PEMF wellness system!",
+      "The Earth Resonance (7.83 Hz):",
+      "It's not about overwhelming the body with power—it's about supporting it with resonance.",
+    ],
+  },
   { path: "/contact", jsonLd: ["BreadcrumbList"], mustContain: [] },
 ];
 

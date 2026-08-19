@@ -74,20 +74,14 @@ export function Card({
   );
 }
 
-/** A Smart Pulser frequency zone. The Hz range is the visual anchor. */
-export function FrequencyCard({
-  range,
-  name,
-  body,
-}: {
-  range: string;
-  name: string;
-  body: string;
-}) {
+/** A Smart Pulser frequency zone. `range` is kept as a stable key by callers
+ *  but not rendered here: `name` already carries its Hz range verbatim (e.g.
+ *  "The Deep Recovery Zone (0.5–4 Hz):"), so showing `range` too would repeat
+ *  the numbers and strand a trailing colon mid-card. */
+export function FrequencyCard({ name, body }: { range: string; name: string; body: string }) {
   return (
     <div className="rounded-3xl border border-rule bg-white p-5 shadow-sm">
-      <p className="text-2xl text-clay">{range}</p>
-      <p className="mt-1 font-medium text-sage">{name}</p>
+      <p className="font-medium text-sage">{name}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink-soft">{body}</p>
     </div>
   );
