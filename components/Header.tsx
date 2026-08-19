@@ -53,7 +53,7 @@ export default function Header() {
 
       <header className="border-b-2 border-rule bg-cream">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-          <Link href="/" className="shrink-0 text-2xl font-semibold no-underline">
+          <Link href="/" className="min-w-0 text-2xl font-semibold no-underline">
             <span className="font-[family-name:var(--font-display)] text-sage">PEMF </span>
             <span className="font-[family-name:var(--font-display)] text-clay">
               for Holistic Health
@@ -110,7 +110,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border-2 border-sage px-4 font-bold text-sage lg:hidden"
+            className="inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl border-2 border-sage px-4 font-bold text-sage lg:hidden"
           >
             {menuOpen ? "Close" : "Menu"}
           </button>
