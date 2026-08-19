@@ -385,9 +385,23 @@ them.
 2. **QR code target.** `image4.png` appears on every page of the document next to the
    WeChat code. No decoder is available in this environment and its target must not be
    guessed. Where should it point?
-3. **Consultant identity.** The current site names "Sharon Wong, Certified PEMF
-   Consultant, ID 81003", from the 2025 document. The 2026 document does not mention it.
-   Keep, or drop?
+3. ~~**Consultant identity.**~~ **ANSWERED — this question was based on my error.** I wrote
+   that the 2026 document does not mention the consultant. It does, seven times, in a
+   per-page contact block:
+
+   > Call / Text / WhatsApp
+   > Certified PEMF Expert Sharon
+   > for Appointment (949) 600 7899
+
+   My original extraction missed it because it did not recurse into nested tables. The
+   document's own wording is **"Certified PEMF Expert Sharon"** — not "Consultant", not a
+   surname, and no ID number. That wording is what the site must use, and it pairs her with
+   the **office** number for appointments, which independently confirms the office number as
+   the correct primary contact.
+
+   Note also `docs/exiga-jasmin-2026.txt` line 51 reads "Csystemsed PEMF Expert Sharon" —
+   an apparent find-and-replace accident in the client's own file. It is NOT corrected on the
+   site (only the PRMF fix is sanctioned); flagged for the client instead.
 4. **`/products` as one page.** The document labels Smart Pulser as *"Link:"*, which may
    mean a separate page. Default is one `/products` page with anchor sections, matching
    the nav table's treatment of Products as a single page. Split into
