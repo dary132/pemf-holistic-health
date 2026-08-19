@@ -179,7 +179,7 @@ function selfTest() {
   const cases = [
     ["black on white is 21:1", ratio("#000000", "#FFFFFF") > 20.9, true],
     ["ink on cream is AAA", ratio("#2A2E27", "#FAF6EF") >= 7, true],
-    ["clay on cream is AAA", ratio("#7E3F20", "#FAF6EF") >= 7, true],
+    ["clay on cream is AAA", ratio("#763A1D", "#FAF6EF") >= 7, true],
     ["old clay-soft on cream fails", ratio("#C9784F", "#FAF6EF") >= 7, false],
     ["old sage-soft on cream fails", ratio("#6E8F70", "#FAF6EF") >= 7, false],
     [

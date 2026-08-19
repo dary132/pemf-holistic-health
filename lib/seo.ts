@@ -42,10 +42,9 @@ export function localBusinessSchema() {
     "@type": "LocalBusiness",
     name: site.name,
     url: site.url,
-    telephone: site.phone,
+    telephone: site.officePhone,
     image: `${site.url}/opengraph-image.jpg`,
-    description:
-      "Whole-body PEMF wellness sessions in Lake Forest, California. Office and home visits available.",
+    description: "Office and Home Visits Available",
     address: {
       "@type": "PostalAddress",
       streetAddress: "22706 Aspan St, Suite 504",

@@ -52,30 +52,44 @@ html {
   html { scroll-behavior: auto; }
 }
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--font-body), system-ui, sans-serif;
-  line-height: 1.75;
-}
+/* @layer base: `@import "tailwindcss"` declares the layer order
+   `theme, base, components, utilities`, and any CSS written outside a layer
+   is placed in an implicit final layer that outranks all of them regardless
+   of selector specificity. An un-layered `h1, h2, h3 { color: ... }` rule
+   would therefore beat a Tailwind colour utility on a heading -- e.g.
+   `<h2 className="text-white">` inside a `bg-sage` section -- even though
+   a class selector is normally more specific than a bare element selector;
+   the layer, not the specificity, decides. Putting these defaults in
+   `@layer base` lets `@layer utilities` (component `className`s) win, which
+   is the behaviour every component here already assumes. Found live: an
+   un-layered version of this rule rendered components/CTA.tsx's heading in
+   sage-on-sage, invisible, despite an explicit `text-white` on the element. */
+@layer base {
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    line-height: 1.75;
+  }
 
-h1, h2, h3 {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 600;
-  color: var(--sage);
-  line-height: 1.2;
-}
+  h1, h2, h3 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 600;
+    color: var(--sage);
+    line-height: 1.2;
+  }
 
-/* Prose links are always underlined — colour alone is not a sufficient cue. */
-main a:not([class]) {
-  color: var(--clay);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
+  /* Prose links are always underlined — colour alone is not a sufficient cue. */
+  main a:not([class]) {
+    color: var(--clay);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 
-:focus-visible {
-  outline: 3px solid var(--clay);
-  outline-offset: 2px;
+  :focus-visible {
+    outline: 3px solid var(--clay);
+    outline-offset: 2px;
+  }
 }
 
 /* Anchor targets clear the sticky header. */

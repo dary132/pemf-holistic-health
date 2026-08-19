@@ -2,7 +2,7 @@
  *  Source: "Website Exiga Jasmin 2026.docx" plus the client's IMRS Model 3 photo.
  *  Diagrams marked `decorative` have their meaning carried by adjacent prose,
  *  so announcing them again would only make a screen reader repeat itself. */
-import type { Img } from "./types";
+import type { Img } from "./types.ts";
 
 export const images = {
   imrsModel3: {

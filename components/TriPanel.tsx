@@ -7,11 +7,20 @@ export function TriPanel({
   heading,
   panels,
   tinted = false,
+  panelTitleAs = "h3",
 }: {
   heading?: string;
   panels: Panel[];
   tinted?: boolean;
+  /** Level for each panel's own title (panel.title), default "h3" -- correct
+   *  when `heading` renders its own h2 directly above them. A page that
+   *  places this TriPanel straight after its `<Section titleAs="h1" />` with
+   *  no `heading` here has nothing at h2, so panel titles must be "h2"
+   *  themselves or the page skips a level (h1 -> h3). See app/energy,
+   *  app/mental-health and app/pets-health, spec fix-wave item I-7. */
+  panelTitleAs?: "h2" | "h3";
 }) {
+  const PanelHeading = panelTitleAs;
   return (
     <div className={tinted ? "bg-sand" : undefined}>
       <div className="mx-auto max-w-6xl px-5 py-14">
@@ -39,7 +48,7 @@ export function TriPanel({
                   }
                 />
               )}
-              {panel.title && <h3 className="text-xl">{panel.title}</h3>}
+              {panel.title && <PanelHeading className="text-xl">{panel.title}</PanelHeading>}
               {panel.paragraphs?.map((p) => (
                 <p key={p} className="mt-3 text-ink-soft">
                   {p}

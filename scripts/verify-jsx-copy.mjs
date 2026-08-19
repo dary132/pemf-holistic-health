@@ -1,11 +1,12 @@
 // Fails the build if any client-facing text written straight into JSX in
-// app/**/*.tsx deviates from the client's document. This closes a gap in
-// verify-copy.mjs: that script only ever sees strings inside lib/content/
-// module exports, so a caption, heading or paragraph typed directly into a
-// page component (never passed through lib/content/) is invisible to it.
+// app/**/*.tsx or components/**/*.tsx deviates from the client's document.
+// This closes a gap in verify-copy.mjs: that script only ever sees strings
+// inside lib/content/ module exports, so a caption, heading or paragraph
+// typed directly into a page or a shared component (never passed through
+// lib/content/) is invisible to it.
 // The client cites FDA exposure: copy must be exact, wherever it lives.
 //
-//   npm run verify:jsx                 scan app/**/*.tsx for invented copy
+//   npm run verify:jsx                 scan app/ and components/ for invented copy
 //   npm run verify:jsx -- --self-test  prove the checker actually rejects bad copy
 //
 // Method: a pragmatic regex-based extractor, not a real JSX/TS parser (no
@@ -43,7 +44,11 @@ import { buildHaystack, checkString } from "./verify-copy.mjs";
 
 const SOURCES = ["docs/exiga-jasmin-2026.txt", "docs/exiga-jasmin-2026-image-text.txt"];
 
-const APP_DIR = "app";
+// Both app/ and components/ hold client-facing JSX: a caption, heading or
+// paragraph typed straight into a shared component (CTA, Header, Footer, ...)
+// is exactly as visible to a reader as one typed into a page file, and is
+// exactly as unchecked by verify-copy.mjs (which only sees lib/content/).
+const SCAN_DIRS = ["app", "components"];
 
 // Props whose value is copy a visitor reads, wherever in app/ they appear.
 const COPY_PROPS = ["caption", "intro", "title", "heading", "body", "eyebrow"];
@@ -74,7 +79,19 @@ const PROP_PATTERN = new RegExp(
 // Text between a `>` and the next `<`. Excluding `{` and `}` from the
 // character class is what makes a text node containing `{expression}`
 // fail to match at all -- see the header note on mixed children.
-const TEXT_CHILD_PATTERN = />([^<>{}]*)</g;
+//
+// `(?<!=)` excludes a `>` that is itself the second character of an arrow
+// `=>` from starting a match. Without it, scanning components/ (which is
+// far more arrow-function-heavy than app/ page files) throws false
+// positives: `.map((x) =>` followed eventually by a real JSX tag with no
+// intervening `<`, `>`, `{` or `}` -- e.g. a ternary branch or a run of
+// `//` comments between the arrow and the element it returns -- gets
+// misread as one long "JSX text child" of arbitrary code/comment prose. A
+// genuine JSX-closing `>` is never itself preceded by `=` (an attribute
+// like `key={i}>` ends in `}`, a boolean prop `disabled>` ends in the
+// identifier, a self-closing tag ends in `/>`), so this lookbehind costs
+// no real coverage.
+const TEXT_CHILD_PATTERN = /(?<!=)>([^<>{}]*)</g;
 
 // An <iframe>'s own `title` attribute is the accessible name assistive tech
 // announces for the embedded frame -- the same category of text as an
@@ -163,7 +180,7 @@ async function main() {
 
   if (process.argv.includes("--self-test")) return selfTest(haystack);
 
-  const files = findTsxFiles(APP_DIR).sort();
+  const files = SCAN_DIRS.flatMap((dir) => findTsxFiles(dir)).sort();
   let failures = 0;
   for (const file of files) {
     const content = readFileSync(file, "utf8");
@@ -228,6 +245,11 @@ function selfTest(haystack) {
       "still rejects that exact fabricated claim in a non-iframe title prop -- proves the exemption is narrow",
       '<Section title="This PEMF mat cures every ailment instantly." />',
       false,
+    ],
+    [
+      "does not misread an arrow function's `=>` as the start of a JSX text child (regression test, see TEXT_CHILD_PATTERN comment)",
+      "{items.map((entry) =>\n  // a comment between the arrow and the element it returns\n  entry.ok ? (\n    <Link>PEMF for Health and Wellness</Link>\n  ) : null\n)}",
+      true, // without the (?<!=) lookbehind this reports the arrow/comment/ternary span itself as invented copy
     ],
   ];
   let failures = 0;

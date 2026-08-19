@@ -25,7 +25,10 @@ export default function PetsHealthPage() {
         ]}
       />
       <Section id="pets-health" title={intro.title} titleAs="h1" />
-      <TriPanel panels={animals} tinted />
+      {/* No heading prop: this TriPanel sits directly under the page's h1
+          with nothing at h2, so its own panel titles must render as h2 to
+          avoid an h1 -> h3 skip (spec fix-wave item I-7). */}
+      <TriPanel panels={animals} tinted panelTitleAs="h2" />
       <Figure image={images.imrsFaunaHorses} />
       <TriPanel heading={racehorses.heading} panels={racehorses.panels} />
       <CTA />

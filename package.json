@@ -11,7 +11,7 @@
     "verify:copy": "node --experimental-strip-types scripts/verify-copy.mjs",
     "verify:jsx": "node --experimental-strip-types scripts/verify-jsx-copy.mjs",
     "verify:contrast": "node scripts/verify-contrast.mjs",
-    "verify:all": "npm run verify:contrast && npm run verify:copy && npm run verify",
+    "verify:all": "npm run verify:contrast && npm run verify:copy && npm run verify:jsx && npm run verify",
     "shots": "node --experimental-strip-types scripts/screenshot.mjs",
     "extract:doc": "python3 scripts/extract-doc.py"
   },

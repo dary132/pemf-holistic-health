@@ -15,12 +15,15 @@ export function Breadcrumbs({ trail }: { trail: { name: string; path: string }[]
                   {item.name}
                 </span>
               ) : (
-                <Link href={item.path} className="hover:text-clay">
+                <Link
+                  href={item.path}
+                  className="inline-flex min-h-[48px] items-center hover:text-clay"
+                >
                   {item.name}
                 </Link>
               )}
               {!last && (
-                <span aria-hidden="true" className="text-ink-soft/50">
+                <span aria-hidden="true" className="text-ink-soft">
                   /
                 </span>
               )}

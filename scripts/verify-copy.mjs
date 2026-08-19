@@ -35,6 +35,26 @@ const SOURCES = [
   "docs/exiga-jasmin-2026-image-text.txt",
 ];
 
+// lib/site.ts holds sitewide prose (disclaimer, address, business name) that
+// is rendered straight into Header/Footer/CTA/Disclaimer, never routed
+// through lib/content/ -- so it was invisible to this script until now.
+// Keys whose value a visitor actually reads. officePhoneHref, phoneHref,
+// whatsappHref and url are `tel:`/`https:` targets, never shown as text;
+// officePhone, phone, whatsapp and areaServed are schema.org/tel: data
+// (areaServed only ever feeds JSON-LD, see lib/seo.ts), not body copy.
+const SITE_FILE = "lib/site.ts";
+const SITE_COPY_KEYS = ["name", "address", "disclaimer", "deviceNote"];
+
+// site.deviceNote ("The PEMF system is not a medical device...") does not
+// appear anywhere in the 2026 document. It is protective language carried
+// over from the prior build. Removing a safety disclaimer without the
+// client's explicit instruction is the riskier action, so it is being
+// flagged for client sign-off (see lib/site.ts) rather than deleted, and is
+// deliberately exempted here rather than left to fail this check forever or
+// falsely claimed as verbatim. This is the ONLY entry this set may ever
+// hold without a matching client sign-off note above it.
+const SITE_EXEMPT = new Set(["deviceNote"]);
+
 // Every permitted deviation from the document. Spec Appendix B.
 // Anything not listed here that differs by more than terminal punctuation is a failure.
 export const ALLOWED_EDITS = [
@@ -133,6 +153,24 @@ async function main() {
     }
     console.log(`  checked ${file}`);
   }
+
+  // --file scopes a run to a single lib/content/ module; honour that and
+  // skip the sitewide check too, rather than always tacking it on.
+  if (!onlyFile) {
+    const siteMod = await import(new URL(`../${SITE_FILE}`, import.meta.url));
+    for (const key of SITE_COPY_KEYS) {
+      if (SITE_EXEMPT.has(key)) continue;
+      for (const str of collectCopy(siteMod.site[key])) {
+        const problem = checkString(str, haystack);
+        if (problem) {
+          console.error(`FAIL ${SITE_FILE} (${key}): ${problem}\n      "${str}"`);
+          failures++;
+        }
+      }
+    }
+    console.log(`  checked ${SITE_FILE}`);
+  }
+
   console.log(failures ? `\n${failures} COPY FAILURE(S)` : "\nAll copy verbatim");
   process.exit(failures ? 1 : 0);
 }

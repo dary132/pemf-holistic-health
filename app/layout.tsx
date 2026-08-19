@@ -25,8 +25,7 @@ export const metadata: Metadata = {
     default: `${site.name} | Lake Forest, CA`,
     template: `%s | ${site.name}`,
   },
-  description:
-    "Whole-body PEMF sessions in Lake Forest, CA. A holistic approach to energy, sleep, and relaxation. Office and home visits available.",
+  description: "Try adding a holistic approach by laying on the PEMF body mat.",
   alternates: { canonical: "/" },
 };
 

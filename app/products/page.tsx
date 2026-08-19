@@ -23,7 +23,7 @@ import {
 import { images } from "@/lib/content/images";
 
 export const metadata = pageMetadata({
-  title: "PEMF Systems: iMRS Prime & Smart Pulser",
+  title: "Products",
   description:
     "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing!",
   path: "/products",

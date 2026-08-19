@@ -52,7 +52,10 @@ export function Card({
         )}
         <h3 className="text-xl text-sage">
           {href ? (
-            <Link href={href} className="hover:text-clay">
+            <Link
+              href={href}
+              className="inline-flex min-h-[48px] items-center underline underline-offset-4 hover:text-clay"
+            >
               {title}
             </Link>
           ) : (

@@ -1,5 +1,5 @@
 // Crawls a running dev server and enforces the SEO checks from
-// docs/superpowers/specs/2026-08-17-multipage-seo-design.md
+// docs/superpowers/specs/2026-08-18-exiga-jasmin-2026-remodel-design.md
 // Usage: npm run dev, then npm run verify
 import { routes } from "../lib/routes.ts";
 

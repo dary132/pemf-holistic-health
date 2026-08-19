@@ -46,21 +46,20 @@ npm run build    # production build
 
 ### Verification
 
-Four scripts guard different failure modes, and `npm run verify:all` runs three of them together:
+Four scripts guard different failure modes, and `npm run verify:all` runs all four together:
 
 - `npm run verify:contrast` — checks every text/background colour pair in `app/globals.css`
   clears WCAG AAA (7:1). Run alone or via `verify:all`.
-- `npm run verify:copy` — checks every string in `lib/content/` is exact text from
-  `docs/exiga-jasmin-2026*.txt`, character for character (including which apostrophe/quote form —
-  the document itself is inconsistent between curly and straight, and site copy tracks whichever
-  one the source used at that specific spot). See the **verbatim-copy rule** below.
+- `npm run verify:copy` — checks every string in `lib/content/` and the sitewide prose in
+  `lib/site.ts` is exact text from `docs/exiga-jasmin-2026*.txt`, character for character
+  (including which apostrophe/quote form — the document itself is inconsistent between curly and
+  straight, and site copy tracks whichever one the source used at that specific spot). See the
+  **verbatim-copy rule** below.
 - `npm run verify:jsx` — the same check, but for copy written directly as JSX text/props in
-  `app/**/*.tsx` instead of pulled from `lib/content/`. Not part of `verify:all`; run it
-  separately (it is part of the final gate list below).
-- `npm run verify` (aka `npm run verify:site`, the third leg of `verify:all`) — crawls a running
-  `npm run dev` server and checks each route's status code, exactly one `<h1>`, title/description/
-  canonical, JSON-LD, a verbatim phrase proving real content landed, internal links, the sitemap,
-  and the old-URL redirects.
+  `app/**/*.tsx` and `components/**/*.tsx` instead of pulled from `lib/content/`.
+- `npm run verify` — crawls a running `npm run dev` server and checks each route's status code,
+  exactly one `<h1>`, title/description/canonical, JSON-LD, a verbatim phrase proving real content
+  landed, internal links, the sitemap, and the old-URL redirects.
 
 Each verifier accepts `-- --self-test`, which proves the checker actually rejects bad input rather
 than trivially passing.
@@ -88,8 +87,11 @@ catches spacing, overflow, and legibility problems.
   a screenshot/diagram image, transcribed by hand into
   `docs/exiga-jasmin-2026-image-text.txt`). The client cites FDA exposure — PEMF marketing claims
   are regulated, and the client does not want this site to say anything about health effects that
-  they did not themselves write and approve. `verify:copy` and `verify:jsx` enforce this
-  automatically on every build; the only sanctioned deviations are listed explicitly in
-  `ALLOWED_EDITS` in `scripts/verify-copy.mjs` (e.g. one corrected typo) plus an added terminal
-  period. Do not paraphrase, summarize, or "improve" client copy — if it reads awkwardly, that is
-  a question for the client, not something to silently fix in code.
+  they did not themselves write and approve. `verify:copy` and `verify:jsx` enforce this — run
+  them via `npm run verify:all` before every commit and treat a failure as a blocker; nothing runs
+  automatically during `npm run build`, so this is a required manual (or CI) gate, not a build-time
+  one. The only sanctioned deviations are listed explicitly in `ALLOWED_EDITS` in
+  `scripts/verify-copy.mjs` (e.g. one corrected typo) plus an added terminal period, plus one
+  named, commented exception in `SITE_EXEMPT` in the same file (`site.deviceNote`, pending client
+  sign-off). Do not paraphrase, summarize, or "improve" client copy — if it reads awkwardly, that
+  is a question for the client, not something to silently fix in code.

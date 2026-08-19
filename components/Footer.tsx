@@ -39,16 +39,18 @@ export default function Footer() {
 
         <div>
           <p className="font-bold text-ink">Get in touch</p>
-          <p className="mt-2">
-            <a href={site.officePhoneHref} className="text-clay">
-              Office {site.officePhone}
-            </a>
-          </p>
-          <p className="mt-1">
-            <a href={site.whatsappHref} className="text-clay">
-              WhatsApp {site.whatsapp}
-            </a>
-          </p>
+          <a
+            href={site.officePhoneHref}
+            className="mt-2 flex min-h-[48px] items-center text-clay underline-offset-4 hover:underline"
+          >
+            Office {site.officePhone}
+          </a>
+          <a
+            href={site.whatsappHref}
+            className="flex min-h-[48px] items-center text-clay underline-offset-4 hover:underline"
+          >
+            WhatsApp {site.whatsapp}
+          </a>
           <Image
             src={images.wechatQr.src}
             alt={images.wechatQr.alt}

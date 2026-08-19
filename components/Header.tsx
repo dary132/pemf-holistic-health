@@ -37,16 +37,24 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50">
       <div className="bg-sage text-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-x-8 gap-y-1 px-5 py-2.5 text-base font-semibold">
-          <p>
-            <a href={site.officePhoneHref} className="no-underline hover:underline">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-1 px-5 text-base font-semibold">
+          <div className="flex flex-wrap items-center">
+            <a
+              href={site.officePhoneHref}
+              className="inline-flex min-h-[48px] items-center underline-offset-4 no-underline hover:underline"
+            >
               Office {site.officePhone}
             </a>
-            {" · "}
-            <a href={site.whatsappHref} className="no-underline hover:underline">
+            <span aria-hidden="true" className="px-2">
+              ·
+            </span>
+            <a
+              href={site.whatsappHref}
+              className="inline-flex min-h-[48px] items-center underline-offset-4 no-underline hover:underline"
+            >
               WhatsApp {site.whatsapp}
             </a>
-          </p>
+          </div>
           <p className="hidden md:block">{site.address.join(", ")}</p>
         </div>
       </div>

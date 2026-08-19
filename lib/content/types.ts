@@ -28,6 +28,5 @@ export type Teaser = {
   title: string;
   body: string;
   href: string;
-  cta: string;
   image: Img;
 };
