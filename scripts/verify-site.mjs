@@ -26,7 +26,7 @@ const ROUTES = [
     path: "/pemf",
     jsonLd: ["BreadcrumbList"],
     mustContain: [
-      "Air, food, water, sunshine and Earth's Magnetic Field Energy are natural essentials for human health.",
+      "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
       "Magnetic field is an essential environmental factor for human existence.",
     ],
   },
@@ -77,7 +77,7 @@ const ROUTES = [
     path: "/products",
     jsonLd: ["BreadcrumbList", "Product"],
     mustContain: [
-      "World's only 6-dimensional PEMF wellness system!",
+      "World’s only 6-dimensional PEMF wellness system!",
       "The Earth Resonance (7.83 Hz):",
       "It's not about overwhelming the body with power—it's about supporting it with resonance.",
     ],
