@@ -76,9 +76,37 @@ const PROP_PATTERN = new RegExp(
 // fail to match at all -- see the header note on mixed children.
 const TEXT_CHILD_PATTERN = />([^<>{}]*)</g;
 
+// An <iframe>'s own `title` attribute is the accessible name assistive tech
+// announces for the embedded frame -- the same category of text as an
+// <img> `alt`, which this project already exempts everywhere. It is not
+// client-facing prose and asserts no health or product claim, so it is
+// deliberately excluded from copy checking -- but ONLY there. `title` stays
+// a checked, copy-bearing prop everywhere else (see COPY_PROPS): an
+// attribute is exactly where a fabricated claim could hide unnoticed, so
+// this exemption is kept element-scoped rather than widened to `title`
+// generally, and is implemented as a real exclusion, not as an entry in
+// CHROME_ALLOWLIST (which only ever holds fixed short strings, not an
+// address that varies with the office location).
+const IFRAME_TAG_PATTERN = /<iframe\b[^>]*>/g;
+
+/** Blank out the word "title" inside every <iframe ...> tag's own markup,
+ *  wherever the attribute sits among the tag's other attributes, so
+ *  PROP_PATTERN never recognises it as the `title` prop there. Every
+ *  character removed is replaced with a same-length run of "x", so no
+ *  other offset or line number in the file shifts. The lookbehind/lookahead
+ *  require whitespace before and `=` (with optional whitespace) after, so
+ *  this cannot also blank an unrelated attribute name that merely contains
+ *  the substring "title" (e.g. a hypothetical `data-title`). */
+function maskIframeTitleAttr(content) {
+  return content.replace(IFRAME_TAG_PATTERN, (tag) =>
+    tag.replace(/(?<=\s)title(?=\s*=)/g, "xxxxx")
+  );
+}
+
 /** Every checkable {text, offset} candidate embedded directly in one file's markup. */
 export function extractCandidates(content) {
   const out = [];
+  content = maskIframeTitleAttr(content);
 
   for (const m of content.matchAll(PROP_PATTERN)) {
     const raw = m[1] ?? m[2] ?? m[3] ?? m[4] ?? m[5];
@@ -190,6 +218,16 @@ function selfTest(haystack) {
       "skips a text child mixed with an expression (known limitation, see header)",
       "<a>Call or Text · {site.phone}</a>",
       true, // extractor finds nothing checkable here, so it passes -- not because it's verified
+    ],
+    [
+      "exempts a fabricated claim in an <iframe> title (accessibility label, not client copy)",
+      '<iframe title="This PEMF mat cures every ailment instantly." src="https://maps.example/embed" />',
+      true,
+    ],
+    [
+      "still rejects that exact fabricated claim in a non-iframe title prop -- proves the exemption is narrow",
+      '<Section title="This PEMF mat cures every ailment instantly." />',
+      false,
     ],
   ];
   let failures = 0;

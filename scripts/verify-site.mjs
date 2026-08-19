@@ -82,7 +82,11 @@ const ROUTES = [
       "It's not about overwhelming the body with power—it's about supporting it with resonance.",
     ],
   },
-  { path: "/contact", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/contact",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: ["Office and Home Visits Available"],
+  },
 ];
 
 const REDIRECTS = [
