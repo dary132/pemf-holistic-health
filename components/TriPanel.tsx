@@ -50,7 +50,7 @@ export function TriPanel({
                   {panel.items.map((item) => (
                     <div key={item.term}>
                       <dt className="font-bold text-ink">{item.term}</dt>
-                      <dd className="text-ink-soft">{item.text}</dd>
+                      {item.text && <dd className="text-ink-soft">{item.text}</dd>}
                     </div>
                   ))}
                 </dl>

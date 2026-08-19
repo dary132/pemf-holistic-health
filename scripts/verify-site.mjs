@@ -65,7 +65,14 @@ const ROUTES = [
     jsonLd: ["BreadcrumbList"],
     mustContain: ["Deep sleep is crucial for physical and mental rejuvenation."],
   },
-  { path: "/pets-health", jsonLd: ["BreadcrumbList"], mustContain: [] },
+  {
+    path: "/pets-health",
+    jsonLd: ["BreadcrumbList"],
+    mustContain: [
+      "PEMF for Pets Health",
+      "Dog knows PEMF is good for his health and wellness.",
+    ],
+  },
   { path: "/products", jsonLd: ["BreadcrumbList", "Product"], mustContain: [] },
   { path: "/contact", jsonLd: ["BreadcrumbList"], mustContain: [] },
 ];
