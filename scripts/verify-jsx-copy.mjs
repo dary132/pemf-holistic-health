@@ -69,10 +69,41 @@ const CHROME_ALLOWLIST = new Set([
   "WhatsApp",
   "Visit Us",
   "Book a Session",
+  // app/layout.tsx's browser-tab title wrapper, `title: { default, template }`.
+  // What is left of each after its ${site.name} interpolation is cut out: the
+  // location suffix on the default title, and the "%s" placeholder Next fills
+  // with the page's own (checked) title. Both are title chrome around copy
+  // that is verified elsewhere, and neither states anything about PEMF.
+  "| Lake Forest, CA",
+  "%s |",
 ]);
 
 const PROP_PATTERN = new RegExp(
   `\\b(?:${COPY_PROPS.join("|")})\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{\\s*"([^"]*)"\\s*\\}|\\{\\s*'([^']*)'\\s*\\}|\\{\\s*\`([^\`]*)\`\\s*\\})`,
+  "g"
+);
+
+// (c) Route metadata. `export const metadata = pageMetadata({ title, description })`
+// and app/layout.tsx's `metadata` object are plain object literals, not JSX,
+// so PROP_PATTERN (which requires `prop=`) never saw them and neither did
+// verify-copy.mjs (which only imports lib/content/). That left every page's
+// <title> and meta description -- the text Google shows a searcher, and the
+// first PEMF claim most visitors ever read -- completely unchecked. It is
+// not a hypothetical gap: the fix wave this guard ships with had to remove
+// an invented title ("PEMF Systems: iMRS Prime & Smart Pulser") and an
+// invented layout description, both of which every other gate passed.
+//
+// `default` and `template` are app/layout.tsx's title wrapper; they are
+// included so this covers the whole metadata surface rather than most of it,
+// with their chrome fragments named in CHROME_ALLOWLIST below.
+//
+// Only quoted/backticked literals match, so `description: intro.body` (a
+// reference into already-checked lib/content) and the TypeScript declaration
+// `title: string;` are both skipped rather than misread as copy.
+const META_PROPS = ["title", "description", "default", "template"];
+
+const META_PROP_PATTERN = new RegExp(
+  `\\b(?:${META_PROPS.join("|")})\\s*:\\s*(?:"([^"]*)"|'([^']*)'|\`([^\`]*)\`)`,
   "g"
 );
 
@@ -129,6 +160,15 @@ export function extractCandidates(content) {
     const raw = m[1] ?? m[2] ?? m[3] ?? m[4] ?? m[5];
     if (raw == null) continue;
     // Cut out ${expression} interpolations; check each static fragment on its own.
+    for (const frag of raw.split(/\$\{[^}]*\}/)) {
+      const trimmed = frag.trim();
+      if (trimmed) out.push({ text: trimmed, offset: m.index });
+    }
+  }
+
+  for (const m of content.matchAll(META_PROP_PATTERN)) {
+    const raw = m[1] ?? m[2] ?? m[3];
+    if (raw == null) continue;
     for (const frag of raw.split(/\$\{[^}]*\}/)) {
       const trimmed = frag.trim();
       if (trimmed) out.push({ text: trimmed, offset: m.index });
@@ -245,6 +285,36 @@ function selfTest(haystack) {
       "still rejects that exact fabricated claim in a non-iframe title prop -- proves the exemption is narrow",
       '<Section title="This PEMF mat cures every ailment instantly." />',
       false,
+    ],
+    [
+      "rejects an invented claim in a page's metadata title",
+      'export const metadata = pageMetadata({ title: "Clinically Proven PEMF Systems That Cure Chronic Pain", path: "/products" });',
+      false,
+    ],
+    [
+      "rejects an invented claim in a page's metadata description",
+      'export const metadata = pageMetadata({ title: "Products", description: "This device eliminates chronic pain in six weeks, guaranteed.", path: "/products" });',
+      false,
+    ],
+    [
+      "rejects an invented claim spread across a multi-line metadata description",
+      'export const metadata = pageMetadata({\n  title: "Energy",\n  description:\n    "PEMF cures chronic pain in six weeks",\n  path: "/energy",\n});',
+      false,
+    ],
+    [
+      "accepts a verbatim metadata description",
+      'export const metadata = pageMetadata({ title: "Holistic Health", description: "PEMF is a holistic approach to promote a state of total wellness.", path: "/holistic-health" });',
+      true,
+    ],
+    [
+      "does not misread a TypeScript property declaration as metadata copy",
+      "type Props = {\n  title: string;\n  description: string;\n};",
+      true, // no quoted literal, so there is nothing to check -- not an exemption
+    ],
+    [
+      "does not misread a reference into already-checked lib/content as metadata copy",
+      "export const metadata = pageMetadata({ title: intro.title, description: intro.body, path: '/pemf' });",
+      true, // lib/content values are verify-copy.mjs's job, and it does check them
     ],
     [
       "does not misread an arrow function's `=>` as the start of a JSX text child (regression test, see TEXT_CHILD_PATTERN comment)",

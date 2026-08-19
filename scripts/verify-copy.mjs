@@ -38,22 +38,52 @@ const SOURCES = [
 // lib/site.ts holds sitewide prose (disclaimer, address, business name) that
 // is rendered straight into Header/Footer/CTA/Disclaimer, never routed
 // through lib/content/ -- so it was invisible to this script until now.
-// Keys whose value a visitor actually reads. officePhoneHref, phoneHref,
-// whatsappHref and url are `tel:`/`https:` targets, never shown as text;
-// officePhone, phone, whatsapp and areaServed are schema.org/tel: data
-// (areaServed only ever feeds JSON-LD, see lib/seo.ts), not body copy.
 const SITE_FILE = "lib/site.ts";
-const SITE_COPY_KEYS = ["name", "address", "disclaimer", "deviceNote"];
 
-// site.deviceNote ("The PEMF system is not a medical device...") does not
-// appear anywhere in the 2026 document. It is protective language carried
-// over from the prior build. Removing a safety disclaimer without the
-// client's explicit instruction is the riskier action, so it is being
-// flagged for client sign-off (see lib/site.ts) rather than deleted, and is
-// deliberately exempted here rather than left to fail this check forever or
-// falsely claimed as verbatim. This is the ONLY entry this set may ever
-// hold without a matching client sign-off note above it.
-const SITE_EXEMPT = new Set(["deviceNote"]);
+// DENY-list, deliberately not an allow-list. An allow-list of copy keys is
+// the same shape as the `APP_DIR = "app"` bug that let invented copy sit in
+// components/ through 21 tasks: whatever nobody remembered to add is
+// silently unchecked, and the green run reads as coverage. Here the default
+// is the safe one -- every key in `site` is checked as copy unless it is
+// named below -- so a newly added key is checked from the moment it exists,
+// and skipping it takes a deliberate edit to this list.
+//
+// url, officePhoneHref, phoneHref and whatsappHref are `tel:`/`https:`
+// targets, never rendered as text. officePhone, phone and whatsapp are
+// dialable numbers: they ARE rendered, but as data whose formatting is the
+// site's to choose, not document prose to reproduce.
+const SITE_NON_COPY_KEYS = new Set([
+  "url",
+  "officePhoneHref",
+  "phoneHref",
+  "whatsappHref",
+  "officePhone",
+  "phone",
+  "whatsapp",
+]);
+
+// Values that ARE client-facing claims but are knowingly not in the 2026
+// document, each pending the client's answer. Exempting them here is what
+// keeps this script honest: the alternative is either a permanent red run
+// or -- worse -- quietly reclassifying a claim as "not copy" so it stops
+// being asked about. Every entry needs a written reason and an owner.
+//
+//   deviceNote  "The PEMF system is not a medical device..." Protective
+//               language carried over from the prior build. Removing a
+//               safety disclaimer without the client's explicit instruction
+//               is the riskier action, so it is flagged for sign-off (see
+//               lib/site.ts) rather than deleted.
+//   areaServed  "Orange County, California". Appears 0 times in the
+//               document. No longer rendered as page copy, but still
+//               published to Google as a factual business claim via
+//               localBusinessSchema (lib/seo.ts). Listed here rather than
+//               in SITE_NON_COPY_KEYS above because it is a claim about the
+//               business, not formatting -- calling it "not copy" would
+//               bury the open question instead of holding it open.
+//
+// Anything added here without a reason and a client decision behind it is a
+// misuse of this set.
+const SITE_EXEMPT = new Set(["deviceNote", "areaServed"]);
 
 // Every permitted deviation from the document. Spec Appendix B.
 // Anything not listed here that differs by more than terminal punctuation is a failure.
@@ -117,6 +147,21 @@ export function collectCopy(value, out = []) {
   return out;
 }
 
+/** Every {key, text} problem in a `site`-shaped object. Pure, no I/O, so the
+ *  self-test can prove the deny-list actually catches an unknown key. */
+export function checkSiteObject(siteObj, haystack) {
+  const problems = [];
+  for (const [key, value] of Object.entries(siteObj)) {
+    if (SITE_NON_COPY_KEYS.has(key)) continue;
+    if (SITE_EXEMPT.has(key)) continue;
+    for (const str of collectCopy(value)) {
+      const problem = checkString(str, haystack);
+      if (problem) problems.push({ key, text: str, problem });
+    }
+  }
+  return problems;
+}
+
 async function main() {
   const haystack = buildHaystack(SOURCES.map((p) => readFileSync(p, "utf8")));
 
@@ -158,17 +203,14 @@ async function main() {
   // skip the sitewide check too, rather than always tacking it on.
   if (!onlyFile) {
     const siteMod = await import(new URL(`../${SITE_FILE}`, import.meta.url));
-    for (const key of SITE_COPY_KEYS) {
-      if (SITE_EXEMPT.has(key)) continue;
-      for (const str of collectCopy(siteMod.site[key])) {
-        const problem = checkString(str, haystack);
-        if (problem) {
-          console.error(`FAIL ${SITE_FILE} (${key}): ${problem}\n      "${str}"`);
-          failures++;
-        }
-      }
+    for (const { key, text, problem } of checkSiteObject(siteMod.site, haystack)) {
+      console.error(`FAIL ${SITE_FILE} (${key}): ${problem}\n      "${text}"`);
+      failures++;
     }
-    console.log(`  checked ${SITE_FILE}`);
+    const checked = Object.keys(siteMod.site).filter(
+      (k) => !SITE_NON_COPY_KEYS.has(k) && !SITE_EXEMPT.has(k)
+    );
+    console.log(`  checked ${SITE_FILE} (${checked.length} copy key(s): ${checked.join(", ")})`);
   }
 
   console.log(failures ? `\n${failures} COPY FAILURE(S)` : "\nAll copy verbatim");
@@ -199,6 +241,43 @@ function selfTest(haystack) {
       failures++;
     }
   }
+
+  // The lib/site.ts deny-list, exercised as a unit. The point of these three
+  // is that the FIRST one fails without anybody having to remember to add a
+  // key name anywhere -- that is the whole difference from the allow-list
+  // this replaced, and it is worth a test that would notice a regression to
+  // allow-list behaviour.
+  const siteCases = [
+    [
+      "checks a key nobody allow-listed (the deny-list's whole point)",
+      { somethingBrandNew: "We guarantee PEMF will heal your arthritis in 30 days." },
+      false,
+    ],
+    [
+      "accepts verbatim sitewide prose",
+      { name: "PEMF for Holistic Health" },
+      true,
+    ],
+    [
+      "skips a deny-listed non-copy key",
+      { whatsappHref: "https://wa.me/19498915572" },
+      true,
+    ],
+    [
+      "skips a documented pending-client exemption",
+      { areaServed: "Orange County, California" },
+      true,
+    ],
+  ];
+  for (const [name, obj, shouldPass] of siteCases) {
+    const passed = checkSiteObject(obj, haystack).length === 0;
+    if (passed === shouldPass) console.log(`  ok   ${name}`);
+    else {
+      console.error(`  FAIL ${name}: expected ${shouldPass ? "accept" : "reject"}`);
+      failures++;
+    }
+  }
+
   console.log(failures ? `\n${failures} SELF-TEST FAILURE(S)` : "\nSelf-test passed");
   process.exit(failures ? 1 : 0);
 }
