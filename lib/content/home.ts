@@ -38,7 +38,7 @@ export const holisticAnatomy = {
 export const teasers: Teaser[] = [
   {
     title: "PEMF for Healthy Lifestyle",
-    body: "Air, food, water, sunshine and Earth's Magnetic Field Energy are natural essentials for human health.",
+    body: "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
     href: "/pemf",
     cta: "PEMF",
     image: images.mimicsEarthField,

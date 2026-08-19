@@ -8,8 +8,12 @@
 // What this guarantees, and what it does not:
 //   It verifies that every visitor-facing string collected from lib/content/
 //   is exact text copied from the client document (docs/exiga-jasmin-2026.txt
-//   and docs/exiga-jasmin-2026-image-text.txt), modulo whitespace/quote
+//   and docs/exiga-jasmin-2026-image-text.txt), modulo whitespace
 //   normalisation and the one documented terminal-punctuation allowance.
+//   Quote and apostrophe characters (curly vs. straight) are NOT normalised
+//   and must match the source character for character — the document itself
+//   uses both forms for the same word in different places, so site copy is
+//   required to track which one appears at each specific source location.
 //   It does NOT verify that the surrounding framing preserves the document's
 //   meaning: matching is substring-based, so any exact fragment of the
 //   document passes, down to a single word, even if the fragment is quoted
@@ -41,11 +45,12 @@ export const ALLOWED_EDITS = [
   },
 ];
 
-/** Collapse whitespace and normalise the quote/dash characters Word emits. */
+/** Collapse whitespace only. Quote and apostrophe characters are checked
+ *  verbatim: the client's document mixes curly and straight forms for the
+ *  same word in different places, and site copy must match the exact
+ *  character used at each source location, not just its ASCII equivalent. */
 export function normalise(s) {
   return s
-    .replace(/[‘’]/g, "'")
-    .replace(/[“”]/g, '"')
     .replace(/ /g, " ")
     .replace(/\s+/g, " ")
     .trim();

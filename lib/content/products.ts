@@ -11,7 +11,7 @@ export const intro = { title: "Products" };
 export const imrsPrime = {
   title: "IMRS prime PEMF",
   paragraphs: [
-    "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing! World's only 6-dimensional PEMF wellness system!",
+    "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing! World’s only 6-dimensional PEMF wellness system!",
     "PEMF-Extremely low frequency and low intensity systems for wellness!",
   ],
 };
@@ -30,7 +30,7 @@ export const applicators = [
     title: "Split Mode",
     image: images.exagonSplitMode,
     paragraphs: [
-      "iMRS prime PEMF is the world's first PEMF system allowing two stand-alone applications with only one control unit. Perfect for a couple to use at the same time.",
+      "iMRS prime PEMF is the world’s first PEMF system allowing two stand-alone applications with only one control unit. Perfect for a couple to use at the same time.",
     ],
   },
   {
@@ -68,7 +68,7 @@ export const smartPulser = {
 export const coils = {
   title: "Inductive Fiber Coils vs Solid Copper Coils",
   paragraphs: [
-    "Discover the world's first PEMF system, featuring groundbreaking “Inductive Fiber Coil Technology”",
+    "Discover the world’s first PEMF system, featuring groundbreaking “Inductive Fiber Coil Technology”",
   ],
 };
 
