@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460">
+  <title>A PEMF mat reproducing the shape of Earth's magnetic field</title>
+
+  <!-- Left: Earth and its field. Right: the same field shape produced by a
+       mat. Showing the two side by side is what carries the word "mimics";
+       a single planet with rings around it does not say it at all. -->
+
+  <!-- Both sides use identical loop geometry, offset by 472 in x. That the two
+       fields are the same shape is the claim the picture is making, so they
+       are drawn from the same numbers rather than eyeballed separately. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M214 155 C 130  99, 122 311, 214 255" stroke-width="5" opacity="0.85" />
+    <path d="M214 155 C  54  61,  44 349, 214 255" stroke-width="4.5" opacity="0.55" />
+    <path d="M214 155 C 298  99, 306 311, 214 255" stroke-width="5" opacity="0.85" />
+    <path d="M214 155 C 374  61, 384 349, 214 255" stroke-width="4.5" opacity="0.55" />
+  </g>
+  <circle cx="214" cy="205" r="50" fill="#2F4A37" />
+  <circle cx="214" cy="205" r="50" fill="none" stroke="#FAF6EF" stroke-width="3" />
+  <path d="M193 186 C 209 195, 203 209, 217 215 C 229 220, 225 233, 211 237"
+        fill="none" stroke="#FAF6EF" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+  <text x="214" y="386" font-family="system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" fill="#2A2E27" text-anchor="middle">Earth's field</text>
+
+  <!-- The likeness sign. -->
+  <g stroke="#763A1D" stroke-width="6" stroke-linecap="round">
+    <path d="M420 190 C 438 176, 462 204, 480 190" />
+    <path d="M420 226 C 438 212, 462 240, 480 226" />
+  </g>
+
+  <!-- Right: the mat, with the same field shape above it. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M686 190 C 596 120, 588 290, 686 220" stroke-width="5" opacity="0.85" />
+    <path d="M686 190 C 516  70, 506 340, 686 220" stroke-width="4.5" opacity="0.55" />
+    <path d="M686 190 C 776 120, 784 290, 686 220" stroke-width="5" opacity="0.85" />
+    <path d="M686 190 C 856  70, 866 340, 686 220" stroke-width="4.5" opacity="0.55" />
+  </g>
+  <!-- Mat drawn last so it sits over the middle of the loops, the way the
+       planet does on the left. -->
+  <rect x="624" y="190" width="124" height="30" rx="15" fill="#2F4A37" />
+  <rect x="624" y="190" width="124" height="30" rx="15"
+        fill="none" stroke="#FAF6EF" stroke-width="3" />
+  <path d="M748 205 H 790 C 800 205, 800 240, 790 240 H 782"
+        fill="none" stroke="#2F4A37" stroke-width="6" stroke-linecap="round" opacity="0.8" />
+  <rect x="762" y="240" width="44" height="32" rx="6" fill="#763A1D" opacity="0.85" />
+  <text x="686" y="386" font-family="system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="26" fill="#2A2E27" text-anchor="middle">PEMF mat</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 460" width="700" height="460">
+  <title>Body systems that PEMF supports, shown as connected parts of one whole</title>
+
+  <!-- The original was an eighteen-cell chart of labelled organs. The prose it
+       sits beside is about systems being intertwined rather than about any
+       one organ, so this shows a small number of systems joined to one body
+       instead. Fewer labels also stay legible at the half-width this renders
+       at inside SplitBand. -->
+
+  <circle cx="350" cy="230" r="176" fill="#2F4A37" opacity="0.06" />
+
+  <!-- Figure. -->
+  <g stroke="#2F4A37" stroke-width="17" stroke-linecap="round" fill="none">
+    <path d="M350 128 V 268" />
+    <path d="M292 162 H 408" />
+    <path d="M292 162 L 262 244" />
+    <path d="M408 162 L 438 244" />
+    <path d="M314 268 H 386" />
+    <path d="M314 268 L 300 372" />
+    <path d="M386 268 L 400 372" />
+  </g>
+  <circle cx="350" cy="88" r="33" fill="#2F4A37" />
+
+  <!-- Leader lines. -->
+  <g stroke="#2A2E27" stroke-width="2.5" opacity="0.45" fill="none">
+    <path d="M318 88  H 214" />
+    <path d="M326 186 H 214" />
+    <path d="M306 330 H 214" />
+    <path d="M374 176 H 486" />
+    <path d="M432 240 H 486" />
+    <path d="M396 330 H 486" />
+  </g>
+
+  <!-- Nodes. -->
+  <g fill="#763A1D">
+    <circle cx="350" cy="88" r="9" />
+    <circle cx="350" cy="186" r="9" />
+    <circle cx="322" cy="330" r="9" />
+    <circle cx="366" cy="176" r="9" />
+    <circle cx="424" cy="240" r="9" />
+    <circle cx="382" cy="330" r="9" />
+  </g>
+
+  <g font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="23" fill="#2A2E27">
+    <text x="204" y="88"  text-anchor="end" dominant-baseline="middle">Brain</text>
+    <text x="204" y="186" text-anchor="end" dominant-baseline="middle">Lungs</text>
+    <text x="204" y="330" text-anchor="end" dominant-baseline="middle">Bones</text>
+    <text x="496" y="176" dominant-baseline="middle">Heart</text>
+    <text x="496" y="240" dominant-baseline="middle">Muscles</text>
+    <text x="496" y="330" dominant-baseline="middle">Joints</text>
+  </g>
+</svg>

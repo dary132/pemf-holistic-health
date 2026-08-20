@@ -4,7 +4,7 @@ import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
 import { TriPanel } from "@/components/TriPanel";
-import { images } from "@/lib/content/images";
+import { images, isSvg } from "@/lib/content/images";
 import { definition, intro, wellness } from "@/lib/content/holistic-health";
 import { pageMetadata } from "@/lib/seo";
 
@@ -29,6 +29,7 @@ export default function HolisticHealthPage() {
         <Image
           src={images.eightDimensions.src}
           alt={images.eightDimensions.alt}
+          unoptimized={isSvg(images.eightDimensions.src)}
           width={1200}
           height={780}
           className="mx-auto h-auto w-full max-w-4xl object-contain"

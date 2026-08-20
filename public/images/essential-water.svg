@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <title>A drop of water</title>
+
+  <circle cx="300" cy="200" r="152" fill="#2F4A37" opacity="0.07" />
+
+  <!-- Ripples beneath. -->
+  <g fill="none" stroke="#2F4A37" stroke-linecap="round">
+    <path d="M196 330 C 238 314, 362 314, 404 330" stroke-width="8" opacity="0.45" />
+    <path d="M156 360 C 216 340, 384 340, 444 360" stroke-width="7" opacity="0.28" />
+  </g>
+
+  <!-- The drop: a point at the top opening into a round base. -->
+  <path d="M300 62 C 300 62, 214 168, 214 224 C 214 272, 252 306, 300 306
+           C 348 306, 386 272, 386 224 C 386 168, 300 62, 300 62 Z"
+        fill="#2F4A37" />
+
+  <!-- Highlight, so the drop reads as liquid rather than as a pin. -->
+  <path d="M262 236 C 262 210, 276 192, 292 186"
+        fill="none" stroke="#FAF6EF" stroke-width="12" stroke-linecap="round" opacity="0.75" />
+  <circle cx="336" cy="252" r="10" fill="#763A1D" opacity="0.55" />
+</svg>

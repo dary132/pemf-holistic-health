@@ -19,13 +19,13 @@ export const images = {
     alt: "A woman lying on the IMRS prime whole-body mat at home, with the tablet control unit beside her",
   },
   holisticFlower: {
-    src: "/images/holistic-flower.png",
+    src: "/images/holistic-flower.svg",
     alt: "Flower diagram of the six aspects of holistic health: physical, mental, emotional, intellectual, social and spiritual",
     contain: true,
   },
   holisticAnatomy: {
-    src: "/images/holistic-anatomy.jpeg",
-    alt: "Chart of body systems and their roles, from brain and heart to bones and pituitary gland",
+    src: "/images/holistic-anatomy.svg",
+    alt: "A figure with brain, lungs, heart, muscles, bones and joints marked as connected parts of one body",
     contain: true,
   },
   essentialAir: {
@@ -33,15 +33,15 @@ export const images = {
     alt: "Currents of moving air",
     contain: true,
   },
-  essentialFood: { src: "/images/essential-food.png", alt: "Food", contain: true },
-  essentialWater: { src: "/images/essential-water.png", alt: "Water", contain: true },
+  essentialFood: { src: "/images/essential-food.svg", alt: "A bowl of food", contain: true },
+  essentialWater: { src: "/images/essential-water.svg", alt: "A drop of water", contain: true },
   essentialSunshine: {
     src: "/images/essential-sunshine.svg",
     alt: "The sun shining over open ground",
     contain: true,
   },
   essentialEarthField: {
-    src: "/images/essential-earth-field.jpeg",
+    src: "/images/essential-earth-field.svg",
     alt: "Diagram of Earth's magnetic field lines running between the magnetic north and south poles",
     contain: true,
   },
@@ -58,18 +58,18 @@ export const images = {
     contain: true,
   },
   radiationSources: {
-    src: "/images/sources-of-radiation.png",
-    alt: "Arc chart of common sources of radiation from low-energy telephones and power lines through to high-energy gamma rays",
+    src: "/images/sources-of-radiation.svg",
+    alt: "The radiation spectrum from low-energy radio waves through to high-energy gamma rays, with the ionizing threshold marked after visible light",
     contain: true,
   },
   magnetPoles: {
-    src: "/images/magnet-poles.png",
+    src: "/images/magnet-poles.svg",
     alt: "Diagram of a magnet's north and south poles and its field lines",
     contain: true,
   },
   mimicsEarthField: {
-    src: "/images/pemf-mimics-earth-field.png",
-    alt: "Earth surrounded by pulsing field rings, labelled PEMF mimics Earth magnetic field",
+    src: "/images/mimics-earth-field.svg",
+    alt: "Earth's magnetic field beside a PEMF mat producing the same field shape",
     contain: true,
   },
   wellnessPractices: {
@@ -78,8 +78,8 @@ export const images = {
     contain: true,
   },
   eightDimensions: {
-    src: "/images/eight-dimensions.png",
-    alt: "Wheel of eight dimensions of wellness — environmental, financial, emotional, vocational, spiritual, social, physical, and intellectual — each with a short description of what it involves",
+    src: "/images/eight-dimensions.svg",
+    alt: "Wheel of eight dimensions of wellness: environmental, financial, emotional, vocational, spiritual, social, physical, and intellectual",
     contain: true,
   },
   exagonBrainBanner: {
@@ -187,8 +187,8 @@ export const images = {
     contain: true,
   },
   biomimeticEarth: {
-    src: "/images/biomimetic-earth.jpg",
-    alt: "Earth seen from space with its natural electromagnetic pulses",
+    src: "/images/biomimetic-earth.svg",
+    alt: "Earth emitting its natural electromagnetic pulses outward",
   },
   wechatQr: { src: "/images/wechat-qr.png", alt: "WeChat QR code", contain: true },
 } satisfies Record<string, Img>;
