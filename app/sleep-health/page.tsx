@@ -2,7 +2,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
-import { TriPanel } from "@/components/TriPanel";
+import { PanelGrid } from "@/components/TriPanel";
 import { benefits, intro, sleep } from "@/lib/content/sleep-health";
 import { pageMetadata } from "@/lib/seo";
 
@@ -23,8 +23,8 @@ export default function SleepHealthPage() {
         ]}
       />
       <Section id="sleep-health" title={intro.title} titleAs="h1" />
-      <TriPanel panels={sleep} tinted />
-      <TriPanel heading={benefits.heading} panels={benefits.panels} />
+      <PanelGrid panels={sleep} tinted />
+      <PanelGrid heading={benefits.heading} panels={benefits.panels} />
       <CTA />
       <Disclaimer />
     </main>

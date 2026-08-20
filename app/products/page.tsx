@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { JumpNav } from "@/components/JumpNav";
 import { Section } from "@/components/Section";
 import { SplitBand } from "@/components/SplitBand";
-import { TriPanel } from "@/components/TriPanel";
+import { PanelGrid } from "@/components/TriPanel";
 import { pageMetadata, productSchema } from "@/lib/seo";
 import {
   applicators,
@@ -63,7 +63,7 @@ export default function ProductsPage() {
             reverse={i % 2 === 1}
           />
         ))}
-        <TriPanel panels={sensors} tinted />
+        <PanelGrid panels={sensors} tinted />
       </section>
 
       <section id="smart-pulser">

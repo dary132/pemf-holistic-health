@@ -1,56 +1,59 @@
 import Image from "next/image";
 import type { Panel } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
+import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 
-/** The document's recurring three-column block: text, image, text.
- *  Collapses to a single column below 900px so nothing is squeezed. */
-export function TriPanel({
+/** The document's recurring three-column block. Every panel is a bordered
+ *  plate of equal height, with a fixed-ratio media slot so the text baselines
+ *  line up across the row. Collapses to one column below 1024px. */
+export function PanelGrid({
   heading,
   panels,
   tinted = false,
   panelTitleAs = "h3",
+  rhythm = "normal",
 }: {
   heading?: string;
   panels: Panel[];
   tinted?: boolean;
   /** Level for each panel's own title (panel.title), default "h3" -- correct
    *  when `heading` renders its own h2 directly above them. A page that
-   *  places this TriPanel straight after its `<Section titleAs="h1" />` with
-   *  no `heading` here has nothing at h2, so panel titles must be "h2"
+   *  places this grid straight after its `<Section titleAs="h1" />` with no
+   *  `heading` here has nothing at h2, so panel titles must be "h2"
    *  themselves or the page skips a level (h1 -> h3). See app/energy,
-   *  app/mental-health and app/pets-health, spec fix-wave item I-7. */
+   *  app/mental-health and app/pets-health. verify:layout gates this. */
   panelTitleAs?: "h2" | "h3";
+  rhythm?: Rhythm;
 }) {
   const PanelHeading = panelTitleAs;
   return (
     <div className={tinted ? "bg-sand" : undefined}>
-      <div className="mx-auto max-w-6xl px-5 py-14">
-        {heading && <h2 className="mb-10 text-3xl">{heading}</h2>}
-        <div className="grid gap-8 lg:grid-cols-3">
+      <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
+        {heading && <h2 className="mb-10">{heading}</h2>}
+        <div className="grid items-stretch gap-8 lg:grid-cols-3">
           {panels.map((panel, i) => (
             // Index key is safe: panels is a static list, never reordered or
             // filtered, and only changes when the page's content module changes.
             // Keying on title/image would collide if two panels shared a title.
-            <div
-              key={i}
-              className="rounded-3xl border border-rule bg-white p-6"
-            >
+            <div key={i} className="u-plate flex flex-col p-6">
               {panel.image && (
-                <Image
-                  src={panel.image.src}
-                  alt={panel.image.decorative ? "" : panel.image.alt}
-                  aria-hidden={panel.image.decorative || undefined}
-                  unoptimized={isSvg(panel.image.src)}
-                  width={700}
-                  height={520}
-                  className={
-                    panel.image.contain
-                      ? "mb-5 h-auto w-full object-contain"
-                      : "mb-5 h-auto w-full rounded-2xl object-cover"
-                  }
-                />
+                <div className="u-plate-media mb-5">
+                  <Image
+                    src={panel.image.src}
+                    alt={panel.image.decorative ? "" : panel.image.alt}
+                    aria-hidden={panel.image.decorative || undefined}
+                    unoptimized={isSvg(panel.image.src)}
+                    width={700}
+                    height={525}
+                    className={
+                      panel.image.contain
+                        ? "h-full w-full object-contain p-3"
+                        : "h-full w-full object-cover"
+                    }
+                  />
+                </div>
               )}
-              {panel.title && <PanelHeading className="text-xl">{panel.title}</PanelHeading>}
+              {panel.title && <PanelHeading>{panel.title}</PanelHeading>}
               {panel.paragraphs?.map((p) => (
                 <p key={p} className="mt-3 text-ink-soft">
                   {p}

@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
-import { TriPanel } from "@/components/TriPanel";
+import { PanelGrid } from "@/components/TriPanel";
 import { images, isSvg } from "@/lib/content/images";
 import { definition, intro, wellness } from "@/lib/content/holistic-health";
 import { pageMetadata } from "@/lib/seo";
@@ -24,7 +24,7 @@ export default function HolisticHealthPage() {
         ]}
       />
       <Section id="holistic-health" title={intro.title} titleAs="h1" />
-      <TriPanel panels={definition} tinted />
+      <PanelGrid panels={definition} tinted />
       <Section id="wellness" title={wellness.heading}>
         <Image
           src={images.eightDimensions.src}

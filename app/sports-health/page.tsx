@@ -2,7 +2,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
-import { TriPanel } from "@/components/TriPanel";
+import { PanelGrid } from "@/components/TriPanel";
 import { athletic, boosts, intro } from "@/lib/content/sports-health";
 import { pageMetadata } from "@/lib/seo";
 
@@ -23,8 +23,8 @@ export default function SportsHealthPage() {
         ]}
       />
       <Section id="sports-health" title={intro.title} titleAs="h1" />
-      <TriPanel heading={athletic.heading} panels={athletic.panels} tinted />
-      <TriPanel heading={boosts.heading} panels={boosts.panels} />
+      <PanelGrid heading={athletic.heading} panels={athletic.panels} tinted />
+      <PanelGrid heading={boosts.heading} panels={boosts.panels} />
       <CTA />
       <Disclaimer />
     </main>

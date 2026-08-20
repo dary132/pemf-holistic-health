@@ -4,7 +4,7 @@ import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
 import { SplitBand } from "@/components/SplitBand";
-import { TriPanel } from "@/components/TriPanel";
+import { PanelGrid } from "@/components/TriPanel";
 import { images } from "@/lib/content/images";
 import {
   essentialForHealth,
@@ -47,13 +47,13 @@ export default function PemfPage() {
         </ul>
       </Section>
 
-      <TriPanel
+      <PanelGrid
         heading={essentialForHealth.heading}
         panels={essentialForHealth.panels}
         tinted
       />
 
-      <TriPanel heading={importanceOfField.heading} panels={importanceOfField.panels} />
+      <PanelGrid heading={importanceOfField.heading} panels={importanceOfField.panels} />
 
       <h2 className="sr-only">{mimicsEarth.heading}</h2>
       <SplitBand

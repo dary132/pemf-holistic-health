@@ -110,6 +110,22 @@ html {
 @layer utilities {
   .u-display { font-size: var(--step-display); }
   .u-lead { font-size: var(--step-lead); max-width: 60ch; }
+
+  /* Bordered plate. No shadow: crisp edges read as precision, soft shadows on
+     cream read as generic. --rule is a border colour only, never text. */
+  .u-plate {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+  }
+  /* Fixed-ratio media slot. This is what makes every card in a row align:
+     identical image height means identical text baseline below it. */
+  .u-plate-media {
+    background: var(--sand);
+    border-radius: 8px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
 }
 
 /* Anchor targets clear the sticky header. */
