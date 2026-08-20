@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>A head in profile with a brainwave passing through it</title>
+
+  <circle cx="200" cy="200" r="170" fill="#2F4A37" opacity="0.07" />
+
+  <path d="M138 300 V 250 C 96 232, 84 176, 112 138 C 146 92, 226 78, 268 112 C 312 148, 306 206, 278 226 L 278 262 C 278 280, 266 290, 248 290 L 232 290 L 232 300 Z" fill="#2F4A37" />
+  <path d="M126 190 L 152 190 L 168 150 L 190 234 L 212 172 L 228 208 L 258 208" fill="none" stroke="#FAF6EF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+  <g stroke="#763A1D" stroke-width="9" stroke-linecap="round" opacity="0.55">
+    <path d="M310 154 C 330 176, 330 206, 310 228" />
+    <path d="M340 132 C 372 170, 372 212, 340 250" />
+  </g>
+</svg>

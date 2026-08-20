@@ -73,7 +73,7 @@ export const images = {
     contain: true,
   },
   wellnessPractices: {
-    src: "/images/wellness-practices.png",
+    src: "/images/wellness-practices.svg",
     alt: "Illustration of physical, mental, and emotional wellness practices, including restorative sleep, nourishing foods, hydration, exercise, gratitude, meaningful connections, time in nature, mindfulness, supportive relationships, rest, personal growth, and reflection",
     contain: true,
   },
@@ -87,7 +87,7 @@ export const images = {
     alt: "A woman reclining while wearing the Exagon Brain brainwave entrainment goggles",
   },
   stressMeter: {
-    src: "/images/stress-meter.png",
+    src: "/images/stress-meter.svg",
     alt: "A gauge showing stress levels rising from low to high",
     contain: true,
   },
@@ -96,28 +96,28 @@ export const images = {
     alt: "A woman relaxing on a lounger beside a pool",
   },
   energyBattery: {
-    src: "/images/energy-battery.png",
-    alt: "A battery filling with charge, representing energy levels",
+    src: "/images/energy-battery.svg",
+    alt: "A nearly empty battery beside a full one, representing energy levels rising",
     contain: true,
   },
   brainwaveEntrainment: {
-    src: "/images/brainwave-entrainment.png",
-    alt: "A person wearing brainwave entrainment goggles",
+    src: "/images/brainwave-entrainment.svg",
+    alt: "A head in profile with a brainwave passing through it",
     contain: true,
   },
   passiveWarmup: {
-    src: "/images/passive-warmup.png",
-    alt: "Icon representing passive warm-up",
+    src: "/images/passive-warmup.svg",
+    alt: "A figure beside a rising column, representing passive warm-up",
     contain: true,
   },
   rejuvenation: {
-    src: "/images/rejuvenation.png",
-    alt: "Icon representing rejuvenation after physical activity",
+    src: "/images/rejuvenation.svg",
+    alt: "A figure within a circular arrow, representing rejuvenation after physical activity",
     contain: true,
   },
   performance: {
-    src: "/images/performance.png",
-    alt: "Icon representing enhanced athletic performance",
+    src: "/images/performance.svg",
+    alt: "A figure beside a rising series of bars, representing enhanced athletic performance",
     contain: true,
   },
   sleepMatTablet: {
@@ -125,8 +125,8 @@ export const images = {
     alt: "A person asleep on the PEMF mat with the tablet control unit beside the bed",
   },
   showAnimals: {
-    src: "/images/show-animals.png",
-    alt: "Cartoon collage of animals including a giraffe, panda, elephant, zebra, rhino and lion, captioned 'PEMF is good 4 us.'",
+    src: "/images/show-animals.svg",
+    alt: "A horse, a dog and a cat",
   },
   pemfDogPad: {
     src: "/images/pemf-dog-pad.png",
