@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 
 export function Section({
   id,
@@ -7,6 +8,7 @@ export function Section({
   titleAs: Heading = "h2",
   intro,
   tinted = false,
+  rhythm = "normal",
   children,
 }: {
   id: string;
@@ -16,19 +18,24 @@ export function Section({
   titleAs?: "h1" | "h2";
   intro?: string;
   tinted?: boolean;
+  /** Vertical rhythm. Uniform padding on every section gives the eye no cue
+   *  about what groups with what, so this is chosen per section. */
+  rhythm?: Rhythm;
   children?: ReactNode;
 }) {
   return (
     <section id={id} className={tinted ? "bg-sand" : undefined}>
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:py-16">
+      <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         <div className="max-w-3xl">
           {eyebrow && (
-            <p className="text-clay font-medium tracking-widest uppercase text-sm mb-2">{eyebrow}</p>
+            <p className="mb-2 text-sm font-medium uppercase tracking-widest text-clay">
+              {eyebrow}
+            </p>
           )}
-          <Heading className="text-3xl sm:text-4xl text-sage">{title}</Heading>
-          {intro && <p className="mt-4 max-w-[62ch] text-ink-soft leading-relaxed">{intro}</p>}
+          <Heading>{title}</Heading>
+          {intro && <p className="u-lead mt-4 leading-relaxed text-ink-soft">{intro}</p>}
         </div>
-        <div className="mt-10">{children}</div>
+        {children && <div className="mt-10">{children}</div>}
       </div>
     </section>
   );
