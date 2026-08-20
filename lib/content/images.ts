@@ -125,14 +125,17 @@ export const images = {
     alt: "A person asleep on the PEMF mat with the tablet control unit beside the bed",
   },
   showAnimals: {
-    src: "/images/show-animals.svg",
-    alt: "A horse, a dog and a cat",
+    src: "/images/show-animals.jpg",
+    alt: "Handlers showing dogs on a red carpet at an animal show, with cats on display beside rosettes and trophies",
   },
   pemfDogPad: {
     src: "/images/pemf-dog-pad.png",
     alt: "A dog lying on a PEMF pad",
   },
-  petsGroup: { src: "/images/pets-group.png", alt: "A group of pets together" },
+  petsGroup: {
+    src: "/images/pets-group.jpg",
+    alt: "A golden retriever, a tabby cat and a budgie resting together on a rug in a sunlit living room",
+  },
   imrsFaunaHorses: {
     src: "/images/imrs-fauna-horses.png",
     alt: "The IMRS fauna system shown with horses",
