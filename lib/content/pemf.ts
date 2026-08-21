@@ -9,12 +9,15 @@ export const intro = {
   ],
 };
 
+// Labels are the five nouns of the intro sentence above, byte-for-byte as the
+// document spells them (three are lowercase there), so verify:copy still sees
+// verbatim text. The page capitalises them with CSS for display only.
 export const essentials = [
-  { image: images.essentialAir },
-  { image: images.essentialFood },
-  { image: images.essentialWater },
-  { image: images.essentialSunshine },
-  { image: images.essentialEarthField },
+  { label: "Air", image: images.essentialAir },
+  { label: "food", image: images.essentialFood },
+  { label: "water", image: images.essentialWater },
+  { label: "sunshine", image: images.essentialSunshine },
+  { label: "Earth’s Magnetic Field Energy", image: images.essentialEarthField },
 ];
 
 export const essentialForHealth: { heading: string; panels: Panel[] } = {

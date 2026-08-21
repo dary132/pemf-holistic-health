@@ -4,6 +4,13 @@
 The other 30 images in the document are already byte-identical to files in
 public/images/ and are left alone. Run from the repo root:
     python3 scripts/extract-images.py
+
+CAUTION: two committed files are post-processed after extraction and will be
+clobbered by a blind re-run (2026-08-20):
+  essential-air.png                 third-party watermark painted out, top right
+  earth-magnetic-field-shield.png   cropped to rows 10-186 to drop a watermark
+                                    and the burnt-in caption (the caption is
+                                    repeated as text in lib/content/pemf.ts)
 """
 import zipfile
 

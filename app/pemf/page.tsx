@@ -33,18 +33,25 @@ export default function PemfPage() {
       />
       <Section id="pemf" title={intro.title} titleAs="h1" intro={intro.paragraphs[0]}>
         <ul className="grid grid-cols-2 gap-5 sm:grid-cols-5">
-          {essentials.map(({ image }) => (
+          {essentials.map(({ label, image }) => (
             <li key={image.src} className="rounded-3xl border border-rule bg-white p-4">
-              {/* The five photos have different aspect ratios (roughly 1:1 to
-                  5:4), so each sits whole inside a fixed 4:3 slot; otherwise
-                  the row's tiles end up at five different heights. */}
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={400}
-                height={300}
-                className="aspect-[4/3] w-full object-contain"
-              />
+              <figure>
+                {/* The five photos have different aspect ratios (roughly 1:1 to
+                    5:4), so each sits whole inside a fixed 4:3 slot; otherwise
+                    the row's tiles end up at five different heights. */}
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={400}
+                  height={300}
+                  className="aspect-[4/3] w-full object-contain"
+                />
+                {/* `capitalize` is display-only: the stored label keeps the
+                    document's own casing so verify:copy matches verbatim. */}
+                <figcaption className="mt-3 text-center font-bold capitalize text-ink">
+                  {label}
+                </figcaption>
+              </figure>
             </li>
           ))}
         </ul>
