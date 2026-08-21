@@ -6,7 +6,8 @@ import { PhoneButton } from "./PhoneButton";
  *  repeated verbatim 7 times), not marketing prose invented for the site:
  *    Call / Text / WhatsApp
  *    Certified PEMF Expert Sharon
- *    for Appointment (949) 600 7899 */
+ *    for Appointment (949) 891 5572 (client-corrected number; the source
+ *    document printed 600 7899, which is retired) */
 export function CTA() {
   return (
     <section className="bg-sage text-white">
