@@ -28,31 +28,40 @@ export const images = {
     alt: "A figure with brain, lungs, heart, muscles, bones and joints marked as connected parts of one body",
     contain: true,
   },
+  // The five "essentials" and the two magnetic-field images below are the
+  // document's own files (word/media image6-12), restored at the client's
+  // request on 2026-08-20 in place of the SVG redraws. See git history
+  // (1dc86f1, 0179c8c) for why the redraws existed: third-party watermarks
+  // on image6/image11 and identifiable people in image6.
   essentialAir: {
-    src: "/images/essential-air.svg",
-    alt: "Currents of moving air",
+    src: "/images/essential-air.png",
+    alt: "Five people taking a deep breath, captioned: People need air to live and survive",
     contain: true,
   },
-  essentialFood: { src: "/images/essential-food.svg", alt: "A bowl of food", contain: true },
-  essentialWater: { src: "/images/essential-water.svg", alt: "A drop of water", contain: true },
+  essentialFood: {
+    src: "/images/essential-food.png",
+    alt: "A bowl of rice, vegetables, chickpeas, boiled egg and chicken",
+    contain: true,
+  },
+  essentialWater: { src: "/images/essential-water.png", alt: "A glass of water", contain: true },
   essentialSunshine: {
-    src: "/images/essential-sunshine.svg",
-    alt: "The sun shining over open ground",
+    src: "/images/essential-sunshine.png",
+    alt: "A figure with arms raised to the sun, captioned: The Sunshine Vitamin, why sunlight is crucial to your health",
     contain: true,
   },
   essentialEarthField: {
-    src: "/images/essential-earth-field.svg",
+    src: "/images/essential-earth-field.jpeg",
     alt: "Diagram of Earth's magnetic field lines running between the magnetic north and south poles",
     contain: true,
   },
   earthShield: {
-    src: "/images/earth-shield.svg",
+    src: "/images/earth-magnetic-field-shield.png",
     alt: "",
     decorative: true,
     contain: true,
   },
   fieldWeakening: {
-    src: "/images/field-weakening.svg",
+    src: "/images/magnetic-field-weakening.png",
     alt: "",
     decorative: true,
     contain: true,
