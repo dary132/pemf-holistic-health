@@ -168,7 +168,7 @@ function collectTsxFiles(dir) {
         files.push(path);
       }
     }
-  } catch (e) {
+  } catch {
     // Directory doesn't exist, skip
   }
   return files;
@@ -196,7 +196,7 @@ export function findDecorativeMisuseTailwind() {
           bad.push(`${file}: ${problem}`);
         }
       }
-    } catch (e) {
+    } catch {
       // Skip files that can't be read
     }
   }
