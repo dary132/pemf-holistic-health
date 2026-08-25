@@ -40,7 +40,12 @@ export function SplitBand({
             </div>
           </div>
           <div>
-            {title && <h2 className="text-3xl">{title}</h2>}
+            {title && (
+              <>
+                <h2 className="text-3xl">{title}</h2>
+                <span className="u-accent-rule" />
+              </>
+            )}
             {paragraphs.map((p) => (
               <p key={p} className="mt-4 max-w-[62ch] text-ink-soft">
                 {p}

@@ -33,6 +33,11 @@ export function Section({
             </p>
           )}
           <Heading>{title}</Heading>
+          {/* Emphasis device, shared by every theme. Under the Vital Spectrum
+              theme this bar is what walks the seven wordmark colours down the
+              page: globals.css sets --accent-rule per top-level band and the
+              custom property inherits down to here. */}
+          <span className="u-accent-rule" />
           {intro && <p className="u-lead mt-4 leading-relaxed text-ink-soft">{intro}</p>}
         </div>
         {children && <div className="mt-10">{children}</div>}

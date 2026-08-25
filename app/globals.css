@@ -33,6 +33,22 @@
   --clay-soft: #C9784F;
   --rule: #E2D5BF;
 
+  /* Emphasis. --band is a full-colour section fill and --band-ink is the only
+     text colour allowed on it, so the pair is held to the same 7:1 floor.
+     --accent-rule paints the short bar under a section heading: decorative,
+     never text, so it is exempt from the floor. --wordmark-gradient is the
+     whole `linear-gradient(...)` value rather than a pair of stops, because
+     the themes disagree about how many stops there are — this one runs the
+     full seven-colour spectrum, Ocean and Sunrise run two. */
+  --band: var(--sage);
+  --band-ink: var(--white);
+  --accent-rule: var(--clay);
+  --wordmark-gradient: linear-gradient(
+    100deg,
+    var(--tc-1) 0%, var(--tc-2) 17%, var(--tc-3) 33%, var(--tc-4) 50%,
+    var(--tc-5) 66%, var(--tc-6) 83%, var(--tc-7) 100%
+  );
+
   /* Type scale. rem against the 19-20px root, so the accessibility floor
      carries through every step. */
   --step-display: clamp(2.5rem, 5vw, 3.75rem);
@@ -43,7 +59,85 @@
   --step-wordmark: clamp(4.5rem, 16vw, 9.5rem);
 }
 
+/* ---------------------------------------------------------------------------
+   Alternative themes, for /themes. Each block redefines only the tokens that
+   differ from the default above; everything else inherits, which is why a
+   theme is ~10 lines rather than a second copy of the palette. Because every
+   component styles itself with the semantic Tailwind classes that map to
+   these tokens (bg-cream, text-sage, bg-band, ...), a theme re-skins all ten
+   pages without touching a single component.
+
+   The token names are historical: --sage means "primary dark" and --clay
+   means "accent", whatever hue a given theme assigns them. Renaming them
+   would touch every component for no visual gain.
+
+   scripts/verify-contrast.mjs parses each block below and holds it to the
+   same 7:1 AAA floor as the default. Add a theme here and it is checked
+   automatically; there is no separate list to keep in sync.
+   --------------------------------------------------------------------------- */
+
+/* Deep Ocean — cool grounds, deep teal and indigo, a burnt-coral accent. */
+:root[data-theme="ocean"] {
+  --cream: #F7FAFC;
+  --sand: #E3ECF2;
+  --ink: #10202B;
+  --ink-soft: #1E3542;
+  --sage: #0E4A5A;
+  --clay: #8C2412;
+  --sage-soft: #4E8DA0;
+  --clay-soft: #C4674F;
+  --rule: #CBDCE6;
+  --wordmark-gradient: linear-gradient(100deg, #0E4A5A 0%, #1B3E8F 100%);
+}
+
+/* Sunrise Warmth — peach grounds, deep plum primary, terracotta accent. */
+:root[data-theme="sunrise"] {
+  --cream: #FDF7F0;
+  --sand: #F7E6D5;
+  --ink: #2E2118;
+  --ink-soft: #3F2D20;
+  --sage: #4A1F3D;
+  --clay: #832E0E;
+  --sage-soft: #8E6080;
+  --clay-soft: #C98B4F;
+  --rule: #EBD5BC;
+  --wordmark-gradient: linear-gradient(100deg, #4A1F3D 0%, #832E0E 100%);
+}
+
+/* Vital Spectrum — near-neutral grounds and a near-black primary, so the
+   seven --tc-* stops carry all the colour. They are used structurally here,
+   as band fills and heading rules, never as body text: white on every stop
+   is 8:1 or better, but a stop on --sand is only ~6.5:1, which is why the
+   rotation below sets --band and --accent-rule and leaves --ink alone. */
+:root[data-theme="spectrum"] {
+  --cream: #FBFBFC;
+  --sand: #EDEEF1;
+  --ink: #1A1C20;
+  --ink-soft: #2C3038;
+  --sage: #232634;
+  --clay: #7A1F5C;
+  --sage-soft: #6E7488;
+  --clay-soft: #B85A94;
+  --rule: #DDDFE5;
+}
+
+/* Spectrum's defining move: consecutive top-level bands walk the spectrum, so
+   the rainbow reads as one system down a page instead of a single accent.
+   Custom properties inherit, so setting them on the band element is enough to
+   reach the heading rule nested inside it. nth-child over `main > *` works
+   because Section, SplitBand and Figure each render exactly one element at
+   the top level of a page. */
+:root[data-theme="spectrum"] main > *:nth-child(7n + 1) { --accent-rule: var(--tc-1); --band: var(--tc-1); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 2) { --accent-rule: var(--tc-2); --band: var(--tc-2); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 3) { --accent-rule: var(--tc-3); --band: var(--tc-3); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 4) { --accent-rule: var(--tc-4); --band: var(--tc-4); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 5) { --accent-rule: var(--tc-5); --band: var(--tc-5); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 6) { --accent-rule: var(--tc-6); --band: var(--tc-6); }
+:root[data-theme="spectrum"] main > *:nth-child(7n + 7) { --accent-rule: var(--tc-7); --band: var(--tc-7); }
+
 @theme inline {
+  --color-band: var(--band);
+  --color-band-ink: var(--band-ink);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
   --color-ink: var(--ink);
@@ -145,16 +239,7 @@ html {
 
   @supports (background-clip: text) or (-webkit-background-clip: text) {
     .u-technicolor {
-      background-image: linear-gradient(
-        100deg,
-        var(--tc-1) 0%,
-        var(--tc-2) 17%,
-        var(--tc-3) 33%,
-        var(--tc-4) 50%,
-        var(--tc-5) 66%,
-        var(--tc-6) 83%,
-        var(--tc-7) 100%
-      );
+      background-image: var(--wordmark-gradient);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -170,6 +255,19 @@ html {
       background-image: none;
       color: CanvasText;
     }
+  }
+
+  /* Short bar under a section heading. Decorative, so it is exempt from the
+     7:1 text floor -- but it is the emphasis device the client asked for, and
+     it is the hook Spectrum's per-band rotation hangs on. aria-hidden is not
+     needed: it is an empty element with no accessible name. */
+  .u-accent-rule {
+    display: block;
+    width: 3.5rem;
+    height: 5px;
+    margin-top: 0.75rem;
+    border-radius: 999px;
+    background: var(--accent-rule);
   }
 
   /* Bordered plate. No shadow: crisp edges read as precision, soft shadows on

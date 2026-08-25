@@ -205,12 +205,26 @@ export function scanContent(content, haystack) {
   return problems;
 }
 
+// Internal review tooling, not pages of the client's site. /themes exists so
+// the client can compare palettes before picking one; its prose is our
+// instructions to them ("Pick a palette below..."), never a quote from the
+// document and never a claim about PEMF, so holding it to the document would
+// be the check misfiring rather than working. Deliberately a path list and
+// not a CHROME_ALLOWLIST entry: the allowlist is for short labels, and
+// widening it to admit sentences would blunt it for the whole site.
+//
+// Anything that renders on one of the ten real pages must NOT be added here.
+const NOT_SITE_COPY = new Set([
+  join("app", "themes", "page.tsx"),
+  join("components", "ThemeSwitcher.tsx"),
+]);
+
 function findTsxFiles(dir, out = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     if (entry.name === "node_modules" || entry.name === ".next") continue;
     const full = join(dir, entry.name);
     if (entry.isDirectory()) findTsxFiles(full, out);
-    else if (entry.name.endsWith(".tsx")) out.push(full);
+    else if (entry.name.endsWith(".tsx") && !NOT_SITE_COPY.has(full)) out.push(full);
   }
   return out;
 }
