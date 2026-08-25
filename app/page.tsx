@@ -40,13 +40,20 @@ export default function Home() {
               {p}
             </p>
           ))}
+          {/* The second button is the visit ask, not "What is PEMF?". The hero
+              already tells a visitor what to do -- "Try adding a holistic
+              approach by laying on the PEMF body mat" -- and until now the only
+              way to act on it was to phone. /contact is where the map, the
+              address and the WeChat QR already live, so it is the page that
+              answers "where do I go". /pemf is not orphaned by this: it is in
+              the header nav, the footer nav, and the first Explore card below. */}
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <PhoneButton />
             <Link
-              href="/pemf"
+              href="/contact"
               className="inline-flex min-h-[56px] items-center justify-center rounded-full border-[3px] border-sage px-8 text-lg font-bold text-sage no-underline hover:bg-sand"
             >
-              What is PEMF?
+              Visit Us
             </Link>
           </div>
         </div>

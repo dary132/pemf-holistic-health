@@ -48,15 +48,21 @@ const SITE_FILE = "lib/site.ts";
 // named below -- so a newly added key is checked from the moment it exists,
 // and skipping it takes a deliberate edit to this list.
 //
-// url, officePhoneHref, phoneHref and whatsappHref are `tel:`/`https:`
-// targets, never rendered as text. officePhone, phone and whatsapp are
-// dialable numbers: they ARE rendered, but as data whose formatting is the
-// site's to choose, not document prose to reproduce.
+// url, officePhoneHref, phoneHref, whatsappHref and directionsHref are
+// `tel:`/`https:` targets, never rendered as text. officePhone, phone and
+// whatsapp are dialable numbers: they ARE rendered, but as data whose
+// formatting is the site's to choose, not document prose to reproduce.
+//
+// directionsHref does embed the office address in its query string, but as
+// URL-encoded route data for Google Maps, not as a sentence a visitor reads
+// -- the same address IS checked as copy via the `address` key, which is the
+// one that actually renders.
 const SITE_NON_COPY_KEYS = new Set([
   "url",
   "officePhoneHref",
   "phoneHref",
   "whatsappHref",
+  "directionsHref",
   "officePhone",
   "phone",
   "whatsapp",

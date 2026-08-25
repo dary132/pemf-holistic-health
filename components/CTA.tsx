@@ -7,7 +7,22 @@ import { PhoneButton } from "./PhoneButton";
  *    Call / Text / WhatsApp
  *    Certified PEMF Expert Sharon
  *    for Appointment (949) 891 5572 (client-corrected number; the source
- *    document printed 600 7899, which is retired) */
+ *    document printed 600 7899, which is retired)
+ *
+ *  The visit block beneath it is the same rule: "Office and Home Visits
+ *  Available" is the document's own line (it sets it across two lines,
+ *  "Office and Home" / "Visits Available"; normalise() collapses the newline
+ *  before matching, which is why the joined form passes and why Footer.tsx
+ *  has rendered it joined since it was written). The address comes from
+ *  lib/site.ts, where it is checked as copy. Nothing here is invented.
+ *
+ *  Deliberately NOT deduplicated against the Clinical design comp's proposed
+ *  credential strip, which carries the same three strings under the hero. The
+ *  Sharon line is the client's standard block and appears 7 times in the
+ *  document -- dropping it from the sitewide band to avoid a clash with a comp
+ *  that does not exist yet would be deleting real client copy to serve
+ *  unwritten code. The comp dedupes on its side; see the spec amendment in
+ *  docs/superpowers/specs/2026-08-24-home-design-comps-design.md. */
 /* bg-band, not bg-sage: this is the one full-colour band on every page, so it
    is the strongest emphasis the themes have to play with. Under Vital Spectrum
    it picks up whichever spectrum colour its position in the page assigns it;
@@ -28,6 +43,19 @@ export function CTA() {
           <br />
           for Appointment {site.officePhone}
         </p>
+
+        {/* The visit ask. Full opacity rather than the /90 the line above uses:
+            this is wayfinding an older visitor may be reading off a phone in a
+            car park, so it gets the maximum contrast the palette allows rather
+            than the softer treatment that suits subordinate text. */}
+        <hr className="mx-auto mt-10 w-16 border-0 border-t-2 border-band-ink/30" />
+        <p className="mt-8 text-xl font-bold text-band-ink">Office and Home Visits Available</p>
+        <address className="mt-2 not-italic leading-relaxed text-band-ink">
+          {site.address[0]}
+          <br />
+          {site.address[1]}
+        </address>
+
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <PhoneButton />
           <a
@@ -35,6 +63,17 @@ export function CTA() {
             className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-medium text-band-ink transition hover:bg-band-ink/10"
           >
             WhatsApp {site.whatsapp}
+          </a>
+          {/* Opens the visitor's own maps app already routed to the office, so
+              it leaves the site -- hence target/rel. rel="noreferrer" is not
+              belt-and-braces here: without it the new tab gets window.opener. */}
+          <a
+            href={site.directionsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-medium text-band-ink transition hover:bg-band-ink/10"
+          >
+            Get Directions
           </a>
         </div>
       </div>

@@ -69,6 +69,10 @@ const CHROME_ALLOWLIST = new Set([
   "WhatsApp",
   "Visit Us",
   "Book a Session",
+  // The maps button in components/CTA.tsx. A navigation label, not a claim:
+  // it states nothing about PEMF, the practice or health, and the address it
+  // routes to is checked as copy via `site.address`.
+  "Get Directions",
   // app/layout.tsx's browser-tab title wrapper, `title: { default, template }`.
   // What is left of each after its ${site.name} interpolation is cut out: the
   // location suffix on the default title, and the "%s" placeholder Next fills
