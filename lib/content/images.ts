@@ -14,6 +14,18 @@ export function isSvg(src: string) {
 }
 
 export const images = {
+  // The document's own page-1 banner (word/media/image1). Restored at the
+  // client's request on 2026-08-24 in place of imrsModel3 below: same shoot,
+  // same room, wider framing, and it is the image the document actually
+  // leads with. Note it is only 721px wide — see the Figure on app/page.tsx.
+  heroMatFireplace: {
+    src: "/images/hero-mat-fireplace.png",
+    alt: "A woman lying on the IMRS whole-body mat on a marble floor beside a stone fireplace, with the tablet control unit on the floor beside her",
+  },
+  // The client's own IMRS Model 3 photograph. A tighter, higher-resolution
+  // frame of the same shoot; kept because the client supplied it directly and
+  // it is the fallback if the document's banner proves too soft in print or
+  // on a high-density screen. Not currently placed on any page.
   imrsModel3: {
     src: "/images/imrs-model-3.png",
     alt: "A woman lying on the IMRS prime whole-body mat at home, with the tablet control unit beside her",

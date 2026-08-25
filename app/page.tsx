@@ -27,8 +27,11 @@ export default function Home() {
 
         {/* Deliberately no caption: the document contains no sentence describing
             this photograph, and the FDA-exposure copy rule forbids inventing one.
-            images.imrsModel3.alt already carries the description for screen readers. */}
-        <Figure image={images.imrsModel3} priority />
+            images.heroMatFireplace.alt already carries the description for
+            screen readers. The source file is the document's own 721px banner,
+            so it is upscaled roughly 2x at this width — swap in a higher-
+            resolution original from the client the moment one exists. */}
+        <Figure image={images.heroMatFireplace} priority />
 
         <div className="mx-auto max-w-6xl px-5 pb-16 text-center">
           <h2>{hero.title}</h2>
