@@ -11,10 +11,13 @@ export function Figure({
   image,
   caption,
   tinted = false,
+  priority = false,
 }: {
   image: Img;
   caption?: string;
   tinted?: boolean;
+  /** Set on the one figure that is the page's LCP element (the home hero). */
+  priority?: boolean;
 }) {
   return (
     <div className={tinted ? "bg-sand" : undefined}>
@@ -25,6 +28,7 @@ export function Figure({
             alt={image.decorative ? "" : image.alt}
             aria-hidden={image.decorative || undefined}
             unoptimized={isSvg(image.src)}
+            priority={priority}
             width={1200}
             height={800}
             className="w-full rounded-3xl"

@@ -10,7 +10,10 @@ import type { Teaser } from "./types";
 import { images } from "./images.ts";
 
 export const hero = {
-  eyebrow: "PEMF Pulsed Electro Magnetic Field",
+  // The document's "PEMF Pulsed Electro Magnetic Field" line, split so the
+  // abbreviation can be set as the wordmark and its expansion beneath it.
+  wordmark: "PEMF",
+  expansion: "Pulsed Electro Magnetic Field",
   title: "PEMF for Health and Wellness",
   paragraphs: [
     "Are you still feeling stressed out?   Low energy?    Not sleeping well? Nothing else seems to work anymore? Try adding a holistic approach by laying on the PEMF body mat.",

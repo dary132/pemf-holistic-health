@@ -18,6 +18,15 @@ const TEXT_PAIRS = [
   ["--clay", "--sand"],
   ["--white", "--sage"],
   ["--white", "--clay"],
+  // Technicolor wordmark stops. The gradient only ever fills text on --cream,
+  // so each stop is held to the text floor against cream alone.
+  ["--tc-1", "--cream"],
+  ["--tc-2", "--cream"],
+  ["--tc-3", "--cream"],
+  ["--tc-4", "--cream"],
+  ["--tc-5", "--cream"],
+  ["--tc-6", "--cream"],
+  ["--tc-7", "--cream"],
 ];
 
 // Never legal as a text colour or as a fill behind text.
@@ -40,7 +49,9 @@ export function ratio(a, b) {
 
 export function parseTokens(css) {
   const tokens = {};
-  for (const m of css.matchAll(/(--[a-z-]+):\s*(#[0-9a-fA-F]{6})/g)) tokens[m[1]] = m[2];
+  // Digits are part of a token name here (--tc-1 ... --tc-7), so the character
+  // class has to admit them or the numbered stops parse as missing.
+  for (const m of css.matchAll(/(--[a-z0-9-]+):\s*(#[0-9a-fA-F]{6})/g)) tokens[m[1]] = m[2];
   return tokens;
 }
 

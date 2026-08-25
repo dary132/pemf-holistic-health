@@ -15,6 +15,18 @@
      7.16:1 and --cream at 8.15:1. See task-5-report.md for the full ratios. */
   --clay: #763A1D;
 
+  /* Technicolor wordmark stops. Each one is a *text* colour, so each clears
+     7:1 on --cream on its own — the headline is AAA wherever the gradient
+     happens to land on a given letter. scripts/verify-contrast.mjs holds
+     these to the same floor as every other pair. */
+  --tc-1: #9E1B1B;
+  --tc-2: #7A3D00;
+  --tc-3: #5E4D00;
+  --tc-4: #1F5A2E;
+  --tc-5: #0F5560;
+  --tc-6: #1B3E8F;
+  --tc-7: #6B1F6B;
+
   /* Decorative only. Never a text colour, never a fill behind text.
      scripts/verify-contrast.mjs fails the build if that rule is broken. */
   --sage-soft: #6E8F70;
@@ -28,6 +40,7 @@
   --step-h2: clamp(1.75rem, 3vw, 2.125rem);
   --step-h3: 1.25rem;
   --step-lead: 1.15rem;
+  --step-wordmark: clamp(4.5rem, 16vw, 9.5rem);
 }
 
 @theme inline {
@@ -110,6 +123,54 @@ html {
 @layer utilities {
   .u-display { font-size: var(--step-display); }
   .u-lead { font-size: var(--step-lead); max-width: 60ch; }
+
+  /* The PEMF wordmark: one word, set as large as the viewport allows.
+     `inline-block` is load-bearing, not cosmetic: a block-level h1 stretches
+     to the container width, and the gradient below is painted across that
+     box, so the four letters would only ever sample the middle of the
+     rainbow. Shrink-wrapping the box to the word makes the gradient span
+     exactly P-to-F. */
+  .u-wordmark {
+    display: inline-block;
+    font-size: var(--step-wordmark);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+  }
+
+  /* Rainbow fill. `color` is declared solid first and only replaced inside
+     @supports, so a browser without background-clip:text renders a sage
+     wordmark rather than an invisible one. */
+  .u-technicolor { color: var(--sage); }
+
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .u-technicolor {
+      background-image: linear-gradient(
+        100deg,
+        var(--tc-1) 0%,
+        var(--tc-2) 17%,
+        var(--tc-3) 33%,
+        var(--tc-4) 50%,
+        var(--tc-5) 66%,
+        var(--tc-6) 83%,
+        var(--tc-7) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  /* Windows High Contrast replaces author colours but not author gradients,
+     which would leave transparent text over a dropped background. Opt this
+     one element out and hand the wordmark back to the system colour. */
+  @media (forced-colors: active) {
+    .u-technicolor {
+      forced-color-adjust: none;
+      background-image: none;
+      color: CanvasText;
+    }
+  }
 
   /* Bordered plate. No shadow: crisp edges read as precision, soft shadows on
      cream read as generic. --rule is a border colour only, never text. */
