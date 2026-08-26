@@ -4,8 +4,8 @@ import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { PhoneButton } from "@/components/PhoneButton";
 import { Section } from "@/components/Section";
-import { CredentialStrip } from "@/components/designs/clinical/CredentialStrip";
-import { PlateCard } from "@/components/designs/clinical/PlateCard";
+import { CredentialStrip } from "@/components/CredentialStrip";
+import { PlateCard } from "@/components/PlateCard";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
 
