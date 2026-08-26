@@ -39,6 +39,8 @@ const TEXT_PAIRS = [
   ["--button", "--sand"],
   ["--button-ink", "--button"],
   ["--button-ink", "--button-hover"],
+  // The inverse button on a --band surface: white fill, --button label.
+  ["--button", "--white"],
 ];
 
 // Never legal as a text colour or as a fill behind text.

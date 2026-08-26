@@ -9,7 +9,14 @@
   /* Text — every pair against cream and sand is >= 7:1 (AAA) */
   --ink: #2A2E27;
   --ink-soft: #3A4237;
-  --sage: #2F4A37;
+  /* "Primary dark" -- the name is historical (see the theme note below), and
+     since 2026-08-26 it is magenta rather than green, at the client's request
+     to replace the green areas. It drives every h1/h2/h3, the sticky contact
+     bar at the top of every page, and --band (the closing CTA band and the
+     coloured cap on each PlateCard), so this one line turns all of them.
+     Same #96005A as --button, so the page reads as one accent: 7.97:1 on
+     --cream, 7.01:1 on --sand, 8.59:1 for the white text that sits on it. */
+  --sage: #96005A;
   /* Darkened from the brief's #7E3F20: that value measures 6.54:1 on --sand,
      short of the 7:1 AAA floor this block claims. #763A1D clears --sand at
      7.16:1 and --cream at 8.15:1. See task-5-report.md for the full ratios. */

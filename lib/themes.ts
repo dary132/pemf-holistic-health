@@ -28,9 +28,9 @@ export type Theme = {
 export const themes: Theme[] = [
   {
     id: "",
-    name: "Sage & Clay",
-    tagline: "The site as it stands today: warm cream grounds, forest green, rust.",
-    swatch: ["#FAF6EF", "#2F4A37", "#763A1D"],
+    name: "Magenta & Clay",
+    tagline: "The site as it stands today: warm cream grounds, deep magenta, rust.",
+    swatch: ["#FAF6EF", "#96005A", "#763A1D"],
   },
   {
     id: "ocean",

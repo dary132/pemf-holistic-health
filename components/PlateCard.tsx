@@ -2,16 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Img } from "@/lib/content/types";
 
-/** Bordered card with a coloured top rule. The rule is `bg-band`, so under
- *  Vital Spectrum every card in a row picks up its SECTION's spectrum colour
- *  -- not one colour per card. Spectrum rotates via `main > *:nth-child(7n + N)`
- *  (see globals.css), which colours top-level bands only; these cards sit
- *  nested inside a single <Section>, and the custom properties inherit down
- *  to them from there. That is the intended behaviour: a row of
- *  individually-coloured cards would need seven top-level wrappers and would
- *  break the section rhythm this direction is built on. Under the other three
- *  palettes --band resolves to that palette's primary, exactly as the closing
- *  CTA band does. */
+/** Bordered card with a coloured top rule.
+
+ *  The rule is `bg-button`, matching the magenta border around the card, so
+ *  the two read as one accent. It was `bg-band` until the 2026-08-26 magenta
+ *  change, which left a green cap sitting on a magenta-outlined card.
+ *
+ *  That swap has one consequence worth knowing. Under Vital Spectrum,
+ *  `main > *:nth-child(7n + N)` (see globals.css) rotates --band per top-level
+ *  section, and these cards inherited that through their Section -- so the
+ *  rule used to pick up its section's spectrum colour. Pointing it at --button
+ *  makes it a fixed magenta in every palette instead. That is the intended
+ *  trade: the client asked for magenta bordering, and a rule that changes hue
+ *  per section would defeat it. To restore the rotation, change this back to
+ *  `bg-band` and accept the green cap. */
 export function PlateCard({
   image,
   title,
@@ -25,7 +29,7 @@ export function PlateCard({
 }) {
   return (
     <article className="u-plate overflow-hidden">
-      <span aria-hidden="true" className="block h-1.5 w-full bg-band" />
+      <span aria-hidden="true" className="block h-1.5 w-full bg-button" />
       <div className="p-5">
         <div className="u-plate-media">
           <Image

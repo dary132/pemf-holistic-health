@@ -62,7 +62,7 @@ export function CTA() {
         </address>
 
         <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
-          <PhoneButton />
+          <PhoneButton variant="inverse" />
           <a
             href={site.whatsappHref}
             className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-medium text-band-ink transition hover:bg-band-ink/10"
