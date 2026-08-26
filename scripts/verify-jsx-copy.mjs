@@ -50,14 +50,58 @@ const SOURCES = ["docs/exiga-jasmin-2026.txt", "docs/exiga-jasmin-2026-image-tex
 // exactly as unchecked by verify-copy.mjs (which only sees lib/content/).
 const SCAN_DIRS = ["app", "components"];
 
-// Props whose value is copy a visitor reads, wherever in app/ they appear.
-// `text` is included because a component prop carrying prose is copy
-// regardless of what the prop is called -- PullQuote's `text` prop was
-// missed here originally (app/designs/editorial/page.tsx's pull-quote
-// string is passed as `text=`, not a JSX text child), so this guard
-// reported "All JSX copy verbatim" without ever having inspected that
-// string. The omission was caught by human review, not by the guard.
-const COPY_PROPS = ["caption", "intro", "title", "heading", "body", "eyebrow", "text"];
+// DENY-list, deliberately not an allow-list -- the same inversion, and for the
+// same reason, that verify-copy.mjs already applies to lib/site.ts keys.
+//
+// This used to be `COPY_PROPS`, an allow-list of seven names. That shape is
+// what let PullQuote's `text` prop go unread while this script printed "All
+// JSX copy verbatim": `text` was not on the list, so the string was never
+// inspected, and the green run read as coverage. Adding `text` closed that
+// one instance and left the shape intact -- whatever prop nobody remembers to
+// add next is unchecked in exactly the same way.
+//
+// Now every JSX attribute value is copy unless it is named here, so a new
+// prop is checked from the moment it exists and skipping it takes a
+// deliberate edit to this list. The cost is that this list must carry every
+// genuinely non-prose attribute the codebase uses; the benefit is that
+// forgetting to update it fails loudly instead of silently passing.
+const NON_COPY_PROPS = new Set([
+  // Structural / identity.
+  "className", "class", "id", "key", "ref", "slot", "htmlFor", "role",
+  // Targets and resources -- URLs and file paths, never sentences.
+  "href", "src", "srcSet", "action", "formAction", "target", "rel",
+  "referrerPolicy", "xmlns",
+  // Media and layout geometry.
+  "width", "height", "sizes", "style", "loading", "decoding", "priority",
+  "unoptimized", "fill", "quality", "placeholder", "blurDataURL",
+  // `alt` is an accessibility label, exempted everywhere in this project on
+  // the same reasoning as an <iframe> title (see IFRAME_TAG_PATTERN below).
+  "alt",
+  // Form and interaction state.
+  "type", "name", "value", "checked", "disabled", "hidden", "tabIndex",
+  "placeholder", "autoComplete", "inputMode", "lang", "dir",
+  "suppressHydrationWarning", "dangerouslySetInnerHTML",
+  // This project's own layout/config props. Their values are enum tokens the
+  // components switch on ("h2", "tight", "solid", "contain"), not prose --
+  // holding them to the client document would be the check misfiring. Each is
+  // a deliberate entry: a NEW config prop will fail until it is added here,
+  // which is the deny-list working, not a defect.
+  "titleAs", "panelTitleAs", "rhythm", "variant", "reverse", "tinted",
+  "imageFit", "imageAspect", "aspect", "theme", "n", "range",
+  // The same-length mask maskIframeTitleAttr() leaves behind (see below). It
+  // is never a real attribute name, so naming it here costs no coverage.
+  "xxxxx",
+]);
+
+/** True when a JSX attribute's value should be held to the client document.
+ *  Deny-listed names, `aria-*`/`data-*` and event handlers are excluded; every
+ *  other attribute is copy until someone says otherwise. */
+function isCopyProp(name) {
+  if (NON_COPY_PROPS.has(name)) return false;
+  if (/^(?:aria|data)-/.test(name)) return false;
+  if (/^on[A-Z]/.test(name)) return false;
+  return true;
+}
 
 // Genuine UI chrome: navigation, buttons and structural labels that are not
 // quoted or paraphrased from the client document, and make no health or
@@ -88,10 +132,51 @@ const CHROME_ALLOWLIST = new Set([
   "%s |",
 ]);
 
-const PROP_PATTERN = new RegExp(
-  `\\b(?:${COPY_PROPS.join("|")})\\s*=\\s*(?:"([^"]*)"|'([^']*)'|\\{\\s*"([^"]*)"\\s*\\}|\\{\\s*'([^']*)'\\s*\\}|\\{\\s*\`([^\`]*)\`\\s*\\})`,
-  "g"
-);
+// One attribute inside a JSX opening tag. Only quoted/backticked literals
+// match, so `title={intro.title}` (a reference into already-checked
+// lib/content) and `width={721}` are skipped rather than misread as prose.
+const ATTR_PATTERN =
+  /\b([A-Za-z_][\w:.-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|\{\s*"([^"]*)"\s*\}|\{\s*'([^']*)'\s*\}|\{\s*`([^`]*)`\s*\})/g;
+
+/** Every JSX opening tag in `content`, as {text, offset}.
+ *
+ *  Attributes are matched only INSIDE these spans. Scanning the whole file for
+ *  `name="value"` instead -- the obvious way to write a deny-list -- also
+ *  matches every ordinary TypeScript assignment, so `const base = "inline-flex
+ *  min-h-[56px] items-center"` in PhoneButton.tsx would be checked as client
+ *  copy and fail. Tag scoping is what makes the inversion safe.
+ *
+ *  Quote state and brace depth are tracked so an attribute value containing
+ *  `>` (`className="a > b"`) or a nested element (`icon={<Chevron />}`) does
+ *  not end the tag early. Closing tags are skipped -- they carry no
+ *  attributes. */
+function findJsxTags(content) {
+  const tags = [];
+  for (let i = 0; i < content.length; i++) {
+    if (content[i] !== "<") continue;
+    if (!/[A-Za-z]/.test(content[i + 1] || "")) continue; // `</x`, `<!--`, `a < b`
+    let depth = 0;
+    let quote = null;
+    for (let j = i + 1; j < content.length; j++) {
+      const c = content[j];
+      if (quote) {
+        if (c === "\\") j++;
+        else if (c === quote) quote = null;
+        continue;
+      }
+      if (c === '"' || c === "'" || c === "`") quote = c;
+      else if (c === "{") depth++;
+      else if (c === "}") depth--;
+      else if (c === "<" && depth === 0) break; // unterminated; not a tag
+      else if (c === ">" && depth === 0) {
+        tags.push({ text: content.slice(i, j + 1), offset: i });
+        i = j;
+        break;
+      }
+    }
+  }
+  return tags;
+}
 
 // (c) Route metadata. `export const metadata = pageMetadata({ title, description })`
 // and app/layout.tsx's `metadata` object are plain object literals, not JSX,
@@ -147,32 +232,90 @@ const TEXT_CHILD_PATTERN = /(?<!=)>([^<>{}]*)</g;
 // address that varies with the office location).
 const IFRAME_TAG_PATTERN = /<iframe\b[^>]*>/g;
 
-/** Blank out the word "title" inside every <iframe ...> tag's own markup,
- *  wherever the attribute sits among the tag's other attributes, so
- *  PROP_PATTERN never recognises it as the `title` prop there. Every
- *  character removed is replaced with a same-length run of "x", so no
- *  other offset or line number in the file shifts. The lookbehind/lookahead
- *  require whitespace before and `=` (with optional whitespace) after, so
- *  this cannot also blank an unrelated attribute name that merely contains
- *  the substring "title" (e.g. a hypothetical `data-title`). */
+/** Blank out the whole `title="..."` attribute inside every <iframe ...> tag,
+ *  wherever it sits among the tag's other attributes, so it is never
+ *  recognised as a copy-bearing attribute there. Every character removed is
+ *  replaced with a same-length run of "x", so no other offset or line number
+ *  in the file shifts.
+ *
+ *  Under the old allow-list it was enough to blank just the attribute NAME,
+ *  because an unrecognised name was ignored by default. With the deny-list
+ *  that is no longer true -- an unrecognised name is now CHECKED -- so the
+ *  value has to go too, or masking the name would hand the iframe's
+ *  accessibility label straight to the checker. The lookbehind requires
+ *  whitespace before `title`, so this cannot blank an unrelated attribute
+ *  that merely contains the substring (e.g. a hypothetical `data-title`). */
 function maskIframeTitleAttr(content) {
   return content.replace(IFRAME_TAG_PATTERN, (tag) =>
-    tag.replace(/(?<=\s)title(?=\s*=)/g, "xxxxx")
+    tag.replace(
+      /(?<=\s)title\s*=\s*(?:"[^"]*"|'[^']*'|\{[^}]*\})/g,
+      (attr) => "x".repeat(attr.length)
+    )
   );
+}
+
+/** Replace every comment body with spaces, preserving length and newlines.
+ *
+ *  Comments are not markup, but the JSX-text and attribute extractors cannot
+ *  tell the difference: a bare `>` in a prose comment (a CSS selector, an
+ *  arrow drawn in ASCII) opens a text-child match, and a bracketed tag name
+ *  inside one reads as a real element. Both bit this project repeatedly, and
+ *  both times the mitigation was to reword the comment -- which is why
+ *  components/designs/clinical/PlateCard.tsx carries more lines about how to
+ *  word a comment than about what the component does. Stripping first fixes
+ *  the cause instead.
+ *
+ *  Offsets are preserved character-for-character so reported line numbers
+ *  still point at the real source line. String and template literals are
+ *  tracked so a `//` inside a URL ("https://...") is not mistaken for a
+ *  comment. Regex literals are NOT tracked -- a `/` outside a string that is
+ *  followed by `/` or `*` is treated as a comment opener. These files contain
+ *  no regex literals; if one is ever added here, this is the place to look. */
+function stripComments(content) {
+  let out = "";
+  let quote = null;
+  for (let i = 0; i < content.length; i++) {
+    const c = content[i];
+    const next = content[i + 1];
+    if (quote) {
+      out += c;
+      if (c === "\\") { out += next ?? ""; i++; }
+      else if (c === quote) quote = null;
+      continue;
+    }
+    if (c === '"' || c === "'" || c === "`") { quote = c; out += c; continue; }
+    if (c === "/" && next === "/") {
+      while (i < content.length && content[i] !== "\n") { out += " "; i++; }
+      out += content[i] === "\n" ? "\n" : "";
+      continue;
+    }
+    if (c === "/" && next === "*") {
+      const end = content.indexOf("*/", i + 2);
+      const stop = end === -1 ? content.length : end + 2;
+      for (; i < stop; i++) out += content[i] === "\n" ? "\n" : " ";
+      i--;
+      continue;
+    }
+    out += c;
+  }
+  return out;
 }
 
 /** Every checkable {text, offset} candidate embedded directly in one file's markup. */
 export function extractCandidates(content) {
   const out = [];
-  content = maskIframeTitleAttr(content);
+  content = maskIframeTitleAttr(stripComments(content));
 
-  for (const m of content.matchAll(PROP_PATTERN)) {
-    const raw = m[1] ?? m[2] ?? m[3] ?? m[4] ?? m[5];
-    if (raw == null) continue;
-    // Cut out ${expression} interpolations; check each static fragment on its own.
-    for (const frag of raw.split(/\$\{[^}]*\}/)) {
-      const trimmed = frag.trim();
-      if (trimmed) out.push({ text: trimmed, offset: m.index });
+  for (const tag of findJsxTags(content)) {
+    for (const m of tag.text.matchAll(ATTR_PATTERN)) {
+      if (!isCopyProp(m[1])) continue;
+      const raw = m[2] ?? m[3] ?? m[4] ?? m[5] ?? m[6];
+      if (raw == null) continue;
+      // Cut out ${expression} interpolations; check each static fragment on its own.
+      for (const frag of raw.split(/\$\{[^}]*\}/)) {
+        const trimmed = frag.trim();
+        if (trimmed) out.push({ text: trimmed, offset: tag.offset + m.index });
+      }
     }
   }
 
@@ -346,6 +489,59 @@ function selfTest(haystack) {
       "does not misread a reference into already-checked lib/content as metadata copy",
       "export const metadata = pageMetadata({ title: intro.title, description: intro.body, path: '/pemf' });",
       true, // lib/content values are verify-copy.mjs's job, and it does check them
+    ],
+    // The deny-list, exercised as a unit. These are the cases the old
+    // allow-list could not have passed: `blurb`, `label` and `summary` were
+    // never in COPY_PROPS, so an invented claim in any of them was invisible.
+    [
+      "checks a prop nobody allow-listed (the deny-list's whole point)",
+      '<Card blurb="This PEMF mat cures every ailment instantly." />',
+      false,
+    ],
+    [
+      "checks a second unlisted prop -- the point is the default, not the name",
+      '<Panel summary="This device eliminates chronic pain in six weeks, guaranteed." />',
+      false,
+    ],
+    [
+      "skips a deny-listed structural attribute",
+      '<div className="mt-8 flex flex-wrap justify-center gap-4" />',
+      true,
+    ],
+    [
+      "skips aria-* and event handlers",
+      '<button aria-label="Close the navigation menu" onClick={handleClose} />',
+      true,
+    ],
+    [
+      "skips a project config prop whose value is an enum token, not prose",
+      '<Section titleAs="h2" rhythm="tight" imageFit="contain" />',
+      true,
+    ],
+    [
+      "does not check an ordinary TypeScript assignment as if it were a JSX prop",
+      'const base = "inline-flex min-h-[56px] items-center justify-center rounded-full";',
+      true, // tag scoping, not luck: a whole-file `name="value"` scan fails here
+    ],
+    [
+      "does not read a bare `>` inside a line comment as a JSX text child",
+      "// the plate sits > 700px wide at this breakpoint\nconst x = 1;\n<p>Try adding a holistic approach by laying on the PEMF body mat.</p>",
+      true,
+    ],
+    [
+      "does not read a bracketed tag name inside a block comment as markup",
+      "/* renders a <Figure> beneath the hero band */\n<p>Try adding a holistic approach by laying on the PEMF body mat.</p>",
+      true,
+    ],
+    [
+      "does not mistake a URL's // for a comment opener",
+      '<a href="https://maps.example/embed">Get Directions</a>',
+      true,
+    ],
+    [
+      "still rejects invented copy that sits after a stripped comment",
+      "/* a harmless note */\n<p>This device eliminates chronic pain in six weeks, guaranteed.</p>",
+      false,
     ],
     [
       "does not misread an arrow function's `=>` as the start of a JSX text child (regression test, see TEXT_CHILD_PATTERN comment)",
