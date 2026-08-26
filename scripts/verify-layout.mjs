@@ -16,7 +16,7 @@ import { routes } from "../lib/routes.ts";
 // compositions invite and exactly what a client reviewing a layout will not
 // notice. Each comp task appends its own route here as it is built; deleting
 // a losing direction means deleting its line.
-export const COMP_ROUTES = ["/designs"];
+export const COMP_ROUTES = ["/designs", "/designs/editorial"];
 
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 
