@@ -51,7 +51,13 @@ const SOURCES = ["docs/exiga-jasmin-2026.txt", "docs/exiga-jasmin-2026-image-tex
 const SCAN_DIRS = ["app", "components"];
 
 // Props whose value is copy a visitor reads, wherever in app/ they appear.
-const COPY_PROPS = ["caption", "intro", "title", "heading", "body", "eyebrow"];
+// `text` is included because a component prop carrying prose is copy
+// regardless of what the prop is called -- PullQuote's `text` prop was
+// missed here originally (app/designs/editorial/page.tsx's pull-quote
+// string is passed as `text=`, not a JSX text child), so this guard
+// reported "All JSX copy verbatim" without ever having inspected that
+// string. The omission was caught by human review, not by the guard.
+const COPY_PROPS = ["caption", "intro", "title", "heading", "body", "eyebrow", "text"];
 
 // Genuine UI chrome: navigation, buttons and structural labels that are not
 // quoted or paraphrased from the client document, and make no health or

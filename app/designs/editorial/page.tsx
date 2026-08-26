@@ -44,7 +44,7 @@ export default function Editorial() {
             </div>
           </div>
           {/* Bleeds right: no max-width, no rounded right corner. */}
-          <div className="lg:-mr-0">
+          <div>
             <Image
               src={images.heroMatFireplace.src}
               alt={images.heroMatFireplace.alt}
