@@ -41,15 +41,25 @@ export default function Photographic() {
       </section>
 
       {/* Alternating full-bleed image band with the text block overlapping up
-          into it. The negative margin is the direction's signature. */}
+          into it. The negative margin is the direction's signature.
+          holisticFlower is a square (640x640) diagram with labelled points,
+          and images.holisticFlower.contain === true: at this band's ~4.3:1
+          aspect, object-cover would zoom in ~2.25x and slice labels mid-word.
+          object-contain honours the flag and keeps the band full-bleed; the
+          bg-sand fill on the band itself (not the whole section, so the
+          cream/sand alternation with the section below is unaffected) is the
+          same "sensible background behind a contained image" treatment
+          u-plate-media already uses for teaser cards below. */}
       <section>
-        <Image
-          src={images.holisticFlower.src}
-          alt={images.holisticFlower.alt}
-          width={1600}
-          height={700}
-          className="h-[22rem] w-full object-cover"
-        />
+        <div className="h-[22rem] w-full bg-sand">
+          <Image
+            src={images.holisticFlower.src}
+            alt={images.holisticFlower.alt}
+            width={640}
+            height={640}
+            className="h-full w-full object-contain"
+          />
+        </div>
         <div className="mx-auto -mt-20 max-w-4xl px-5">
           <div className="u-plate p-8 sm:p-12">
             <h2>{holisticApproach.title}</h2>
