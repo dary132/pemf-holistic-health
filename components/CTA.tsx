@@ -49,14 +49,19 @@ export function CTA() {
             car park, so it gets the maximum contrast the palette allows rather
             than the softer treatment that suits subordinate text. */}
         <hr className="mx-auto mt-10 w-16 border-0 border-t-2 border-band-ink/30" />
-        <p className="mt-8 text-xl font-bold text-band-ink">Office and Home Visits Available</p>
+        {/* mx-auto is load-bearing, not decoration: globals.css sets `p { max-width: 65ch }`,
+            so without auto margins this block box hangs at the container's left edge and
+            text-center only centres the text *inside* it -- the line rendered 200px left of
+            every other element in the band. The paragraph above escapes it by having its
+            own mx-auto; this one had none. */}
+        <p className="mx-auto mt-10 text-xl font-bold text-band-ink">Office and Home Visits Available</p>
         <address className="mt-2 not-italic leading-relaxed text-band-ink">
           {site.address[0]}
           <br />
           {site.address[1]}
         </address>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
           <PhoneButton />
           <a
             href={site.whatsappHref}
