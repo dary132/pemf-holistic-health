@@ -29,7 +29,7 @@ export function SplitBand({
     <div className={tinted ? "bg-sand" : undefined}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className={reverse ? "lg:order-2" : undefined}>
+          <div data-reveal className={reverse ? "lg:order-2" : undefined}>
             <div className="u-plate p-3">
               <Image
                 src={image.src}
@@ -46,7 +46,7 @@ export function SplitBand({
               />
             </div>
           </div>
-          <div>
+          <div data-reveal>
             {title && (
               <>
                 <h2 className="text-3xl">{title}</h2>

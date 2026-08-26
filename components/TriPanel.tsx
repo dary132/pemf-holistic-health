@@ -35,7 +35,7 @@ export function PanelGrid({
             // Index key is safe: panels is a static list, never reordered or
             // filtered, and only changes when the page's content module changes.
             // Keying on title/image would collide if two panels shared a title.
-            <div key={i} className="u-plate flex flex-col p-6">
+            <div key={i} data-reveal className="u-plate flex flex-col p-6">
               {panel.image && (
                 <div className="u-plate-media mb-5">
                   <Image

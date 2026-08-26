@@ -26,7 +26,7 @@ export function Section({
   return (
     <section id={id} className={tinted ? "bg-sand" : undefined}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
-        <div className="max-w-3xl">
+        <div data-reveal className="max-w-3xl">
           {eyebrow && (
             <p className="mb-2 text-sm font-medium uppercase tracking-widest text-clay">
               {eyebrow}

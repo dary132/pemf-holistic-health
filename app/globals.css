@@ -326,4 +326,23 @@ section[id] { scroll-margin-top: 7rem; }
 /* Transitions are opt-in, never imposed on someone who asked for stillness. */
 @media (prefers-reduced-motion: no-preference) {
   a, button { transition: background-color 150ms, color 150ms; }
+
+  /* Scroll reveal, opt-in twice over.
+     The hiding rule needs `.js-reveal` on <html>, which only the pre-paint
+     script in app/layout.tsx adds -- so no JavaScript, a blocked bundle or a
+     crawler all get the fully visible page, and the copy never depends on a
+     script to exist. Being inside this media query is the second opt-in:
+     someone who asked their system for stillness never has content hidden
+     from them at all, rather than being shown it after an animation they did
+     not want. The transition is declared on the revealed state only, so the
+     initial hidden state is not itself animated on first paint. */
+  .js-reveal [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  .js-reveal [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
 }

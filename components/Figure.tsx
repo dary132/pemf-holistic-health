@@ -22,7 +22,10 @@ export function Figure({
   return (
     <div className={tinted ? "bg-sand" : undefined}>
       <div className="mx-auto max-w-6xl px-5 py-14">
-        <figure>
+        {/* The priority Figure is the page's LCP element. Starting it at
+            opacity 0 would push Largest Contentful Paint out by the length of
+            the fade, so it is never marked for reveal. */}
+        <figure data-reveal={priority ? undefined : ""}>
           {/* Bordered plate, matching PanelGrid and SplitBand since the
               2026-08-26 Clinical roll-out. The image keeps its own smaller
               radius inside the plate, exactly as the home hero does. */}

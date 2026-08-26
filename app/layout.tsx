@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lora, Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -44,6 +45,15 @@ export const metadata: Metadata = {
  * write) in some privacy modes, and an uncaught throw here would happen before
  * anything else on the page.
  *
+ * It also arms the scroll reveal. Adding `.js-reveal` here rather than in the
+ * React component is what avoids a flash: the hiding rule is in effect at
+ * first paint, so content never appears and then jumps out again. The failsafe
+ * timer is the other half of that bargain -- if the bundle never executes, the
+ * class comes off by itself and the page is fully readable a few seconds in
+ * rather than permanently blank below the hero. components/RevealOnScroll.tsx
+ * clears the timer to say it arrived. Both statements sit OUTSIDE the try above
+ * on purpose: a localStorage throw must not take the reveal down with it.
+ *
  * `?theme=ocean` wins over the stored value and then becomes the stored value,
  * so a single link both shows a theme and makes it stick while the recipient
  * clicks around. `?theme=` with no value is how you get back to the default.
@@ -56,7 +66,7 @@ export const metadata: Metadata = {
  * attacker-controllable -- are pattern-checked and then written to a data
  * attribute rather than to markup, so the worst a crafted link can do is name
  * a theme that has no stylesheet block and change nothing. */
-const NO_FLASH_THEME = `try{var p=new URLSearchParams(location.search).get("theme");var t=p!==null?p:localStorage.getItem("pemf-theme");if(p!==null)localStorage.setItem("pemf-theme",p);if(t&&/^[a-z-]{1,12}$/.test(t))document.documentElement.dataset.theme=t}catch(e){}`;
+const NO_FLASH_THEME = `try{var p=new URLSearchParams(location.search).get("theme");var t=p!==null?p:localStorage.getItem("pemf-theme");if(p!==null)localStorage.setItem("pemf-theme",p);if(t&&/^[a-z-]{1,12}$/.test(t))document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js-reveal");window.__revealFailsafe=setTimeout(function(){document.documentElement.classList.remove("js-reveal")},4000);`;
 
 /* suppressHydrationWarning below is required and is not papering over a bug:
    NO_FLASH_THEME deliberately sets data-theme on the root element before React
@@ -90,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <Header />
         {children}
+        <RevealOnScroll />
         <Footer />
         <JsonLd data={[localBusinessSchema(), websiteSchema()]} />
       </body>

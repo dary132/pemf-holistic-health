@@ -83,7 +83,7 @@ export function Card({
  *  the numbers and strand a trailing colon mid-card. */
 export function FrequencyCard({ name, body }: { range: string; name: string; body: string }) {
   return (
-    <div className="u-plate p-5">
+    <div data-reveal className="u-plate p-5">
       <p className="font-medium text-sage">{name}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink-soft">{body}</p>
     </div>

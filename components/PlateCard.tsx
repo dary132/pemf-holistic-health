@@ -28,7 +28,7 @@ export function PlateCard({
   href: string;
 }) {
   return (
-    <article className="u-plate overflow-hidden">
+    <article data-reveal className="u-plate overflow-hidden">
       <span aria-hidden="true" className="block h-1.5 w-full bg-button" />
       <div className="p-5">
         <div className="u-plate-media">
