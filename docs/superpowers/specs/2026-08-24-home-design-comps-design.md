@@ -1,7 +1,8 @@
 # Design: three home-page design comps
 
 **Date:** 2026-08-24
-**Status:** proposed, awaiting review
+**Status:** approved 2026-08-25. Amended the same day -- see "Amendment" below.
+**Amended:** 2026-08-25, after the sitewide visit CTA shipped (`22f3bfa`).
 **Scope:** three alternative home-page compositions, each on its own route under
 `/designs`. The ten real routes are not touched. Palettes, copy, typefaces and the
 content layer stay exactly as they are.
@@ -30,6 +31,12 @@ Stated so it does not get "improved" away while chasing a new look:
 - **The content layer.** Every comp imports the same `lib/content/home.ts`. A copy fix lands
   in one file and reaches all three.
 - The four palettes and the `/themes` picker, which keep working on top of every comp.
+- **The shared closing `<CTA>` band, which every comp inherits by importing it.** Since
+  `22f3bfa` it carries more than a phone number: the client's "Office and Home Visits
+  Available" line, the Lake Forest address, and a Get Directions button routing to the office.
+  No comp reimplements this. A comp that wants a different closing treatment changes
+  `components/CTA.tsx`, which changes it for all three and for the ten real routes -- so it
+  does not, unless the change is one the live site should have too.
 
 ## Constraints
 
@@ -46,8 +53,9 @@ present, and therefore usable:
 - "Office and Home Visits Available" — the document sets this on two lines, "Office and
   Home" / "Visits Available". The joined single-line form was run through `checkString`
   against the real haystack and is accepted, because `normalise()` collapses the newline to a
-  space before matching. Recorded here so the credential strip is not redesigned around a
-  constraint that does not exist.
+  space before matching. No longer hypothetical: `components/CTA.tsx` has rendered the joined
+  form on every page since `22f3bfa` and `verify:jsx` passes it unexempted, so the Clinical
+  credential strip can use it with the question already settled in code.
 - "PEMF is a holistic approach to promote a state of total wellness." (accepted)
 - "Air, food, water, sunshine and Earth's Magnetic Field Energy are natural essentials for
   human health."
@@ -114,11 +122,27 @@ Recommended palette: Sage & Clay (the default).
 Recommended palette: Deep Ocean.
 
 - **Hero:** two columns. Wordmark, expansion, opening question and both calls to action on the
-  left; the photograph in a bordered `u-plate` on the right.
+  left; the photograph in a bordered `u-plate` on the right. "Both calls to action" means the
+  pair the live hero carries as of `22f3bfa` — `Call (949) 891 5572` and `Visit Us` →
+  `/contact` — not the older `Call` / `What is PEMF?` pair the spec was drafted against. Same
+  for the other two comps: every one of them opens with those two buttons, so the comparison
+  is between layouts rather than between calls to action.
 - **Credential strip:** immediately beneath the hero, a bordered row — "Certified PEMF Expert
-  Sharon" · "Office and Home Visits Available" · the Lake Forest address. All three strings are
-  verified present in the document. This is the direction's whole argument: it front-loads the
-  reasons to trust the practice.
+  Sharon" · "Office and Home Visits Available". Both strings are verified present in the
+  document. This is the direction's whole argument: it front-loads the reasons to trust the
+  practice.
+  **The address is deliberately NOT in this strip**, though the spec originally put it there.
+  It already appears three times on every page — the sticky header bar, the closing `<CTA>`
+  band (since `22f3bfa`) and the footer — and a fourth instance one screen below the third
+  buys nothing. The two strings that remain are trust claims rather than wayfinding, and they
+  are the ones that earn their place above the fold; the address is wayfinding, and wayfinding
+  belongs where someone acts on it, next to the Get Directions button at the foot.
+  The Sharon line does still appear twice on this comp (here and in the shared band). That is
+  accepted, not overlooked: the two instances sit at opposite ends of a long page doing
+  different jobs — a credential when the visitor is deciding whether to keep reading, a
+  signature when they are deciding whether to call. It is the same deliberate-repetition call
+  as Editorial's pull quote, and like that one it should be pointed out to the client rather
+  than left for them to notice.
 - **Sections:** bordered plates on a tinted ground, consistent rhythm, no full-bleed anything.
 - **Cards:** three-column, bordered, each with a coloured top rule. Under Vital Spectrum those
   rules walk the seven wordmark colours.
@@ -200,3 +224,35 @@ client has one entry point rather than two.
 
 Rolling the winner across the other nine routes. That is the next piece of work and gets its
 own spec once a direction is chosen.
+
+## Amendment — 2026-08-25
+
+The spec was written on 2026-08-24 and approved on 2026-08-25. Between those two dates the
+sitewide call to action changed underneath it (`22f3bfa`), so three things above were edited
+rather than left to be discovered during implementation.
+
+**What changed on the live site.** Every page closed with a phone number and nothing else. The
+closing `<CTA>` band now also carries "Office and Home Visits Available", the Lake Forest
+address and a Get Directions button; the home hero's second button became `Visit Us` →
+`/contact` in place of `What is PEMF?`; and `Disclaimer` moved off the colour band onto
+`--sand`, so the CTA is now genuinely the one full-colour band per page rather than the first
+half of a two-part slab.
+
+**Why that reaches the comps.** All three import the same `<CTA>`, so all three inherit it.
+The Clinical direction's credential strip was specified with the same three strings the band
+now carries, which would have printed them twice a screen apart. The strip keeps the two that
+are trust claims and drops the address, which is wayfinding and already appears three times
+per page. Recorded in the Clinical section above with the reasoning, so it does not get
+"fixed" back later by someone reading only the original bullet.
+
+**One thing that did not change.** The Sharon line stays in the shared band even though
+Clinical repeats it. It is the client's own block, appearing seven times in the source
+document. Deleting live client copy to tidy an unbuilt comp is the wrong way round; the comp
+accommodates the band, not the reverse.
+
+**A palette finding worth recording here, because it is the reason this spec exists.** The
+four palettes were measured on 2026-08-25: the `--cream` page ground varies by at most 13/255
+across all four, and Sunrise Warmth differs from the default by 3/255. Only the header bar and
+the wordmark visibly change. The client could not reasonably be asked to choose between them,
+which is precisely the gap these comps fill — and it is why "show them another palette" must
+not be offered as a substitute if a comp proves expensive.
