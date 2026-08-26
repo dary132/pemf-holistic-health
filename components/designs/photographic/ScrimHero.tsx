@@ -51,8 +51,16 @@ export function ScrimHero({
           letter really could land there. That measured L=0.0952 against
           white gives 7.23:1 at 80% scrim (60% measured only 3.95:1, 70%
           measured 5.36:1, 75% measured 6.23:1 -- all short of AAA). 80% is
-          the final figure. See Task 4's report for the full measurement
-          table across all four percentages tried. */}
+          the final figure.
+          object-cover crops this photo differently at different widths, so
+          the 1440 measurement alone did not prove AAA everywhere -- a fix
+          round re-measured the same way (text set to opacity-0, brightest
+          pixel found inside the actual rendered wordmark+subtitle bounding
+          box, default palette) at 320, 390, 768, 1024, 1440, and 1920 wide.
+          Every width cleared 7:1 at 80% already: 390 wide measured 7.65:1,
+          768 wide 7.29:1, 1024 wide 7.23:1, 1440 wide 7.23:1 (the binding
+          case), 1920 wide 7.25:1, 320 wide 7.45:1. No change to the 80%
+          figure was needed. See Task 4's report for the full table. */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
