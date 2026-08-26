@@ -2,7 +2,14 @@ import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 
-/** Two-column image and text band. Stacks to one column below 900px. */
+/** Two-column image and text band. Stacks to one column below 900px.
+ *
+ *  The image sits in a `u-plate` -- the bordered, 12px-radius, shadowless
+ *  plate the Clinical direction is built on -- rather than the soft
+ *  `rounded-3xl ... shadow-sm` card this used before the 2026-08-26 roll-out.
+ *  PanelGrid already used u-plate, so aligning this one (and Figure, and
+ *  FrequencyCard) is what makes the nine inner pages match the home page
+ *  instead of mixing two card languages on the same site. */
 export function SplitBand({
   image,
   title,
@@ -23,7 +30,7 @@ export function SplitBand({
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className={reverse ? "lg:order-2" : undefined}>
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
+            <div className="u-plate p-3">
               <Image
                 src={image.src}
                 alt={image.decorative ? "" : image.alt}
@@ -34,7 +41,7 @@ export function SplitBand({
                 className={
                   image.contain
                     ? "mx-auto h-auto w-full object-contain"
-                    : "h-auto w-full rounded-2xl object-cover"
+                    : "h-auto w-full rounded-lg object-cover"
                 }
               />
             </div>

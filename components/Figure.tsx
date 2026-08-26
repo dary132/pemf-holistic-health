@@ -23,16 +23,21 @@ export function Figure({
     <div className={tinted ? "bg-sand" : undefined}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         <figure>
-          <Image
-            src={image.src}
-            alt={image.decorative ? "" : image.alt}
-            aria-hidden={image.decorative || undefined}
-            unoptimized={isSvg(image.src)}
-            priority={priority}
-            width={1200}
-            height={800}
-            className="w-full rounded-3xl"
-          />
+          {/* Bordered plate, matching PanelGrid and SplitBand since the
+              2026-08-26 Clinical roll-out. The image keeps its own smaller
+              radius inside the plate, exactly as the home hero does. */}
+          <div className="u-plate p-3">
+            <Image
+              src={image.src}
+              alt={image.decorative ? "" : image.alt}
+              aria-hidden={image.decorative || undefined}
+              unoptimized={isSvg(image.src)}
+              priority={priority}
+              width={1200}
+              height={800}
+              className="w-full rounded-lg"
+            />
+          </div>
           {caption && (
             <figcaption className="mt-4 max-w-[62ch] text-lg text-ink-soft">
               {caption}
