@@ -503,9 +503,14 @@ import Link from "next/link";
 import type { Img } from "@/lib/content/types";
 
 /** Bordered card with a coloured top rule. The rule is `bg-band`, so under
- *  Vital Spectrum each card inherits whichever spectrum colour its position
- *  assigns -- the same mechanism the section headings use. Under the other
- *  three palettes --band resolves to that palette's primary. */
+ *  Vital Spectrum every card in a row picks up its SECTION's spectrum colour
+ *  -- not one colour per card. Spectrum rotates on `main > *:nth-child(7n+N)`,
+ *  which colours top-level bands, and these cards are nested inside one
+ *  <Section>; custom properties inherit down to them from there. That is the
+ *  intended behaviour: a row of individually-coloured cards would need seven
+ *  top-level wrappers and would break the section rhythm this direction is
+ *  built on. Under the other three palettes --band resolves to that palette's
+ *  primary, exactly as the closing CTA band does. */
 export function PlateCard({
   image,
   title,
@@ -686,7 +691,7 @@ for t in "" ocean sunrise spectrum; do
 done
 ```
 
-Check specifically: under Vital Spectrum the card top rules walk different colours rather than all matching; the credential strip stacks to one column at 390px without the divider pips stranding.
+Check specifically: under Vital Spectrum, **all cards in a row share their section's colour, and that colour differs from the sections above and below** — the cards do NOT each get their own spectrum stop. Spectrum's rotation is `main > *:nth-child(7n + N)`, so it colours top-level bands; every PlateCard sits inside one `<Section>` and therefore inherits that one section's `--band`. A row of seven differently-coloured cards would need seven top-level wrappers and would destroy the section rhythm this direction is built on. Also check the credential strip stacks to one column at 390px without the divider pips stranding.
 
 - [ ] **Step 8: Commit**
 
