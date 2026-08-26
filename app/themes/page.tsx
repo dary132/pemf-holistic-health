@@ -31,6 +31,10 @@ export default function Themes() {
           <div className="mt-10">
             <ThemeSwitcher />
           </div>
+          <p className="u-lead mt-10 text-ink-soft">
+            Looking for different page layouts rather than different colours?{" "}
+            <Link href="/designs">Design directions</Link> has three.
+          </p>
 
           <h2 className="mt-14">Browse the site in this theme</h2>
           <span className="u-accent-rule" />
