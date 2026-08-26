@@ -9,6 +9,15 @@
 // Requires `npm run dev` to be running, same as verify-site.mjs.
 import { routes } from "../lib/routes.ts";
 
+// Comp routes are deliberately absent from lib/routes.ts -- they are review
+// tooling, not pages of the client's site, so they must stay out of the nav
+// and the sitemap. That also put them outside this guard's reach, which is
+// the gap this list closes: a comp with two <h1>s is exactly the error these
+// compositions invite and exactly what a client reviewing a layout will not
+// notice. Each comp task appends its own route here as it is built; deleting
+// a losing direction means deleting its line.
+export const COMP_ROUTES = ["/designs"];
+
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 
 /** Heading levels in document order, script payloads removed.
@@ -37,7 +46,7 @@ async function main() {
   if (process.argv.includes("--self-test")) return selfTest();
 
   let failures = 0;
-  for (const route of routes) {
+  for (const route of [...routes, ...COMP_ROUTES.map((path) => ({ path }))]) {
     const res = await fetch(`${BASE}${route.path}`);
     if (!res.ok) {
       console.error(`FAIL ${route.path}: HTTP ${res.status}`);

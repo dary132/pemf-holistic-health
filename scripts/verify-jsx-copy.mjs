@@ -217,10 +217,17 @@ export function scanContent(content, haystack) {
 // not a CHROME_ALLOWLIST entry: the allowlist is for short labels, and
 // widening it to admit sentences would blunt it for the whole site.
 //
+// app/designs/page.tsx is the same case as /themes: it names and describes
+// three design directions ("Editorial", "Clinical", ...) which are our
+// vocabulary for an internal review, never the client's copy. The three comp
+// PAGES are deliberately NOT listed -- they render the document's own words
+// and must stay checked, which is most of the point of comping them.
+//
 // Anything that renders on one of the ten real pages must NOT be added here.
 const NOT_SITE_COPY = new Set([
   join("app", "themes", "page.tsx"),
   join("components", "ThemeSwitcher.tsx"),
+  join("app", "designs", "page.tsx"),
 ]);
 
 function findTsxFiles(dir, out = []) {
