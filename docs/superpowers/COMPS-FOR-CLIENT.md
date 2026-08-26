@@ -5,9 +5,8 @@ words. All three use the exact same copy as the live site — every sentence is 
 the wording you already approved, because of the FDA-exposure language on the site. So
 this is a comparison of layout and pacing only, never a copy test.
 
-Each link opens the comp already set to a suggested colour palette, but any of the three
-palettes pickers at `/themes` can re-skin any comp — palette and layout are independent
-choices.
+Each link opens the comp already set to a suggested colour palette, but the palette picker
+at `/themes` can re-skin any comp — palette and layout are independent choices.
 
 ## The links
 
