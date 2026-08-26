@@ -4,6 +4,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
 import { routes } from "../lib/routes.ts";
+import { COMP_ROUTES } from "./verify-layout.mjs";
 
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 const OUT = ".screenshots";
@@ -17,7 +18,13 @@ const VIEWPORTS = [
 
 mkdirSync(OUT, { recursive: true });
 
-for (const route of routes) {
+// The /designs comps are review tooling, not client routes, so they are not
+// in lib/routes.ts -- but they are exactly the pages "verify visually" most
+// needs to catch, and verify-layout.mjs already carries the route list, so
+// reuse it here rather than duplicating it.
+const allRoutes = [...routes, ...COMP_ROUTES.map((path) => ({ path }))];
+
+for (const route of allRoutes) {
   const slug = route.path === "/" ? "home" : route.path.replace(/\//g, "");
   for (const vp of VIEWPORTS) {
     const file = `${OUT}/${slug}-${vp.name}.png`;
@@ -37,4 +44,4 @@ for (const route of routes) {
     console.log(`  ${file}`);
   }
 }
-console.log(`\n${routes.length * VIEWPORTS.length} screenshots in ${OUT}/`);
+console.log(`\n${allRoutes.length * VIEWPORTS.length} screenshots in ${OUT}/`);
