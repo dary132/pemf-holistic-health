@@ -67,7 +67,7 @@ export function Card({
         {cta && (
           <a
             href={cta.href}
-            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-clay px-6 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-sage"
+            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-button px-6 py-2.5 text-center text-sm font-medium text-button-ink transition-colors hover:bg-button-hover"
           >
             {cta.label}
           </a>

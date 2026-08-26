@@ -30,6 +30,15 @@ const TEXT_PAIRS = [
   ["--tc-7", "--cream"],
   // The one full-colour section band and the only text colour allowed on it.
   ["--band-ink", "--band"],
+  // Buttons. --button is both a text colour (the outline variant's border and
+  // label, on --cream and on --sand) and a fill behind white text (the solid
+  // variant), so all three directions are held to the floor. Registered here
+  // rather than trusted: --button on --sand measures 7.01:1, one hundredth
+  // above the floor, so any future nudge to either token must fail loudly.
+  ["--button", "--cream"],
+  ["--button", "--sand"],
+  ["--button-ink", "--button"],
+  ["--button-ink", "--button-hover"],
 ];
 
 // Never legal as a text colour or as a fill behind text.

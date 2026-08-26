@@ -51,7 +51,7 @@ export default function Home() {
               <PhoneButton />
               <Link
                 href="/contact"
-                className="inline-flex min-h-[56px] items-center justify-center rounded-full border-[3px] border-sage px-8 text-lg font-bold text-sage no-underline hover:bg-sand"
+                className="inline-flex min-h-[56px] items-center justify-center rounded-full border-[3px] border-button px-8 text-lg font-bold text-button no-underline hover:bg-sand"
               >
                 Visit Us
               </Link>

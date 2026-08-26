@@ -31,7 +31,30 @@
      scripts/verify-contrast.mjs fails the build if that rule is broken. */
   --sage-soft: #6E8F70;
   --clay-soft: #C9784F;
-  --rule: #E2D5BF;
+  /* Magenta bordering, client request 2026-08-26. Decorative-only, so it is
+     exempt from the 7:1 floor -- but it is the SAME hue as --button below, so
+     the borders and the buttons read as one deliberate accent rather than two
+     unrelated pinks. Only the default palette is changed: the three alternate
+     themes each define their own --rule and are internal review tooling. */
+  --rule: #96005A;
+
+  /* Buttons. A dedicated token rather than reusing --clay or --sage, because
+     both of those carry far more than buttons: --sage is every h1/h2/h3 and
+     the full-colour CTA band, --clay is the hero tagline, section eyebrows,
+     breadcrumbs, header phone numbers and footer links. Repointing either at
+     magenta would have turned all of that magenta too. The client asked for
+     borders and buttons, so buttons get their own token.
+
+     #96005A is the brightest magenta that clears the 7:1 AAA floor this site
+     is built on: 7.97:1 on --cream, 7.01:1 on --sand, 8.59:1 for white on it.
+     Pure magenta (#FF00FF) measures 2.91:1 on cream and is not usable here.
+     The --sand margin is thin (7.01 against a 7.00 floor), which is exactly
+     why the pairs below are registered in verify-contrast.mjs rather than
+     trusted -- a future palette tweak that nudges --sand lighter will fail
+     the build instead of silently voiding the AAA claim. */
+  --button: #96005A;
+  --button-ink: var(--white);
+  --button-hover: #7B1450;
 
   /* Emphasis. --band is a full-colour section fill and --band-ink is the only
      text colour allowed on it, so the pair is held to the same 7:1 floor.
@@ -147,6 +170,9 @@
   --color-sage-soft: var(--sage-soft);
   --color-clay-soft: var(--clay-soft);
   --color-rule: var(--rule);
+  --color-button: var(--button);
+  --color-button-ink: var(--button-ink);
+  --color-button-hover: var(--button-hover);
   --color-white: var(--white);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);

@@ -118,7 +118,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl border-2 border-sage px-4 font-bold text-sage lg:hidden"
+            className="inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl border-2 border-button px-4 font-bold text-button lg:hidden"
           >
             {menuOpen ? "Close" : "Menu"}
           </button>
