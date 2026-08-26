@@ -18,7 +18,7 @@ export default function Clinical() {
           photograph in a bordered plate on the right. No bleed anywhere in
           this direction -- consistent margins are the point. */}
       <section className="bg-cream">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-2 lg:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-[3fr_5fr] lg:gap-x-6 lg:py-24">
           <div>
             {/* No alignment class needed: .u-wordmark is display:inline-block and sets
                 no text-align of its own -- the live hero centres it via a parent
@@ -49,8 +49,9 @@ export default function Clinical() {
               src={images.heroMatFireplace.src}
               alt={images.heroMatFireplace.alt}
               priority
-              width={1200}
-              height={800}
+              width={721}
+              height={338}
+              sizes="(min-width: 1024px) 62vw, 100vw"
               className="w-full rounded-lg"
             />
           </div>
