@@ -43,36 +43,79 @@ export default function Editorial() {
               </Link>
             </div>
           </div>
-          {/* Bleeds right: no max-width, no rounded right corner. */}
+          {/* Bleeds right: no max-width, no rounded right corner, and --
+              unlike Clinical's bordered u-plate on the right, which is
+              padded and centred inside a max-w-6xl container -- nothing
+              boxes this photograph in. It is sized at its own 721x338
+              aspect ratio (the actual source dimensions) rather than forced
+              to fill the row's full height: the row's height is set by the
+              text column, and stretching a wide, short photo to match a
+              ~700px-tall cell forced object-cover to zoom in ~2x and crop
+              the frame down to a headless torso. Letting the image keep its
+              own proportions shows the whole photograph, vertically
+              centred by the grid's `items-center`, next to the text. */}
           <div>
             <Image
               src={images.heroMatFireplace.src}
               alt={images.heroMatFireplace.alt}
               priority
-              width={1200}
-              height={800}
-              className="h-full w-full rounded-l-3xl object-cover lg:min-h-[36rem]"
+              width={721}
+              height={338}
+              className="w-full rounded-l-3xl"
             />
           </div>
         </div>
       </section>
 
       <NumberedSection n="01" id="approach" title={holisticApproach.title}>
-        {holisticApproach.paragraphs.map((p) => (
-          <p key={p} className="mt-5 text-lg leading-relaxed text-ink-soft first:mt-0">
-            {p}
-          </p>
-        ))}
+        {/* Editorial's own idiom for a diagram: borderless, a hairline rule
+            underneath rather than Clinical's bordered u-plate, and sized by
+            object-contain since images.holisticFlower.contain === true --
+            it is a square diagram with labelled points, and cropping it
+            would slice a label. */}
+        <div className="grid gap-10 sm:grid-cols-[minmax(0,18rem)_1fr] sm:items-start">
+          <div>
+            <Image
+              src={images.holisticFlower.src}
+              alt={images.holisticFlower.alt}
+              width={640}
+              height={640}
+              className="w-full object-contain"
+            />
+            <span className="mt-5 block h-px w-full bg-rule" />
+          </div>
+          <div>
+            {holisticApproach.paragraphs.map((p) => (
+              <p key={p} className="mt-5 text-lg leading-relaxed text-ink-soft first:mt-0">
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
       </NumberedSection>
 
       <PullQuote text="PEMF is a holistic approach to promote a state of total wellness." />
 
       <NumberedSection n="02" id="anatomy" title={holisticAnatomy.title}>
-        {holisticAnatomy.paragraphs.map((p) => (
-          <p key={p} className="mt-5 text-lg leading-relaxed text-ink-soft first:mt-0">
-            {p}
-          </p>
-        ))}
+        <div className="grid gap-10 sm:grid-cols-[minmax(0,18rem)_1fr] sm:items-start">
+          <div>
+            <Image
+              src={images.holisticAnatomy.src}
+              alt={images.holisticAnatomy.alt}
+              width={700}
+              height={460}
+              className="w-full object-contain"
+            />
+            <span className="mt-5 block h-px w-full bg-rule" />
+          </div>
+          <div>
+            {holisticAnatomy.paragraphs.map((p) => (
+              <p key={p} className="mt-5 text-lg leading-relaxed text-ink-soft first:mt-0">
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
       </NumberedSection>
 
       {/* Borderless cards: image, hairline rule, title, body. Two columns,
