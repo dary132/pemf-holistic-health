@@ -150,6 +150,18 @@ Recommended palette: Deep Ocean.
   site, and the direction that best serves an elderly visitor deciding whether to trust a
   health service.
 
+**Note — 2026-08-25, fix wave.** "Biggest departure" above describes the *visual* register
+(bordered plates, credential strip, tinted ground), not the section chrome. As built,
+`app/designs/clinical/page.tsx` imports the live site's own `components/Section.tsx` for
+every section below the hero — the same component `app/page.tsx` uses. Editorial, by
+contrast, replaced `Section` outright with its own `NumberedSection`. So in terms of what
+component is doing the structural work, Clinical is in practice the most *familiar* of the
+three directions and Editorial is the one that departs furthest structurally. This does not
+change the recommendation above — Clinical's plate/credential-strip identity is still the
+biggest visual departure and is deliberate, reviewed, and not being restructured — but anyone
+briefing the client on "which one is the biggest departure" should say so with this
+distinction in hand, not repeat the headline unqualified.
+
 ### 3. Photographic — the most emotive, and the riskiest
 
 Recommended palette: Sunrise Warmth.
