@@ -88,10 +88,13 @@ export const images = {
     alt: "Diagram of a magnet's north and south poles and its field lines",
     contain: true,
   },
-  mimicsEarthField: {
-    src: "/images/mimics-earth-field.svg",
-    alt: "Earth's magnetic field beside a PEMF mat producing the same field shape",
-    contain: true,
+  /** Dusk meadow under a magenta aurora -- Earth's field made visible.
+   *  Replaced the mimics-earth-field.svg diagram on 2026-08-27: /pemf already
+   *  carries three globe-and-field-lines diagrams above this band, so a fourth
+   *  read as repetition. A photograph does not. */
+  earthFieldAurora: {
+    src: "/images/earth-field-aurora.jpg",
+    alt: "A magenta aurora arcing over a meadow and a winding stream at dusk",
   },
   wellnessPractices: {
     src: "/images/wellness-practices.svg",

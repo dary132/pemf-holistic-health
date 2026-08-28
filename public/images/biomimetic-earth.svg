@@ -1,10 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
   <title>Earth emitting its natural electromagnetic pulses</title>
 
-  <!-- Kept deliberately different from mimics-earth-field.svg: that one is a
-       comparison of two field shapes, this one is a single planet emitting
-       outward. Two near-identical planet diagrams on one site would read as
-       a mistake. -->
+  <!-- The site's only planet-emitting-outward diagram. It was kept deliberately
+       distinct from mimics-earth-field.svg, a side-by-side comparison of two
+       field shapes; that file was deleted on 2026-08-27 when /pemf's band moved
+       to a photograph, so the distinction no longer has to be defended -- but
+       the rule behind it stands: two near-identical planet diagrams on one site
+       read as a mistake. /pemf already carries three. -->
 
   <!-- Pulses radiating outward, fading with distance. -->
   <g fill="none" stroke="#2F4A37" stroke-linecap="round">

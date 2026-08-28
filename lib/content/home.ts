@@ -43,7 +43,7 @@ export const teasers: Teaser[] = [
     title: "PEMF for Healthy Lifestyle",
     body: "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
     href: "/pemf",
-    image: images.mimicsEarthField,
+    image: images.earthFieldAurora,
   },
   {
     title: "PEMF for Holistic Health",
