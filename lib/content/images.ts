@@ -14,18 +14,20 @@ export function isSvg(src: string) {
 }
 
 export const images = {
-  // The document's own page-1 banner (word/media/image1). Restored at the
-  // client's request on 2026-08-24 in place of imrsModel3 below: same shoot,
-  // same room, wider framing, and it is the image the document actually
-  // leads with. Note it is only 721px wide — see the Figure on app/page.tsx.
+  // The document's own page-1 banner (word/media/image1). Was the home hero
+  // from 2026-08-24 until 2026-08-28, when the client asked for a larger
+  // stacked hero: at full content width this 721px file upscales past 2x, so
+  // imrsModel3 below took its place. Kept because it is the image the
+  // document actually leads with; not currently placed on any page.
   heroMatFireplace: {
     src: "/images/hero-mat-fireplace.png",
     alt: "A woman lying on the IMRS whole-body mat on a marble floor beside a stone fireplace, with the tablet control unit on the floor beside her",
   },
   // The client's own IMRS Model 3 photograph. A tighter, higher-resolution
-  // frame of the same shoot; kept because the client supplied it directly and
-  // it is the fallback if the document's banner proves too soft in print or
-  // on a high-density screen. Not currently placed on any page.
+  // frame of the same shoot as heroMatFireplace. The home hero since
+  // 2026-08-28: the stacked hero renders the photograph at full content
+  // width, where the 721px banner would be visibly soft and this 1000px
+  // frame is the sharpest file the client has supplied.
   imrsModel3: {
     src: "/images/imrs-model-3.png",
     alt: "A woman lying on the IMRS prime whole-body mat at home, with the tablet control unit beside her",
