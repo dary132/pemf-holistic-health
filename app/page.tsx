@@ -12,11 +12,13 @@ import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/
 export default function Home() {
   return (
     <main id="main">
-      {/* Stacked hero, client request 2026-08-28: photograph first at full
-          content width, the wordmark and its expansion nested underneath, then
-          the two action buttons, then the heading and pitch copy. This is the
-          client re-asking for the stacked order they wanted before Clinical's
-          two-column hero overrode it, so the override is itself overridden.
+      {/* Stacked hero, client request 2026-08-28, revised same day: the
+          wordmark and its expansion sit ABOVE the photograph and smaller than
+          the comps' full-bleed wordmark (client: "needs to sit above the image
+          and be smaller"), then the photograph at full content width, the two
+          action buttons, then the heading and pitch copy. The size override is
+          local -- an inline --step-wordmark -- so the /designs comps keep the
+          full-size wordmark .u-wordmark was built for.
           The photograph is imrs-model-3 (1000px, the recorded sharper fallback)
           rather than the 721px document banner, which would upscale past 2x at
           this width -- swapped with the user's approval alongside this layout.
@@ -30,7 +32,16 @@ export default function Home() {
           text above the fold should never wait on an animation. */}
       <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-5 py-16 text-center lg:py-20">
-          <div className="u-plate p-3">
+          <h1
+            className="u-wordmark u-technicolor"
+            style={{ ["--step-wordmark" as string]: "clamp(3rem, 8vw, 5.5rem)" }}
+          >
+            {hero.wordmark}
+          </h1>
+          <p className="mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
+            {hero.expansion}
+          </p>
+          <div className="u-plate mt-8 p-3">
             <Image
               src={images.imrsModel3.src}
               alt={images.imrsModel3.alt}
@@ -41,10 +52,6 @@ export default function Home() {
               className="w-full rounded-lg"
             />
           </div>
-          <h1 className="u-wordmark u-technicolor mt-10">{hero.wordmark}</h1>
-          <p className="mt-4 text-xl font-bold uppercase tracking-[0.16em] text-clay sm:text-2xl">
-            {hero.expansion}
-          </p>
           {/* The second button is the visit ask, not "What is PEMF?". The hero
               already tells a visitor what to do -- "Try adding a holistic
               approach by laying on the PEMF body mat" -- and the only other way
