@@ -6,7 +6,9 @@ export const routes: Route[] = [
   { path: "/", label: "Home", title: "PEMF for Health and Wellness" },
   { path: "/pemf", label: "PEMF", title: "PEMF for Healthy Lifestyle" },
   { path: "/holistic-health", label: "Holistic Health", title: "PEMF for Holistic Health" },
-  { path: "/mental-health", label: "Mental Health", title: "PEMF Improves Mental Health" },
+  // label "Brain Health" is the client's wording for the nav (2026-08-28);
+  // the page itself keeps the document's "Mental Health" title and copy.
+  { path: "/mental-health", label: "Brain Health", title: "PEMF Improves Mental Health" },
   { path: "/energy", label: "Energy", title: "PEMF Increases Your Energy" },
   { path: "/sports-health", label: "Sports Health", title: "Sports Health" },
   { path: "/sleep-health", label: "Sleep Health", title: "PEMF Promotes Good Sleep" },
