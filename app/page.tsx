@@ -38,7 +38,10 @@ export default function Home() {
           >
             {hero.wordmark}
           </h1>
-          <p className="mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
+          {/* mx-auto is what actually centres this line: the base stylesheet
+              caps every p at max-width:65ch, so without it the box sits left
+              in the centred container and only the text inside it centres. */}
+          <p className="mx-auto mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
             {hero.expansion}
           </p>
           <div className="u-plate mt-8 p-3">
