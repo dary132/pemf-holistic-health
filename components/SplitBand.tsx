@@ -28,7 +28,15 @@ export function SplitBand({
   return (
     <div className={tinted ? "bg-sand" : undefined}>
       <div className="mx-auto max-w-6xl px-5 py-14">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
+        {/* 55/45 in the image's favour (was 50/50) -- the client asked for
+            larger images, 2026-08-28. The template flips with `reverse`
+            because the image div moves to the SECOND column via lg:order-2;
+            a fixed template would hand the reversed image the narrow track. */}
+        <div
+          className={`grid items-center gap-10 ${
+            reverse ? "lg:grid-cols-[9fr_11fr]" : "lg:grid-cols-[11fr_9fr]"
+          }`}
+        >
           <div data-reveal className={reverse ? "lg:order-2" : undefined}>
             <div className="u-plate p-3">
               <Image
@@ -54,7 +62,7 @@ export function SplitBand({
               </>
             )}
             {paragraphs.map((p) => (
-              <p key={p} className="mt-4 max-w-[62ch] text-ink-soft">
+              <p key={p} className="mt-6 max-w-[62ch] text-ink-soft">
                 {p}
               </p>
             ))}

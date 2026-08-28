@@ -186,14 +186,16 @@
 }
 
 /* Large base type. The audience is elderly; this is the single highest-impact
-   legibility decision on the site. */
+   legibility decision on the site. Raised 19/20 -> 20/21 on 2026-08-28 at the
+   client's request for more readable text; every step in the scale is rem so
+   the whole site grows with these two lines. */
 html {
-  font-size: 19px;
+  font-size: 20px;
   scroll-behavior: smooth;
 }
 
 @media (min-width: 640px) {
-  html { font-size: 20px; }
+  html { font-size: 21px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -222,7 +224,7 @@ html {
 
   h1, h2, h3 {
     font-family: var(--font-display), Georgia, serif;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--sage);
     line-height: 1.2;
     text-wrap: balance;

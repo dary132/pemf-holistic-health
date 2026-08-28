@@ -47,7 +47,7 @@ export function PanelGrid({
                     height={525}
                     className={
                       panel.image.contain
-                        ? "h-full w-full object-contain p-3"
+                        ? "h-full w-full object-contain p-1"
                         : "h-full w-full object-cover"
                     }
                   />
@@ -55,7 +55,7 @@ export function PanelGrid({
               )}
               {panel.title && <PanelHeading>{panel.title}</PanelHeading>}
               {panel.paragraphs?.map((p) => (
-                <p key={p} className="mt-3 text-ink-soft">
+                <p key={p} className="mt-4 text-ink-soft">
                   {p}
                 </p>
               ))}

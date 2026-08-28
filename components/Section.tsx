@@ -38,7 +38,11 @@ export function Section({
               page: globals.css sets --accent-rule per top-level band and the
               custom property inherits down to here. */}
           <span className="u-accent-rule" />
-          {intro && <p className="u-lead mt-4 leading-relaxed text-ink-soft">{intro}</p>}
+          {/* The intro is the "accented" sentence the client asked for: clay
+              and semibold so each section opens with visible emphasis before
+              the body text. Clay clears the AAA floor on both grounds and the
+              pairs are already registered in verify-contrast.mjs. */}
+          {intro && <p className="u-lead mt-4 leading-relaxed font-semibold text-clay">{intro}</p>}
         </div>
         {children && <div className="mt-10">{children}</div>}
       </div>

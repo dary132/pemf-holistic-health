@@ -92,7 +92,9 @@ export default function Home() {
       </Section>
 
       <Section id="anatomy" title={holisticAnatomy.title} tinted>
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        {/* Same 55/45 image-favouring split as SplitBand (2026-08-28, larger
+            images) -- this is the one image/text band not built on that shell. */}
+        <div className="grid items-center gap-10 md:grid-cols-[11fr_9fr]">
           <div className="u-plate p-3">
             <Image
               src={images.holisticAnatomy.src}

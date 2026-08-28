@@ -43,7 +43,7 @@ export function PlateCard({
         <h3 className="mt-5 text-xl">
           <Link href={href}>{title}</Link>
         </h3>
-        <p className="mt-3 leading-relaxed text-ink-soft">{body}</p>
+        <p className="mt-4 leading-relaxed text-ink-soft">{body}</p>
       </div>
     </article>
   );
