@@ -32,11 +32,30 @@ export default function Home() {
           text above the fold should never wait on an animation. */}
       <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-5 py-16 text-center lg:py-20">
+          {/* Per-letter colours, client request 2026-08-28: P purple, E green,
+              M red, F blue -- replacing the seven-stop gradient here (only
+              here; the /designs comps keep .u-technicolor). Each letter uses
+              the existing --tc-* stop of that hue because those are already
+              the brightest purple/green/red/blue that clear the 7:1 AAA floor
+              on cream, registered in verify-contrast.mjs; a "purer" hue fails
+              the floor. aria-label carries the word whole so screen readers
+              announce "PEMF" rather than four spelled-out letters. */}
           <h1
-            className="u-wordmark u-technicolor"
+            className="u-wordmark"
+            aria-label={hero.wordmark}
             style={{ ["--step-wordmark" as string]: "clamp(3rem, 8vw, 5.5rem)" }}
           >
-            {hero.wordmark}
+            {hero.wordmark.split("").map((letter, i) => (
+              <span
+                key={i}
+                aria-hidden="true"
+                style={{
+                  color: `var(${["--tc-7", "--tc-4", "--tc-1", "--tc-6"][i % 4]})`,
+                }}
+              >
+                {letter}
+              </span>
+            ))}
           </h1>
           {/* mx-auto is what actually centres this line: the base stylesheet
               caps every p at max-width:65ch, so without it the box sits left
