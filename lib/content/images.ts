@@ -131,19 +131,22 @@ export const images = {
     alt: "A head in profile with a brainwave passing through it",
     contain: true,
   },
+  /** The three sports icons are the document's own files (word/media
+   *  image23-25), restored at the client's request on 2026-08-28 in place of
+   *  the SVG redraws. All three have an opaque near-black background. */
   passiveWarmup: {
-    src: "/images/passive-warmup.svg",
-    alt: "A figure beside a rising column, representing passive warm-up",
+    src: "/images/passive-warmup.png",
+    alt: "A heat-map figure of a warming body beside a rising arrow, representing passive warm-up",
     contain: true,
   },
   rejuvenation: {
-    src: "/images/rejuvenation.svg",
-    alt: "A figure within a circular arrow, representing rejuvenation after physical activity",
+    src: "/images/rejuvenation.png",
+    alt: "A figure jumping inside a circular arrow, representing rejuvenation after physical activity",
     contain: true,
   },
   performance: {
-    src: "/images/performance.svg",
-    alt: "A figure beside a rising series of bars, representing enhanced athletic performance",
+    src: "/images/performance.png",
+    alt: "A figure sprinting over a speedometer, representing enhanced athletic performance",
     contain: true,
   },
   sleepMatTablet: {

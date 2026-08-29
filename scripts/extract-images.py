@@ -29,6 +29,9 @@ RENAMES = {
     "image13.png": "sources-of-radiation.png",
     "image15.png": "pemf-mimics-earth-field.png",
     "image18.png": "exagon-brain-banner.png",
+    "image23.png": "passive-warmup.png",
+    "image24.png": "rejuvenation.png",
+    "image25.png": "performance.png",
     "image43.png": "spectrum-of-vitality.png",
     "image45.png": "why-low-frequency.png",
 }
