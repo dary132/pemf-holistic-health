@@ -67,7 +67,6 @@ export default function ProductsPage() {
           image={images.imrsControlPanel}
           title={controlPanel.title}
           paragraphs={controlPanel.paragraphs}
-          reverse
         />
         <SplitBand
           image={images.imrsConnectorBox}
@@ -82,14 +81,13 @@ export default function ProductsPage() {
           tone="blush"
           rhythm="compact"
         />
-        {applicators.map((a, i) => (
+        {applicators.map((a) => (
           <SplitBand
             key={a.title}
             image={a.image}
             title={a.title}
             titleAs="h3"
             paragraphs={a.paragraphs}
-            reverse={i % 2 === 1}
           />
         ))}
 
@@ -130,7 +128,6 @@ export default function ProductsPage() {
           image={images.coils}
           title={coils.title}
           paragraphs={coils.paragraphs}
-          reverse
           tone="mist"
         />
 
