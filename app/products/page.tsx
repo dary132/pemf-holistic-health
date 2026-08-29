@@ -119,19 +119,26 @@ export default function ProductsPage() {
       </section>
 
       <section id="smart-pulser">
+        {/* Same tone rhythm as the iMRS prime section above: mist opening
+            band, cream feature band, mist card grid, blush accent band. */}
         <SplitBand
           image={images.smartPulserSet}
           title={smartPulser.title}
           paragraphs={smartPulser.paragraphs}
+          tone="mist"
         />
         <SplitBand
           image={images.coils}
           title={coils.title}
           paragraphs={coils.paragraphs}
-          tone="mist"
         />
 
-        <Section id="spectrum" title={spectrum.title} intro={spectrum.paragraphs[0]}>
+        <Section
+          id="spectrum"
+          title={spectrum.title}
+          intro={spectrum.paragraphs[0]}
+          tone="mist"
+        >
           <p className="mb-8 max-w-[62ch] text-ink-soft">{spectrum.paragraphs[1]}</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {zones.map((zone) => (
