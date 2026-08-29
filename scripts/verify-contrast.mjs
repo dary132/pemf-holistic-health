@@ -17,6 +17,21 @@ const TEXT_PAIRS = [
   ["--sage", "--sand"],
   ["--clay", "--cream"],
   ["--clay", "--sand"],
+  // The two 2026-08-28 section grounds (lib/tones.ts). Anything a Section,
+  // PanelGrid, SplitBand or Figure can put on a tinted ground is held against
+  // both, exactly as with --sand above. The alternate themes inherit these
+  // grounds, so parsePalettes checks each theme's own text tokens against
+  // them automatically.
+  ["--ink", "--blush"],
+  ["--ink", "--mist"],
+  ["--ink-soft", "--blush"],
+  ["--ink-soft", "--mist"],
+  ["--sage", "--blush"],
+  ["--sage", "--mist"],
+  ["--clay", "--blush"],
+  ["--clay", "--mist"],
+  ["--button", "--blush"],
+  ["--button", "--mist"],
   ["--white", "--sage"],
   ["--white", "--clay"],
   // Technicolor wordmark stops. The gradient only ever fills text on --cream,

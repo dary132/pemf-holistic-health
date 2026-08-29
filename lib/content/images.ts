@@ -133,21 +133,25 @@ export const images = {
   },
   /** The three sports icons are the document's own files (word/media
    *  image23-25), restored at the client's request on 2026-08-28 in place of
-   *  the SVG redraws. All three have an opaque near-black background. */
+   *  the SVG redraws. All three have an opaque near-black (#000001) ground,
+   *  so `dark` paints the media slot to match and they read edge-to-edge. */
   passiveWarmup: {
     src: "/images/passive-warmup.png",
     alt: "A heat-map figure of a warming body beside a rising arrow, representing passive warm-up",
     contain: true,
+    dark: true,
   },
   rejuvenation: {
     src: "/images/rejuvenation.png",
     alt: "A figure jumping inside a circular arrow, representing rejuvenation after physical activity",
     contain: true,
+    dark: true,
   },
   performance: {
     src: "/images/performance.png",
     alt: "A figure sprinting over a speedometer, representing enhanced athletic performance",
     contain: true,
+    dark: true,
   },
   sleepMatTablet: {
     src: "/images/sleep-mat-tablet.png",

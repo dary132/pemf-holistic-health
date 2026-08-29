@@ -70,7 +70,7 @@ export default function Clinical() {
         </div>
       </Section>
 
-      <Section id="anatomy" title={holisticAnatomy.title} tinted>
+      <Section id="anatomy" title={holisticAnatomy.title} tone="sand">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="u-plate p-3">
             <Image

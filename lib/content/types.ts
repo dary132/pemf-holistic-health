@@ -6,6 +6,10 @@ export type Img = {
   decorative?: boolean;
   /** Artwork with a cut-out subject or baked-in text must not be cropped. */
   contain?: boolean;
+  /** Artwork with an opaque near-black ground: the media slot paints itself
+   *  to match (`u-plate-media-dark`), so the letterboxing disappears and the
+   *  image reads edge-to-edge. Handled by PanelGrid only. */
+  dark?: boolean;
 };
 
 /** One column of the document's recurring three-column blocks. */

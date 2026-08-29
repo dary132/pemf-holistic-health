@@ -26,7 +26,7 @@ export default function EnergyPage() {
       {/* No heading prop: this TriPanel sits directly under the page's h1
           with nothing at h2, so its own panel titles must render as h2 to
           avoid an h1 -> h3 skip (spec fix-wave item I-7). */}
-      <PanelGrid panels={benefits} tinted panelTitleAs="h2" />
+      <PanelGrid panels={benefits} tone="blush" panelTitleAs="h2" />
       <CTA />
       <Disclaimer />
     </main>

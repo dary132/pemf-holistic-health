@@ -23,7 +23,7 @@ export default function SleepHealthPage() {
         ]}
       />
       <Section id="sleep-health" title={intro.title} titleAs="h1" />
-      <PanelGrid panels={sleep} tinted />
+      <PanelGrid panels={sleep} tone="mist" />
       <PanelGrid heading={benefits.heading} panels={benefits.panels} />
       <CTA />
       <Disclaimer />

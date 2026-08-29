@@ -52,7 +52,7 @@ export default function ProductsPage() {
           image={images.imrsPrimeModes}
           title={imrsPrime.title}
           paragraphs={imrsPrime.paragraphs}
-          tinted
+          tone="mist"
         />
         {applicators.map((a, i) => (
           <SplitBand
@@ -63,7 +63,7 @@ export default function ProductsPage() {
             reverse={i % 2 === 1}
           />
         ))}
-        <PanelGrid panels={sensors} tinted />
+        <PanelGrid panels={sensors} tone="blush" />
       </section>
 
       <section id="smart-pulser">
@@ -77,7 +77,7 @@ export default function ProductsPage() {
           title={coils.title}
           paragraphs={coils.paragraphs}
           reverse
-          tinted
+          tone="mist"
         />
 
         <Section id="spectrum" title={spectrum.title} intro={spectrum.paragraphs[0]}>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
           image={images.biomimeticEarth}
           title={biomimetic.title}
           paragraphs={biomimetic.paragraphs}
-          tinted
+          tone="blush"
         />
 
         <Section id="low-frequency" title={lowFrequency.title}>

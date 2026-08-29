@@ -41,7 +41,7 @@ export default function MentalHealthPage() {
           avoid an h1 -> h3 skip (spec fix-wave item I-7). */}
       <PanelGrid panels={dimensions} panelTitleAs="h2" />
       <section id="stress">
-        <PanelGrid heading={stress.heading} panels={stress.panels} tinted />
+        <PanelGrid heading={stress.heading} panels={stress.panels} tone="mist" />
       </section>
       <section id="relaxation">
         <PanelGrid heading={relaxation.heading} panels={relaxation.panels} />
@@ -49,7 +49,7 @@ export default function MentalHealthPage() {
       <PanelGrid
         heading={benefitsOfRelaxation.heading}
         panels={benefitsOfRelaxation.panels}
-        tinted
+        tone="blush"
       />
       <CTA />
       <Disclaimer />

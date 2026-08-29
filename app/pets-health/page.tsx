@@ -28,7 +28,7 @@ export default function PetsHealthPage() {
       {/* No heading prop: this TriPanel sits directly under the page's h1
           with nothing at h2, so its own panel titles must render as h2 to
           avoid an h1 -> h3 skip (spec fix-wave item I-7). */}
-      <PanelGrid panels={animals} tinted panelTitleAs="h2" />
+      <PanelGrid panels={animals} tone="blush" panelTitleAs="h2" />
       <Figure image={images.imrsFaunaHorses} />
       <PanelGrid heading={racehorses.heading} panels={racehorses.panels} />
       <CTA />

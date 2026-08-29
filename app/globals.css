@@ -4,6 +4,15 @@
   /* Ground */
   --cream: #FAF6EF;
   --sand: #F0E7D8;
+  /* Two further section grounds, added 2026-08-28 at the client's request for
+     more varied section colouring. Blush is a pale cast of the brand magenta,
+     mist a pale cool blue-grey; both are grounds under real text, so every
+     text token that may sit on them is registered in verify-contrast.mjs at
+     the same 7:1 floor as cream and sand (worst pair: --button on --mist,
+     7.19:1). The alternate themes inherit these two rather than restating
+     them: their darker text palettes only widen the measured ratios. */
+  --blush: #F7E9F1;
+  --mist: #E4ECF2;
   --white: #FFFFFF;
 
   /* Text — every pair against cream and sand is >= 7:1 (AAA) */
@@ -170,6 +179,8 @@
   --color-band-ink: var(--band-ink);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
+  --color-blush: var(--blush);
+  --color-mist: var(--mist);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sage: var(--sage);
@@ -319,6 +330,14 @@ html {
     border-radius: 8px;
     aspect-ratio: 4 / 3;
     overflow: hidden;
+  }
+  /* Slot variant for artwork with an opaque near-black ground (the document's
+     sports icons): the fill matches the images' own background pixel exactly
+     (#000001, not #000000), so the icon and its letterbox bars read as one
+     edge-to-edge image. Fill behind an image only, never behind text, so it
+     is outside the contrast verifier's text-pair floor. */
+  .u-plate-media-dark {
+    background: #000001;
   }
 }
 

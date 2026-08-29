@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Panel } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
+import { TONE_BG, type Tone } from "@/lib/tones";
 
 /** The document's recurring three-column block. Every panel is a bordered
  *  plate of equal height, with a fixed-ratio media slot so the text baselines
@@ -9,13 +10,14 @@ import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 export function PanelGrid({
   heading,
   panels,
-  tinted = false,
+  tone,
   panelTitleAs = "h3",
   rhythm = "normal",
 }: {
   heading?: string;
   panels: Panel[];
-  tinted?: boolean;
+  /** Ground tint; omitted means the cream page ground shows through. */
+  tone?: Tone;
   /** Level for each panel's own title (panel.title), default "h3" -- correct
    *  when `heading` renders its own h2 directly above them. A page that
    *  places this grid straight after its `<Section titleAs="h1" />` with no
@@ -27,7 +29,7 @@ export function PanelGrid({
 }) {
   const PanelHeading = panelTitleAs;
   return (
-    <div className={tinted ? "bg-sand" : undefined}>
+    <div className={tone && TONE_BG[tone]}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         {heading && <h2 className="mb-10">{heading}</h2>}
         <div className="grid items-stretch gap-8 lg:grid-cols-3">
@@ -37,7 +39,9 @@ export function PanelGrid({
             // Keying on title/image would collide if two panels shared a title.
             <div key={i} data-reveal className="u-plate flex flex-col p-6">
               {panel.image && (
-                <div className="u-plate-media mb-5">
+                <div
+                  className={`u-plate-media ${panel.image.dark ? "u-plate-media-dark " : ""}mb-5`}
+                >
                   <Image
                     src={panel.image.src}
                     alt={panel.image.decorative ? "" : panel.image.alt}

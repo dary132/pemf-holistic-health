@@ -24,7 +24,7 @@ export default function HolisticHealthPage() {
         ]}
       />
       <Section id="holistic-health" title={intro.title} titleAs="h1" />
-      <PanelGrid panels={definition} tinted />
+      <PanelGrid panels={definition} tone="blush" />
       <Section id="wellness" title={wellness.heading}>
         <Image
           src={images.eightDimensions.src}

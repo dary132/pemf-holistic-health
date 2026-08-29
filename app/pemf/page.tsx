@@ -60,7 +60,7 @@ export default function PemfPage() {
       <PanelGrid
         heading={essentialForHealth.heading}
         panels={essentialForHealth.panels}
-        tinted
+        tone="mist"
       />
 
       <PanelGrid heading={importanceOfField.heading} panels={importanceOfField.panels} />
@@ -70,7 +70,7 @@ export default function PemfPage() {
         image={images.earthFieldAurora}
         title={mimicsEarth.title}
         paragraphs={mimicsEarth.paragraphs}
-        tinted
+        tone="blush"
       />
 
       <CTA />

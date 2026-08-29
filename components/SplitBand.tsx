@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
+import { TONE_BG, type Tone } from "@/lib/tones";
 
 /** Two-column image and text band. Stacks to one column below 900px.
  *
@@ -15,18 +16,19 @@ export function SplitBand({
   title,
   paragraphs = [],
   reverse = false,
-  tinted = false,
+  tone,
   children,
 }: {
   image: Img;
   title?: string;
   paragraphs?: string[];
   reverse?: boolean;
-  tinted?: boolean;
+  /** Ground tint; omitted means the cream page ground shows through. */
+  tone?: Tone;
   children?: React.ReactNode;
 }) {
   return (
-    <div className={tinted ? "bg-sand" : undefined}>
+    <div className={tone && TONE_BG[tone]}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {/* 55/45 in the image's favour (was 50/50) -- the client asked for
             larger images, 2026-08-28. The template flips with `reverse`

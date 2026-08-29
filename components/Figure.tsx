@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
+import { TONE_BG, type Tone } from "@/lib/tones";
 
 /** Full-width captioned artwork, shown whole and never cropped.
  *  No `object-fit` or height constraint is applied, so nothing is ever
@@ -10,17 +11,18 @@ import { isSvg } from "@/lib/content/images";
 export function Figure({
   image,
   caption,
-  tinted = false,
+  tone,
   priority = false,
 }: {
   image: Img;
   caption?: string;
-  tinted?: boolean;
+  /** Ground tint; omitted means the cream page ground shows through. */
+  tone?: Tone;
   /** Set on the one figure that is the page's LCP element (the home hero). */
   priority?: boolean;
 }) {
   return (
-    <div className={tinted ? "bg-sand" : undefined}>
+    <div className={tone && TONE_BG[tone]}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {/* The priority Figure is the page's LCP element. Starting it at
             opacity 0 would push Largest Contentful Paint out by the length of
