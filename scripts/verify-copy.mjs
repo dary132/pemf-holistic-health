@@ -33,6 +33,14 @@ import { pathToFileURL } from "node:url";
 const SOURCES = [
   "docs/exiga-jasmin-2026.txt",
   "docs/exiga-jasmin-2026-image-text.txt",
+  // Manufacturer copy for the /products iMRS prime sections, captured
+  // verbatim from the Swiss Bionic distributor page. Added 2026-08-29 with
+  // the site owner's approval: the client document does not cover the
+  // control panel, connector box, software tools or accessories, and
+  // verbatim manufacturer text was chosen over paraphrase to keep every
+  // rendered string traceable to a source document. Provenance is recorded
+  // in the file's own header.
+  "docs/imrs-prime-swissbionic.txt",
 ];
 
 // lib/site.ts holds sitewide prose (disclaimer, address, business name) that

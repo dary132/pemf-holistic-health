@@ -1,0 +1,111 @@
+Source: iMRS prime product page, Swiss Bionic Solutions distributor site
+https://sharonwong.swissbionic.com/imrs-prime-system/ - captured 2026-08-29.
+Approved by the site owner on 2026-08-29 as a second verbatim copy source for
+the /products page (the Exiga Jasmin 2026 document does not cover the iMRS
+prime component, software-tool or accessory sections). Visible page text,
+verbatim. Section titles and Fast Start program names that appear on the page
+only as images are transcribed in the block at the end.
+
+The world’s only 6-dimensional PEMF Wellness System
+iMRS prime Control Panel
+Housing and pedestal in brushed aluminum, ROHS/REACH/IP20.
+10.2“ capacitive touch screen LCD-Display.
+2 earphone jacks (3.5).
+2 USB jacks.
+One-Cord connection (20-pin) to Conectorbox.
+LED-Power indication.
+2 built-in speakers.
+NFC sensor.
+iMRS prime Connector Box
+Designed as the gateway between the iMRS prime control unit and the applicators/accessories.
+Built-in microprocessor with multidirectional signaling.
+6 applicator jacks.
+2 Sensor jacks.
+2 USB jacks.
+2 integrated D/A-Converter allowing for two separate, individual applications with only 1 control unit.
+Brushed aluminum housing for effective heat dissipation, ROHS/REACH/IP20.
+The Applicators
+Experience “Exagon Series” – the latest generation of our high-end applicators. Every PEMF applicator serves as the conductor of the exposed signal patterns to the receiver and is therefore the most critical component. The brand new Exagon Series applicator family combines all vital properties of applied PEMF technology in one solution.
+The selected outer material is biocompatible!
+The entire construction is designed to last for years – even with multiple, daily applications!
+The honeycomb structure of the fabric surface is breathable, prevents sweating and contamination and is easy to clean!
+The built-in copper coils are rock-solid and non-insulated to create the highest physical efficiency of the applied pulsed electromagnetic field!
+The newly designed and engineered “Optical Function Control OFC” guarantees constant monitoring of the functionality of each applicator and indicates malfunctioning with a red LED! It even displays the preprogrammed pole shifts with different colors (Blue and Green) during an application!
+Every Exagon applicator has built-in USB-intelligence in order to ensure bilateral communication with the main processor of the iMRS prime control panel!
+The whole body applicator for the “holistic” PEMF experience!
+6 built-in, rock-solid copper coils, divided in three pairs with different amount of windings to control the applied field intensity over the entire surface.
+Triple Sawtooth waveform for highest efficiency of low-pulsed PEMF.
+Foldable in 3 segments.
+Built-In Optical Function Control OFC.
+Click-Plug.
+The local applicator to stimulate specific body areas!
+2 built-in, rock-solid copper coils to evenly control the applied field intensity over the entire surface.
+Square Wave for highest efficiency of locally applied PEMF.
+Built-In Optical Function Control OFC.
+Click-Plug.
+The punctual applicator to stimulate specific body areas!
+Newly designed and flexible applicator for punctual usage and to utilize the so-called “Helmholtz-Effect”!
+1 built-in, rock-solid copper coil in each segment (2 in total) to flexibly control the applied field intensity over the particular surface.
+Square Wave for highest efficiency of locally applied PEMF with Helmholtz-Effect.
+Built-In Optical Function Control OFC.
+Click-Plug.
+The world’s first and only flexible hybrid applicator!
+Exagon FIR represents the most advanced, holistic PEMF applicator-technology to date. It is equipped with an additional, insulated layer of a specific carbon fiber wire pattern! The wire structure is controlled by the iMRS prime operating panel to create the defined exposure and temperature of the desired far infrared wavelengths (roughly between 3 and 14 Microns).Exagon FIR technology together with the iMRS prime opens a complete new horizon in the combined application of low-pulsed electromagnetic waves (PEMF and Far Infrared FIR simultaneously) and the personal experience is truly one of a kind:
+It literally feels like floating on a raft on a calm lake!
+Brainwave Entrainment – Holistic experience  for the mind!
+Newly designed Goggles with 12 built-in LEDS on each side. Housing is completely darkened for optimal performance.
+Photic, chromatic and audible BrainWave Entrainment combined in one single system.
+Elastic band for easy adjustment.
+USB–Plug.
+Biofeedback technology for wellness purposes
+Bifunctional photoplethysmografy sensor.
+Designed to detect blood volume changes in the microvascular bed of tissue.
+SpO2 and HRV evaluation.
+Dynamic intensity adjustment during a PEMF application.
+Click-Plug.
+Software Tools
+Fast Start Programs (standard in all bundles)
+The iMRS prime gets you going right away! All Fast Start Programs are designed for ease of use making holistic applications very simple and highly effective on a daily basis. All Fast Start Programs are automatically aligned and synchronized with the Exagon Brain, while connected and activated!
+Manual Mode
+The basic application mode. Set all necessary parameters manually, based on the recommendation of your assigned Swissbionic LifeStyle Consultant!
+Program Mode
+The iMRS prime allows you to preprogram multiple users with all parameters and applicators and save them to the Control Panel storage drive.
+Whenever the dedicated user wants to run an application, simply choose the dedicated applicator and the system will provide the default parameters!!
+Split Mode
+Two PEMF-Systems in ONE!
+iMRS prime is the world’s first PEMF-System allowing two stand-alone applications with only ONE control unit! The connector box of the iMRS prime provides 6 applicator plugs (3 on each side) and contains 2, equally powered D/A converters. The Split Mode divides the touchscreen into two operating surfaces allowing to set independent parameters and applicators for each session.
+iMRS prime Accessories
+iMRS prime Organizer Bag Control Unit
+Small bag for the control unit, power plug and other accessories.
+Exagon Applicator Travel Bag
+Travel bag for all Exagon Applicators (Exagon Mat/FIR, Exagon Pad, Exagon Spot).
+iMRS prime Carefree plus 12 months
+iMRS prime Warranty extension 12 months, including an unrestricted exchange program in the event of a technical defect within the selected Guarantee periods.
+iMRS prime Carefree plus 24 months
+iMRS prime Warranty extension 24 months, including an unrestricted exchange program in the event of a technical defect within the selected Guarantee periods.
+Prime Full-Service Package
+An initial Onboarding-Call once the iMRS prime has been shipped and received by the customer, where a personal installation and activation session will be conducted via ZOOM with one of our trained Prime Tech!
+12 months troubleshooting with the assigned Prime Tech via direct email access!
+Resolving technical issues within 48 hours!
+In case of the need to report a technical issue, the Prime Tech will create the Support Ticket for the customer!
+12 months warranty extension for the iMRS prime system!
+iMRS prime brochure
+Download here
+
+[Transcribed from the page's images: section titles and applicator names]
+The Applicators
+Exagon Mat
+Exagon Pad
+Exagon Spot
+Exagon FIR
+Exagon Brain
+Exagon Sense
+
+[Transcribed from the page's fast_start_*.png program tiles]
+Activate
+Balance
+Performance
+Regeneration
+Relaxation
+Sleep
+Solfeggio

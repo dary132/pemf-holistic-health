@@ -186,6 +186,20 @@ export const images = {
     src: "/images/imrs-prime-modes.jpg",
     alt: "The IMRS prime system with its mat, pad, spot applicator and control unit",
   },
+  // Manufacturer product renders from the Swiss Bionic iMRS prime page,
+  // captured 2026-08-29 alongside docs/imrs-prime-swissbionic.txt.
+  imrsControlPanel: {
+    src: "/images/imrs-control-panel.png",
+    alt: "The iMRS prime control panel: a touchscreen tablet on an aluminum stand",
+  },
+  imrsConnectorBox: {
+    src: "/images/imrs-connector-box.png",
+    alt: "The hexagonal iMRS prime connector box with applicator jacks on each side",
+  },
+  exagonMat: {
+    src: "/images/exagon-mat.png",
+    alt: "The Exagon Mat whole-body applicator, foldable in three segments",
+  },
   exagonFir: {
     src: "/images/exagon-fir.png",
     alt: "The Exagon FIR far-infrared applicator mat",

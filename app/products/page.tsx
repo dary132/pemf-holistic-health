@@ -9,13 +9,19 @@ import { SplitBand } from "@/components/SplitBand";
 import { PanelGrid } from "@/components/TriPanel";
 import { pageMetadata, productSchema } from "@/lib/seo";
 import {
+  accessories,
+  accessoriesHeading,
   applicators,
+  applicatorsIntro,
   biomimetic,
   coils,
+  connectorBox,
+  controlPanel,
+  fastStart,
   imrsPrime,
   intro,
   lowFrequency,
-  sensors,
+  modes,
   smartPulser,
   spectrum,
   zones,
@@ -29,6 +35,9 @@ export const metadata = pageMetadata({
   path: "/products",
 });
 
+/* Section order mirrors the manufacturer's iMRS prime page (see
+ * docs/imrs-prime-swissbionic.txt): system hero, control panel, connector
+ * box, the six Exagon applicators, software tools, accessories. */
 export default function ProductsPage() {
   return (
     <main id="main">
@@ -49,21 +58,65 @@ export default function ProductsPage() {
 
       <section id="imrs-prime">
         <SplitBand
-          image={images.imrsPrimeModes}
+          image={images.imrsModel3}
           title={imrsPrime.title}
           paragraphs={imrsPrime.paragraphs}
           tone="mist"
+        />
+        <SplitBand
+          image={images.imrsControlPanel}
+          title={controlPanel.title}
+          paragraphs={controlPanel.paragraphs}
+          reverse
+        />
+        <SplitBand
+          image={images.imrsConnectorBox}
+          title={connectorBox.title}
+          paragraphs={connectorBox.paragraphs}
+        />
+
+        <Section
+          id="applicators"
+          title={applicatorsIntro.title}
+          intro={applicatorsIntro.paragraphs[0]}
+          tone="blush"
+          rhythm="compact"
         />
         {applicators.map((a, i) => (
           <SplitBand
             key={a.title}
             image={a.image}
             title={a.title}
+            titleAs="h3"
             paragraphs={a.paragraphs}
             reverse={i % 2 === 1}
           />
         ))}
-        <PanelGrid panels={sensors} tone="blush" />
+
+        <SplitBand
+          heading={fastStart.heading}
+          image={images.imrsPrimeModes}
+          title={fastStart.title}
+          titleAs="h3"
+          paragraphs={fastStart.paragraphs}
+          tone="mist"
+        >
+          <ul className="mt-6 flex flex-wrap gap-3">
+            {fastStart.programs.map((p) => (
+              <li key={p} className="u-plate px-4 py-2 text-ink-soft">
+                {p}
+              </li>
+            ))}
+          </ul>
+        </SplitBand>
+        <PanelGrid panels={modes} panelTitleAs="h3" tone="mist" />
+
+        <PanelGrid
+          heading={accessoriesHeading}
+          panels={accessories}
+          panelTitleAs="h3"
+          tone="blush"
+        />
       </section>
 
       <section id="smart-pulser">
@@ -118,7 +171,7 @@ export default function ProductsPage() {
           productSchema({
             name: "IMRS prime PEMF",
             description: imrsPrime.paragraphs[0],
-            image: images.imrsPrimeModes.src,
+            image: images.imrsModel3.src,
           }),
           productSchema({
             name: "Smart Pulser",

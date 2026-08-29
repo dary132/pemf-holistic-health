@@ -42,7 +42,14 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { buildHaystack, checkString } from "./verify-copy.mjs";
 
-const SOURCES = ["docs/exiga-jasmin-2026.txt", "docs/exiga-jasmin-2026-image-text.txt"];
+// Kept in step with verify-copy.mjs's SOURCES: the Swiss Bionic page was
+// added 2026-08-29 as the approved source for the /products iMRS prime
+// sections (see the comment there and the file's own provenance header).
+const SOURCES = [
+  "docs/exiga-jasmin-2026.txt",
+  "docs/exiga-jasmin-2026-image-text.txt",
+  "docs/imrs-prime-swissbionic.txt",
+];
 
 // Both app/ and components/ hold client-facing JSX: a caption, heading or
 // paragraph typed straight into a shared component (CTA, Header, Footer, ...)
