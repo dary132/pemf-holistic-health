@@ -123,8 +123,8 @@ export default function Home() {
         <div className="grid items-center gap-10 md:grid-cols-[11fr_9fr]">
           <div className="u-plate p-3">
             <Image
-              src={images.holisticAnatomy.src}
-              alt={images.holisticAnatomy.alt}
+              src={images.organFunctions.src}
+              alt={images.organFunctions.alt}
               width={800}
               height={600}
               className="w-full rounded-lg"

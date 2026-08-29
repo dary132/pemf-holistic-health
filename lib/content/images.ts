@@ -37,6 +37,13 @@ export const images = {
     alt: "Flower diagram of the six aspects of holistic health: physical, mental, emotional, intellectual, social and spiritual",
     contain: true,
   },
+  // Client-supplied 2026-08-29 for the home page's anatomy section: the
+  // labelled organ-function chart the holisticAnatomy SVG below once stood
+  // in for. The SVG stays for the /designs comps, which still render it.
+  organFunctions: {
+    src: "/images/organ-functions.webp",
+    alt: "Chart of eighteen organs and their functions, from the brain controlling the body to the pituitary master gland",
+  },
   holisticAnatomy: {
     src: "/images/holistic-anatomy.svg",
     alt: "A figure with brain, lungs, heart, muscles, bones and joints marked as connected parts of one body",
