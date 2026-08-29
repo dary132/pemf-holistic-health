@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { clearTranslateCookie } from "@/lib/googtrans";
 
 // The browser exposes no API to trigger its own translate bar, so this drives
 // Google's free website-translate widget instead -- via the `googtrans` cookie
@@ -51,15 +52,6 @@ function readActiveLanguage(): string {
 // the client reads the cookie, without a set-state-in-effect cascade.
 const subscribeToNothing = () => () => {};
 const getServerLanguage = () => "";
-
-function clearTranslateCookie() {
-  // Google sets the cookie host-only, but some widget versions also set it on
-  // the registrable domain -- expire every variant or English never sticks.
-  const expiry = "expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  document.cookie = `googtrans=; ${expiry}`;
-  document.cookie = `googtrans=; ${expiry}; domain=${location.hostname}`;
-  document.cookie = `googtrans=; ${expiry}; domain=.${location.hostname}`;
-}
 
 function applyLanguage(code: string) {
   clearTranslateCookie();
