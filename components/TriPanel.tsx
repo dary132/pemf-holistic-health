@@ -13,9 +13,14 @@ export function PanelGrid({
   tone,
   panelTitleAs = "h3",
   rhythm = "normal",
+  columns = 3,
 }: {
   heading?: string;
   panels: Panel[];
+  /** Desktop column count, default 3. Use 2 when the panel count is a
+   *  multiple of two (e.g. the four /products accessories), so the grid
+   *  fills every row instead of wrapping 3 + 1. */
+  columns?: 2 | 3;
   /** Ground tint; omitted means the cream page ground shows through. */
   tone?: Tone;
   /** Level for each panel's own title (panel.title), default "h3" -- correct
@@ -32,7 +37,11 @@ export function PanelGrid({
     <div className={tone && TONE_BG[tone]}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         {heading && <h2 className="mb-10">{heading}</h2>}
-        <div className="grid items-stretch gap-8 lg:grid-cols-3">
+        <div
+          className={`grid items-stretch gap-8 ${
+            columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"
+          }`}
+        >
           {panels.map((panel, i) => (
             // Index key is safe: panels is a static list, never reordered or
             // filtered, and only changes when the page's content module changes.

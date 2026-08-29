@@ -116,6 +116,7 @@ export default function ProductsPage() {
           panels={accessories}
           panelTitleAs="h3"
           tone="blush"
+          columns={2}
         />
       </section>
 
