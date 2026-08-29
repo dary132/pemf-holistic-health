@@ -236,9 +236,13 @@ export const images = {
     alt: "Comparison of inductive fiber coils against solid copper coils",
     contain: true,
   },
+  // Client-supplied 2026-08-29, replacing the biomimetic-earth.svg diagram.
+  // Source file is 385x172 with baked-in "PEMF" caption text, so it must not
+  // be cropped.
   biomimeticEarth: {
-    src: "/images/biomimetic-earth.svg",
-    alt: "Earth emitting its natural electromagnetic pulses outward",
+    src: "/images/pemf-earth-field.png",
+    alt: "Earth in space ringed by pulsed electromagnetic field lines, captioned PEMF: Pulsed Electro Magnetic Fields",
+    contain: true,
   },
   wechatQr: { src: "/images/wechat-qr.png", alt: "WeChat QR code", contain: true },
 } satisfies Record<string, Img>;
