@@ -341,6 +341,17 @@ html {
   }
 }
 
+/* Google Translate widget (components/LanguageSwitcher.tsx). The site's own
+   styled menu is the only language UI; everything the widget injects is
+   suppressed. The banner iframe would otherwise push the whole page down by
+   setting an inline `top` on <body>, hence the !important counter-rule. */
+#google-translate-mount { display: none; }
+.goog-te-banner-frame, iframe.skiptranslate { display: none !important; }
+body { top: 0 !important; }
+/* Hover tooltip and the highlight it paints over translated phrases. */
+#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
 /* Anchor targets clear the sticky header. */
 section[id] { scroll-margin-top: 7rem; }
 

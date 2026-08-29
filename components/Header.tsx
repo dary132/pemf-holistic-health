@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navGroups } from "@/lib/routes";
 import { site } from "@/lib/site";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,7 +56,10 @@ export default function Header() {
               WhatsApp {site.whatsapp}
             </a>
           </div>
-          <p className="hidden md:block">{site.address.join(", ")}</p>
+          <div className="flex items-center gap-x-6">
+            <p className="hidden md:block">{site.address.join(", ")}</p>
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
 
