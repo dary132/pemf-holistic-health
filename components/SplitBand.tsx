@@ -12,24 +12,50 @@ import { TONE_BG, type Tone } from "@/lib/tones";
  *  FrequencyCard) is what makes the nine inner pages match the home page
  *  instead of mixing two card languages on the same site. */
 export function SplitBand({
+  heading,
   image,
   title,
+  titleAs: Heading = "h2",
   paragraphs = [],
   reverse = false,
   tone,
+  frame = "plate",
   children,
 }: {
+  /** Section-level h2 above the band, inside the same block -- exactly as on
+   *  PanelGrid. Use with `titleAs="h3"` so the band's own title nests under it. */
+  heading?: string;
   image: Img;
   title?: string;
+  /** "h3" when the band sits under a section-level h2 (its own `heading`, or
+   *  a preceding band's). */
+  titleAs?: "h2" | "h3";
   paragraphs?: string[];
   reverse?: boolean;
   /** Ground tint; omitted means the cream page ground shows through. */
   tone?: Tone;
+  /** "open" drops the bordered plate around the image, added 2026-08-28 at
+   *  the client's request for larger images with less card chrome: the image
+   *  sits directly on the band ground with its own rounded corners, so the
+   *  artwork itself carries the block instead of a border. */
+  frame?: "plate" | "open";
   children?: React.ReactNode;
 }) {
+  const imgClass = image.contain
+    ? frame === "open"
+      ? "mx-auto h-auto w-full object-contain rounded-2xl"
+      : "mx-auto h-auto w-full object-contain"
+    : frame === "open"
+      ? "h-auto w-full object-cover rounded-2xl"
+      : "h-auto w-full object-cover rounded-lg";
   return (
     <div className={tone && TONE_BG[tone]}>
       <div className="mx-auto max-w-6xl px-5 py-14">
+        {heading && (
+          <h2 data-reveal className="mb-10">
+            {heading}
+          </h2>
+        )}
         {/* 55/45 in the image's favour (was 50/50) -- the client asked for
             larger images, 2026-08-28. The template flips with `reverse`
             because the image div moves to the SECOND column via lg:order-2;
@@ -40,7 +66,10 @@ export function SplitBand({
           }`}
         >
           <div data-reveal className={reverse ? "lg:order-2" : undefined}>
-            <div className="u-plate p-3">
+            {/* In the open frame the wrapper div stays but carries no plate
+                styling -- keeping the element tree identical between frames
+                is what lets verify-jsx-copy's tag scanner parse this file. */}
+            <div className={frame === "plate" ? "u-plate p-3" : undefined}>
               <Image
                 src={image.src}
                 alt={image.decorative ? "" : image.alt}
@@ -48,18 +77,14 @@ export function SplitBand({
                 unoptimized={isSvg(image.src)}
                 width={900}
                 height={700}
-                className={
-                  image.contain
-                    ? "mx-auto h-auto w-full object-contain"
-                    : "h-auto w-full rounded-lg object-cover"
-                }
+                className={imgClass}
               />
             </div>
           </div>
           <div data-reveal>
             {title && (
               <>
-                <h2 className="text-3xl">{title}</h2>
+                <Heading className="text-3xl">{title}</Heading>
                 <span className="u-accent-rule" />
               </>
             )}

@@ -87,7 +87,7 @@ const NON_COPY_PROPS = new Set([
   // a deliberate entry: a NEW config prop will fail until it is added here,
   // which is the deny-list working, not a defect.
   "titleAs", "panelTitleAs", "rhythm", "variant", "reverse", "tone",
-  "imageFit", "imageAspect", "aspect", "theme", "n", "range",
+  "frame", "imageFit", "imageAspect", "aspect", "theme", "n", "range",
   // The same-length mask maskIframeTitleAttr() leaves behind (see below). It
   // is never a real attribute name, so naming it here costs no coverage.
   "xxxxx",
