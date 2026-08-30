@@ -31,7 +31,11 @@ export default function Home() {
           anywhere in here: the photograph is the page's LCP element, and the
           text above the fold should never wait on an animation. */}
       <section className="bg-cream">
-        <div className="mx-auto max-w-6xl px-5 py-16 text-center lg:py-20">
+        {/* Asymmetric padding, client request 2026-08-29: the wordmark sat a
+            full py-16 below the sticky header, which read as a gap rather than
+            as breathing room. The top is tightened and the bottom left alone,
+            so the hero still separates from the section beneath it. */}
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-6 text-center lg:pb-20 lg:pt-8">
           {/* Per-letter colours, client request 2026-08-28: P purple, E green,
               M red, F blue -- replacing the seven-stop gradient here (only
               here; the /designs comps keep .u-technicolor). Each letter uses
@@ -63,7 +67,11 @@ export default function Home() {
           <p className="mx-auto mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
             {hero.expansion}
           </p>
-          <div className="u-plate mt-8 p-3">
+          {/* No plate around the photograph, client request 2026-08-29: the
+              bordered white frame and its 12px padding are gone, so the image
+              sits directly on the cream ground and carries the block itself.
+              Same open treatment SplitBand's frame="open" uses elsewhere. */}
+          <div className="mt-8">
             <Image
               src={images.imrsModel3.src}
               alt={images.imrsModel3.alt}
@@ -71,7 +79,7 @@ export default function Home() {
               width={1000}
               height={563}
               sizes="100vw"
-              className="w-full rounded-lg"
+              className="w-full rounded-2xl"
             />
           </div>
           {/* The second button is the visit ask, not "What is PEMF?". The hero
