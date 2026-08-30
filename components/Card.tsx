@@ -88,7 +88,7 @@ export function Card({
 export function FrequencyCard({ name, body }: { range: string; name: string; body: string }) {
   return (
     <div data-reveal className="u-plate p-5">
-      <p className="font-medium text-sage">{name}</p>
+      <p className="font-bold text-sage">{name}</p>
       <p className="mt-2 text-base leading-relaxed text-ink-soft">{body}</p>
     </div>
   );

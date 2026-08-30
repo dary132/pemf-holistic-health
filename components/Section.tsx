@@ -30,7 +30,7 @@ export function Section({
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         <div data-reveal className="max-w-3xl">
           {eyebrow && (
-            <p className="mb-2 text-sm font-medium uppercase tracking-widest text-clay">
+            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-clay">
               {eyebrow}
             </p>
           )}

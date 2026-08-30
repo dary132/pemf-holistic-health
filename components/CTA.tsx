@@ -65,7 +65,7 @@ export function CTA() {
           <PhoneButton variant="inverse" />
           <a
             href={site.whatsappHref}
-            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-medium text-band-ink transition hover:bg-band-ink/10"
+            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-semibold text-band-ink transition hover:bg-band-ink/10"
           >
             WhatsApp {site.whatsapp}
           </a>
@@ -76,7 +76,7 @@ export function CTA() {
             href={site.directionsHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-medium text-band-ink transition hover:bg-band-ink/10"
+            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-semibold text-band-ink transition hover:bg-band-ink/10"
           >
             Get Directions
           </a>

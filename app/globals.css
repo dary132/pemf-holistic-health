@@ -231,14 +231,16 @@ html {
     color: var(--ink);
     font-family: var(--font-body), system-ui, sans-serif;
     line-height: 1.75;
-    /* 450 rather than 400. Age-related contrast-sensitivity loss is worst at
-       high spatial frequencies, which is exactly what a thin stroke is, so a
-       slightly heavier body face reads more easily for an older eye. A
-       contrast checker cannot see this: it measures solid colour patches and
-       is blind to stroke width, so the ratio is unchanged while the text is
-       materially clearer. Nunito Sans is variable, so this costs no extra
+    /* 550, raised from 450 on 2026-08-29: the client read the page as too
+       thin. Stroke weight is the right lever here and colour is not -- --ink
+       and --ink-soft are both already near-black on cream, so there is no
+       contrast left to win, while Nunito Sans at 450 still draws a fine
+       stroke. Age-related contrast-sensitivity loss is worst at high spatial
+       frequencies, which is exactly what a thin stroke is, and a ratio
+       checker cannot see any of it: it measures solid colour patches and is
+       blind to stroke width. Nunito Sans is variable, so this costs no extra
        font download. */
-    font-weight: 450;
+    font-weight: 550;
   }
 
   h1, h2, h3 {
