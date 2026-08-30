@@ -23,7 +23,7 @@ export const benefits: Panel[] = [
   },
   {
     title: "Benefits of Being Energetic",
-    image: images.energyBattery,
+    image: images.energeticVsTired,
     paragraphs: [
       "Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference.",
     ],

@@ -138,10 +138,14 @@ export const images = {
     src: "/images/relax-poolside.jpg",
     alt: "A woman relaxing on a lounger beside a pool",
   },
-  energyBattery: {
-    src: "/images/energy-battery.svg",
-    alt: "A nearly empty battery beside a full one, representing energy levels rising",
-    contain: true,
+  /* The document's own file (word/media/image21), restored at the client's
+     request on 2026-08-30 in place of the energy-battery.svg redraw. The
+     original is 324x256; padded to 341x256 by repeating its own edge columns
+     so it fills the 4/3 media slot exactly. Without that it letterboxes
+     against --sand, and its ground is an opaque teal, not a cut-out. */
+  energeticVsTired: {
+    src: "/images/energetic-vs-tired.png",
+    alt: "A tired man trudging beneath an empty battery icon beside an energetic man leaping with his arms up beneath a full battery icon",
   },
   brainwaveEntrainment: {
     src: "/images/brainwave-entrainment.svg",

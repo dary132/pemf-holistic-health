@@ -61,7 +61,7 @@ export const teasers: Teaser[] = [
     title: "PEMF Increases Your Energy",
     body: "Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference.",
     href: "/energy",
-    image: images.energyBattery,
+    image: images.energeticVsTired,
   },
   {
     title: "PEMF Enhances Athletic Performance",
