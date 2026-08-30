@@ -88,13 +88,19 @@
     var(--tc-5) 66%, var(--tc-6) 83%, var(--tc-7) 100%
   );
 
-  /* Type scale. rem against the 19-20px root, so the accessibility floor
-     carries through every step. */
-  --step-display: clamp(2.5rem, 5vw, 3.75rem);
-  --step-h1: clamp(2.125rem, 4vw, 2.75rem);
-  --step-h2: clamp(1.75rem, 3vw, 2.125rem);
-  --step-h3: 1.25rem;
-  --step-lead: 1.15rem;
+  /* Type scale. rem against the 21-22px root, so the accessibility floor
+     carries through every step.
+     Raised across the board 2026-08-29 at the client's request for bigger
+     headings. h3 moved the most in proportion: at the raised root it sat at
+     1.25rem, close enough to a 600-weight paragraph that a panel title had
+     stopped announcing itself as a title. The clamp minimums are what phones
+     get, so each was raised with the maximum to keep the jump visible on a
+     small screen rather than only on a desktop. */
+  --step-display: clamp(2.75rem, 5.5vw, 4.25rem);
+  --step-h1: clamp(2.375rem, 4.5vw, 3.25rem);
+  --step-h2: clamp(1.95rem, 3.4vw, 2.5rem);
+  --step-h3: 1.5rem;
+  --step-lead: 1.2rem;
   --step-wordmark: clamp(4.5rem, 16vw, 9.5rem);
 }
 
