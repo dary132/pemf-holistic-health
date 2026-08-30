@@ -4,7 +4,9 @@ import { PhoneButton } from "./PhoneButton";
 /** The book-an-appointment block that closes every page. Copy is the client's
  *  own recurring per-page call-to-action block (document lines 78-84,
  *  repeated verbatim 7 times), not marketing prose invented for the site:
- *    Call / Text / WhatsApp
+ *    Call / Text / WhatsApp (rendered with pipe separators at the client's
+ *      request, 2026-08-30; registered in verify-copy's ALLOWED_EDITS so the
+ *      deviation from the document's slashes is recorded rather than hidden)
  *    Certified PEMF Expert Sharon
  *    for Appointment (949) 891 5572 (client-corrected number; the source
  *    document printed 600 7899, which is retired)
@@ -37,7 +39,7 @@ export function CTA() {
             wins over the section's inherited colour, rendering this heading in
             sage text on a sage background -- invisible. Pre-existing bug, found
             while re-verifying this section against the screenshot harness. */}
-        <h2 className="text-3xl text-band-ink sm:text-4xl">Call / Text / WhatsApp</h2>
+        <h2 className="text-3xl text-band-ink sm:text-4xl">Call | Text | WhatsApp</h2>
         <p className="mx-auto mt-3 max-w-2xl text-band-ink/90 leading-relaxed">
           Certified PEMF Expert Sharon
           <br />

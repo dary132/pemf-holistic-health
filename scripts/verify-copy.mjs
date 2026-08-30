@@ -107,6 +107,18 @@ export const ALLOWED_EDITS = [
     doc: "PRMF for Pets Health",
     reason: "Unambiguous transposition in a page H1 (spec Appendix B, class 1)",
   },
+  {
+    site: "Call | Text | WhatsApp",
+    doc: "Call / Text / WhatsApp",
+    // Separator glyph only -- the three words, their order and their meaning
+    // are the document's. Registered here rather than waved through because
+    // the alternative dodge is worse: splitting the heading into three
+    // one-word text nodes would slip under verify-jsx-copy's two-word floor
+    // and leave no record that the site says something the document does not.
+    // Applies to components/CTA.tsx, the closing band on every page;
+    // app/contact/page.tsx still carries the document's slashes.
+    reason: "Client asked for pipe separators in the sitewide CTA heading, 2026-08-30",
+  },
 ];
 
 /** Collapse whitespace only. Quote and apostrophe characters are checked
