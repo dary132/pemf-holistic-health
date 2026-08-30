@@ -64,7 +64,7 @@ export const images = {
     alt: "A bowl of rice, vegetables, chickpeas, boiled egg and chicken",
     contain: true,
   },
-  essentialWater: { src: "/images/essential-water.png", alt: "A glass of water", contain: true },
+  essentialWater: { src: "/images/essential-water.webp", alt: "A glass of water", contain: true },
   essentialSunshine: {
     src: "/images/essential-sunshine.png",
     alt: "A figure with arms raised to the sun, captioned: The Sunshine Vitamin, why sunlight is crucial to your health",
@@ -82,7 +82,7 @@ export const images = {
     contain: true,
   },
   fieldWeakening: {
-    src: "/images/magnetic-field-weakening.png",
+    src: "/images/magnetic-field-weakening.webp",
     alt: "",
     decorative: true,
     contain: true,
