@@ -64,7 +64,17 @@ export const images = {
     alt: "A bowl of rice, vegetables, chickpeas, boiled egg and chicken",
     contain: true,
   },
-  essentialWater: { src: "/images/essential-water.webp", alt: "A glass of water", contain: true },
+  /* Cut out from its white studio backdrop so the glass sits directly on the
+     section ground -- the four themes each tint --cream differently, and an
+     opaque white plate showed as a box against every one of them. The file is
+     renamed rather than replaced in place: /_next/image caches optimised
+     variants per source URL across deployments, so reusing the old name can
+     serve the pre-cutout copy until that cache expires. */
+  essentialWater: {
+    src: "/images/essential-water-cutout.webp",
+    alt: "A glass of water",
+    contain: true,
+  },
   essentialSunshine: {
     src: "/images/essential-sunshine.png",
     alt: "A figure with arms raised to the sun, captioned: The Sunshine Vitamin, why sunlight is crucial to your health",
