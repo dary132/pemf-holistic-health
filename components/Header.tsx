@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { navGroups } from "@/lib/routes";
 import { site } from "@/lib/site";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import TextSizeControl from "@/components/TextSizeControl";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function Header() {
   }, [groupOpen]);
 
   const linkClass = (href: string) =>
-    `inline-flex min-h-[48px] items-center px-2 font-bold no-underline ${
+    `inline-flex min-h-[48px] items-center whitespace-nowrap px-2 font-bold no-underline ${
       pathname === href ? "text-clay underline underline-offset-8" : "text-ink-soft hover:text-clay"
     }`;
 
@@ -56,8 +57,18 @@ export default function Header() {
               WhatsApp {site.whatsapp}
             </a>
           </div>
-          <div className="flex items-center gap-x-6">
-            <p className="hidden md:block">{site.address.join(", ")}</p>
+          {/* flex-wrap and the tighter small-screen gap are what keep the bar
+              from scrolling sideways at the largest text size: every gap here
+              is rem-based, so it grows with the reader's choice just as the
+              buttons do, and on a narrow phone the row has to be allowed to
+              wrap rather than push past the viewport. */}
+          <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 sm:gap-x-6">
+            {/* The address gives way to the text-size control below xl: the
+                control is the one thing here a reader who cannot read the
+                page needs, so it outranks an address that also sits in the
+                footer and in the CTA on every page. */}
+            <p className="hidden xl:block">{site.address.join(", ")}</p>
+            <TextSizeControl />
             <LanguageSwitcher />
           </div>
         </div>
@@ -65,14 +76,21 @@ export default function Header() {
 
       <header className="border-b-2 border-rule bg-cream">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-          <Link href="/" className="min-w-0 text-2xl font-semibold no-underline">
+          {/* nowrap only from xl, where the nav sits inline beside it and a
+              wrapped wordmark looks broken. On a phone at the largest text
+              size the name must be free to wrap, or it pushes the page
+              sideways. */}
+          <Link
+            href="/"
+            className="min-w-0 text-2xl font-semibold no-underline xl:whitespace-nowrap"
+          >
             <span className="font-[family-name:var(--font-display)] text-sage">PEMF </span>
             <span className="font-[family-name:var(--font-display)] text-clay">
               for Holistic Health
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-5 xl:flex">
             {navGroups.map((entry) =>
               entry.kind === "link" ? (
                 <Link
@@ -122,7 +140,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl border-2 border-button px-4 font-bold text-button lg:hidden"
+            className="inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl border-2 border-button px-4 font-bold text-button xl:hidden"
           >
             {menuOpen ? "Close" : "Menu"}
           </button>
@@ -132,7 +150,7 @@ export default function Header() {
           <nav
             id="mobile-menu"
             aria-label="Main"
-            className="border-t-2 border-rule bg-white px-5 py-3 lg:hidden"
+            className="border-t-2 border-rule bg-white px-5 py-3 xl:hidden"
           >
             <ul>
               {navGroups.flatMap((entry) =>

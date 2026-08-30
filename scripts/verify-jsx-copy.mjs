@@ -126,6 +126,11 @@ const CHROME_ALLOWLIST = new Set([
   "WhatsApp",
   "Visit Us",
   "Book a Session",
+  // The label on the A- / A / A+ control in the header. Names a control,
+  // states nothing about PEMF, the practice or health. The buttons' own
+  // accessible names ("Make the text bigger", ...) are aria-labels, which
+  // isCopyProp already exempts on the same reasoning.
+  "Text size",
   // The maps button in components/CTA.tsx. A navigation label, not a claim:
   // it states nothing about PEMF, the practice or health, and the address it
   // routes to is checked as copy via `site.address`.

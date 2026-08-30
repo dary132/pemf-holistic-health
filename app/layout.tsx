@@ -66,7 +66,13 @@ export const metadata: Metadata = {
  * attacker-controllable -- are pattern-checked and then written to a data
  * attribute rather than to markup, so the worst a crafted link can do is name
  * a theme that has no stylesheet block and change nothing. */
-const NO_FLASH_THEME = `try{var p=new URLSearchParams(location.search).get("theme");var t=p!==null?p:localStorage.getItem("pemf-theme");if(p!==null)localStorage.setItem("pemf-theme",p);if(t&&/^[a-z-]{1,12}$/.test(t))document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add("js-reveal");window.__revealFailsafe=setTimeout(function(){document.documentElement.classList.remove("js-reveal")},4000);`;
+/* The text-size clause carries the same reasoning: the reader's chosen size is
+ * restored here, before paint, so a returning visitor never watches the page
+ * load at the default size and then jump. The stored value is parsed as a
+ * number and range-checked before it is used, so a tampered localStorage entry
+ * can only produce a scale between 0.9 and 1.3 -- it is written to a CSS
+ * custom property, never to markup. */
+const NO_FLASH_THEME = `try{var p=new URLSearchParams(location.search).get("theme");var t=p!==null?p:localStorage.getItem("pemf-theme");if(p!==null)localStorage.setItem("pemf-theme",p);if(t&&/^[a-z-]{1,12}$/.test(t))document.documentElement.dataset.theme=t}catch(e){}try{var s=parseFloat(localStorage.getItem("pemf-text-scale"));if(s>=0.9&&s<=1.3)document.documentElement.style.setProperty("--text-scale",String(s))}catch(e){}document.documentElement.classList.add("js-reveal");window.__revealFailsafe=setTimeout(function(){document.documentElement.classList.remove("js-reveal")},4000);`;
 
 /* suppressHydrationWarning below is required and is not papering over a bug:
    NO_FLASH_THEME deliberately sets data-theme on the root element before React

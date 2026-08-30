@@ -45,8 +45,12 @@ export function Card({
         />
       )}
       <div className="flex grow flex-col p-6">
+        {/* The eyebrow was text-xs with tracking-widest: the smallest, most
+            letterspaced text on the site, and all-caps on top of that. Wide
+            tracking breaks a word into loose letters, which is the opposite of
+            what an older reader needs. Larger and closer, still an eyebrow. */}
         {eyebrow && (
-          <p className="mb-1 text-xs font-medium uppercase tracking-widest text-clay">
+          <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-clay">
             {eyebrow}
           </p>
         )}
@@ -67,7 +71,7 @@ export function Card({
         {cta && (
           <a
             href={cta.href}
-            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-button px-6 py-2.5 text-center text-sm font-medium text-button-ink transition-colors hover:bg-button-hover"
+            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-button px-6 py-2.5 text-center text-base font-semibold text-button-ink transition-colors hover:bg-button-hover"
           >
             {cta.label}
           </a>
@@ -85,7 +89,7 @@ export function FrequencyCard({ name, body }: { range: string; name: string; bod
   return (
     <div data-reveal className="u-plate p-5">
       <p className="font-medium text-sage">{name}</p>
-      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{body}</p>
+      <p className="mt-2 text-base leading-relaxed text-ink-soft">{body}</p>
     </div>
   );
 }
