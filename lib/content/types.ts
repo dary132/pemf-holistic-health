@@ -17,6 +17,11 @@ export type Panel = {
   title?: string;
   image?: Img;
   paragraphs?: string[];
+  /** Parallel one-line claims -- component specs, applicator features -- as
+   *  against `paragraphs`, which is multi-sentence prose. Rendered as a
+   *  marked list, so the reader can see at a glance how many there are and
+   *  scan down them. A block is one or the other, never both. */
+  bullets?: string[];
   items?: { term: string; text: string }[];
 };
 

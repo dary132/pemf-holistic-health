@@ -358,13 +358,35 @@ html {
     overflow: hidden;
   }
   /* Slot variant for artwork with an opaque near-black ground (the document's
-     sports icons): the fill matches the images' own background pixel exactly
-     (#000001, not #000000), so the icon and its letterbox bars read as one
-     edge-to-edge image. Fill behind an image only, never behind text, so it
-     is outside the contrast verifier's text-pair floor. */
+     sports icons among them): the fill matches the
+     images' own background pixel exactly (#000001, not #000000), so the icon
+     and its letterbox bars read as one edge-to-edge image. Fill behind an
+     image only, never behind text, so it is outside the contrast verifier's
+     text-pair floor. */
   .u-plate-media-dark {
     background: #000001;
   }
+
+  /* Marked list for blocks of parallel one-line claims -- the /products
+     component specs and applicator features. Markers are clay, the same
+     accent u-accent-rule and Section's lead sentence use, so a list reads as
+     part of that accent language rather than as browser default furniture.
+
+     `outside` hangs the marker in the padding, which is what keeps a wrapped
+     second line aligned under the first word instead of under the bullet.
+     The 1.75 line-height inherited from body is generous for a list, so the
+     gap between items is set larger than the gap inside one -- without that
+     a three-line item and two one-line items read as one undifferentiated
+     block. Markers are scaled up with the same reasoning as the 600 body
+     weight above: a default disc is a fine detail, and fine details are the
+     first thing an older eye loses. */
+  .u-bullets {
+    list-style: disc outside;
+    padding-left: 1.5rem;
+    max-width: 62ch;
+  }
+  .u-bullets > li + li { margin-top: 0.75rem; }
+  .u-bullets > li::marker { color: var(--clay); font-size: 1.15em; }
 }
 
 /* Google Translate widget (components/LanguageSwitcher.tsx). The site's own

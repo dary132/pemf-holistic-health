@@ -17,6 +17,7 @@ export function SplitBand({
   title,
   titleAs: Heading = "h2",
   paragraphs = [],
+  bullets = [],
   reverse = false,
   tone,
   frame = "plate",
@@ -31,6 +32,9 @@ export function SplitBand({
    *  a preceding band's). */
   titleAs?: "h2" | "h3";
   paragraphs?: string[];
+  /** Parallel one-line claims, rendered as a marked list. See the field of
+   *  the same name on Panel in lib/content/types.ts. */
+  bullets?: string[];
   reverse?: boolean;
   /** Ground tint; omitted means the cream page ground shows through. */
   tone?: Tone;
@@ -93,6 +97,13 @@ export function SplitBand({
                 {p}
               </p>
             ))}
+            {bullets.length > 0 && (
+              <ul className="u-bullets mt-6 text-ink-soft">
+                {bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            )}
             {children}
           </div>
         </div>

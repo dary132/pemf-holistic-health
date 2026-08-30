@@ -60,18 +60,18 @@ export default function ProductsPage() {
         <SplitBand
           image={images.imrsModel3}
           title={imrsPrime.title}
-          paragraphs={imrsPrime.paragraphs}
+          bullets={imrsPrime.bullets}
           tone="mist"
         />
         <SplitBand
           image={images.imrsControlPanel}
           title={controlPanel.title}
-          paragraphs={controlPanel.paragraphs}
+          bullets={controlPanel.bullets}
         />
         <SplitBand
           image={images.imrsConnectorBox}
           title={connectorBox.title}
-          paragraphs={connectorBox.paragraphs}
+          bullets={connectorBox.bullets}
         />
 
         <Section
@@ -87,7 +87,7 @@ export default function ProductsPage() {
             image={a.image}
             title={a.title}
             titleAs="h3"
-            paragraphs={a.paragraphs}
+            bullets={a.bullets}
           />
         ))}
 
@@ -175,7 +175,7 @@ export default function ProductsPage() {
         data={[
           productSchema({
             name: "IMRS prime PEMF",
-            description: imrsPrime.paragraphs[0],
+            description: imrsPrime.bullets[0],
             image: images.imrsModel3.src,
           }),
           productSchema({

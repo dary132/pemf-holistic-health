@@ -72,6 +72,13 @@ export function PanelGrid({
                   {p}
                 </p>
               ))}
+              {panel.bullets && (
+                <ul className="u-bullets mt-4 text-ink-soft">
+                  {panel.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              )}
               {panel.items && (
                 <dl className="mt-3 space-y-3">
                   {panel.items.map((item) => (

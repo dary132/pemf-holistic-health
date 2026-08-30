@@ -11,7 +11,7 @@ export const intro = { title: "Products" };
 
 export const imrsPrime = {
   title: "IMRS prime PEMF",
-  paragraphs: [
+  bullets: [
     "The new benchmark of holistic, low-pulsed electro-magnetic technology for your personal wellbeing! World’s only 6-dimensional PEMF wellness system!",
     "PEMF-Extremely low frequency and low intensity systems for wellness!",
   ],
@@ -19,7 +19,7 @@ export const imrsPrime = {
 
 export const controlPanel = {
   title: "iMRS prime Control Panel",
-  paragraphs: [
+  bullets: [
     "10.2“ capacitive touch screen LCD-Display.",
     "Housing and pedestal in brushed aluminum, ROHS/REACH/IP20.",
     "2 built-in speakers.",
@@ -30,7 +30,7 @@ export const controlPanel = {
 
 export const connectorBox = {
   title: "iMRS prime Connector Box",
-  paragraphs: [
+  bullets: [
     "Designed as the gateway between the iMRS prime control unit and the applicators/accessories.",
     "6 applicator jacks.",
     "2 integrated D/A-Converter allowing for two separate, individual applications with only 1 control unit.",
@@ -50,7 +50,7 @@ export const applicators = [
   {
     title: "Exagon Mat",
     image: images.exagonMat,
-    paragraphs: [
+    bullets: [
       "The whole body applicator for the “holistic” PEMF experience!",
       "6 built-in, rock-solid copper coils, divided in three pairs with different amount of windings to control the applied field intensity over the entire surface.",
       "Triple Sawtooth waveform for highest efficiency of low-pulsed PEMF.",
@@ -59,7 +59,7 @@ export const applicators = [
   {
     title: "Exagon Pad",
     image: images.exagonPad,
-    paragraphs: [
+    bullets: [
       "The local applicator to stimulate specific body areas!",
       "2 built-in, rock-solid copper coils to evenly control the applied field intensity over the entire surface.",
       "Square Wave for highest efficiency of locally applied PEMF.",
@@ -68,7 +68,7 @@ export const applicators = [
   {
     title: "Exagon Spot",
     image: images.exagonSpot,
-    paragraphs: [
+    bullets: [
       "The punctual applicator to stimulate specific body areas!",
       "Newly designed and flexible applicator for punctual usage and to utilize the so-called “Helmholtz-Effect”!",
       "Square Wave for highest efficiency of locally applied PEMF with Helmholtz-Effect.",
@@ -77,7 +77,7 @@ export const applicators = [
   {
     title: "Exagon FIR",
     image: images.exagonFir,
-    paragraphs: [
+    bullets: [
       "The world’s first and only flexible hybrid applicator!",
       "Exagon FIR represents the most advanced, holistic PEMF applicator-technology to date.",
       "It literally feels like floating on a raft on a calm lake!",
@@ -86,7 +86,7 @@ export const applicators = [
   {
     title: "Exagon Brain",
     image: images.exagonBrainGoggles,
-    paragraphs: [
+    bullets: [
       "Brainwave Entrainment – Holistic experience for the mind!",
       "Newly designed Goggles with 12 built-in LEDS on each side. Housing is completely darkened for optimal performance.",
       "Photic, chromatic and audible BrainWave Entrainment combined in one single system.",
@@ -95,7 +95,7 @@ export const applicators = [
   {
     title: "Exagon Sense",
     image: images.exagonSense,
-    paragraphs: [
+    bullets: [
       "Biofeedback technology for wellness purposes",
       "Designed to detect blood volume changes in the microvascular bed of tissue.",
       "SpO2 and HRV evaluation.",
@@ -150,11 +150,11 @@ export const accessoriesHeading = "iMRS prime Accessories";
 export const accessories: Panel[] = [
   {
     title: "iMRS prime Organizer Bag Control Unit",
-    paragraphs: ["Small bag for the control unit, power plug and other accessories."],
+    bullets: ["Small bag for the control unit, power plug and other accessories."],
   },
   {
     title: "Exagon Applicator Travel Bag",
-    paragraphs: [
+    bullets: [
       "Travel bag for all Exagon Applicators (Exagon Mat/FIR, Exagon Pad, Exagon Spot).",
     ],
   },
@@ -173,7 +173,7 @@ export const accessories: Panel[] = [
   },
   {
     title: "Prime Full-Service Package",
-    paragraphs: [
+    bullets: [
       "An initial Onboarding-Call once the iMRS prime has been shipped and received by the customer, where a personal installation and activation session will be conducted via ZOOM with one of our trained Prime Tech!",
       "12 months troubleshooting with the assigned Prime Tech via direct email access!",
       "12 months warranty extension for the iMRS prime system!",
