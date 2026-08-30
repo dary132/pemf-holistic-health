@@ -120,6 +120,18 @@ export const images = {
     alt: "Illustration of physical, mental, and emotional wellness practices, including restorative sleep, nourishing foods, hydration, exercise, gratitude, meaningful connections, time in nature, mindfulness, supportive relationships, rest, personal growth, and reflection",
     contain: true,
   },
+  /* The document's own file (word/media/image15), placed in the /holistic-health
+     "PEMF for Wellness" section on 2026-08-30 at the client's request. It is
+     the file the deleted mimics-earth-field.svg redraw stood in for; see
+     earthFieldAurora below for why /pemf does not carry it (a fourth
+     globe-and-field-lines diagram on that page read as repetition -- which is
+     not true here, where it is the only one). The caption is burnt into the
+     image, so `contain` is required and the alt text repeats it. */
+  pemfMimicsEarthField: {
+    src: "/images/pemf-mimics-earth-field.png",
+    alt: "Earth in space ringed by looping magnetic field lines, captioned: PEMF Mimics Earth Magnetic Field",
+    contain: true,
+  },
   eightDimensions: {
     src: "/images/eight-dimensions.svg",
     alt: "Wheel of eight dimensions of wellness: environmental, financial, emotional, vocational, spiritual, social, physical, and intellectual",
@@ -147,10 +159,19 @@ export const images = {
     src: "/images/energetic-vs-tired.png",
     alt: "A tired man trudging beneath an empty battery icon beside an energetic man leaping with his arms up beneath a full battery icon",
   },
+  /* The document's own file (word/media/image22), restored at the client's
+     request on 2026-08-30 in place of the brainwave-entrainment.svg redraw.
+     Its ground is the same opaque #000001 as the three sports icons below,
+     so `dark` paints the media slot to match and the letterboxing from its
+     227x164 frame disappears. `contain` is required, not cosmetic: the
+     caption is burnt into the image, and `cover` would crop it. That burnt-in
+     caption is also why the alt text repeats it -- a screen reader gets
+     nothing from the pixels. */
   brainwaveEntrainment: {
-    src: "/images/brainwave-entrainment.svg",
-    alt: "A head in profile with a brainwave passing through it",
+    src: "/images/mental-training.png",
+    alt: "A glowing blue brain, captioned: Mental training (Brain Wave Entrainment)",
     contain: true,
+    dark: true,
   },
   /** The three sports icons are the document's own files (word/media
    *  image23-25), restored at the client's request on 2026-08-28 in place of
