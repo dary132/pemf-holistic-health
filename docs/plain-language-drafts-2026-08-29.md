@@ -211,7 +211,96 @@ for the client and their counsel, not for us.
 
 A softer construction ("many people find…", "may help you…") would reduce that
 tension, but it changes what the client approved, so it is deliberately **not**
-done in the drafts above. Say the word and a second version can be prepared.
+done in the drafts above. The hedged variant is in the next section, offered as a
+separate choice.
+
+---
+
+## Hedged variant — a second, separate decision
+
+These replace the plain-language drafts **only where a claim is involved**. Every
+other rewrite above is unaffected. Take this variant whole, take individual lines,
+or take none of it.
+
+**What hedging changes:** it moves each line from asserting a result as fact to
+describing what the product is and what people report. It does not weaken the
+writing — it relocates the confidence from the outcome to the offer.
+
+**The trade-off, stated plainly:** hedged copy converts less confidently than a
+promise. "You will feel the difference" is a stronger sales line than "see how it
+feels for you." That is a real business cost, and it is the client's call whether
+the reduced exposure is worth it. This is not legal advice; a lawyer should make
+the final judgement.
+
+### Sleep Health
+
+| | Wording |
+|---|---|
+| Now | PEMF is an effective tool for improving sleep quality. PEMF is a non-invasive, non-addictive, drug-free approach for promoting better sleep. |
+| Plain draft (claim kept) | PEMF helps you sleep better. Nothing enters your body. There are no drugs, and it is not habit-forming. |
+| **Hedged** | **Many people use PEMF to wind down at the end of the day. Nothing enters your body. There are no drugs, and it is not habit-forming.** |
+
+### Mental Health — coping with stress
+
+| | Wording |
+|---|---|
+| Now | PEMF is safe, effective, non-invasive and non-addictive tool. You can use it anytime in the comfort of your own home or office. |
+| Plain draft (claim kept) | PEMF is one healthy way to cope with stress. It is safe and it works: nothing enters your body, and it is not habit-forming. Use it any time, at home or at the office. |
+| **Hedged** | **PEMF is one way people choose to unwind. It is gentle: nothing enters your body, and it is not habit-forming. Use it any time, at home or at the office.** |
+
+Note the specific move: "it is safe and it works" becomes "it is gentle," which
+describes the experience instead of guaranteeing safety and effect.
+
+### Mental Health — brainwave entrainment
+
+| | Wording |
+|---|---|
+| Now | …are a safe, non-invasive and non-addictive, affordable application to improve mental acuity and learning ability thus promoting brain health and wellness. |
+| Plain draft (claim kept) | IMRS prime PEMF and Brainwave Entrainment are safe and gentle. Nothing enters your body, and nothing is habit-forming. They can sharpen your thinking and make learning easier, which supports your brain health. |
+| **Hedged** | **IMRS prime PEMF and Brainwave Entrainment are gentle to use. Nothing enters your body, and nothing is habit-forming. People use them as part of caring for their brain health.** |
+
+Also on this page:
+
+| | Wording |
+|---|---|
+| Plain draft (claim kept) | …It lowers stress and leaves you feeling relaxed and at ease. |
+| **Hedged** | **…Many people find it leaves them feeling relaxed and at ease.** |
+
+### Mental Health — relaxation
+
+| | Wording |
+|---|---|
+| Plain draft (claim kept) | PEMF can help you relax within minutes, at home or at the office. It helps your body settle back into a calm, balanced state. |
+| **Hedged** | **Many people feel more relaxed within minutes, at home or at the office. PEMF is designed to help your body settle into a calm, balanced state.** |
+
+### Energy
+
+| | Wording |
+|---|---|
+| Now | Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference. |
+| Plain draft (claim kept) | Try PEMF to build your energy, your stamina, and your strength. You will feel the difference. |
+| **Hedged** | **Try PEMF as part of your routine for energy, stamina, and strength. See how it feels for you.** |
+
+### Products — the Exagon Sense sensor
+
+**This one is different in kind, and should not be paraphrased.**
+
+"Bifunctional photoplethysmografy sensor… SpO2 and HRV evaluation" is the
+manufacturer's own product description, approved verbatim from the Swiss Bionic
+page. Rewriting it risks describing the product inaccurately, which is a worse
+problem than the one being solved. Blood-oxygen measurement reads as a medical
+function to most people, so there are three honest options:
+
+1. **Keep it verbatim and attribute it** — present the specification as the
+   manufacturer's, not the practice's, wording.
+2. **Omit the SpO2 and HRV line** and keep the rest of the description. The
+   sensor's role on the page is that it adjusts intensity during a session, which
+   the remaining copy already says.
+3. **Keep it as is.** It is accurate to the product.
+
+Recommended: option 2 on the practice's own page, since the measurement detail
+earns little for a wellness audience and carries the most medical reading.
+This is a decision for the client, not a rewrite to be applied quietly.
 
 ## If these are approved
 
