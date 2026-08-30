@@ -95,15 +95,10 @@ export const applicators = [
   {
     title: "Exagon Sense",
     image: images.exagonSense,
-    // The "SpO2 and HRV evaluation." line was dropped on the owner's
-    // instruction, 2026-08-29: blood-oxygen measurement reads as a medical
-    // function beside the site's not-a-medical-device notice, and what the
-    // sensor does on this page is adjust intensity during a session, which
-    // the remaining lines already say. The manufacturer's full wording stays
-    // on record in docs/imrs-prime-swissbionic.txt.
     paragraphs: [
       "Biofeedback technology for wellness purposes",
       "Designed to detect blood volume changes in the microvascular bed of tissue.",
+      "SpO2 and HRV evaluation.",
       "Dynamic intensity adjustment during a PEMF application.",
     ],
   },

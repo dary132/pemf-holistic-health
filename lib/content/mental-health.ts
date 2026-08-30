@@ -1,7 +1,4 @@
-/** Mental Health page copy.
- *  Source: docs/plain-language-approved-2026-08-29.txt (owner-approved plain-language
- *  rewrite with the hedged claim wording). Headings and the Intellectual Health
- *  lead-in remain from "Website Exiga Jasmin 2026.docx", page 4. Verbatim. */
+/** Mental Health page copy. Source: "Website Exiga Jasmin 2026.docx", page 4. Verbatim. */
 import type { Panel } from "./types";
 import { images } from "./images.ts";
 
@@ -11,24 +8,24 @@ export const dimensions: Panel[] = [
   {
     items: [
       {
-        term: "Mental Sharpness",
-        text: "How clearly you think, including your focus, quick thinking, memory, and problem solving.",
+        term: "Mental Acuity",
+        text: "Mental acuity refers to your cognitive health, which includes clarity, focus, quick thinking, problem-solving, and memory.",
       },
       {
         term: "Emotional Health",
-        text: "Knowing what you feel, understanding why, and handling those feelings well.",
+        text: "Emotional health pertains to your awareness of, understanding of, and ability to manage your feelings and moods.",
       },
       {
         term: "Spiritual Health",
-        text: "Having a sense of purpose, and holding values and beliefs that give your life meaning.",
+        text: "Focuses on having a sense of purpose, values, and beliefs that give life meaning.",
       },
       {
         term: "Social Health",
-        text: "Building good relationships and keeping them, and getting along well with other people.",
+        text: "Involves your ability to build and maintain healthy relationships and interact effectively with others.",
       },
       {
         term: "Financial Health",
-        text: "Managing your money well, so that you feel secure day to day.",
+        text: "The ability to manage your finances effectively and achieve financial security.",
       },
     ],
   },
@@ -36,8 +33,8 @@ export const dimensions: Panel[] = [
     title: "Brainwave Entrainment",
     image: images.exagonBrainBanner,
     paragraphs: [
-      "Your brain health shapes the rest of your life. It affects how you make choices, handle stress, and reach your goals. Brainwave Entrainment is a calming experience for the brain. Some people call it a spa for the mind. Many find it leaves them feeling relaxed and at ease.",
-      "IMRS prime PEMF and Brainwave Entrainment are gentle to use. Nothing enters your body, and nothing is habit-forming. People use them as part of caring for their brain health.",
+      "Brain health is a vital component of overall well-being and contributes to a person's ability to make informed decisions, cope with stress, and achieve your goals. Brainwave Entrainment is a holistic experience for the brain, also known as Spa for the Mind, reduces stress, resulting in relaxation, calmness and ease.",
+      "IMRS prime PEMF and Brainwave Entrainment are a safe, non-invasive and non-addictive, affordable application to improve mental acuity and learning ability thus promoting brain health and wellness.",
     ],
   },
   {
@@ -47,24 +44,24 @@ export const dimensions: Panel[] = [
     ],
     items: [
       {
-        term: "Clear thinking",
-        text: "Look at the facts, make up your own mind, and solve problems.",
+        term: "Engage in critical thinking",
+        text: "Analyze information, form opinions and solve problems.",
       },
       {
-        term: "Curiosity",
-        text: "Keep an open mind, learn new things, and listen to other points of view.",
+        term: "Curiosity and Lifelong Learning",
+        text: "Maintain an open mind, seek new knowledge, and explore different perspectives.",
       },
       {
         term: "Creativity",
-        text: "Come up with your own ideas, express them, and do things that interest you.",
+        text: "Generate original ideas, express oneself, and engage in stimulating activities.",
       },
       {
         term: "Self-awareness",
-        text: "Know what you are good at, and what you want to work on.",
+        text: "Understand one's own cognitive strengths and weaknesses and work to improve them.",
       },
       {
         term: "Adaptability",
-        text: "Take in new facts, adjust, and welcome a challenge.",
+        text: "Adjust new information and situations and embrace intellectual challenges.",
       },
     ],
   },
@@ -76,14 +73,14 @@ export const stress: { heading: string; panels: Panel[] } = {
     {
       title: "What is Stress?",
       paragraphs: [
-        "Stress is how your body and mind answer a challenge. It is natural, and it helps you get through hard moments.",
+        "Stress is a physiological and psychological response to perceived or real challenges or threats. It is a natural and adaptive mechanism that helps individuals cope with demanding situations.",
       ],
     },
     { image: images.stressMeter },
     {
       title: "Healthy Coping Mechanism",
       paragraphs: [
-        "PEMF is one way people choose to unwind. It is gentle: nothing enters your body, and it is not habit-forming. Use it any time, at home or at the office.",
+        "Choose a holistic approach using PEMF as your healthy coping mechanism. PEMF is safe, effective, non-invasive and non-addictive tool. You can use it anytime in the comfort of your own home or office.",
       ],
     },
   ],
@@ -95,14 +92,14 @@ export const relaxation: { heading: string; panels: Panel[] } = {
     {
       title: "What is Relaxation?",
       paragraphs: [
-        "Relaxation means feeling calm, comfortable, and free of stress. It helps you handle stress better, and it brings you a sense of peace.",
+        "Relaxation is the state of being calm, comfortable, and free from stress. Relaxation helps improve coping with stress, leading to a state of peace and tranquility.",
       ],
     },
     { image: images.relaxPoolside },
     {
       title: "Relax with PEMF",
       paragraphs: [
-        "Many people feel more relaxed within minutes, at home or at the office. PEMF is designed to help your body settle into a calm, balanced state.",
+        "PEMF can be effective for relaxation within minutes in the comfort of your own home or office. PEMF aids your body in returning to a calm and balanced state.",
       ],
     },
   ],
@@ -114,19 +111,19 @@ export const benefitsOfRelaxation: { heading: string; panels: Panel[] } = {
     {
       title: "Physical Health",
       paragraphs: [
-        "Relaxation calms your mind and lowers stress. That helps your body wind down for bed. You fall asleep sooner, sleep longer and better, and wake up restored.",
+        "Relaxation enhances sleep quality by reducing stress and calming the mind, helps to wind down the body and prepare for sleep, leading to better sleep onset, better quality and quantity of sleep and improved rejuvenation.",
       ],
     },
     {
       title: "Mental Health",
       paragraphs: [
-        "Relaxation lifts your mood and helps you cope. Your memory and focus improve. You think more clearly, solve problems better, and handle your feelings more evenly.",
+        "Improving mood and coping mechanisms. Enhances cognitive function, memory and concentration. Promotes clearer thinking and problem-solving abilities. Increases self-awareness and emotional regulation.",
       ],
     },
     {
       title: "Emotional Health",
       paragraphs: [
-        "You feel calm and at peace, with less stress. Hard days get easier to face. Many people feel happier, more content, and closer to the people they love.",
+        "Provides a sense of calm and peace, reducing stress and improves resilience to adversity and promotes emotional well-being. Enhances feelings of happiness, contentment, fulfillment and healthier relationships.",
       ],
     },
   ],
