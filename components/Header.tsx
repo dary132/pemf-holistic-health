@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { navGroups } from "@/lib/routes";
 import { site } from "@/lib/site";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import TextSizeControl from "@/components/TextSizeControl";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,18 +56,8 @@ export default function Header() {
               WhatsApp {site.whatsapp}
             </a>
           </div>
-          {/* flex-wrap and the tighter small-screen gap are what keep the bar
-              from scrolling sideways at the largest text size: every gap here
-              is rem-based, so it grows with the reader's choice just as the
-              buttons do, and on a narrow phone the row has to be allowed to
-              wrap rather than push past the viewport. */}
-          <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 sm:gap-x-6">
-            {/* The address gives way to the text-size control below xl: the
-                control is the one thing here a reader who cannot read the
-                page needs, so it outranks an address that also sits in the
-                footer and in the CTA on every page. */}
-            <p className="hidden xl:block">{site.address.join(", ")}</p>
-            <TextSizeControl />
+          <div className="flex items-center gap-x-6">
+            <p className="hidden md:block">{site.address.join(", ")}</p>
             <LanguageSwitcher />
           </div>
         </div>
@@ -76,14 +65,15 @@ export default function Header() {
 
       <header className="border-b-2 border-rule bg-cream">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-          {/* nowrap only from xl, where the nav sits inline beside it and a
-              wrapped wordmark looks broken. On a phone at the largest text
-              size the name must be free to wrap, or it pushes the page
-              sideways. */}
-          <Link
-            href="/"
-            className="min-w-0 text-2xl font-semibold no-underline xl:whitespace-nowrap"
-          >
+          {/* Two things this must not do, both found on screen at the raised
+              base size. It must never be whitespace-nowrap: pinned to one line
+              it overflowed its flex track at 1024px and drew straight through
+              the nav links. And it stays one step down until 2xl, because the
+              full nav and the four-word practice name do not share a line
+              below about 1400px, and a wrapped wordmark reads as broken.
+              Below xl the nav collapses to the Menu button, which is the
+              easier target at this text size anyway. */}
+          <Link href="/" className="min-w-0 text-xl font-semibold no-underline 2xl:text-2xl">
             <span className="font-[family-name:var(--font-display)] text-sage">PEMF </span>
             <span className="font-[family-name:var(--font-display)] text-clay">
               for Holistic Health

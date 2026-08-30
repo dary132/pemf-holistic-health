@@ -200,19 +200,13 @@
    legibility decision on the site. Raised 19/20 -> 20/21 on 2026-08-28 at the
    client's request for more readable text; every step in the scale is rem so
    the whole site grows with these two lines. */
-/* --text-scale is the reader's own choice, set by the A- / A / A+ control in
-   the header and restored before first paint by the script in app/layout.tsx.
-   It multiplies the root size, and every step in the scale above is rem, so
-   one number grows the entire site -- headings, cards, nav and body together
-   -- rather than only the paragraphs. Default 1; the control offers 0.9 to
-   1.3, i.e. roughly 19px to 29px on a desktop. */
 html {
-  font-size: calc(21px * var(--text-scale, 1));
+  font-size: 21px;
   scroll-behavior: smooth;
 }
 
 @media (min-width: 640px) {
-  html { font-size: calc(22px * var(--text-scale, 1)); }
+  html { font-size: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
