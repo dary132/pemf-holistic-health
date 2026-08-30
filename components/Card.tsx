@@ -50,7 +50,7 @@ export function Card({
             tracking breaks a word into loose letters, which is the opposite of
             what an older reader needs. Larger and closer, still an eyebrow. */}
         {eyebrow && (
-          <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-clay">
+          <p className="mb-1 text-sm font-bold uppercase tracking-wide text-clay">
             {eyebrow}
           </p>
         )}
@@ -71,7 +71,7 @@ export function Card({
         {cta && (
           <a
             href={cta.href}
-            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-button px-6 py-2.5 text-center text-base font-semibold text-button-ink transition-colors hover:bg-button-hover"
+            className="mt-5 inline-flex min-h-[56px] items-center justify-center rounded-full bg-button px-6 py-2.5 text-center text-base font-bold text-button-ink transition-colors hover:bg-button-hover"
           >
             {cta.label}
           </a>

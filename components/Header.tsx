@@ -38,7 +38,7 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50">
       <div className="bg-sage text-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-1 px-5 text-base font-semibold">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-1 px-5 text-base font-bold">
           <div className="flex flex-wrap items-center">
             <a
               href={site.officePhoneHref}

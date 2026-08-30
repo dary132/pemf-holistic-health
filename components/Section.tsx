@@ -44,7 +44,7 @@ export function Section({
               and semibold so each section opens with visible emphasis before
               the body text. Clay clears the AAA floor on both grounds and the
               pairs are already registered in verify-contrast.mjs. */}
-          {intro && <p className="u-lead mt-4 leading-relaxed font-semibold text-clay">{intro}</p>}
+          {intro && <p className="u-lead mt-4 leading-relaxed font-bold text-clay">{intro}</p>}
         </div>
         {children && <div className="mt-10">{children}</div>}
       </div>
