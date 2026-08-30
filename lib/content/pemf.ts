@@ -34,7 +34,7 @@ export const essentialForHealth: { heading: string; panels: Panel[] } = {
     {
       title: "What is Vital for Health?",
       paragraphs: [
-        "In addition to air, food, water and sunshine, our Earth’s natural Magnetic Field energy is also essential for health. But our Earth’s Magnetic Field is weakening and electro-smog is increasing. PEMF mimics Earth’s magnetic field energy for general health and wellness.",
+        "You need air, food, water, and sunshine. You also need the Earth’s natural magnetic field. That field is growing weaker, while man-made electrical noise keeps growing. PEMF copies the Earth’s magnetic field to support your health and wellness.",
       ],
     },
     {
@@ -55,7 +55,7 @@ export const importanceOfField: { heading: string; panels: Panel[] } = {
     {
       title: "Protection from Radiation",
       paragraphs: [
-        "The Earth's magnetic field is vital for human health because it creates a protective shield (the magnetosphere) to protect the Earth from harmful solar and cosmic radiation. Earth's magnetic field is essential for supporting and protecting life on Earth. Magnetic field is an essential environmental factor for human existence.",
+        "The Earth’s magnetic field works like a shield around the planet. Scientists call that shield the magnetosphere. It guards us from harmful radiation from the sun and from space. Life on Earth depends on it.",
       ],
     },
     { title: "Principle of Magnet", image: images.magnetPoles },
@@ -66,6 +66,6 @@ export const mimicsEarth = {
   heading: "PEMF Mimics Earth’s Magnetic Field Energy",
   title: "PEMF Technology for Wellness Use",
   paragraphs: [
-    "Electromagnetic force is the fundamental power train of our Earth - an inevitable source of energy and vitality for our sense of wellness! PEMF mimics the earth’s natural magnetic field energy. Utilize the electromagnetic spectrum, retain our overall well-being with the most advanced and comprehensive PEMF technology for wellness use in the world.",
+    "Magnetic energy is the engine that drives our Earth. It is a natural source of energy, and it supports how well you feel. PEMF copies that natural energy. Our system is the most advanced PEMF wellness technology in the world.",
   ],
 };

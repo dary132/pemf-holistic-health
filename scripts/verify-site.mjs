@@ -27,30 +27,30 @@ const ROUTES = [
     jsonLd: ["BreadcrumbList"],
     mustContain: [
       "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
-      "Magnetic field is an essential environmental factor for human existence.",
+      "Life on Earth depends on it.",
     ],
   },
   {
     path: "/holistic-health",
     jsonLd: ["BreadcrumbList"],
     mustContain: [
-      "Holistic health is a wellness approach that considers a person's physical, intellectual, mental, emotional, social, and spiritual well-being, recognizing these interconnected aspects as essential for optimal health and balance.",
+      "Holistic health looks at the whole person.",
     ],
   },
   {
     path: "/mental-health",
     jsonLd: ["BreadcrumbList"],
     mustContain: [
-      "Brainwave Entrainment is a holistic experience for the brain, also known as Spa for the Mind, reduces stress, resulting in relaxation, calmness and ease.",
-      "Stress is a physiological and psychological response to perceived or real challenges or threats.",
-      "Relaxation is the state of being calm, comfortable, and free from stress.",
+      "Brainwave Entrainment is a calming experience for the brain.",
+      "Stress is how your body and mind answer a challenge.",
+      "Relaxation means feeling calm, comfortable, and free of stress.",
     ],
   },
   {
     path: "/energy",
     jsonLd: ["BreadcrumbList"],
     mustContain: [
-      "Try this holistic approach using PEMF system to enhance your energy, stamina, and power and you will feel the difference.",
+      "Try PEMF as part of your routine for energy, stamina, and strength.",
     ],
   },
   {
@@ -63,7 +63,7 @@ const ROUTES = [
   {
     path: "/sleep-health",
     jsonLd: ["BreadcrumbList"],
-    mustContain: ["Deep sleep is crucial for physical and mental rejuvenation."],
+    mustContain: ["Deep sleep is how your body and mind repair themselves."],
   },
   {
     path: "/pets-health",

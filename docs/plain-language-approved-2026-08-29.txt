@@ -1,0 +1,93 @@
+Source: plain-language rewrites of the Mental Health, Holistic Health, Sleep
+Health, Energy and PEMF pages, with the hedged wording applied to every claim
+that was flagged for review.
+
+Approved by the site owner on 2026-08-29, after reviewing the side-by-side
+drafts in docs/plain-language-drafts-2026-08-29.md (published for review at
+claude.ai/code/artifact/bd342f2f-d878-4556-a438-b8cb0aa75ebf). The owner's
+instruction was to drop the SpO2 line and apply the hedged version.
+
+Why this document exists: site copy is held verbatim against an approved
+source by scripts/verify-copy.mjs. The wording below replaces text that came
+from "Website Exiga Jasmin 2026.docx", which measured Flesch-Kincaid grade
+11.6 against a grade 6-8 ceiling for patient-facing health material. The
+rewrites read at about grade 4 with roughly ten words per sentence.
+
+Claims changed deliberately, per the hedged variant: statements that asserted
+a result as fact now describe the product and what people report. The earlier
+document remains the source for every page not listed here.
+
+[Mental Health - the five dimensions]
+Mental Sharpness
+How clearly you think, including your focus, quick thinking, memory, and problem solving.
+Emotional Health
+Knowing what you feel, understanding why, and handling those feelings well.
+Spiritual Health
+Having a sense of purpose, and holding values and beliefs that give your life meaning.
+Social Health
+Building good relationships and keeping them, and getting along well with other people.
+Financial Health
+Managing your money well, so that you feel secure day to day.
+
+[Mental Health - Brainwave Entrainment]
+Your brain health shapes the rest of your life. It affects how you make choices, handle stress, and reach your goals. Brainwave Entrainment is a calming experience for the brain. Some people call it a spa for the mind. Many find it leaves them feeling relaxed and at ease.
+IMRS prime PEMF and Brainwave Entrainment are gentle to use. Nothing enters your body, and nothing is habit-forming. People use them as part of caring for their brain health.
+
+[Mental Health - Intellectual Health]
+Clear thinking
+Look at the facts, make up your own mind, and solve problems.
+Curiosity
+Keep an open mind, learn new things, and listen to other points of view.
+Creativity
+Come up with your own ideas, express them, and do things that interest you.
+Self-awareness
+Know what you are good at, and what you want to work on.
+Adaptability
+Take in new facts, adjust, and welcome a challenge.
+
+[Mental Health - stress]
+Stress is how your body and mind answer a challenge. It is natural, and it helps you get through hard moments.
+PEMF is one way people choose to unwind. It is gentle: nothing enters your body, and it is not habit-forming. Use it any time, at home or at the office.
+
+[Mental Health - relaxation]
+Relaxation means feeling calm, comfortable, and free of stress. It helps you handle stress better, and it brings you a sense of peace.
+Many people feel more relaxed within minutes, at home or at the office. PEMF is designed to help your body settle into a calm, balanced state.
+
+[Mental Health - benefits of relaxation]
+Relaxation calms your mind and lowers stress. That helps your body wind down for bed. You fall asleep sooner, sleep longer and better, and wake up restored.
+Relaxation lifts your mood and helps you cope. Your memory and focus improve. You think more clearly, solve problems better, and handle your feelings more evenly.
+You feel calm and at peace, with less stress. Hard days get easier to face. Many people feel happier, more content, and closer to the people they love.
+
+[Holistic Health]
+Holistic health looks at the whole person. It covers your body, your mind, your feelings, your relationships, and your sense of purpose. Each part affects the others, and you feel your best when they are in balance.
+This approach puts you in charge of your own wellness. It combines everyday healthy habits with natural practices like PEMF. The goal is simple: help your body and mind feel well.
+
+[Sleep Health]
+Many people use PEMF to wind down at the end of the day. Nothing enters your body. There are no drugs, and it is not habit-forming. Sleep recharges your body and mind, so you wake up fresh and alert.
+PEMF helps you unwind and rest your mind. You fall asleep faster and sleep more deeply. You wake up less often during the night. Deep sleep is how your body and mind repair themselves.
+
+[Sleep Health - benefits of adequate sleep]
+Better Memory
+While you sleep, your brain sorts what you learned that day. It moves new facts into long-term memory. That is how learning sticks.
+Sharper Focus
+Good sleep lengthens your attention span, so you get more done, solve problems better, and stay safer all day.
+Steadier Mood
+Sleep lowers stress, so when you are rested, daily upsets bother you less. Deep sleep leaves you calmer.
+
+[Energy]
+More Alert
+You feel more awake and sharp, and you stay focused on the job in front of you.
+More Get-Up-and-Go
+You start jobs sooner and finish them, and you feel ready for whatever the day brings.
+Better Mood
+When your energy is up, you often feel cheerful and more social.
+Physical Vitality
+You feel lively and ready to move. You have more staying power and more strength, instead of feeling tired even after a good rest.
+Open to New Things
+With more energy, you feel readier to meet new people and see new places.
+Try PEMF as part of your routine for energy, stamina, and strength. See how it feels for you.
+
+[PEMF]
+You need air, food, water, and sunshine. You also need the Earth’s natural magnetic field. That field is growing weaker, while man-made electrical noise keeps growing. PEMF copies the Earth’s magnetic field to support your health and wellness.
+The Earth’s magnetic field works like a shield around the planet. Scientists call that shield the magnetosphere. It guards us from harmful radiation from the sun and from space. Life on Earth depends on it.
+Magnetic energy is the engine that drives our Earth. It is a natural source of energy, and it supports how well you feel. PEMF copies that natural energy. Our system is the most advanced PEMF wellness technology in the world.

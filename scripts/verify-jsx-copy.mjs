@@ -49,6 +49,7 @@ const SOURCES = [
   "docs/exiga-jasmin-2026.txt",
   "docs/exiga-jasmin-2026-image-text.txt",
   "docs/imrs-prime-swissbionic.txt",
+  "docs/plain-language-approved-2026-08-29.txt",
 ];
 
 // Both app/ and components/ hold client-facing JSX: a caption, heading or

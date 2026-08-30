@@ -41,6 +41,11 @@ const SOURCES = [
   // rendered string traceable to a source document. Provenance is recorded
   // in the file's own header.
   "docs/imrs-prime-swissbionic.txt",
+  // Plain-language rewrites of five pages, with the hedged claim wording,
+  // approved by the site owner 2026-08-29. Supersedes the Exiga Jasmin
+  // document for the passages it covers; that document still governs
+  // everything else. Provenance is in the file's own header.
+  "docs/plain-language-approved-2026-08-29.txt",
 ];
 
 // lib/site.ts holds sitewide prose (disclaimer, address, business name) that
