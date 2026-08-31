@@ -62,21 +62,31 @@ export default function Home() {
                page, and it was flat from 1512px up because 8vw hit the 5.5rem
                ceiling there.
 
-               Then nudged again the same day, client asking for it "a bit
-               smaller": *0.85 against the h1 step, so 61px on desktop and 42px
-               on a phone.
+               Then twice more the same day, ending here: the client asked
+               for PEMF to be the SAME size as the PULSED ELECTRO MAGNETIC
+               FIELD line under it, so the two now read as a single lockup
+               rather than as a heading with a caption. 27.5px on desktop,
+               23.6px on a phone -- the full arc today was 121 -> 71.5 -> 60.8
+               -> 27.5.
 
-               Expressed as calc() over --step-h1 rather than as a fresh clamp
-               of its own. The wordmark is deliberately sized RELATIVE to the
-               site's heading scale -- a touch under an h1 -- and writing that
-               relationship down keeps it true: the heading scale was raised
-               across the board on 2026-08-29, and a hardcoded clamp would have
-               silently stopped matching the next time that happens. The 0.85
-               is the only number here, and it means exactly what it says.
+               Both halves read --step-hero-lockup (globals.css). Deliberately
+               a shared token rather than the same literal typed twice: "these
+               two are identical" is the requirement, and two hardcoded values
+               would drift the first time either is nudged.
+
+               Worth knowing if this is ever revisited: the h1 is now smaller
+               than every other heading on the site, h3 included, and only
+               fractionally above body copy. That is a deliberate choice about
+               this one lockup, not an oversight -- but it does mean the hero
+               no longer has a large element, which is why the photograph
+               beneath it carries the page. The two faces differ (Lora serif
+               here, Nunito sans there), so equal font-size does not give
+               identical cap heights; matching the SIZE is what was asked for
+               and what this does.
 
                Still a local override, so the /designs comps keep the full-size
                --step-wordmark that .u-wordmark was built for. */
-            style={{ ["--step-wordmark" as string]: "calc(var(--step-h1) * 0.85)" }}
+            style={{ ["--step-wordmark" as string]: "var(--step-hero-lockup)" }}
           >
             {hero.wordmark.split("").map((letter, i) => (
               <span
@@ -93,7 +103,7 @@ export default function Home() {
           {/* mx-auto is what actually centres this line: the base stylesheet
               caps every p at max-width:65ch, so without it the box sits left
               in the centred container and only the text inside it centres. */}
-          <p className="mx-auto mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
+          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold uppercase tracking-[0.16em] text-clay">
             {hero.expansion}
           </p>
         </div>

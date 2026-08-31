@@ -123,6 +123,17 @@
   --step-h2: clamp(1.95rem, 3.4vw, 2.5rem);
   --step-h3: 1.5rem;
   --step-lead: 1.2rem;
+  /* The hero lockup. PEMF and the PULSED ELECTRO MAGNETIC FIELD line beneath
+     it are set at the SAME size, client request 2026-08-31, so they read as
+     one unit rather than as a heading with a caption. One token with two
+     consumers (the h1's --step-wordmark override and the expansion's
+     font-size, both in app/page.tsx) is what guarantees that: two hardcoded
+     values would drift the first time either is nudged, and the whole point is
+     that they match.
+
+     The values are Tailwind's text-lg / text-xl, which is what the expansion
+     carried before this and what the breakpoint is inherited from. */
+  --step-hero-lockup: 1.125rem;
   --step-wordmark: clamp(4.5rem, 16vw, 9.5rem);
 }
 
@@ -273,6 +284,7 @@ html {
 
 @media (min-width: 640px) {
   html { font-size: 22px; }
+  :root { --step-hero-lockup: 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
