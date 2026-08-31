@@ -115,8 +115,8 @@ export const ALLOWED_EDITS = [
     // the alternative dodge is worse: splitting the heading into three
     // one-word text nodes would slip under verify-jsx-copy's two-word floor
     // and leave no record that the site says something the document does not.
-    // Applies to components/CTA.tsx, the closing band on every page;
-    // app/contact/page.tsx still carries the document's slashes.
+    // Applies to both places the heading appears: components/CTA.tsx, the
+    // closing band on every page, and app/contact/page.tsx.
     reason: "Client asked for pipe separators in the sitewide CTA heading, 2026-08-30",
   },
 ];

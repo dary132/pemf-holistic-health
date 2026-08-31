@@ -4,9 +4,10 @@ import { PhoneButton } from "./PhoneButton";
 /** The book-an-appointment block that closes every page. Copy is the client's
  *  own recurring per-page call-to-action block (document lines 78-84,
  *  repeated verbatim 7 times), not marketing prose invented for the site:
- *    Call / Text / WhatsApp (rendered with pipe separators at the client's
- *      request, 2026-08-30; registered in verify-copy's ALLOWED_EDITS so the
- *      deviation from the document's slashes is recorded rather than hidden)
+ *    Call / Text / WhatsApp (rendered with pipe separators here and on
+ *      app/contact/page.tsx at the client's request, 2026-08-30; registered
+ *      in verify-copy's ALLOWED_EDITS so the deviation from the document's
+ *      slashes is recorded rather than hidden)
  *    Certified PEMF Expert Sharon
  *    for Appointment (949) 891 5572 (client-corrected number; the source
  *    document printed 600 7899, which is retired)

@@ -28,7 +28,7 @@ export default function ContactPage() {
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl">Call / Text / WhatsApp</h2>
+              <h2 className="text-2xl">Call | Text | WhatsApp</h2>
               <div className="mt-4 flex flex-wrap gap-3">
                 <PhoneButton />
                 <a
