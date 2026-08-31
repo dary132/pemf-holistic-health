@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
-import { TONE_BG, type Tone } from "@/lib/tones";
+import { bandClass, type Tone } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 
 export function Section({
@@ -27,7 +27,7 @@ export function Section({
   children?: ReactNode;
 }) {
   return (
-    <section id={id} className={tone && TONE_BG[tone]}>
+    <section id={id} className={bandClass(tone)}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         <div data-reveal className="max-w-3xl">
           {eyebrow && (

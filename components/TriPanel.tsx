@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Panel } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
-import { TONE_BG, type Tone } from "@/lib/tones";
+import { bandClass, type Tone } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
@@ -36,7 +36,7 @@ export function PanelGrid({
 }) {
   const PanelHeading = panelTitleAs;
   return (
-    <div className={tone && TONE_BG[tone]}>
+    <div className={bandClass(tone)}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         {heading && (
           <h2 className="mb-10">

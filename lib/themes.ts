@@ -44,6 +44,25 @@ export const themes: Theme[] = [
     tagline: "Peach grounds, deep plum headings and terracotta accents.",
     swatch: ["#FDF7F0", "#4A1F3D", "#832E0E"],
   },
+  /* Grounds-only palettes. Both keep the default magenta primary and clay
+     accent exactly as they are, so their swatches differ from the default's
+     in the first chip alone -- that is the proposal, not an oversight. What
+     they change is what the sections are painted and in what order; see the
+     block comment on them in app/globals.css. */
+  {
+    id: "paper",
+    name: "Paper",
+    tagline:
+      "White pages with the warm cream demoted to an alternating band. One hue, two values, no pink or blue.",
+    swatch: ["#FFFFFF", "#96005A", "#763A1D"],
+  },
+  {
+    id: "clinic",
+    name: "Clinic",
+    tagline:
+      "The same alternation with the neutrals pivoted cool — the clearest medical-practice signal, magenta unchanged.",
+    swatch: ["#FCFDFE", "#96005A", "#763A1D"],
+  },
   {
     id: "spectrum",
     name: "Vital Spectrum",

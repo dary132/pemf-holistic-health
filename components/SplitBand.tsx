@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
-import { TONE_BG, type Tone } from "@/lib/tones";
+import { bandClass, type Tone } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
@@ -55,7 +55,7 @@ export function SplitBand({
       ? "h-auto w-full object-cover rounded-2xl"
       : "h-auto w-full object-cover rounded-lg";
   return (
-    <div className={tone && TONE_BG[tone]}>
+    <div className={bandClass(tone)}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {heading && (
           <h2 data-reveal className="mb-10">

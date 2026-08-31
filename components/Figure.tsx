@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
-import { TONE_BG, type Tone } from "@/lib/tones";
+import { bandClass, type Tone } from "@/lib/tones";
 import { blurFor } from "@/lib/content/blur";
 
 /** Full-width captioned artwork, shown whole and never cropped.
@@ -23,7 +23,7 @@ export function Figure({
   priority?: boolean;
 }) {
   return (
-    <div className={tone && TONE_BG[tone]}>
+    <div className={bandClass(tone)}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {/* The priority Figure is the page's LCP element. Starting it at
             opacity 0 would push Largest Contentful Paint out by the length of
