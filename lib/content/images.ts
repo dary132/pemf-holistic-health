@@ -174,10 +174,28 @@ export const images = {
     src: "/images/exagon-brain-banner.png",
     alt: "A woman reclining while wearing the Exagon Brain brainwave entrainment goggles",
   },
+  /* The document's own file (word/media/image19), put on the /mental-health
+     "PEMF Helps Manage Stress" panel on 2026-08-30 at the client's request,
+     over the stress-meter.svg redraw that stood in for it.
+
+     The extracted file carries a two-pixel column of solid red down its right
+     edge -- a sliver of something else in the document's layout, not part of
+     the illustration. It rendered as a hairline down the panel and is cropped
+     off here; found on screen, since no checker looks at pixels. The file is
+     renamed rather than corrected in place for the reason essentialWater
+     records above: /_next/image caches optimised variants per source URL, and
+     reusing stress-meter.png served the uncropped copy -- red hairline and all
+     -- straight back after the fix.
+
+     That leaves 584x433, a hair wider than the 4/3 media slot, padded to
+     584x438 by repeating the first and last rows rather than cropping the
+     1.5% that `cover` would take off the sides -- the potted plant sits about
+     1% in from the left edge. Row replication rather than a flat fill because
+     the two edges are not the same colour: the top is the illustration's
+     white field, the bottom carries the grey ground and the black blob. */
   stressMeter: {
-    src: "/images/stress-meter.svg",
-    alt: "A gauge showing stress levels rising from low to high",
-    contain: true,
+    src: "/images/stress-gauge.png",
+    alt: "A person pushing the needle of a large stress gauge down from red through orange towards green, with the word STRESS across the dial",
   },
   relaxPoolside: {
     src: "/images/relax-poolside.jpg",
