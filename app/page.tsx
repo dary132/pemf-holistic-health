@@ -69,10 +69,13 @@ export default function Home() {
                23.6px on a phone -- the full arc today was 121 -> 71.5 -> 60.8
                -> 27.5.
 
-               Both halves read --step-hero-lockup (globals.css). Deliberately
-               a shared token rather than the same literal typed twice: "these
-               two are identical" is the requirement, and two hardcoded values
-               would drift the first time either is nudged.
+               Then "slightly bigger" the same day, so the wordmark is now
+               *1.3 of that shared step -- 36px against the expansion's 27.5px
+               on desktop, 31px against 23.6px on a phone. Still expressed
+               against --step-hero-lockup (globals.css) rather than as its own
+               literal: the two are meant to stay in a fixed relationship, and
+               a hardcoded pair would drift the first time either is nudged.
+               1.3 is the only number, and it says what the relationship is.
 
                Worth knowing if this is ever revisited: the h1 is now smaller
                than every other heading on the site, h3 included, and only
@@ -86,7 +89,7 @@ export default function Home() {
 
                Still a local override, so the /designs comps keep the full-size
                --step-wordmark that .u-wordmark was built for. */
-            style={{ ["--step-wordmark" as string]: "var(--step-hero-lockup)" }}
+            style={{ ["--step-wordmark" as string]: "calc(var(--step-hero-lockup) * 1.3)" }}
           >
             {hero.wordmark.split("").map((letter, i) => (
               <span
@@ -162,7 +165,12 @@ export default function Home() {
             nothing in code recovers detail that is not in the file.
 
             sizes="100vw" was already correct and needs no change. */}
-        <div className="mt-8">
+        {/* mt-10, up from mt-8 on 2026-08-31: the client asked for more room
+            between the wordmark lockup and the photograph. Measured at 1920
+            the gaps were 52px above the lockup, 43px inside it and 60px below
+            to the image; the lockup had shrunk enough that it was reading as
+            floating rather than as sitting above the photo. Now ~71px. */}
+        <div className="mt-10">
           <Image
             src={images.imrsModel3.src}
             {...blurFor(images.imrsModel3.src)}
