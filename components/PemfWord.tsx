@@ -1,6 +1,6 @@
 /** The home hero's per-letter wordmark colours -- P purple, E green, M red,
  *  F blue -- chosen by the client on 2026-08-28, and since 2026-08-30 the
- *  treatment for the word "PEMF" wherever it opens a heading anywhere on the
+ *  treatment for the word "PEMF" anywhere it appears in a heading on the
  *  site. Exported as one array so the hero (app/page.tsx) and every other
  *  heading read from the same source and cannot drift apart; "the same colour
  *  scheme as the hero" is the requirement, so a second copy of these four
@@ -15,19 +15,37 @@
  *  See the note beside them in globals.css. */
 export const PEMF_LETTER_TOKENS = ["--tc-7", "--tc-4", "--tc-1", "--tc-6"] as const;
 
-/** Only a standalone leading "PEMF" is coloured. The lookahead matters: the
- *  site also writes "PEMF-Extremely low frequency..." as body copy, and a
- *  bare /^PEMF/ would colour the first four letters of a hyphenated compound
- *  and leave the rest of the word in heading colour. */
-const LEADING_PEMF = /^PEMF(?=\s|$)/;
+/** Every standalone "PEMF" in a string, wherever it falls. This began as a
+ *  leading-word-only match, which fitted the hero (where the word stands
+ *  alone) and covered about 25 of the site's headings; the client asked on
+ *  2026-08-30 for the two that mention it mid-sentence as well -- "IMRS prime
+ *  PEMF" on /products and "Relax with PEMF" on /mental-health.
+ *
+ *  The boundaries exclude a hyphen as well as word characters, which is not
+ *  decoration: the site writes "PEMF-Extremely low frequency and low
+ *  intensity systems for wellness!" and a plain \bPEMF\b would colour the
+ *  first four letters of that compound and leave "-Extremely" in heading
+ *  colour. It is a bullet rather than a heading today, but the rule should
+ *  not depend on that staying true. */
+const PEMF_WORD = /(?<![\w-])PEMF(?![\w-])/g;
 
-export function startsWithPemf(text: string) {
-  return LEADING_PEMF.test(text);
+/** The string cut into runs, each flagged for whether it is the word. */
+function splitOnPemf(text: string) {
+  const parts: { isWord: boolean; text: string }[] = [];
+  let cut = 0;
+  for (const match of text.matchAll(PEMF_WORD)) {
+    const at = match.index;
+    if (at > cut) parts.push({ isWord: false, text: text.slice(cut, at) });
+    parts.push({ isWord: true, text: match[0] });
+    cut = at + match[0].length;
+  }
+  if (cut < text.length) parts.push({ isWord: false, text: text.slice(cut) });
+  return parts;
 }
 
-/** A heading's text with a leading "PEMF" set in the hero's four colours.
- *  Headings that do not open with the word render unchanged, so this is safe
- *  to wrap around every heading rather than only the ones that match today.
+/** A heading's text with every standalone "PEMF" set in the hero's four
+ *  colours. Headings without the word render unchanged, so this is safe to
+ *  wrap around every heading rather than only the ones that match today.
  *
  *  The heading is carried twice: once for assistive tech as an `sr-only`
  *  copy, and once visually with the coloured letters, the visual copy hidden
@@ -58,17 +76,23 @@ export function startsWithPemf(text: string) {
  *  invented copy. React renders a returned string identically, so the guard
  *  keeps working and this component stops setting it off. */
 export function HeadingText({ text = "" }: { text?: string }) {
-  if (!startsWithPemf(text)) return text;
+  const parts = splitOnPemf(text);
+  if (!parts.some((part) => part.isWord)) return text;
   return (
     <>
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
-        {["P", "E", "M", "F"].map((letter, i) => (
-          <span key={i} style={{ color: `var(${PEMF_LETTER_TOKENS[i]})` }}>
-            {letter}
-          </span>
-        ))}
-        {text.slice(4)}
+        {parts.map((part, p) =>
+          part.isWord ? (
+            ["P", "E", "M", "F"].map((letter, i) => (
+              <span key={`${p}-${i}`} style={{ color: `var(${PEMF_LETTER_TOKENS[i]})` }}>
+                {letter}
+              </span>
+            ))
+          ) : (
+            <span key={p}>{part.text}</span>
+          )
+        )}
       </span>
     </>
   );
