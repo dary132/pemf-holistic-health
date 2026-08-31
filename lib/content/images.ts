@@ -218,6 +218,10 @@ export const images = {
     src: "/images/pets-group.jpg",
     alt: "A golden retriever, a tabby cat and a budgie resting together on a rug in a sunlit living room",
   },
+  // Pulled off /pets-health on 2026-08-30 at the client's request. Kept here
+  // rather than deleted, on the same reasoning as heroMatFireplace above: it
+  // is one of the document's own images, so the entry and its file stay
+  // available to be placed again. Not currently on any page.
   imrsFaunaHorses: {
     src: "/images/imrs-fauna-horses.png",
     alt: "The IMRS fauna system shown with horses",

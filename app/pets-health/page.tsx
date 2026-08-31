@@ -1,10 +1,8 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
-import { Figure } from "@/components/Figure";
 import { Section } from "@/components/Section";
 import { PanelGrid } from "@/components/TriPanel";
-import { images } from "@/lib/content/images";
 import { animals, intro, racehorses } from "@/lib/content/pets-health";
 import { pageMetadata } from "@/lib/seo";
 
@@ -29,7 +27,6 @@ export default function PetsHealthPage() {
           with nothing at h2, so its own panel titles must render as h2 to
           avoid an h1 -> h3 skip (spec fix-wave item I-7). */}
       <PanelGrid panels={animals} tone="blush" panelTitleAs="h2" />
-      <Figure image={images.imrsFaunaHorses} />
       <PanelGrid heading={racehorses.heading} panels={racehorses.panels} />
       <CTA />
       <Disclaimer />
