@@ -261,6 +261,13 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sage: var(--sage);
+  /* Exposed 2026-08-31 so `text-tc-1` / `border-tc-1` exist. --tc-1 is one of
+     the seven wordmark stops and had been gradient-and-heading-only until the
+     client asked for the definition-list terms in red; using the stop the site
+     already owns keeps that red inside the palette instead of introducing an
+     eighth colour, and it is a value already picked to clear 7:1 on every
+     ground. Its pairs are registered in scripts/verify-contrast.mjs. */
+  --color-tc-1: var(--tc-1);
   --color-clay: var(--clay);
   --color-sage-soft: var(--sage-soft);
   --color-clay-soft: var(--clay-soft);
