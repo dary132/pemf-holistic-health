@@ -17,7 +17,24 @@ import { blurFor } from "@/lib/content/blur";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Mental Health",
+  /* "Wellness", not the document's "Mental Health", client instruction
+     2026-08-31. This was the last place on the site still carrying the old
+     name: it drives the browser tab, the search-result heading and the Open
+     Graph title (lib/seo.ts renders "<title> | PEMF for Holistic Health"),
+     none of which are page copy, so verify-copy has no opinion on it.
+
+     It was held back from the earlier rename in this session on purpose and
+     flagged to the client rather than changed quietly, because a <title> is
+     an SEO surface -- "Mental Health" is a term people actually search, and
+     changing it is a traffic decision rather than a naming one. They chose
+     the consistency.
+
+     The URL stays /mental-health. That is the one remaining piece of the old
+     name, and it is the expensive one: changing it needs a redirect pair in
+     next.config.ts (see /what-is-pemf and /benefits for the pattern) and
+     costs the page its accumulated search history. Not worth doing unless the
+     client asks. */
+  title: "Wellness",
   description:
     "Brainwave Entrainment is a holistic experience for the brain, also known as Spa for the Mind, reduces stress, resulting in relaxation, calmness and ease.",
   path: "/mental-health",
