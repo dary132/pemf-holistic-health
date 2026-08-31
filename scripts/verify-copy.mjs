@@ -197,8 +197,17 @@ async function main() {
   const fileFlagIndex = process.argv.indexOf("--file");
   const onlyFile = fileFlagIndex !== -1 ? process.argv[fileFlagIndex + 1] : null;
 
+  // types.ts is types, index.ts is re-exports, images.ts is src paths and alt
+  // text (descriptions of pictures, not the document's prose), and blur.ts is
+  // generated base64 placeholders -- none of them carry a client-facing
+  // sentence. blur.ts joined the list on 2026-08-30: every data URI in it was
+  // being read as invented copy, nine failures for a file with no prose at
+  // all. Staleness there is checked by `npm run verify:blur` instead, which
+  // is the guard that file actually needs.
   let files = readdirSync(dir).filter(
-    (f) => f.endsWith(".ts") && !["types.ts", "index.ts", "images.ts"].includes(f)
+    (f) =>
+      f.endsWith(".ts") &&
+      !["types.ts", "index.ts", "images.ts", "blur.ts"].includes(f)
   );
   if (onlyFile) {
     files = files.filter((f) => f === onlyFile);

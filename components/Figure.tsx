@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { TONE_BG, type Tone } from "@/lib/tones";
+import { blurFor } from "@/lib/content/blur";
 
 /** Full-width captioned artwork, shown whole and never cropped.
  *  No `object-fit` or height constraint is applied, so nothing is ever
@@ -34,6 +35,7 @@ export function Figure({
           <div className="u-plate p-3">
             <Image
               src={image.src}
+              {...blurFor(image.src)}
               alt={image.decorative ? "" : image.alt}
               aria-hidden={image.decorative || undefined}
               unoptimized={isSvg(image.src)}

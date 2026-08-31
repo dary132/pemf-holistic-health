@@ -434,9 +434,17 @@ section[id] { scroll-margin-top: 7rem; }
     opacity: 0;
     transform: translateY(14px);
   }
+  /* --reveal-delay is set per element by components/RevealOnScroll.tsx, so a
+     row of cards arriving together cascades instead of all fading at once.
+     A custom property rather than an inline `transition-delay`: the delay
+     then applies to this rule only, and cannot linger on the element to slow
+     some unrelated transition later. Unset it is 0ms, which is what every
+     element that arrives alone gets. */
   .js-reveal [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    transition:
+      opacity 600ms ease-out var(--reveal-delay, 0ms),
+      transform 600ms ease-out var(--reveal-delay, 0ms);
   }
 }

@@ -14,6 +14,7 @@ import {
 } from "@/lib/content/pemf";
 import { pageMetadata } from "@/lib/seo";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = pageMetadata({
   title: "PEMF",
@@ -47,6 +48,7 @@ export default function PemfPage() {
                     the row's tiles end up at five different heights. */}
                 <Image
                   src={image.src}
+                  {...blurFor(image.src)}
                   alt={image.alt}
                   width={400}
                   height={300}

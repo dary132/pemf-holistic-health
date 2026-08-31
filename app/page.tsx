@@ -9,6 +9,7 @@ import { Section } from "@/components/Section";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
 import { HeadingText, PEMF_LETTER_TOKENS } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 export default function Home() {
   return (
@@ -87,6 +88,7 @@ export default function Home() {
           <div className="-mx-5 mt-8 sm:mx-0">
             <Image
               src={images.imrsModel3.src}
+              {...blurFor(images.imrsModel3.src)}
               alt={images.imrsModel3.alt}
               priority
               width={1000}
@@ -147,6 +149,7 @@ export default function Home() {
           <div className="u-plate p-3">
             <Image
               src={images.organFunctions.src}
+              {...blurFor(images.organFunctions.src)}
               alt={images.organFunctions.alt}
               width={800}
               height={600}

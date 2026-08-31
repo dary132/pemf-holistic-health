@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 const shell =
   "flex flex-col overflow-hidden rounded-3xl border border-rule bg-white shadow-sm";
@@ -37,6 +38,7 @@ export function Card({
       {image && (
         <Image
           src={image}
+          {...blurFor(image)}
           alt={alt ?? title}
           width={800}
           height={600}
@@ -111,6 +113,7 @@ export function Banner({
     <figure className="overflow-hidden rounded-3xl border border-rule bg-white shadow-sm">
       <Image
         src={image}
+        {...blurFor(image)}
         alt={alt}
         width={1440}
         height={480}

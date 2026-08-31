@@ -7,6 +7,7 @@ import { details, intro } from "@/lib/content/contact";
 import { images } from "@/lib/content/images";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = pageMetadata({
   title: "Contact",
@@ -54,6 +55,7 @@ export default function ContactPage() {
               <h2 className="text-2xl">WeChat</h2>
               <Image
                 src={images.wechatQr.src}
+                {...blurFor(images.wechatQr.src)}
                 alt={images.wechatQr.alt}
                 width={130}
                 height={130}

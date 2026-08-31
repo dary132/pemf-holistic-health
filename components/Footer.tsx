@@ -4,6 +4,7 @@ import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { images } from "@/lib/content/images";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 /** Every route is reachable from here, so the Wellness disclosure is never the
  *  only path to a page. */
@@ -60,6 +61,7 @@ export default function Footer() {
           </a>
           <Image
             src={images.wechatQr.src}
+            {...blurFor(images.wechatQr.src)}
             alt={images.wechatQr.alt}
             width={120}
             height={120}

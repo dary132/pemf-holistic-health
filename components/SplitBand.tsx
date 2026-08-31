@@ -3,6 +3,7 @@ import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { TONE_BG, type Tone } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 /** Two-column image and text band. Stacks to one column below 900px.
  *
@@ -77,6 +78,7 @@ export function SplitBand({
             <div className={frame === "plate" ? "u-plate p-3" : undefined}>
               <Image
                 src={image.src}
+                {...blurFor(image.src)}
                 alt={image.decorative ? "" : image.alt}
                 aria-hidden={image.decorative || undefined}
                 unoptimized={isSvg(image.src)}

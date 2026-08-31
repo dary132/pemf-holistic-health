@@ -3,6 +3,15 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
+/** Milliseconds between one card in a batch and the next. Small on purpose:
+ *  the fade itself is 600ms, so anything much larger stops reading as one
+ *  movement and starts reading as a queue. */
+const STAGGER_MS = 70;
+
+/** Most positions in a batch that take a delay. 4 * 70ms = 280ms for the last
+ *  one, which stays comfortably inside the fade it belongs to. */
+const STAGGER_CAP = 4;
+
 /** Fades cards and text blocks in as they scroll into view.
  *
  *  Three things about this are deliberate and should not be "simplified".
@@ -62,14 +71,35 @@ export function RevealOnScroll() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          entry.target.classList.add("is-revealed");
+        // A grid row crosses the threshold in one batch, so revealing on
+        // arrival faded every card in it at the same instant, which read as
+        // mechanical. Staggering the batch turns that into a cascade.
+        const arriving = entries.filter((entry) => entry.isIntersecting);
+
+        // In DOM order, not the order the observer happens to report: the
+        // spec does not promise entries are ordered, and a cascade that runs
+        // right-to-left or scattered is worse than none at all.
+        arriving.sort((a, b) =>
+          a.target.compareDocumentPosition(b.target) &
+          Node.DOCUMENT_POSITION_FOLLOWING
+            ? -1
+            : 1
+        );
+
+        arriving.forEach((entry, i) => {
+          const el = entry.target as HTMLElement;
+          // Capped, so a batch of a dozen -- a short page revealing most of
+          // itself at once -- does not leave the last card waiting most of a
+          // second. Past the cap they arrive together, which at that depth
+          // reads as one group rather than as a broken cascade.
+          const step = Math.min(i, STAGGER_CAP) * STAGGER_MS;
+          if (step > 0) el.style.setProperty("--reveal-delay", `${step}ms`);
+          el.classList.add("is-revealed");
           // One-shot: content that has been read should not fade again on the
           // way back up. Re-animating on every scroll past is the thing that
           // makes this pattern feel broken rather than considered.
-          observer.unobserve(entry.target);
-        }
+          observer.unobserve(el);
+        });
       },
       // A little below the fold, so a card is already settled by the time it
       // is comfortably in view rather than finishing its fade at the edge.

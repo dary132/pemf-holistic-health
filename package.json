@@ -14,9 +14,10 @@
     "verify:layout": "node --experimental-strip-types scripts/verify-layout.mjs",
     "verify:themes": "node scripts/verify-themes.mjs",
     "verify:lang": "node --experimental-strip-types scripts/verify-language-switcher.mjs",
-    "verify:all": "npm run verify:contrast && npm run verify:themes && npm run verify:copy && npm run verify:jsx && npm run verify:lang && npm run verify:layout && npm run verify",
+    "verify:all": "npm run verify:contrast && npm run verify:blur && npm run verify:themes && npm run verify:copy && npm run verify:jsx && npm run verify:lang && npm run verify:layout && npm run verify",
     "shots": "node --experimental-strip-types scripts/screenshot.mjs",
-    "extract:doc": "python3 scripts/extract-doc.py"
+    "extract:doc": "python3 scripts/extract-doc.py",
+    "verify:blur": "node scripts/gen-blur.mjs --check"
   },
   "dependencies": {
     "next": "16.3.0",

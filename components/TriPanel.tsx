@@ -4,6 +4,7 @@ import { isSvg } from "@/lib/content/images";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 import { TONE_BG, type Tone } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 /** The document's recurring three-column block. Every panel is a bordered
  *  plate of equal height, with a fixed-ratio media slot so the text baselines
@@ -58,6 +59,7 @@ export function PanelGrid({
                 >
                   <Image
                     src={panel.image.src}
+                    {...blurFor(panel.image.src)}
                     alt={panel.image.decorative ? "" : panel.image.alt}
                     aria-hidden={panel.image.decorative || undefined}
                     unoptimized={isSvg(panel.image.src)}

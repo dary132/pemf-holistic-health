@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Img } from "@/lib/content/types";
 import { HeadingText } from "@/components/PemfWord";
+import { blurFor } from "@/lib/content/blur";
 
 /** Bordered card with a coloured top rule.
 
@@ -35,6 +36,7 @@ export function PlateCard({
         <div className="u-plate-media">
           <Image
             src={image.src}
+            {...blurFor(image.src)}
             alt={image.alt}
             width={600}
             height={450}

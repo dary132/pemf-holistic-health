@@ -7,6 +7,7 @@ import { PanelGrid } from "@/components/TriPanel";
 import { images, isSvg } from "@/lib/content/images";
 import { definition, intro, wellness } from "@/lib/content/holistic-health";
 import { pageMetadata } from "@/lib/seo";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = pageMetadata({
   title: "Holistic Health",
@@ -39,6 +40,7 @@ export default function HolisticHealthPage() {
       <Section id="holistic-health" title={intro.title} titleAs="h1">
         <Image
           src={images.wellnessPractices.src}
+          {...blurFor(images.wellnessPractices.src)}
           alt={images.wellnessPractices.alt}
           width={431}
           height={473}
@@ -51,6 +53,7 @@ export default function HolisticHealthPage() {
       <Section id="wellness" title={wellness.heading}>
         <Image
           src={images.eightDimensions.src}
+          {...blurFor(images.eightDimensions.src)}
           alt={images.eightDimensions.alt}
           unoptimized={isSvg(images.eightDimensions.src)}
           width={712}
