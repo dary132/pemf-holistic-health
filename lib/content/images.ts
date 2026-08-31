@@ -240,9 +240,22 @@ export const images = {
     src: "/images/pemf-dog-pad.png",
     alt: "A dog lying on a PEMF pad",
   },
+  /* word/media/image29, put on the /pets-health "Pets" panel on 2026-08-30 at
+     the client's request, over the stock retriever-and-budgie photograph that
+     was there. The original is 355x281 on a pure white studio ground; padded
+     to 375x281 with that same white so it meets the 4/3 media slot exactly.
+     Flat white is safe here where the energetic-vs-tired cartoon needed its
+     edge columns repeated -- this ground is a uniform #FFFFFF, not a
+     gradient. Without the pad it either letterboxes against --sand or, on
+     `cover`, crops about 15px off the height, which is where the paws and the
+     ferret sit. Deliberately NOT `contain` once padded: TriPanel insets a
+     contained image by p-1, which drew a thin sand frame around this panel
+     that the two cover-fitted photographs beside it do not have. At an exact
+     4/3 the two fits are the same picture, so `cover` is the one that matches
+     its neighbours. */
   petsGroup: {
-    src: "/images/pets-group.jpg",
-    alt: "A golden retriever, a tabby cat and a budgie resting together on a rug in a sunlit living room",
+    src: "/images/pets-group.png",
+    alt: "A group of pets photographed together: a great dane, a macaw, a ferret, a tabby cat, a black rabbit, two kittens and a bird",
   },
   // Pulled off /pets-health on 2026-08-30 at the client's request. Kept here
   // rather than deleted, on the same reasoning as heroMatFireplace above: it
