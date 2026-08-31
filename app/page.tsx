@@ -33,11 +33,18 @@ export default function Home() {
           anywhere in here: the photograph is the page's LCP element, and the
           text above the fold should never wait on an animation. */}
       <section className="bg-cream">
-        {/* Asymmetric padding, client request 2026-08-29: the wordmark sat a
+        {/* The hero is three siblings rather than one container, so the
+            photograph between them can run to both viewport edges: it has to
+            escape max-w-6xl and px-5, and no negative margin can do that at
+            desktop widths the way -mx-5 did on phones. This block and the one
+            below it re-establish the container on either side of it.
+
+            Asymmetric padding, client request 2026-08-29: the wordmark sat a
             full py-16 below the sticky header, which read as a gap rather than
             as breathing room. The top is tightened and the bottom left alone,
-            so the hero still separates from the section beneath it. */}
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-6 text-center lg:pb-20 lg:pt-8">
+            so the hero still separates from the section beneath it -- the
+            pb-16/lg:pb-20 half of that now lives on the third block. */}
+        <div className="mx-auto max-w-6xl px-5 pt-6 text-center lg:pt-8">
           {/* Per-letter colours, client request 2026-08-28: P purple, E green,
               M red, F blue -- replacing the seven-stop gradient here (only
               here; the /designs comps keep .u-technicolor). Each letter uses
@@ -69,34 +76,57 @@ export default function Home() {
           <p className="mx-auto mt-3 text-lg font-bold uppercase tracking-[0.16em] text-clay sm:text-xl">
             {hero.expansion}
           </p>
+        </div>
           {/* No plate around the photograph, client request 2026-08-29: the
               bordered white frame and its 12px padding are gone, so the image
               sits directly on the cream ground and carries the block itself.
               Same open treatment SplitBand's frame="open" uses elsewhere. */}
-          {/* Full bleed on phones, client request 2026-08-30: inset by the
-              container's px-5 and rounded on all four corners, the photograph
-              read as a card floating in the cream rather than as the hero.
-              -mx-5 cancels that padding so it runs to both viewport edges,
-              and the corners are square while it does -- a rounded corner
-              against the screen edge is what made it look like a card. Both
-              revert at sm, where the container is wide enough that an inset
-              image reads as deliberate rather than as a gap. Widening to the
-              full viewport is also the "bigger" that was asked for: the
-              aspect ratio is fixed, so width is the only lever, and it buys
-              about 11% at 390px. sizes="100vw" was already correct for this
-              and needs no change. */}
-          <div className="-mx-5 mt-8 sm:mx-0">
-            <Image
-              src={images.imrsModel3.src}
-              {...blurFor(images.imrsModel3.src)}
-              alt={images.imrsModel3.alt}
-              priority
-              width={1000}
-              height={563}
-              sizes="100vw"
-              className="w-full sm:rounded-2xl"
-            />
-          </div>
+        {/* Full bleed at EVERY width, client request 2026-08-31, extending the
+            2026-08-30 phone-only version: the photograph now runs to both
+            viewport edges on desktop too, with no margin either side. The
+            corners are square at every width for the same reason they were
+            square on phones -- a rounded corner against the screen edge is
+            what made it read as a card floating in the cream rather than as
+            the hero -- so the old sm:rounded-2xl is gone rather than kept for
+            desktop.
+
+            lg:h-[60vh] with object-cover is the deliberate half of this. At
+            its natural 16:9 a full-bleed hero is 1081px tall on a 1920px
+            monitor, which fills the whole screen and pushes the Call/Visit
+            buttons and the pitch below the fold on essentially every desktop.
+            Capping the height crops top and bottom instead of growing, and
+            the subject lies horizontally across the middle of the frame, so a
+            centre crop keeps her whole. It also softens the resolution cost
+            below, because a cropped region is drawn at closer to 1:1 than the
+            whole frame stretched to viewport width would be.
+
+            The resolution cost is real and was flagged before this shipped.
+            imrs-model-3.png is 1000x563 and is the sharpest frame of this shot
+            the client has supplied -- the document's own copy (word/media
+            image1, the heroMatFireplace file) is 721x338, smaller still. Full
+            bleed therefore upscales about 1.4x at 1440px and 1.9x at 1920px,
+            the same territory that got the 721px banner replaced here on
+            2026-08-28. A sharper original from the client is the only fix;
+            nothing in code recovers detail that is not in the file.
+
+            h-auto below lg keeps phones and tablets on the natural aspect
+            ratio: 60vh on a 390x844 phone would be 506px against a natural
+            220px, which is a heavy crop nobody asked for. sizes="100vw" was
+            already correct and needs no change. */}
+        <div className="mt-8">
+          <Image
+            src={images.imrsModel3.src}
+            {...blurFor(images.imrsModel3.src)}
+            alt={images.imrsModel3.alt}
+            priority
+            width={1000}
+            height={563}
+            sizes="100vw"
+            className="h-auto w-full object-cover lg:h-[60vh]"
+          />
+        </div>
+
+        <div className="mx-auto max-w-6xl px-5 pb-16 text-center lg:pb-20">
           {/* The second button is the visit ask, not "What is PEMF?". The hero
               already tells a visitor what to do -- "Try adding a holistic
               approach by laying on the PEMF body mat" -- and the only other way
