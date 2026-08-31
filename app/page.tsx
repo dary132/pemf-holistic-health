@@ -62,16 +62,21 @@ export default function Home() {
                page, and it was flat from 1512px up because 8vw hit the 5.5rem
                ceiling there.
 
-               Pointing at --step-h1 rather than restating its clamp: the
-               client's chosen size IS the site's h1 scale, so naming the token
-               says why the number is what it is and keeps the two from drifting
-               apart if the heading scale is ever retuned again (it was raised
-               across the board on 2026-08-29). Now 71px on desktop, 52px on a
-               phone.
+               Then nudged again the same day, client asking for it "a bit
+               smaller": *0.85 against the h1 step, so 61px on desktop and 42px
+               on a phone.
+
+               Expressed as calc() over --step-h1 rather than as a fresh clamp
+               of its own. The wordmark is deliberately sized RELATIVE to the
+               site's heading scale -- a touch under an h1 -- and writing that
+               relationship down keeps it true: the heading scale was raised
+               across the board on 2026-08-29, and a hardcoded clamp would have
+               silently stopped matching the next time that happens. The 0.85
+               is the only number here, and it means exactly what it says.
 
                Still a local override, so the /designs comps keep the full-size
                --step-wordmark that .u-wordmark was built for. */
-            style={{ ["--step-wordmark" as string]: "var(--step-h1)" }}
+            style={{ ["--step-wordmark" as string]: "calc(var(--step-h1) * 0.85)" }}
           >
             {hero.wordmark.split("").map((letter, i) => (
               <span
