@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { TONE_BG, type Tone } from "@/lib/tones";
+import { HeadingText } from "@/components/PemfWord";
 
 /** Two-column image and text band. Stacks to one column below 900px.
  *
@@ -57,7 +58,7 @@ export function SplitBand({
       <div className="mx-auto max-w-6xl px-5 py-14">
         {heading && (
           <h2 data-reveal className="mb-10">
-            {heading}
+            <HeadingText text={heading} />
           </h2>
         )}
         {/* 55/45 in the image's favour (was 50/50) -- the client asked for
@@ -88,7 +89,9 @@ export function SplitBand({
           <div data-reveal>
             {title && (
               <>
-                <Heading className="text-3xl">{title}</Heading>
+                <Heading className="text-3xl">
+                  <HeadingText text={title} />
+                </Heading>
                 <span className="u-accent-rule" />
               </>
             )}

@@ -3,6 +3,7 @@ import type { Panel } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 import { TONE_BG, type Tone } from "@/lib/tones";
+import { HeadingText } from "@/components/PemfWord";
 
 /** The document's recurring three-column block. Every panel is a bordered
  *  plate of equal height, with a fixed-ratio media slot so the text baselines
@@ -36,7 +37,11 @@ export function PanelGrid({
   return (
     <div className={tone && TONE_BG[tone]}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
-        {heading && <h2 className="mb-10">{heading}</h2>}
+        {heading && (
+          <h2 className="mb-10">
+            <HeadingText text={heading} />
+          </h2>
+        )}
         <div
           className={`grid items-stretch gap-8 ${
             columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"
@@ -66,7 +71,11 @@ export function PanelGrid({
                   />
                 </div>
               )}
-              {panel.title && <PanelHeading>{panel.title}</PanelHeading>}
+              {panel.title && (
+                <PanelHeading>
+                  <HeadingText text={panel.title} />
+                </PanelHeading>
+              )}
               {panel.paragraphs?.map((p) => (
                 <p key={p} className="mt-4 text-ink-soft">
                   {p}

@@ -8,6 +8,7 @@ import { PlateCard } from "@/components/PlateCard";
 import { Section } from "@/components/Section";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
+import { HeadingText, PEMF_LETTER_TOKENS } from "@/components/PemfWord";
 
 export default function Home() {
   return (
@@ -54,7 +55,7 @@ export default function Home() {
                 key={i}
                 aria-hidden="true"
                 style={{
-                  color: `var(${["--tc-7", "--tc-4", "--tc-1", "--tc-6"][i % 4]})`,
+                  color: `var(${PEMF_LETTER_TOKENS[i % PEMF_LETTER_TOKENS.length]})`,
                 }}
               >
                 {letter}
@@ -102,7 +103,9 @@ export default function Home() {
               multi-line paragraphs are harder for the elderly audience this
               site is sized for, so only the display block above is centred. */}
           <div className="mx-auto mt-12 max-w-3xl text-left">
-            <h2>{hero.title}</h2>
+            <h2>
+            <HeadingText text={hero.title} />
+          </h2>
             <span className="u-accent-rule" />
             {hero.paragraphs.map((p) => (
               <p key={p} className="mt-6 max-w-[52ch] text-xl text-ink-soft">

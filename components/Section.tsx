@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
 import { TONE_BG, type Tone } from "@/lib/tones";
+import { HeadingText } from "@/components/PemfWord";
 
 export function Section({
   id,
@@ -34,7 +35,9 @@ export function Section({
               {eyebrow}
             </p>
           )}
-          <Heading>{title}</Heading>
+          <Heading>
+            <HeadingText text={title} />
+          </Heading>
           {/* Emphasis device, shared by every theme. Under the Vital Spectrum
               theme this bar is what walks the seven wordmark colours down the
               page: globals.css sets --accent-rule per top-level band and the

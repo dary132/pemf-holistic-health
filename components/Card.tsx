@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { HeadingText } from "@/components/PemfWord";
 
 const shell =
   "flex flex-col overflow-hidden rounded-3xl border border-rule bg-white shadow-sm";
@@ -60,10 +61,10 @@ export function Card({
               href={href}
               className="inline-flex min-h-[48px] items-center underline underline-offset-4 hover:text-clay"
             >
-              {title}
+              <HeadingText text={title} />
             </Link>
           ) : (
-            title
+            <HeadingText text={title} />
           )}
         </h3>
         {body && <p className="mt-2 grow text-base leading-relaxed text-ink-soft">{body}</p>}

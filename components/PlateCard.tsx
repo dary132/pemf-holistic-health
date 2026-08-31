@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Img } from "@/lib/content/types";
+import { HeadingText } from "@/components/PemfWord";
 
 /** Bordered card with a coloured top rule.
 
@@ -41,7 +42,9 @@ export function PlateCard({
           />
         </div>
         <h3 className="mt-5 text-xl">
-          <Link href={href}>{title}</Link>
+          <Link href={href}>
+            <HeadingText text={title} />
+          </Link>
         </h3>
         <p className="mt-4 leading-relaxed text-ink-soft">{body}</p>
       </div>

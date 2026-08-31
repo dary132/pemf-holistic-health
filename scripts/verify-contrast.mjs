@@ -43,6 +43,24 @@ const TEXT_PAIRS = [
   ["--tc-5", "--cream"],
   ["--tc-6", "--cream"],
   ["--tc-7", "--cream"],
+  // Four of those stops are also the PEMF wordmark's letter colours
+  // (components/PemfWord.tsx), and since 2026-08-30 that treatment is on
+  // every heading opening with the word, not just the home hero. A heading
+  // sits on any of the four grounds, so all four pairs are held for each --
+  // the same treatment --sage and --clay get above. This is what caught
+  // --tc-1 at 6.52:1 and --tc-4 at 6.69:1 on sand when the change was made.
+  ["--tc-7", "--sand"],
+  ["--tc-7", "--blush"],
+  ["--tc-7", "--mist"],
+  ["--tc-4", "--sand"],
+  ["--tc-4", "--blush"],
+  ["--tc-4", "--mist"],
+  ["--tc-1", "--sand"],
+  ["--tc-1", "--blush"],
+  ["--tc-1", "--mist"],
+  ["--tc-6", "--sand"],
+  ["--tc-6", "--blush"],
+  ["--tc-6", "--mist"],
   // The one full-colour section band and the only text colour allowed on it.
   ["--band-ink", "--band"],
   // Buttons. --button is both a text colour (the outline variant's border and

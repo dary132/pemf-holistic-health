@@ -13,6 +13,7 @@ import {
   mimicsEarth,
 } from "@/lib/content/pemf";
 import { pageMetadata } from "@/lib/seo";
+import { HeadingText } from "@/components/PemfWord";
 
 export const metadata = pageMetadata({
   title: "PEMF",
@@ -71,7 +72,9 @@ export default function PemfPage() {
         frame="open"
         tone="mist"
       >
-        <h3 className="mt-10 text-3xl">{vitalForHealth.title}</h3>
+        <h3 className="mt-10 text-3xl">
+          <HeadingText text={vitalForHealth.title} />
+        </h3>
         <span className="u-accent-rule" />
         {vitalForHealth.paragraphs?.map((p) => (
           <p key={p} className="mt-6 max-w-[62ch] text-ink-soft">
@@ -96,7 +99,9 @@ export default function PemfPage() {
         paragraphs={radiationSources.paragraphs}
         frame="open"
       >
-        <h3 className="mt-10 text-3xl">{protection.title}</h3>
+        <h3 className="mt-10 text-3xl">
+          <HeadingText text={protection.title} />
+        </h3>
         <span className="u-accent-rule" />
         {protection.paragraphs?.map((p) => (
           <p key={p} className="mt-6 max-w-[62ch] text-ink-soft">

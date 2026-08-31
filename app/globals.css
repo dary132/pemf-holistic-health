@@ -34,11 +34,25 @@
   /* Technicolor wordmark stops. Each one is a *text* colour, so each clears
      7:1 on --cream on its own — the headline is AAA wherever the gradient
      happens to land on a given letter. scripts/verify-contrast.mjs holds
-     these to the same floor as every other pair. */
-  --tc-1: #9E1B1B;
+     these to the same floor as every other pair.
+
+     --tc-1 and --tc-4 were darkened on 2026-08-30, from #9E1B1B and #1F5A2E.
+     They are two of the four the PEMF wordmark treatment uses (see
+     components/PemfWord.tsx), and that treatment moved off the hero onto
+     every heading that opens with the word. Cream was the only ground it had
+     to clear while it lived in the hero; a heading also lands on sand, blush
+     and mist, and on ocean's and spectrum's cooler sands, where the old red
+     measured 6.52:1 and the old green 6.69:1 — both under the floor. The new
+     values are the smallest darkening that clears 7:1 on every one of those
+     ten grounds, hue and saturation held, so the wordmark looks unchanged.
+     The other five stops are gradient-only and still cream-only.
+     verify-contrast.mjs now registers all four against all four grounds, so
+     a future nudge to any of them fails loudly instead of quietly dropping
+     a heading below AAA. */
+  --tc-1: #941919;
   --tc-2: #7A3D00;
   --tc-3: #5E4D00;
-  --tc-4: #1F5A2E;
+  --tc-4: #1E562C;
   --tc-5: #0F5560;
   --tc-6: #1B3E8F;
   --tc-7: #6B1F6B;
