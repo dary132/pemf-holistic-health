@@ -172,12 +172,18 @@ export default function Home() {
             nothing in code recovers detail that is not in the file.
 
             sizes="100vw" was already correct and needs no change. */}
-        {/* mt-10, up from mt-8 on 2026-08-31: the client asked for more room
-            between the wordmark lockup and the photograph. Measured at 1920
-            the gaps were 52px above the lockup, 43px inside it and 60px below
-            to the image; the lockup had shrunk enough that it was reading as
-            floating rather than as sitting above the photo. Now ~71px. */}
-        <div className="mt-10">
+        {/* mt-1. The client asked for the expansion line to sit almost
+            touching the photograph, 2026-08-31 -- reversing the mt-8 -> mt-10
+            widening made earlier the same day, once leading-tight had pulled
+            the lockup together and the relationship read differently.
+
+            The measured gap does not equal this margin: an inline line box
+            carries descender space below the cap line, so mt-1 (5.5px) renders
+            as roughly 13px of visible air. That is why this is mt-1 rather
+            than mt-0 -- zero margin would still not touch, and going negative
+            to close the last few pixels would clip the descenders on a font
+            that has none here today but would the moment the copy changed. */}
+        <div className="mt-1">
           <Image
             src={images.imrsModel3.src}
             {...blurFor(images.imrsModel3.src)}
