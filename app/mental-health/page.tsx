@@ -60,7 +60,7 @@ export default function MentalHealthPage() {
           record of it. The section it originally lived in on /holistic-health
           was deleted in 4309127, so bringing it back means choosing a home
           rather than reverting one commit. */}
-      <Section id="mental-health" title={intro.title} titleAs="h1" />
+      <Section id="mental-health" title={intro.title} titleAs="h1" rhythm="heading" />
       <JumpNav
         items={[
           { href: "#stress", label: "Stress" },

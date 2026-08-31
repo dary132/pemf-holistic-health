@@ -25,7 +25,7 @@ export default function ContactPage() {
         ]}
       />
 
-      <Section id="contact" title={intro.title} titleAs="h1">
+      <Section id="contact" title={intro.title} titleAs="h1" rhythm="heading">
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="space-y-8">
             <div>

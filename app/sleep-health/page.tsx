@@ -22,7 +22,7 @@ export default function SleepHealthPage() {
           { name: "Sleep Health", path: "/sleep-health" },
         ]}
       />
-      <Section id="sleep-health" title={intro.title} titleAs="h1" />
+      <Section id="sleep-health" title={intro.title} titleAs="h1" rhythm="heading" />
       <PanelGrid panels={sleep} />
       <PanelGrid heading={benefits.heading} panels={benefits.panels} />
       <CTA />

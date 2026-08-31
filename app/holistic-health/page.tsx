@@ -37,7 +37,7 @@ export default function HolisticHealthPage() {
           would trade the small-but-sharp labels for large blurred ones. 560
           is about a 1.3x upscale, which flat illustration takes without
           visible softening. */}
-      <Section id="holistic-health" title={intro.title} titleAs="h1">
+      <Section id="holistic-health" title={intro.title} titleAs="h1" rhythm="heading">
         <Image
           src={images.wellnessPractices.src}
           {...blurFor(images.wellnessPractices.src)}

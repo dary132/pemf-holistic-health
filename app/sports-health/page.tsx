@@ -22,7 +22,7 @@ export default function SportsHealthPage() {
           { name: "Sports Health", path: "/sports-health" },
         ]}
       />
-      <Section id="sports-health" title={intro.title} titleAs="h1" />
+      <Section id="sports-health" title={intro.title} titleAs="h1" rhythm="heading" />
       <PanelGrid heading={athletic.heading} panels={athletic.panels} />
       <PanelGrid heading={boosts.heading} panels={boosts.panels} />
       <CTA />

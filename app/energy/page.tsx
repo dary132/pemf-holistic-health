@@ -22,7 +22,7 @@ export default function EnergyPage() {
           { name: "Energy", path: "/energy" },
         ]}
       />
-      <Section id="energy" title={intro.title} titleAs="h1" />
+      <Section id="energy" title={intro.title} titleAs="h1" rhythm="heading" />
       {/* No heading prop: this TriPanel sits directly under the page's h1
           with nothing at h2, so its own panel titles must render as h2 to
           avoid an h1 -> h3 skip (spec fix-wave item I-7). */}

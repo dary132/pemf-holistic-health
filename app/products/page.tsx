@@ -48,7 +48,7 @@ export default function ProductsPage() {
         ]}
       />
 
-      <Section id="products" title={intro.title} titleAs="h1" />
+      <Section id="products" title={intro.title} titleAs="h1" rhythm="heading" />
       <JumpNav
         items={[
           { href: "#imrs-prime", label: "IMRS prime" },

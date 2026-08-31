@@ -38,7 +38,7 @@ export default function PemfPage() {
           { name: "PEMF", path: "/pemf" },
         ]}
       />
-      <Section id="pemf" title={intro.title} titleAs="h1" intro={intro.paragraphs[0]}>
+      <Section id="pemf" title={intro.title} titleAs="h1" rhythm="heading" intro={intro.paragraphs[0]}>
         <ul className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {essentials.map(({ label, image }) => (
             <li key={image.src}>
