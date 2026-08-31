@@ -56,7 +56,22 @@ export default function Home() {
           <h1
             className="u-wordmark"
             aria-label={hero.wordmark}
-            style={{ ["--step-wordmark" as string]: "clamp(3rem, 8vw, 5.5rem)" }}
+            /* Reduced from clamp(3rem, 8vw, 5.5rem) on 2026-08-31, client
+               asking for it "down significantly". That computed to 121px on a
+               desktop and 63px on a phone, about 1.7x the h1 on every other
+               page, and it was flat from 1512px up because 8vw hit the 5.5rem
+               ceiling there.
+
+               Pointing at --step-h1 rather than restating its clamp: the
+               client's chosen size IS the site's h1 scale, so naming the token
+               says why the number is what it is and keeps the two from drifting
+               apart if the heading scale is ever retuned again (it was raised
+               across the board on 2026-08-29). Now 71px on desktop, 52px on a
+               phone.
+
+               Still a local override, so the /designs comps keep the full-size
+               --step-wordmark that .u-wordmark was built for. */
+            style={{ ["--step-wordmark" as string]: "var(--step-h1)" }}
           >
             {hero.wordmark.split("").map((letter, i) => (
               <span
