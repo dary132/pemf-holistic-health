@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
+import { blurFor } from "@/lib/content/blur";
 
 /** Full-bleed photograph with the wordmark overlaid on a scrim.
  *
@@ -24,6 +25,7 @@ export function ScrimHero({
     <section className="relative isolate">
       <Image
         src={image.src}
+        {...blurFor(image.src)}
         alt={image.alt}
         priority
         width={1600}

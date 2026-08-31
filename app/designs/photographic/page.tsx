@@ -6,6 +6,7 @@ import { PhoneButton } from "@/components/PhoneButton";
 import { ScrimHero } from "@/components/designs/photographic/ScrimHero";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = { robots: { index: false, follow: false } };
 
@@ -54,6 +55,7 @@ export default function Photographic() {
         <div className="h-[22rem] w-full bg-sand">
           <Image
             src={images.holisticFlower.src}
+            {...blurFor(images.holisticFlower.src)}
             alt={images.holisticFlower.alt}
             width={640}
             height={640}
@@ -78,6 +80,7 @@ export default function Photographic() {
           <div className="grid items-center gap-10 md:grid-cols-2">
             <Image
               src={images.holisticAnatomy.src}
+              {...blurFor(images.holisticAnatomy.src)}
               alt={images.holisticAnatomy.alt}
               width={800}
               height={600}
@@ -106,6 +109,7 @@ export default function Photographic() {
               <article key={t.href}>
                 <Image
                   src={t.image.src}
+                  {...blurFor(t.image.src)}
                   alt={t.image.alt}
                   width={800}
                   height={500}

@@ -7,6 +7,7 @@ import { NumberedSection } from "@/components/designs/editorial/NumberedSection"
 import { PullQuote } from "@/components/designs/editorial/PullQuote";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = { robots: { index: false, follow: false } };
 
@@ -57,6 +58,7 @@ export default function Editorial() {
           <div>
             <Image
               src={images.heroMatFireplace.src}
+              {...blurFor(images.heroMatFireplace.src)}
               alt={images.heroMatFireplace.alt}
               priority
               width={721}
@@ -77,6 +79,7 @@ export default function Editorial() {
           <div>
             <Image
               src={images.holisticFlower.src}
+              {...blurFor(images.holisticFlower.src)}
               alt={images.holisticFlower.alt}
               width={640}
               height={640}
@@ -101,6 +104,7 @@ export default function Editorial() {
           <div>
             <Image
               src={images.holisticAnatomy.src}
+              {...blurFor(images.holisticAnatomy.src)}
               alt={images.holisticAnatomy.alt}
               width={700}
               height={460}
@@ -126,6 +130,7 @@ export default function Editorial() {
             <article key={t.href}>
               <Image
                 src={t.image.src}
+                {...blurFor(t.image.src)}
                 alt={t.image.alt}
                 width={800}
                 height={450}

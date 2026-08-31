@@ -8,6 +8,7 @@ import { CredentialStrip } from "@/components/CredentialStrip";
 import { PlateCard } from "@/components/PlateCard";
 import { images } from "@/lib/content/images";
 import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
+import { blurFor } from "@/lib/content/blur";
 
 export const metadata = { robots: { index: false, follow: false } };
 
@@ -47,6 +48,7 @@ export default function Clinical() {
           <div className="u-plate p-3">
             <Image
               src={images.heroMatFireplace.src}
+              {...blurFor(images.heroMatFireplace.src)}
               alt={images.heroMatFireplace.alt}
               priority
               width={721}
@@ -75,6 +77,7 @@ export default function Clinical() {
           <div className="u-plate p-3">
             <Image
               src={images.holisticAnatomy.src}
+              {...blurFor(images.holisticAnatomy.src)}
               alt={images.holisticAnatomy.alt}
               width={800}
               height={600}
