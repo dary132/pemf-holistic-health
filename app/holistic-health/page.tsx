@@ -34,16 +34,6 @@ export default function HolisticHealthPage() {
           height={780}
           className="mx-auto h-auto w-full max-w-4xl object-contain"
         />
-        {/* max-w-3xl, not the max-w-4xl above: the source file is 794px wide,
-            so a 4xl (896px) track would upscale it and soften the burnt-in
-            caption. 3xl (768px) keeps it inside its own resolution. */}
-        <Image
-          src={images.pemfMimicsEarthField.src}
-          alt={images.pemfMimicsEarthField.alt}
-          width={794}
-          height={418}
-          className="mx-auto mt-12 h-auto w-full max-w-3xl rounded-lg object-contain"
-        />
       </Section>
       <CTA />
       <Disclaimer />

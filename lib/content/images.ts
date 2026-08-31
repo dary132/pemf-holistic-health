@@ -108,9 +108,14 @@ export const images = {
     contain: true,
   },
   /** Dusk meadow under a magenta aurora -- Earth's field made visible.
-   *  Replaced the mimics-earth-field.svg diagram on 2026-08-27: /pemf already
-   *  carries three globe-and-field-lines diagrams above this band, so a fourth
-   *  read as repetition. A photograph does not. */
+   *  Took the mimics-earth-field.svg diagram's place in the /pemf "PEMF
+   *  Technology for Wellness Use" band on 2026-08-27, on the reasoning that
+   *  /pemf already carries three globe-and-field-lines diagrams above that
+   *  band and a fourth read as repetition. The client reversed that on
+   *  2026-08-30: the band is about PEMF mimicking Earth's field, and the
+   *  document's own captioned image says so where a meadow photograph only
+   *  suggests it. Still in use as the /healthy-lifestyle teaser image on the
+   *  home page, which is the job it does well. */
   earthFieldAurora: {
     src: "/images/earth-field-aurora.jpg",
     alt: "A magenta aurora arcing over a meadow and a winding stream at dusk",
@@ -120,13 +125,15 @@ export const images = {
     alt: "Illustration of physical, mental, and emotional wellness practices, including restorative sleep, nourishing foods, hydration, exercise, gratitude, meaningful connections, time in nature, mindfulness, supportive relationships, rest, personal growth, and reflection",
     contain: true,
   },
-  /* The document's own file (word/media/image15), placed in the /holistic-health
-     "PEMF for Wellness" section on 2026-08-30 at the client's request. It is
-     the file the deleted mimics-earth-field.svg redraw stood in for; see
-     earthFieldAurora below for why /pemf does not carry it (a fourth
-     globe-and-field-lines diagram on that page read as repetition -- which is
-     not true here, where it is the only one). The caption is burnt into the
-     image, so `contain` is required and the alt text repeats it. */
+  /* The document's own file (word/media/image15), and the file the deleted
+     mimics-earth-field.svg redraw stood in for. It carries the /pemf "PEMF
+     Technology for Wellness Use" band, restored there on 2026-08-30 at the
+     client's request -- see earthFieldAurora above for what it displaced and
+     why. It was briefly added to the /holistic-health "PEMF for Wellness"
+     section earlier the same day, from a misreading of which wellness section
+     was meant; that placement is reverted, not merely superseded. The caption
+     is burnt into the image, so `contain` is required and the alt text
+     repeats it. */
   pemfMimicsEarthField: {
     src: "/images/pemf-mimics-earth-field.png",
     alt: "Earth in space ringed by looping magnetic field lines, captioned: PEMF Mimics Earth Magnetic Field",

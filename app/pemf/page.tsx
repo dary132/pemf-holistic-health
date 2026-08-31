@@ -114,7 +114,7 @@ export default function PemfPage() {
 
       <h2 className="sr-only">{mimicsEarth.heading}</h2>
       <SplitBand
-        image={images.earthFieldAurora}
+        image={images.pemfMimicsEarthField}
         title={mimicsEarth.title}
         paragraphs={mimicsEarth.paragraphs}
         frame="open"
