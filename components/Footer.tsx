@@ -3,6 +3,7 @@ import Link from "next/link";
 import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { images } from "@/lib/content/images";
+import { HeadingText } from "@/components/PemfWord";
 
 /** Every route is reachable from here, so the Wellness disclosure is never the
  *  only path to a page. */
@@ -11,8 +12,14 @@ export default function Footer() {
     <footer className="mt-auto border-t-2 border-rule bg-sand">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-3">
         <div>
+          {/* The four letter colours reach the footer's practice name too,
+              client request 2026-08-30. text-sage stays on the <p>, so it is
+              still what "for Holistic Health" renders in; HeadingText only
+              recolours the word itself. This ground is --sand, which is why
+              --tc-1 and --tc-4 had to be darkened when the treatment left the
+              hero -- see the note in globals.css. */}
           <p className="font-[family-name:var(--font-display)] text-2xl text-sage">
-            {site.name}
+            <HeadingText text={site.name} />
           </p>
           <address className="mt-3 not-italic text-ink-soft">
             {site.address[0]}

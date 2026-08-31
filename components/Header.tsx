@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navGroups } from "@/lib/routes";
 import { site } from "@/lib/site";
+import { HeadingText } from "@/components/PemfWord";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
@@ -92,7 +93,14 @@ export default function Header() {
               Below xl the nav collapses to the Menu button, which is the
               easier target at this text size anyway. */}
           <Link href="/" className="min-w-0 text-xl font-semibold no-underline 2xl:text-2xl">
-            <span className="font-[family-name:var(--font-display)] text-sage">PEMF </span>
+            {/* The wordmark's four letter colours, client request
+                2026-08-30, replacing the sage half of the sage/clay split.
+                Only the word changes: "for Holistic Health" keeps its clay,
+                which is what still separates the practice name from the
+                wordmark at a glance. */}
+            <span className="font-[family-name:var(--font-display)]">
+              <HeadingText text="PEMF" />
+            </span>{" "}
             <span className="font-[family-name:var(--font-display)] text-clay">
               for Holistic Health
             </span>
