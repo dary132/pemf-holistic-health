@@ -4,8 +4,8 @@ import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
 import { Section } from "@/components/Section";
 import { PanelGrid } from "@/components/TriPanel";
-import { images, isSvg } from "@/lib/content/images";
-import { definition, intro, wellness } from "@/lib/content/holistic-health";
+import { images } from "@/lib/content/images";
+import { definition, intro } from "@/lib/content/holistic-health";
 import { pageMetadata } from "@/lib/seo";
 import { blurFor } from "@/lib/content/blur";
 
@@ -50,20 +50,6 @@ export default function HolisticHealthPage() {
       {/* Two panels, so two columns -- at the default three the row would sit
           two-thirds full with a hole where the image used to be. */}
       <PanelGrid panels={definition} tone="blush" columns={2} />
-      <Section id="wellness" title={wellness.heading}>
-        <Image
-          src={images.eightDimensions.src}
-          {...blurFor(images.eightDimensions.src)}
-          alt={images.eightDimensions.alt}
-          unoptimized={isSvg(images.eightDimensions.src)}
-          width={712}
-          height={455}
-          /* Capped at the file's own width, not the max-w-4xl this had while
-             it was an SVG: the eight descriptions are burnt in at small sizes,
-             and an 896px track would upscale a 712px file and soften them. */
-          className="mx-auto h-auto w-full max-w-[712px] object-contain"
-        />
-      </Section>
       <CTA />
       <Disclaimer />
     </main>

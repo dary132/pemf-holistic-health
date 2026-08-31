@@ -16,4 +16,9 @@ export const definition: Panel[] = [
   },
 ];
 
-export const wellness = { heading: "PEMF for Wellness" };
+/* `wellness` -- the "PEMF for Wellness" section heading -- was removed
+   2026-08-31. Its only content was the eight-dimensions wheel, which the
+   client moved to the top of /mental-health (now the Wellness page), and a
+   heading with nothing under it is worse than no heading. The wording is
+   still in the document; nothing here forbids bringing it back with real
+   copy beneath it. */
