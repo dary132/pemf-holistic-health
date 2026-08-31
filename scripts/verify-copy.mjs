@@ -119,6 +119,22 @@ export const ALLOWED_EDITS = [
     // closing band on every page, and app/contact/page.tsx.
     reason: "Client asked for pipe separators in the sitewide CTA heading, 2026-08-30",
   },
+  {
+    site: "PEMF Improves Brain Health",
+    doc: "PEMF Improves Mental Health",
+    // Two places: the /mental-health H1 (lib/content/mental-health.ts) and the
+    // home page's teaser card for that route (lib/content/home.ts), which was
+    // changed to match on the client's follow-up the same day -- a card reading
+    // "Mental Health" opening a page headed "Brain Health" reads as a broken
+    // link. The nav label has said "Brain Health" since 2026-08-28 at the
+    // client's request while both of these kept the document's wording; this
+    // finishes that. Not a rewrite for readability -- those are forbidden here
+    // and one was reverted on 2026-08-29 -- but the client's own vocabulary:
+    // the document uses "brain health" twice in this page's copy. Only
+    // lib/routes.ts still carries "Mental Health", deliberately: that field
+    // records the document's own page heading and is not rendered anywhere.
+    reason: "Client asked for the /mental-health H1 to say Brain Health, 2026-08-31",
+  },
 ];
 
 /** Collapse whitespace only. Quote and apostrophe characters are checked

@@ -1,8 +1,21 @@
-/** Mental Health page copy. Source: "Website Exiga Jasmin 2026.docx", page 4. Verbatim. */
+/** Mental Health page copy. Source: "Website Exiga Jasmin 2026.docx", page 4.
+ *  Verbatim, with one registered exception: `intro.title` below says "Brain
+ *  Health" where the document says "Mental Health". See ALLOWED_EDITS in
+ *  scripts/verify-copy.mjs. */
 import type { Panel } from "./types";
 import { images } from "./images.ts";
 
-export const intro = { title: "PEMF Improves Mental Health" };
+/* "Brain Health", not the document's "Mental Health", at the client's request
+   2026-08-31. This finishes a move they started on 2026-08-28, when they asked
+   for "Brain Health" as this page's NAV label while the page heading stayed on
+   the document's wording -- see the comment in lib/routes.ts. Both words are
+   the client's own: the document uses "brain health" twice in this page's own
+   copy ("Brain health is a vital component of overall well-being", "promoting
+   brain health and wellness"), so this is their vocabulary, not invented
+   marketing. Registered in verify-copy's ALLOWED_EDITS rather than waved
+   through, so the site saying something the document does not is on the
+   record. */
+export const intro = { title: "PEMF Improves Brain Health" };
 
 export const dimensions: Panel[] = [
   {

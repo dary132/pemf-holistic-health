@@ -6,8 +6,11 @@ export const routes: Route[] = [
   { path: "/", label: "Home", title: "PEMF for Health and Wellness" },
   { path: "/pemf", label: "PEMF", title: "PEMF for Healthy Lifestyle" },
   { path: "/holistic-health", label: "Holistic Health", title: "PEMF for Holistic Health" },
-  // label "Brain Health" is the client's wording for the nav (2026-08-28);
-  // the page itself keeps the document's "Mental Health" title and copy.
+  // label "Brain Health" is the client's wording for the nav (2026-08-28), and
+  // since 2026-08-31 the page's H1 says it too (lib/content/mental-health.ts,
+  // registered in verify-copy's ALLOWED_EDITS). The `title` below still records
+  // the document's own page heading, which is what this field is for; it is not
+  // rendered anywhere. The rest of the page's copy remains verbatim.
   { path: "/mental-health", label: "Brain Health", title: "PEMF Improves Mental Health" },
   { path: "/energy", label: "Energy", title: "PEMF Increases Your Energy" },
   { path: "/sports-health", label: "Sports Health", title: "Sports Health" },
