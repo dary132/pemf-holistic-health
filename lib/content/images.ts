@@ -97,14 +97,24 @@ export const images = {
     decorative: true,
     contain: true,
   },
+  /* Both of these are the document's own files (word/media image13 and
+     image14), restored on 2026-08-30 at the client's request in place of the
+     SVG redraws, same trade as the essentials, the sports icons and the two
+     images above. Each has every word of its own labelling burnt in, so
+     `contain` is required -- `cover` would crop the outer ring of the
+     spectrum arc and the "opposite poles attract" caption -- and each alt
+     text reproduces the burnt-in wording rather than describing the picture
+     around it. Both grounds are pure white against the band's cream, which
+     reads as a soft plate under the artwork rather than as a seam; that is
+     why they keep frame="open" on /pemf instead of gaining a bordered one. */
   radiationSources: {
-    src: "/images/sources-of-radiation.svg",
-    alt: "The radiation spectrum from low-energy radio waves through to high-energy gamma rays, with the ionizing threshold marked after visible light",
+    src: "/images/sources-of-radiation.png",
+    alt: "An arc of the radiation spectrum from power and telephony at the low-energy end through radio, microwaves, infra-red, visible light and UV to X-rays and gamma rays, with everyday devices placed along it, captioned: Common sources of radiation. Where do mobile phones fit?",
     contain: true,
   },
   magnetPoles: {
-    src: "/images/magnet-poles.svg",
-    alt: "Diagram of a magnet's north and south poles and its field lines",
+    src: "/images/magnet-poles.png",
+    alt: "Four bar magnets with green south and red north poles, showing like poles repel and opposite poles attract",
     contain: true,
   },
   /** Dusk meadow under a magenta aurora -- Earth's field made visible.
@@ -120,9 +130,19 @@ export const images = {
     src: "/images/earth-field-aurora.jpg",
     alt: "A magenta aurora arcing over a meadow and a winding stream at dusk",
   },
+  /* word/media/image16, restored on 2026-08-30 at the client's request over
+     the wellness-practices.svg redraw. Note the shape change this brings: the
+     redraw was 760x560, near the 4/3 of the media slot it sits in, while the
+     original is 431x473 and portrait, so it letterboxes rather than filling
+     the slot. Its ground is near-white and the slot's is --sand, so those
+     bars are visible -- checked on screen in both places it renders (the
+     /holistic-health definition grid and the home page teaser card) and left
+     as bars: padding the file out to 4/3 would mean inventing 200px of empty
+     margin, and every practice label is burnt in, so `contain` is required
+     and cropping to fill is not available. */
   wellnessPractices: {
-    src: "/images/wellness-practices.svg",
-    alt: "Illustration of physical, mental, and emotional wellness practices, including restorative sleep, nourishing foods, hydration, exercise, gratitude, meaningful connections, time in nature, mindfulness, supportive relationships, rest, personal growth, and reflection",
+    src: "/images/wellness-practices.png",
+    alt: "Twelve wellness practices in three labelled groups. Physical: restorative sleep, nourishing foods, hydration, movement and exercise. Mental: practicing gratitude, meaningful connections, time in nature, mindful presence. Emotional: supportive relationships, intentional rest, personal growth, inner reflection",
     contain: true,
   },
   /* The document's own file (word/media/image15), and the file the deleted
@@ -139,9 +159,15 @@ export const images = {
     alt: "Earth in space ringed by looping magnetic field lines, captioned: PEMF Mimics Earth Magnetic Field",
     contain: true,
   },
+  /* word/media/image17, restored on 2026-08-30 at the client's request over
+     the eight-dimensions.svg redraw. Unlike wellnessPractices above this one
+     drops in cleanly: its ground is #FAF8F1, within a shade of --cream, so it
+     sits on the /holistic-health section ground with no visible edge. The
+     eight descriptions are burnt in and set small, which is why the page caps
+     it at its own 712px rather than letting it upscale into a wider track. */
   eightDimensions: {
-    src: "/images/eight-dimensions.svg",
-    alt: "Wheel of eight dimensions of wellness: environmental, financial, emotional, vocational, spiritual, social, physical, and intellectual",
+    src: "/images/eight-dimensions.png",
+    alt: "Wheel of the eight dimensions of wellness, each with a description: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",
     contain: true,
   },
   exagonBrainBanner: {
