@@ -92,10 +92,38 @@ export function PanelGrid({
               )}
               {panel.items && (
                 <dl className="mt-3 space-y-3">
+                  {/* The term carries the emphasis, client request
+                      2026-08-31. It was `font-bold text-ink` against an
+                      `text-ink-soft` description, which is far weaker than it
+                      looks in the class list: body copy on this site is
+                      already weight 600 (globals.css, raised for the elderly
+                      audience), so "bold" bought a single 600->700 step, and
+                      --ink against --ink-soft is two near-blacks. A term and
+                      its definition were reading as one undifferentiated
+                      block.
+
+                      --sage is the fix rather than more weight, because it is
+                      already this site's "this is a heading" signal -- every
+                      h1/h2/h3 is --sage -- so a term picks up the existing
+                      language instead of inventing a fourth emphasis device.
+                      The size bump to text-lg does the rest; there is nowhere
+                      left to go on weight, since 600 body and 700 headings
+                      already use the range up.
+
+                      Contrast: these dl blocks sit inside u-plate, which is
+                      --white, so --sage on --white is now a real text pair and
+                      is registered in scripts/verify-contrast.mjs rather than
+                      assumed. It measures 8.59:1 in the default palette, and
+                      the checker holds all six palettes to the 7:1 floor.
+
+                      Shared component, so this lands on every `items` block on
+                      the site -- /mental-health, /energy, /pets-health and
+                      /products. That is the point: one term/description
+                      pattern should look the same everywhere. */}
                   {panel.items.map((item) => (
                     <div key={item.term}>
-                      <dt className="font-bold text-ink">{item.term}</dt>
-                      {item.text && <dd className="text-ink-soft">{item.text}</dd>}
+                      <dt className="text-lg font-bold text-sage">{item.term}</dt>
+                      {item.text && <dd className="mt-1 text-ink-soft">{item.text}</dd>}
                     </div>
                   ))}
                 </dl>

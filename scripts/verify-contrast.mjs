@@ -34,6 +34,14 @@ const TEXT_PAIRS = [
   ["--button", "--mist"],
   ["--white", "--sage"],
   ["--white", "--clay"],
+  // --sage on --white: the term in every TriPanel `items` definition list
+  // (components/TriPanel.tsx), which sits inside a u-plate and so lands on
+  // --white rather than on a band ground. Added 2026-08-31 when the term moved
+  // from --ink to --sage for emphasis. --white is the lightest ground on the
+  // site, so this is the widest of the --sage pairs, but registering it is
+  // what stops a future darkening of --white (or a theme that redefines it)
+  // from quietly dropping these terms below AAA.
+  ["--sage", "--white"],
   // Technicolor wordmark stops. The gradient only ever fills text on --cream,
   // so each stop is held to the text floor against cream alone.
   ["--tc-1", "--cream"],
