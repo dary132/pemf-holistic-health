@@ -5,17 +5,20 @@
 import type { Panel } from "./types";
 import { images } from "./images.ts";
 
-/* "Brain Health", not the document's "Mental Health", at the client's request
-   2026-08-31. This finishes a move they started on 2026-08-28, when they asked
-   for "Brain Health" as this page's NAV label while the page heading stayed on
-   the document's wording -- see the comment in lib/routes.ts. Both words are
-   the client's own: the document uses "brain health" twice in this page's own
-   copy ("Brain health is a vital component of overall well-being", "promoting
-   brain health and wellness"), so this is their vocabulary, not invented
-   marketing. Registered in verify-copy's ALLOWED_EDITS rather than waved
-   through, so the site saying something the document does not is on the
+/* "Wellness", not the document's "Mental Health", at the client's request
+   2026-08-31. The heading moved twice that day -- to "Brain Health" first,
+   then here -- as the client worked out what this page is; it landed on
+   Wellness once they decided this IS the wellness page (see lib/routes.ts).
+   Every naming surface now agrees except the URL: nav label, breadcrumb,
+   <title> and this heading all say Wellness, and /mental-health stays only
+   because renaming it costs the page its search history.
+
+   Their vocabulary, not invented marketing: the document uses "wellness"
+   throughout, including in this page's own copy ("promoting brain health and
+   wellness"). Registered in verify-copy's ALLOWED_EDITS rather than waved
+   through, so the site saying something the document does not stays on the
    record. */
-export const intro = { title: "PEMF Improves Brain Health" };
+export const intro = { title: "PEMF Improves Wellness" };
 
 export const dimensions: Panel[] = [
   {

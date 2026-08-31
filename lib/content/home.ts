@@ -38,7 +38,7 @@ export const holisticAnatomy = {
 
 /** Link cards to the other nine pages. Titles and bodies are the document's own
  *  page headings and sentences — no marketing copy is invented here, with one
- *  registered exception: the /mental-health card says "Brain Health" where the
+ *  registered exception: the /mental-health card says "Wellness" where the
  *  document says "Mental Health", matching that page's own H1. See ALLOWED_EDITS
  *  in scripts/verify-copy.mjs. */
 export const teasers: Teaser[] = [
@@ -55,12 +55,13 @@ export const teasers: Teaser[] = [
     image: images.eightDimensionsWheel,
   },
   {
-    /* Follows the page it links to, changed 2026-08-31 in the same pass as the
-       H1 (lib/content/mental-health.ts). A card reading "Mental Health" that
-       opens a page headed "Brain Health" is the kind of mismatch a visitor
-       reads as a broken link. The body sentence below is untouched and still
-       verbatim. */
-    title: "PEMF Improves Brain Health",
+    /* Follows the page it links to, and moved with it twice on 2026-08-31 --
+       "Mental Health" -> "Brain Health" -> "Wellness". A card whose title
+       differs from the heading of the page it opens is the kind of mismatch a
+       visitor reads as a broken link, so this tracks
+       lib/content/mental-health.ts rather than being decided separately. The
+       body sentence below is untouched and still verbatim. */
+    title: "PEMF Improves Wellness",
     body: "Brainwave Entrainment is a holistic experience for the brain, also known as Spa for the Mind, reduces stress, resulting in relaxation, calmness and ease.",
     href: "/mental-health",
     image: images.exagonBrainBanner,

@@ -49,9 +49,9 @@ export default function MentalHealthPage() {
           /* Matches the nav label, which is the convention every other page
              follows (compare /energy, /pets-health, ...). It had drifted: the
              nav said "Brain Health" from 2026-08-28 while this still said
-             "Mental Health", and the 2026-08-31 move to "Wellness" would have
-             made it a third name for one page. The page's H1 is deliberately
-             still "PEMF Improves Brain Health" -- see lib/routes.ts. */
+             "Mental Health". Nav label, breadcrumb, <title> and the H1 all
+             say Wellness now; only the URL still carries the old name, and
+             deliberately so -- see lib/routes.ts. */
           { name: "Wellness", path: "/mental-health" },
         ]}
       />

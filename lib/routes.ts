@@ -11,12 +11,15 @@ export const routes: Route[] = [
   // "Wellness" (2026-08-31), the client's decision that this IS the wellness
   // page -- its panels are the dimensions of wellness (mental acuity,
   // emotional, spiritual, social, financial), and the eight-dimensions wheel
-  // now opens it. The page's own H1 deliberately still reads "PEMF Improves
-  // Brain Health" (lib/content/mental-health.ts, registered in verify-copy's
-  // ALLOWED_EDITS): the client asked for the label only, so the heading was
-  // left alone rather than changed twice in a day. The `title` below still
-  // records the document's own page heading, which is what this field is for;
-  // it is not rendered anywhere. The rest of the page's copy is verbatim.
+  // now opens it. The page's H1, breadcrumb and <title> all followed the label
+  // to Wellness the same day, so every naming surface agrees except the URL.
+  //
+  // /mental-health stays as the path deliberately: renaming it needs a
+  // redirect pair in next.config.ts (see /what-is-pemf and /benefits for the
+  // pattern) and costs the page its accumulated search history, which is a
+  // real price for a cosmetic gain. The `title` below still records the
+  // document's own page heading, which is what this field is for; it is not
+  // rendered anywhere. The rest of the page's copy is verbatim.
   { path: "/mental-health", label: "Wellness", title: "PEMF Improves Mental Health" },
   { path: "/energy", label: "Energy", title: "PEMF Increases Your Energy" },
   { path: "/sports-health", label: "Sports Health", title: "Sports Health" },
