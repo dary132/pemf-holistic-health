@@ -232,9 +232,21 @@ export const images = {
     src: "/images/sleep-mat-tablet.png",
     alt: "A person asleep on the PEMF mat with the tablet control unit beside the bed",
   },
+  /* Client-supplied 2026-08-30 for the /pets-health "Show Animals" panel,
+     over the animal-show photograph that was there. Unlike everything else
+     restored today this is not a document file: it is artwork the client had
+     generated, standing in for the document's own cartoon zoo collage, whose
+     "PEMF is good 4 us" caption it reproduces.
+
+     Supplied at 1024x1024 with most of that white margin. Trimmed to the
+     artwork's own bounding box (920x593) and then padded back to 920x690, so
+     the 4/3 slot spends its height on the animals rather than on the
+     generator's padding. Ends at an exact 4/3, which is what lets it fit on
+     `cover` with nothing cropped -- and nothing may be cropped here, because
+     the caption is burnt into the picture. */
   showAnimals: {
-    src: "/images/show-animals.jpg",
-    alt: "Handlers showing dogs on a red carpet at an animal show, with cats on display beside rosettes and trophies",
+    src: "/images/show-animals.png",
+    alt: "A group of cartoon animals -- an arctic fox, platypus, chameleon, badger, okapi, ostrich, deer, penguin, meerkat, monkey, flamingo and boar -- holding a sign reading: PEMF is Good 4 US",
   },
   pemfDogPad: {
     src: "/images/pemf-dog-pad.png",
