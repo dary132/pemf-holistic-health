@@ -35,18 +35,36 @@ export default function Header() {
       pathname === href ? "text-clay underline underline-offset-8" : "text-ink-soft hover:text-clay"
     }`;
 
+  /* Which part pins is breakpoint-dependent, and that follows from the
+     stacking below. On a phone the contact bar is four stacked lines, so
+     pinning the whole block would hold about 40% of an 844px viewport
+     permanently. Below md only the logo-and-Menu row sticks and the contact
+     bar scrolls away with the page -- everything is still there, at the top,
+     where a visitor reads it once. From md the bar is a single row again and
+     the original whole-block pin is unchanged. The mobile menu panel lives
+     inside <header>, so it pins and unpins with it. */
   return (
-    <div className="sticky top-0 z-50">
+    <div className="z-50 md:sticky md:top-0">
       <div className="bg-sage text-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-1 px-5 text-base font-bold">
-          <div className="flex flex-wrap items-center">
+        {/* Below md this bar is a plain vertical stack, one item per line;
+            from md it is the original single row. Client, 2026-08-30: on a
+            phone the address was missing entirely and the two numbers looked
+            odd. Both came from the row layout wrapping -- the numbers are
+            ~21 characters each in bold at the base size, so they never shared
+            a 390px line, and the "·" between them was left stranded at the
+            end of the first line. Stacking removes the wrap, so the
+            separator is only rendered from md where the two are actually
+            side by side, and the address no longer has to be hidden to keep
+            the bar from collapsing. */}
+        <div className="mx-auto flex max-w-6xl flex-col items-start gap-y-1 px-5 pb-3 text-base font-bold md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 md:gap-y-1 md:pb-0">
+          <div className="flex flex-col items-start md:flex-row md:items-center">
             <a
               href={site.officePhoneHref}
               className="inline-flex min-h-[48px] items-center underline-offset-4 no-underline hover:underline"
             >
               Office {site.officePhone}
             </a>
-            <span aria-hidden="true" className="px-2">
+            <span aria-hidden="true" className="hidden px-2 md:inline">
               ·
             </span>
             <a
@@ -56,14 +74,14 @@ export default function Header() {
               WhatsApp {site.whatsapp}
             </a>
           </div>
-          <div className="flex items-center gap-x-6">
-            <p className="hidden md:block">{site.address.join(", ")}</p>
+          <div className="flex flex-col items-start gap-y-2 md:flex-row md:items-center md:gap-x-6 md:gap-y-0">
+            <p>{site.address.join(", ")}</p>
             <LanguageSwitcher />
           </div>
         </div>
       </div>
 
-      <header className="border-b-2 border-rule bg-cream">
+      <header className="sticky top-0 z-50 border-b-2 border-rule bg-cream md:static md:z-auto">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
           {/* Two things this must not do, both found on screen at the raised
               base size. It must never be whitespace-nowrap: pinned to one line
