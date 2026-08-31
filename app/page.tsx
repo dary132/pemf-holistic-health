@@ -106,7 +106,14 @@ export default function Home() {
           {/* mx-auto is what actually centres this line: the base stylesheet
               caps every p at max-width:65ch, so without it the box sits left
               in the centred container and only the text inside it centres. */}
-          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold uppercase tracking-[0.16em] text-clay">
+          {/* leading-tight, 2026-08-31: this line inherits line-height 1.75
+              from body copy, which is right for paragraphs and far too loose
+              for the second line of a two-line display lockup. Measured, the
+              leading was holding a 43px gap between the wordmark and this line
+              -- nearly the 52px above the whole lockup -- so the two read as
+              separate elements rather than as one unit. 1.25 closes that. It
+              also tightens the wrap on phones, where this line breaks in two. */}
+          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold uppercase leading-tight tracking-[0.16em] text-clay">
             {hero.expansion}
           </p>
         </div>
