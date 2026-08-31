@@ -132,7 +132,17 @@ export default function LanguageSwitcher() {
       {open && (
         <ul
           id="language-menu"
-          className="notranslate absolute left-0 top-full z-50 min-w-[11rem] rounded-2xl border-2 border-rule bg-white p-2 shadow-lg md:left-auto md:right-0"
+          /* z-60, above the header's z-50 rather than level with it. Below
+             md the header is `sticky top-0 z-50`, which makes it a stacking
+             context in the root at that index; this menu is also in the root
+             context, and at an equal index the later element in the DOM wins
+             -- so the header painted across the middle of the open menu, with
+             the entries above and below it still showing. It only broke when
+             the header became the sticky element on phones; before that the
+             two shared a stacking context created by their common wrapper,
+             where z-50 beat the header's auto. The skip link in layout.tsx
+             sits at z-100 and stays above both. */
+          className="notranslate absolute left-0 top-full z-[60] min-w-[11rem] rounded-2xl border-2 border-rule bg-white p-2 shadow-lg md:left-auto md:right-0"
         >
           {LANGUAGES.map((lang) => (
             <li key={lang.code}>
