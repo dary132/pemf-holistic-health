@@ -199,6 +199,13 @@ export const images = {
     src: "/images/eight-dimensions-wheel.png",
     alt: "Wheel of the eight dimensions of wellness: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",
   },
+  /* Unplaced since 2026-08-31. It was the "PEMF for Wellness" section on
+     /holistic-health, moved to the top of /mental-health when that became the
+     Wellness page, then removed at the client's request the same day. Kept
+     rather than deleted, like heroMatFireplace and imrsFaunaHorses: it is the
+     client's own artwork and the entry is the record of it. Note that its
+     original section on /holistic-health no longer exists, so replacing it
+     means choosing a home. */
   eightDimensions: {
     src: "/images/eight-dimensions.png",
     alt: "Wheel of the eight dimensions of wellness, each with a description: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",

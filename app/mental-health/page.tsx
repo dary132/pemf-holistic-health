@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTA } from "@/components/CTA";
 import { Disclaimer } from "@/components/Disclaimer";
@@ -12,8 +11,6 @@ import {
   relaxation,
   stress,
 } from "@/lib/content/mental-health";
-import { images, isSvg } from "@/lib/content/images";
-import { blurFor } from "@/lib/content/blur";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -55,30 +52,15 @@ export default function MentalHealthPage() {
           { name: "Wellness", path: "/mental-health" },
         ]}
       />
-      {/* The eight-dimensions wheel opens this page, moved here from
-          /holistic-health on the client's instruction 2026-08-31 in the same
-          pass that made this the Wellness page. It belongs here on the
-          content too, not just in the nav: the panels immediately below are
-          five of that wheel's own dimensions -- mental acuity, emotional,
-          spiritual, social, financial -- so the wheel now reads as the key to
-          the row under it instead of sitting on a different page from it.
-
-          max-w-[712px] is the file's own width, carried over with the image
-          rather than reset to the container's 1152px: the eight descriptions
-          are burnt into the artwork at small sizes, and a wider track would
-          upscale a 712px file and soften them. Same reasoning that capped it
-          on the page it came from. */}
-      <Section id="mental-health" title={intro.title} titleAs="h1">
-        <Image
-          src={images.eightDimensions.src}
-          {...blurFor(images.eightDimensions.src)}
-          alt={images.eightDimensions.alt}
-          unoptimized={isSvg(images.eightDimensions.src)}
-          width={712}
-          height={455}
-          className="mx-auto h-auto w-full max-w-[712px] object-contain"
-        />
-      </Section>
+      {/* The eight-dimensions wheel was moved here from /holistic-health
+          earlier on 2026-08-31 and removed again the same day at the client's
+          request. It is unplaced now -- kept in lib/content/images.ts with a
+          note, the same way heroMatFireplace and imrsFaunaHorses are, because
+          it is the client's own artwork and deleting the entry would lose the
+          record of it. The section it originally lived in on /holistic-health
+          was deleted in 4309127, so bringing it back means choosing a home
+          rather than reverting one commit. */}
+      <Section id="mental-health" title={intro.title} titleAs="h1" />
       <JumpNav
         items={[
           { href: "#stress", label: "Stress" },
