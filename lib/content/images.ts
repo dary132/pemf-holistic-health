@@ -165,6 +165,24 @@ export const images = {
      sits on the /holistic-health section ground with no visible edge. The
      eight descriptions are burnt in and set small, which is why the page caps
      it at its own 712px rather than letting it upscale into a wider track. */
+  /* The wheel alone, cut from eight-dimensions.png for the home page's
+     /holistic-health teaser card on 2026-08-30. That card had been showing
+     wellnessPractices, which is portrait and letterboxed against --sand in a
+     4/3 card slot -- the same mismatch that moved it to its own figure on the
+     page itself.
+
+     Built rather than cropped by CSS because neither fit works on the full
+     diagram: `cover` slices 105px off the sides and leaves the outer
+     descriptions cut mid-word, `contain` letterboxes. The wheel is a circle,
+     so it is pasted through a circular mask -- its bounding square's corners
+     hold whatever sits behind it, which is the nearest label text -- onto a
+     4/3 canvas filled with the diagram's own #FAF8F1 ground. The result fills
+     the slot edge to edge with no bars and no cut words, and the eight
+     descriptions it drops were unreadable at card size anyway. */
+  eightDimensionsWheel: {
+    src: "/images/eight-dimensions-wheel.png",
+    alt: "Wheel of the eight dimensions of wellness: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",
+  },
   eightDimensions: {
     src: "/images/eight-dimensions.png",
     alt: "Wheel of the eight dimensions of wellness, each with a description: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",

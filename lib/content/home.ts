@@ -49,7 +49,7 @@ export const teasers: Teaser[] = [
     title: "PEMF for Holistic Health",
     body: "PEMF is a holistic approach to promote a state of total wellness.",
     href: "/holistic-health",
-    image: images.wellnessPractices,
+    image: images.eightDimensionsWheel,
   },
   {
     title: "PEMF Improves Mental Health",
