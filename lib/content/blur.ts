@@ -92,8 +92,8 @@ export const blurDataURLs: Record<string, string> = {
     "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAwAgCdASoMAAcAAwBSJYgCdH8AGMDiZ183gAD+yPteQcicCJpb73oMwQc3lXIQ9wJC523OCOYAxbKUPdffc48fZNUQ1d0YhA/D7/bIHjt2wAAA",
   "/images/smart-pulser-set.png":
     "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoMAAcAAwBSJZwAD4SQ/EQv36M4AAD+912LGfYe0pdxcQ6Zzf5W8oklxRAOfdKoCdCXABeDosSqXXHfAmwTjwJ2hicvNAAA",
-  "/images/sources-of-radiation.png":
-    "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAgAAwBSJZQAAxf920GEAAD+9VknMtBdn8FyjCHjFjONp20BXlc6FIrfI0OG1XuzK5GOaAAAAA==",
+  "/images/sources-of-radiation-hires.jpg":
+    "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoMAAgAAwBSJYwAAjp17xsAAP71SZgA0UcCQ3Zz8M/HemfB4Aq2shV59AN2/5oDPAc7dCeShy+tyMe24AAAAA==",
   "/images/stress-gauge.png":
     "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoMAAkAAwBSJaACdADaNHXaAAD++ZYolaJDUSHu87rgjvv15spoF7A9i3pct5gLvnVMSj4sEO463vYqHLN5hvlIBs+eD9Hy/yT2JTvl8Jmq4HRd1ZdcEAAA",
   "/images/wechat-qr.png":

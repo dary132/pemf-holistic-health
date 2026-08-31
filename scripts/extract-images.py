@@ -26,6 +26,9 @@ RENAMES = {
     "image10.jpeg": "essential-earth-field.jpeg",
     "image11.png": "earth-magnetic-field-shield.png",
     "image12.png": "magnetic-field-weakening.png",
+    # Superseded 2026-08-31: the client supplied a 2048x1397 copy of this same
+    # chart, now at sources-of-radiation-hires.jpg. The mapping stays as the
+    # record of where the original came from.
     "image13.png": "sources-of-radiation.png",
     "image15.png": "pemf-mimics-earth-field.png",
     "image18.png": "exagon-brain-banner.png",

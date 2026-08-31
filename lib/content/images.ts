@@ -107,8 +107,24 @@ export const images = {
      around it. Both grounds are pure white against the band's cream, which
      reads as a soft plate under the artwork rather than as a seam; that is
      why they keep frame="open" on /pemf instead of gaining a bordered one. */
+  /* Client-supplied 2026-08-31, replacing the 540x356 copy extracted from the
+     document (word/media image13, see scripts/extract-images.py). Same chart,
+     2048x1397 -- 3.8x the linear resolution, which matters more here than on
+     almost any other image on the site: this one is dense burnt-in text and
+     hairline arrows, and at 540px the device labels around the arc were
+     unreadable at the size the panel renders them.
+
+     The filename differs from the old one deliberately. /_next/image caches
+     per SOURCE URL, so replacing the bytes at the same path serves the old
+     pixels straight back -- the trap that cost real time on stress-meter.png.
+     A new path is the fix; the old file is deleted rather than orphaned.
+
+     contain:true is kept rather than switching to the padded-to-4/3 + cover
+     treatment most panel art uses, because the panel beside it (magnetPoles)
+     is also contained white-ground art. Padding only this one would give the
+     row two different fits. */
   radiationSources: {
-    src: "/images/sources-of-radiation.png",
+    src: "/images/sources-of-radiation-hires.jpg",
     alt: "An arc of the radiation spectrum from power and telephony at the low-energy end through radio, microwaves, infra-red, visible light and UV to X-rays and gamma rays, with everyday devices placed along it, captioned: Common sources of radiation. Where do mobile phones fit?",
     contain: true,
   },
