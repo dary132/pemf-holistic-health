@@ -71,9 +71,15 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-rule">
+        {/* The "not a medical device" line that sat above the copyright was
+            removed on the client's explicit instruction, 2026-08-31. It was
+            never the client's copy -- it appeared nowhere in the 2026
+            document and was carried over from the prior build, which is why
+            lib/site.ts held it as a flagged exception awaiting exactly this
+            decision rather than as verified copy. The sitewide Disclaimer
+            component is untouched and still runs on every page. */}
         <div className="mx-auto max-w-6xl px-5 py-6 text-base text-ink-soft">
-          <p className="max-w-[62ch]">{site.deviceNote}</p>
-          <p className="mt-2">
+          <p>
             © {new Date().getFullYear()} {site.name}
           </p>
         </div>

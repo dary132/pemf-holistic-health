@@ -82,11 +82,13 @@ const SITE_NON_COPY_KEYS = new Set([
 // or -- worse -- quietly reclassifying a claim as "not copy" so it stops
 // being asked about. Every entry needs a written reason and an owner.
 //
-//   deviceNote  "The PEMF system is not a medical device..." Protective
-//               language carried over from the prior build. Removing a
-//               safety disclaimer without the client's explicit instruction
-//               is the riskier action, so it is flagged for sign-off (see
-//               lib/site.ts) rather than deleted.
+//   (deviceNote was here until 2026-08-31. "The PEMF system is not a medical
+//   device..." -- protective language carried over from the prior build,
+//   held open for the client's answer. They instructed its removal, so the
+//   string, its renderer in components/Footer.tsx and this exemption all
+//   went together. Recorded rather than silently dropped: this set exists to
+//   make open questions visible, so a question that gets ANSWERED should
+//   show its answer here, not just vanish.)
 //   areaServed  "Orange County, California". Appears 0 times in the
 //               document. No longer rendered as page copy, but still
 //               published to Google as a factual business claim via
@@ -97,7 +99,7 @@ const SITE_NON_COPY_KEYS = new Set([
 //
 // Anything added here without a reason and a client decision behind it is a
 // misuse of this set.
-const SITE_EXEMPT = new Set(["deviceNote", "areaServed"]);
+const SITE_EXEMPT = new Set(["areaServed"]);
 
 // Every permitted deviation from the document. Spec Appendix B.
 // Anything not listed here that differs by more than terminal punctuation is a failure.

@@ -19,12 +19,13 @@ export const site = {
     "https://www.google.com/maps/dir/?api=1&destination=22706+Aspan+St+Suite+504+Lake+Forest+CA+92630",
   disclaimer:
     "This information is intended for educational purposes only and should not be taken as medical advice. Always consult with a qualified professional before making any decisions related to your health or wellness plan.",
-  // NOT in the 2026 document (docs/exiga-jasmin-2026*.txt) at all. This is
-  // protective language carried over from the prior build. Removing a safety
-  // disclaimer without the client's explicit instruction is the riskier
-  // action, so it is being flagged for client sign-off rather than deleted
-  // or silently kept as if it were verified copy. See scripts/verify-copy.mjs
-  // SITE_EXEMPT for the matching guard exemption. Deliberate, pending exception.
-  deviceNote:
-    "The PEMF system is not a medical device and is not intended to diagnose, cure, mitigate, prevent or treat any disease.",
+  // `deviceNote` -- "The PEMF system is not a medical device and is not
+  // intended to diagnose, cure, mitigate, prevent or treat any disease." --
+  // was removed 2026-08-31 on the client's explicit instruction. It lived
+  // here as a flagged exception rather than as verified copy precisely
+  // because it appeared nowhere in the 2026 document and was carried over
+  // from the prior build; the standing note said removing it needed the
+  // client to say so, and they have. The key is deleted rather than kept
+  // unrendered, so nothing reads as available-but-disabled. `disclaimer`
+  // above is untouched and still renders on every page.
 };
