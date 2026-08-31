@@ -88,7 +88,7 @@ export function PanelGrid({
                 </ul>
               )}
               {panel.items && (
-                <dl className="mt-3 space-y-3">
+                <dl className="mt-3 space-y-5">
                   {/* The term carries the emphasis, client request
                       2026-08-31. It was `font-bold text-ink` against an
                       `text-ink-soft` description, which is far weaker than it
@@ -124,7 +124,27 @@ export function PanelGrid({
                       /products. That is the point: one term/description
                       pattern should look the same everywhere. */}
                   {panel.items.map((item) => (
-                    <div key={item.term}>
+                    /* Left accent bar, client request 2026-08-31: colour,
+                       weight and size were all already spent on the term
+                       (sage, 900, text-lg) and the client still wanted it
+                       stronger, so the next real step up is a structural
+                       device rather than another type tweak.
+
+                       It does two jobs. It emphasises the term, and it GROUPS
+                       the term with the paragraph it introduces -- the bar
+                       spans both -- so a five-item list reads as five blocks
+                       instead of one undifferentiated column. That grouping is
+                       why the bar sits on this wrapper and not on the <dt>.
+
+                       border-sage rather than the --rule border token or the
+                       --accent-rule clay used by .u-accent-rule under section
+                       headings: the bar and the term it marks should be one
+                       colour reading as one emphasis, and clay beside a sage
+                       term would put two accents on the same object. space-y-5
+                       up from space-y-3 because the bars make each entry a
+                       visible block, and blocks need more room between them
+                       than lines do. */
+                    <div key={item.term} className="border-l-4 border-sage pl-4">
                       <dt className="text-lg font-black text-sage">{item.term}</dt>
                       {item.text && <dd className="mt-1 text-ink-soft">{item.text}</dd>}
                     </div>
