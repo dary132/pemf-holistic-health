@@ -103,7 +103,15 @@ export function PanelGrid({
                       already this site's "this is a heading" signal -- every
                       h1/h2/h3 is --sage -- so a term picks up the existing
                       language instead of inventing a fourth emphasis device.
-                      The size bump to text-lg does the rest.
+                      Weight went 700 -> 900 (font-black) on 2026-08-31, the
+                      client asking for it "significantly bold ... thick". An
+                      earlier version of this comment claimed there was nowhere
+                      left to go on weight; that was wrong. Nunito Sans loads
+                      from next/font with no `weight` option (app/layout.tsx),
+                      which for a variable font ships the whole 200-1000 axis,
+                      so 900 renders as a real weight rather than being
+                      synthesised or snapped back to 700. Against 600 body copy
+                      that is a 300-step difference where "bold" gave 100.
 
                       Contrast: these dl blocks sit inside u-plate, which is
                       --white, so --sage on --white is now a real text pair and
@@ -117,7 +125,7 @@ export function PanelGrid({
                       pattern should look the same everywhere. */}
                   {panel.items.map((item) => (
                     <div key={item.term}>
-                      <dt className="text-lg font-bold text-sage">{item.term}</dt>
+                      <dt className="text-lg font-black text-sage">{item.term}</dt>
                       {item.text && <dd className="mt-1 text-ink-soft">{item.text}</dd>}
                     </div>
                   ))}
