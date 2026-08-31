@@ -90,17 +90,21 @@ export default function Home() {
             the hero -- so the old sm:rounded-2xl is gone rather than kept for
             desktop.
 
-            lg:h-[60vh] with object-cover is the deliberate half of this. At
-            its natural 16:9 a full-bleed hero is 1081px tall on a 1920px
-            monitor, which fills the whole screen and pushes the Call/Visit
-            buttons and the pitch below the fold on essentially every desktop.
-            Capping the height crops top and bottom instead of growing, and
-            the subject lies horizontally across the middle of the frame, so a
-            centre crop keeps her whole. It also softens the resolution cost
-            below, because a cropped region is drawn at closer to 1:1 than the
-            whole frame stretched to viewport width would be.
+            No crop, and no height cap: the photograph is shown whole at its
+            natural 16:9 at every width. It shipped earlier on 2026-08-31 with
+            lg:h-[60vh] and object-cover, which kept the Call/Visit buttons
+            above the fold by cropping top and bottom; the client saw it live
+            and asked for the whole frame back, so the trade is now the other
+            way round. Consequence, accepted deliberately: on a 1920px monitor
+            the hero is about 1081px tall, so it fills the screen and the
+            buttons and the pitch sit below the fold on essentially every
+            desktop. Do not reintroduce a cap here to "fix" that -- it is the
+            thing that was asked for, twice.
 
-            The resolution cost is real and was flagged before this shipped.
+            The resolution cost is real and was flagged before this shipped,
+            and the un-cropped version pays it in full: a crop draws its
+            region at closer to 1:1, where the whole frame stretched to
+            viewport width does not.
             imrs-model-3.png is 1000x563 and is the sharpest frame of this shot
             the client has supplied -- the document's own copy (word/media
             image1, the heroMatFireplace file) is 721x338, smaller still. Full
@@ -109,10 +113,7 @@ export default function Home() {
             2026-08-28. A sharper original from the client is the only fix;
             nothing in code recovers detail that is not in the file.
 
-            h-auto below lg keeps phones and tablets on the natural aspect
-            ratio: 60vh on a 390x844 phone would be 506px against a natural
-            220px, which is a heavy crop nobody asked for. sizes="100vw" was
-            already correct and needs no change. */}
+            sizes="100vw" was already correct and needs no change. */}
         <div className="mt-8">
           <Image
             src={images.imrsModel3.src}
@@ -122,7 +123,7 @@ export default function Home() {
             width={1000}
             height={563}
             sizes="100vw"
-            className="h-auto w-full object-cover lg:h-[60vh]"
+            className="h-auto w-full"
           />
         </div>
 
