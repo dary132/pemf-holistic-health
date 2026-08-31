@@ -23,7 +23,7 @@ export default function SportsHealthPage() {
         ]}
       />
       <Section id="sports-health" title={intro.title} titleAs="h1" />
-      <PanelGrid heading={athletic.heading} panels={athletic.panels} tone="mist" />
+      <PanelGrid heading={athletic.heading} panels={athletic.panels} />
       <PanelGrid heading={boosts.heading} panels={boosts.panels} />
       <CTA />
       <Disclaimer />

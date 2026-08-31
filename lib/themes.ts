@@ -28,9 +28,10 @@ export type Theme = {
 export const themes: Theme[] = [
   {
     id: "",
-    name: "Magenta & Clay",
-    tagline: "The site as it stands today: warm cream grounds, deep magenta, rust.",
-    swatch: ["#FAF6EF", "#96005A", "#763A1D"],
+    name: "Clinic",
+    tagline:
+      "The site as it stands today: cool near-white grounds alternating band by band, deep magenta, rust.",
+    swatch: ["#FCFDFE", "#96005A", "#763A1D"],
   },
   {
     id: "ocean",
@@ -44,25 +45,11 @@ export const themes: Theme[] = [
     tagline: "Peach grounds, deep plum headings and terracotta accents.",
     swatch: ["#FDF7F0", "#4A1F3D", "#832E0E"],
   },
-  /* Grounds-only palettes. Both keep the default magenta primary and clay
-     accent exactly as they are, so their swatches differ from the default's
-     in the first chip alone -- that is the proposal, not an oversight. What
-     they change is what the sections are painted and in what order; see the
-     block comment on them in app/globals.css. */
-  {
-    id: "paper",
-    name: "Paper",
-    tagline:
-      "White pages with the warm cream demoted to an alternating band. One hue, two values, no pink or blue.",
-    swatch: ["#FFFFFF", "#96005A", "#763A1D"],
-  },
-  {
-    id: "clinic",
-    name: "Clinic",
-    tagline:
-      "The same alternation with the neutrals pivoted cool — the clearest medical-practice signal, magenta unchanged.",
-    swatch: ["#FCFDFE", "#96005A", "#763A1D"],
-  },
+  /* Paper and Clinic were reviewed here on 2026-08-31. The client picked
+     Clinic, so it is no longer a theme -- it IS the default above, and its
+     block in globals.css was promoted into :root. Paper is dropped rather than
+     kept as a runner-up: /themes is for decisions still open, and a palette
+     nobody is choosing between is clutter. Both are in git if wanted back. */
   {
     id: "spectrum",
     name: "Vital Spectrum",

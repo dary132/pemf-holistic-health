@@ -206,7 +206,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="anatomy" title={holisticAnatomy.title} tone="mist">
+      <Section id="anatomy" title={holisticAnatomy.title}>
         {/* Same 55/45 image-favouring split as SplitBand (2026-08-28, larger
             images) -- this is the one image/text band not built on that shell. */}
         <div className="grid items-center gap-10 md:grid-cols-[11fr_9fr]">

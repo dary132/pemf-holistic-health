@@ -1,18 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Ground */
-  --cream: #FAF6EF;
-  --sand: #F0E7D8;
-  /* Two further section grounds, added 2026-08-28 at the client's request for
-     more varied section colouring. Blush is a pale cast of the brand magenta,
-     mist a pale cool blue-grey; both are grounds under real text, so every
-     text token that may sit on them is registered in verify-contrast.mjs at
-     the same 7:1 floor as cream and sand (worst pair: --button on --mist,
-     7.19:1). The alternate themes inherit these two rather than restating
-     them: their darker text palettes only widen the measured ratios. */
-  --blush: #F7E9F1;
-  --mist: #E4ECF2;
+  /* Ground. Two values of ONE hue, and nothing else -- this is the "Clinic"
+     palette, chosen by the client on 2026-08-31 from the two reviewed on
+     /themes, and promoted here from a preview block to the site's default.
+
+     What it replaced: warm cream #FAF6EF and sand #F0E7D8 plus two further
+     grounds added 2026-08-28 for "more varied section colouring" -- blush
+     #F7E9F1, a pale cast of the brand magenta, and mist #E4ECF2, a pale cool
+     blue-grey. Four grounds across three hue families, placed ad hoc: sand was
+     used on no production page at all, /products carried five mist bands and
+     three blush, and most pages had a single tinted section with everything
+     else falling through to cream. So a page read as a long scroll with one
+     arbitrary tint in it, and four hue families competed with the magenta
+     already on every heading, button, border and band.
+
+     Cool grey is the strongest "medical practice" signal the palette can send,
+     and magenta sits sharper on it than on cream. --blush and --mist are gone
+     rather than aliased: leaving them pointing at --sand would keep four names
+     for two colours and invite a fifth ground later. */
+  --cream: #FCFDFE;
+  --sand: #EBF0F4;
   --white: #FFFFFF;
 
   /* Text — every pair against cream and sand is >= 7:1 (AAA) */
@@ -195,93 +203,50 @@
 :root[data-theme="spectrum"] main > *:nth-child(7n + 7) { --accent-rule: var(--tc-7); --band: var(--tc-7); }
 
 /* ---------------------------------------------------------------------------
-   Two grounds-only palettes, added 2026-08-31. Unlike the three above, neither
-   touches a text colour: --sage, --clay, --button, --band and the seven --tc-*
-   stops are the default palette's, unchanged. The only question they ask is
-   what the SECTIONS are painted, which is the part of this site that had no
-   rule at all.
+   Section alternation. Consecutive content bands alternate between the two
+   grounds above, all the way down every page.
 
-   What they are answering. The default palette owns four grounds -- cream,
-   sand, blush, mist -- and deploys them ad hoc: sand is used on no production
-   page at all, /products carries five mist bands and three blush, and most
-   pages have a single tinted section with the rest falling through to cream.
-   So a page reads as a long cream scroll with one arbitrary tint in it, and
-   four hue families (warm cream, warm sand, pink, cool blue) compete with the
-   magenta that is already on every heading, button, border and band. Both
-   palettes below collapse that to ONE hue family at two values and alternate
-   them strictly, so the magenta is the only chroma on the page.
+   This shipped 2026-08-31 when the client picked Clinic. It replaces the
+   per-section `tone` prop (lib/tones.ts, now gone), which let each page choose
+   a ground per section and produced the ad-hoc placement described on --cream
+   above. Rhythm is not a per-section decision -- it is a property of the page
+   -- so it lives here once instead of being restated on 30-odd call sites
+   where it could drift.
 
-   The alternation, not just the hexes, is the proposal -- redefining the four
-   tokens alone would leave the ad-hoc placement in place and prove nothing.
-   Hence the `of .u-band` rules: `:nth-child(<n> of S)` counts only siblings
-   matching S, so the four components that render content bands (Section,
-   PanelGrid, SplitBand, Figure -- all of them via bandClass() in lib/tones.ts)
-   are numbered and everything else `main` holds is skipped. That exclusion is
-   load-bearing: Breadcrumbs, JumpNav, CredentialStrip and Disclaimer are
-   direct children of `main` too, and the last three carry bg-sand deliberately
-   as thin chrome. A plain `main > *` rule would repaint them as full bands and
-   let the amount of chrome on a page decide its rhythm.
+   `:nth-child(<n> of S)` counts only siblings matching S, so the four
+   components that render content bands are numbered and everything else `main`
+   holds is skipped. That exclusion is load-bearing: Breadcrumbs, JumpNav,
+   CredentialStrip and Disclaimer are direct children of `main` too, and the
+   last three carry bg-sand deliberately as thin chrome. A rule written against
+   `main > *` would repaint them as full bands and, worse, let the amount of
+   chrome on a page decide its rhythm. Every band carries `u-band` via
+   bandClass() in lib/tones.ts.
 
-   Both rules are written outside @layer on purpose, exactly as the base-layer
-   note further up describes: un-layered CSS outranks every layer, so these
-   beat the bg-mist / bg-blush utilities the pages already carry. That is what
-   lets a palette impose a rhythm without a single page being edited.
+   In @layer components, not un-layered. While the `tone` prop existed these
+   rules had to outrank the bg-mist / bg-blush utilities the pages carried,
+   which meant living outside the cascade layers and beating every utility --
+   a real trap for anyone later trying to override one band. With the prop gone
+   nothing competes, so the rules sit in a layer and a deliberate utility on a
+   band would still win.
 
-   Known fragility, and it is a preview fragility only: /products and
-   /mental-health nest their bands inside bare wrapper <section>s, and a
-   wrapper restarts the count at 1 rather than continuing the page's. Both
-   pages happen to alternate cleanly today -- every one of the ten routes was
-   sampled down its left edge and none repeats a ground at a seam -- but that
-   is arithmetic, not a guarantee: adding or removing one band inside either
-   wrapper flips the parity after it and can butt two identical grounds
-   together. If one of these palettes is chosen, the fix is to assign the
-   rhythm as real `tone=` props on the pages and delete these rules -- the
-   nth-child form is the preview device, not the shipping one.
-
-   Both are checked by scripts/verify-contrast.mjs like any other theme. The
-   tightest pair either one produces is --sage on clinic's band at 7.49:1,
-   which is a wider margin than the DEFAULT palette's --sage on --sand (7.01:1
-   against a 7.00 floor).
+   Known fragility: /products and /mental-health nest their bands inside bare
+   wrapper <section>s, and a wrapper restarts the count at 1 rather than
+   continuing the page's. Every one of the ten routes was sampled down its left
+   edge and none repeats a ground at a seam -- but that is arithmetic, not a
+   guarantee: adding or removing one band inside either wrapper flips the
+   parity after it and can butt two identical grounds together. Re-sample after
+   changing those two pages.
    --------------------------------------------------------------------------- */
-
-/* Paper — the current cream demoted from page ground to accent band, with
-   white taking its place. One warm hue at two values; the pink and the blue
-   are gone, aliased onto the band so any tone= prop still in the pages lands
-   on it. The step is deliberately smaller than the default's cream-to-sand
-   (0.075 in relative luminance against 0.119): with only two grounds doing
-   all the work, a quiet step reads as intent and a loud one reads as stripes. */
-:root[data-theme="paper"] {
-  --cream: #FFFFFF;
-  --sand: #FAF6EF;
-  --blush: #FAF6EF;
-  --mist: #FAF6EF;
+@layer components {
+  .u-band:nth-child(odd of .u-band) { background: var(--cream); }
+  .u-band:nth-child(even of .u-band) { background: var(--sand); }
 }
-:root[data-theme="paper"] .u-band:nth-child(odd of .u-band) { background: var(--cream); }
-:root[data-theme="paper"] .u-band:nth-child(even of .u-band) { background: var(--sand); }
-
-/* Clinic — the same two-value discipline with the neutrals pivoted cool.
-   Cool grey is the strongest "medical practice" signal the palette can send,
-   and magenta sits sharper on it than on cream. The pairing to judge on
-   screen is --clay (#763A1D, a warm brown) on these cool grounds: it carries
-   every eyebrow, breadcrumb, phone number and section intro, and it is the
-   one thing here that could read as accidental rather than chosen. It clears
-   the floor comfortably at 7.65:1; contrast is not the question, harmony is. */
-:root[data-theme="clinic"] {
-  --cream: #FCFDFE;
-  --sand: #EBF0F4;
-  --blush: #EBF0F4;
-  --mist: #EBF0F4;
-}
-:root[data-theme="clinic"] .u-band:nth-child(odd of .u-band) { background: var(--cream); }
-:root[data-theme="clinic"] .u-band:nth-child(even of .u-band) { background: var(--sand); }
 
 @theme inline {
   --color-band: var(--band);
   --color-band-ink: var(--band-ink);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
-  --color-blush: var(--blush);
-  --color-mist: var(--mist);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sage: var(--sage);

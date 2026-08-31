@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
-import { bandClass, type Tone } from "@/lib/tones";
+import { bandClass } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 
 export function Section({
@@ -9,7 +9,6 @@ export function Section({
   title,
   titleAs: Heading = "h2",
   intro,
-  tone,
   rhythm = "normal",
   children,
 }: {
@@ -19,15 +18,13 @@ export function Section({
   /** The page's leading Section uses "h1"; every other Section stays "h2". */
   titleAs?: "h1" | "h2";
   intro?: string;
-  /** Ground tint; omitted means the cream page ground shows through. */
-  tone?: Tone;
   /** Vertical rhythm. Uniform padding on every section gives the eye no cue
    *  about what groups with what, so this is chosen per section. */
   rhythm?: Rhythm;
   children?: ReactNode;
 }) {
   return (
-    <section id={id} className={bandClass(tone)}>
+    <section id={id} className={bandClass()}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         <div data-reveal className="max-w-3xl">
           {eyebrow && (

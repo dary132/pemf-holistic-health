@@ -61,7 +61,7 @@ export default function ProductsPage() {
           image={images.imrsModel3}
           title={imrsPrime.title}
           bullets={imrsPrime.bullets}
-          tone="mist"
+         
         />
         <SplitBand
           image={images.imrsControlPanel}
@@ -78,7 +78,7 @@ export default function ProductsPage() {
           id="applicators"
           title={applicatorsIntro.title}
           intro={applicatorsIntro.paragraphs[0]}
-          tone="blush"
+         
           rhythm="compact"
         />
         {applicators.map((a) => (
@@ -97,7 +97,7 @@ export default function ProductsPage() {
           title={fastStart.title}
           titleAs="h3"
           paragraphs={fastStart.paragraphs}
-          tone="mist"
+         
         >
           <ul className="mt-6 flex flex-wrap gap-3">
             {fastStart.programs.map((p) => (
@@ -107,13 +107,13 @@ export default function ProductsPage() {
             ))}
           </ul>
         </SplitBand>
-        <PanelGrid panels={modes} panelTitleAs="h3" tone="mist" />
+        <PanelGrid panels={modes} panelTitleAs="h3" />
 
         <PanelGrid
           heading={accessoriesHeading}
           panels={accessories}
           panelTitleAs="h3"
-          tone="blush"
+         
           columns={2}
         />
       </section>
@@ -125,7 +125,7 @@ export default function ProductsPage() {
           image={images.smartPulserSet}
           title={smartPulser.title}
           paragraphs={smartPulser.paragraphs}
-          tone="mist"
+         
         />
         <SplitBand
           image={images.coils}
@@ -137,7 +137,7 @@ export default function ProductsPage() {
           id="spectrum"
           title={spectrum.title}
           intro={spectrum.paragraphs[0]}
-          tone="mist"
+         
         >
           <p className="mb-8 max-w-[62ch] text-ink-soft">{spectrum.paragraphs[1]}</p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -156,7 +156,7 @@ export default function ProductsPage() {
           image={images.biomimeticEarth}
           title={biomimetic.title}
           paragraphs={biomimetic.paragraphs}
-          tone="blush"
+         
         />
 
         <Section id="low-frequency" title={lowFrequency.title}>

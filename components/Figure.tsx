@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
-import { bandClass, type Tone } from "@/lib/tones";
+import { bandClass } from "@/lib/tones";
 import { blurFor } from "@/lib/content/blur";
 
 /** Full-width captioned artwork, shown whole and never cropped.
@@ -12,18 +12,15 @@ import { blurFor } from "@/lib/content/blur";
 export function Figure({
   image,
   caption,
-  tone,
   priority = false,
 }: {
   image: Img;
   caption?: string;
-  /** Ground tint; omitted means the cream page ground shows through. */
-  tone?: Tone;
   /** Set on the one figure that is the page's LCP element (the home hero). */
   priority?: boolean;
 }) {
   return (
-    <div className={bandClass(tone)}>
+    <div className={bandClass()}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {/* The priority Figure is the page's LCP element. Starting it at
             opacity 0 would push Largest Contentful Paint out by the length of

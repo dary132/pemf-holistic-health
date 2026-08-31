@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Panel } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
 import { RHYTHM, type Rhythm } from "@/lib/rhythm";
-import { bandClass, type Tone } from "@/lib/tones";
+import { bandClass } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
@@ -12,7 +12,6 @@ import { blurFor } from "@/lib/content/blur";
 export function PanelGrid({
   heading,
   panels,
-  tone,
   panelTitleAs = "h3",
   rhythm = "normal",
   columns = 3,
@@ -23,8 +22,6 @@ export function PanelGrid({
    *  multiple of two (e.g. the four /products accessories), so the grid
    *  fills every row instead of wrapping 3 + 1. */
   columns?: 2 | 3;
-  /** Ground tint; omitted means the cream page ground shows through. */
-  tone?: Tone;
   /** Level for each panel's own title (panel.title), default "h3" -- correct
    *  when `heading` renders its own h2 directly above them. A page that
    *  places this grid straight after its `<Section titleAs="h1" />` with no
@@ -36,7 +33,7 @@ export function PanelGrid({
 }) {
   const PanelHeading = panelTitleAs;
   return (
-    <div className={bandClass(tone)}>
+    <div className={bandClass()}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         {heading && (
           <h2 className="mb-10">
@@ -106,9 +103,7 @@ export function PanelGrid({
                       already this site's "this is a heading" signal -- every
                       h1/h2/h3 is --sage -- so a term picks up the existing
                       language instead of inventing a fourth emphasis device.
-                      The size bump to text-lg does the rest; there is nowhere
-                      left to go on weight, since 600 body and 700 headings
-                      already use the range up.
+                      The size bump to text-lg does the rest.
 
                       Contrast: these dl blocks sit inside u-plate, which is
                       --white, so --sage on --white is now a real text pair and

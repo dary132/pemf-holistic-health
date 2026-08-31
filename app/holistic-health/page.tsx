@@ -49,7 +49,7 @@ export default function HolisticHealthPage() {
       </Section>
       {/* Two panels, so two columns -- at the default three the row would sit
           two-thirds full with a hole where the image used to be. */}
-      <PanelGrid panels={definition} tone="blush" columns={2} />
+      <PanelGrid panels={definition} columns={2} />
       <CTA />
       <Disclaimer />
     </main>

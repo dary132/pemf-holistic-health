@@ -17,21 +17,10 @@ const TEXT_PAIRS = [
   ["--sage", "--sand"],
   ["--clay", "--cream"],
   ["--clay", "--sand"],
-  // The two 2026-08-28 section grounds (lib/tones.ts). Anything a Section,
-  // PanelGrid, SplitBand or Figure can put on a tinted ground is held against
-  // both, exactly as with --sand above. The alternate themes inherit these
-  // grounds, so parsePalettes checks each theme's own text tokens against
-  // them automatically.
-  ["--ink", "--blush"],
-  ["--ink", "--mist"],
-  ["--ink-soft", "--blush"],
-  ["--ink-soft", "--mist"],
-  ["--sage", "--blush"],
-  ["--sage", "--mist"],
-  ["--clay", "--blush"],
-  ["--clay", "--mist"],
-  ["--button", "--blush"],
-  ["--button", "--mist"],
+  // --blush and --mist were section grounds from 2026-08-28 until the Clinic
+  // palette shipped on 2026-08-31 and cut the site to two grounds. Their pairs
+  // are removed with them; --cream and --sand above are now the only grounds a
+  // band can take, and --white below is the plate inside one.
   ["--white", "--sage"],
   ["--white", "--clay"],
   // --sage on --white: the term in every TriPanel `items` definition list
@@ -58,17 +47,9 @@ const TEXT_PAIRS = [
   // the same treatment --sage and --clay get above. This is what caught
   // --tc-1 at 6.52:1 and --tc-4 at 6.69:1 on sand when the change was made.
   ["--tc-7", "--sand"],
-  ["--tc-7", "--blush"],
-  ["--tc-7", "--mist"],
   ["--tc-4", "--sand"],
-  ["--tc-4", "--blush"],
-  ["--tc-4", "--mist"],
   ["--tc-1", "--sand"],
-  ["--tc-1", "--blush"],
-  ["--tc-1", "--mist"],
   ["--tc-6", "--sand"],
-  ["--tc-6", "--blush"],
-  ["--tc-6", "--mist"],
   // The one full-colour section band and the only text colour allowed on it.
   ["--band-ink", "--band"],
   // Buttons. --button is both a text colour (the outline variant's border and

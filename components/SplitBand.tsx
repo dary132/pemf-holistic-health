@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 import { isSvg } from "@/lib/content/images";
-import { bandClass, type Tone } from "@/lib/tones";
+import { bandClass } from "@/lib/tones";
 import { HeadingText } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
@@ -21,7 +21,6 @@ export function SplitBand({
   paragraphs = [],
   bullets = [],
   reverse = false,
-  tone,
   frame = "plate",
   children,
 }: {
@@ -38,8 +37,6 @@ export function SplitBand({
    *  the same name on Panel in lib/content/types.ts. */
   bullets?: string[];
   reverse?: boolean;
-  /** Ground tint; omitted means the cream page ground shows through. */
-  tone?: Tone;
   /** "open" drops the bordered plate around the image, added 2026-08-28 at
    *  the client's request for larger images with less card chrome: the image
    *  sits directly on the band ground with its own rounded corners, so the
@@ -55,7 +52,7 @@ export function SplitBand({
       ? "h-auto w-full object-cover rounded-2xl"
       : "h-auto w-full object-cover rounded-lg";
   return (
-    <div className={bandClass(tone)}>
+    <div className={bandClass()}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {heading && (
           <h2 data-reveal className="mb-10">

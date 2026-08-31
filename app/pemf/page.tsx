@@ -72,7 +72,7 @@ export default function PemfPage() {
         titleAs="h3"
         paragraphs={earthField.paragraphs}
         frame="open"
-        tone="mist"
+       
       >
         <h3 className="mt-10 text-3xl">
           <HeadingText text={vitalForHealth.title} />
@@ -90,7 +90,7 @@ export default function PemfPage() {
         titleAs="h3"
         paragraphs={fieldWeakening.paragraphs}
         frame="open"
-        tone="mist"
+       
       />
 
       <SplitBand
@@ -125,7 +125,7 @@ export default function PemfPage() {
         title={mimicsEarth.title}
         paragraphs={mimicsEarth.paragraphs}
         frame="open"
-        tone="blush"
+       
       />
 
       <CTA />
