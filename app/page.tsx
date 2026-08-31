@@ -72,7 +72,19 @@ export default function Home() {
               bordered white frame and its 12px padding are gone, so the image
               sits directly on the cream ground and carries the block itself.
               Same open treatment SplitBand's frame="open" uses elsewhere. */}
-          <div className="mt-8">
+          {/* Full bleed on phones, client request 2026-08-30: inset by the
+              container's px-5 and rounded on all four corners, the photograph
+              read as a card floating in the cream rather than as the hero.
+              -mx-5 cancels that padding so it runs to both viewport edges,
+              and the corners are square while it does -- a rounded corner
+              against the screen edge is what made it look like a card. Both
+              revert at sm, where the container is wide enough that an inset
+              image reads as deliberate rather than as a gap. Widening to the
+              full viewport is also the "bigger" that was asked for: the
+              aspect ratio is fixed, so width is the only lever, and it buys
+              about 11% at 390px. sizes="100vw" was already correct for this
+              and needs no change. */}
+          <div className="-mx-5 mt-8 sm:mx-0">
             <Image
               src={images.imrsModel3.src}
               alt={images.imrsModel3.alt}
@@ -80,7 +92,7 @@ export default function Home() {
               width={1000}
               height={563}
               sizes="100vw"
-              className="w-full rounded-2xl"
+              className="w-full sm:rounded-2xl"
             />
           </div>
           {/* The second button is the visit ask, not "What is PEMF?". The hero
