@@ -90,22 +90,40 @@ export default function Home() {
             the hero -- so the old sm:rounded-2xl is gone rather than kept for
             desktop.
 
-            No crop, and no height cap: the photograph is shown whole at its
-            natural 16:9 at every width. It shipped earlier on 2026-08-31 with
-            lg:h-[60vh] and object-cover, which kept the Call/Visit buttons
-            above the fold by cropping top and bottom; the client saw it live
-            and asked for the whole frame back, so the trade is now the other
-            way round. Consequence, accepted deliberately: on a 1920px monitor
-            the hero is about 1081px tall, so it fills the screen and the
-            buttons and the pitch sit below the fold on essentially every
-            desktop. Do not reintroduce a cap here to "fix" that -- it is the
-            thing that was asked for, twice.
+            sm and up: no crop, no height cap. The photograph is shown whole
+            at its natural 16:9. It shipped earlier on 2026-08-31 with
+            lg:h-[60vh] and object-cover, the client saw it live and asked for
+            the whole frame back. Consequence, accepted deliberately: on a
+            1920px monitor the hero is about 1081px tall, so it fills the
+            screen and the buttons and the pitch sit below the fold on
+            essentially every desktop. Do not reintroduce a cap here to "fix"
+            that -- it is the thing that was asked for, twice.
 
-            The resolution cost is real and was flagged before this shipped,
-            and the un-cropped version pays it in full: a crop draws its
-            region at closer to 1:1, where the whole frame stretched to
-            viewport width does not.
-            imrs-model-3.png is 1000x563 and is the sharpest frame of this shot
+            Below sm: h-[32vh] with object-cover, client request 2026-08-31.
+            Width is already 100vw on a phone, so "bigger" has only one lever
+            left, and it is height -- which necessarily crops, because the
+            source is wide. 32vh is not a round number, it is the measured
+            ceiling. At 390x844 it renders 270px against a natural 220px
+            (1.23x) while still showing 81% of the frame's width, which keeps
+            her feet at one edge and the tablet at the other. Both are the
+            point of the photograph -- it is a mat with a control unit. 36vh
+            already clips the tablet to a sliver and 40vh cuts the feet off
+            outright; both were rendered at 390x844 and looked at before this
+            number was chosen. Raise it and you lose the ends of the frame.
+
+            NOTE, because an earlier version of this comment said the opposite
+            and it is wrong: cropping does NOT help sharpness. With
+            object-cover in a full-width box the scale factor is driven by
+            WIDTH -- 1920/1000 = 1.92x at a 1920px viewport -- whether the
+            image is cropped or not. Cropping removes rows; it changes no
+            scale. Displayed width is the only lever on blur, which is why the
+            crop above is free on a phone (390px wide against a 1000px file is
+            a downscale even at 3x device pixel ratio) and why nothing here
+            can fix the desktop softness described below.
+
+            The resolution cost is real, was flagged before this shipped, and
+            the client chose full bleed over sharpness with the tradeoff in
+            front of them. imrs-model-3.png is 1000x563 and is the sharpest frame of this shot
             the client has supplied -- the document's own copy (word/media
             image1, the heroMatFireplace file) is 721x338, smaller still. Full
             bleed therefore upscales about 1.4x at 1440px and 1.9x at 1920px,
@@ -123,7 +141,7 @@ export default function Home() {
             width={1000}
             height={563}
             sizes="100vw"
-            className="h-auto w-full"
+            className="h-[32vh] w-full object-cover sm:h-auto"
           />
         </div>
 
