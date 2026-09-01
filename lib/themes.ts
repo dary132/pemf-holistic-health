@@ -50,6 +50,24 @@ export const themes: Theme[] = [
      block in globals.css was promoted into :root. Paper is dropped rather than
      kept as a runner-up: /themes is for decisions still open, and a palette
      nobody is choosing between is clutter. Both are in git if wanted back. */
+  /* Red-term schemes, 2026-08-31. Both answer the same question -- can the
+     definition-list terms be red -- and both had to move --clay as well as the
+     primary, because red sits 20 degrees from clay against 36 from the
+     magenta. See the block comment on them in app/globals.css. */
+  {
+    id: "clinical-red",
+    name: "Clinical Red",
+    tagline:
+      "Deep teal carries the brand and red is reserved for the topic words alone, 172° apart.",
+    swatch: ["#FCFDFE", "#0E4A5A", "#2F4550"],
+  },
+  {
+    id: "ember",
+    name: "Ember",
+    tagline:
+      "Red is the brand — headings, buttons, borders and topic words all take it, so nothing competes.",
+    swatch: ["#FCFDFE", "#8C1616", "#2F4550"],
+  },
   {
     id: "spectrum",
     name: "Vital Spectrum",

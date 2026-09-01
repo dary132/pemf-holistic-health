@@ -101,6 +101,13 @@
      whole `linear-gradient(...)` value rather than a pair of stops, because
      the themes disagree about how many stops there are — this one runs the
      full seven-colour spectrum, Ocean and Sunrise run two. */
+  /* The definition-list term and its accent bar (components/TriPanel.tsx).
+     A named role rather than a raw stop, added 2026-08-31: it started as
+     --sage, went --tc-1 (red), then --tc-6 (indigo), and each move meant
+     editing the component. It is a palette decision, so it belongs in the
+     palette -- and a theme cannot re-colour something a component hardcodes,
+     which is what blocked previewing red-term schemes on /themes. */
+  --term: var(--tc-6);
   --band: var(--sage);
   --band-ink: var(--white);
   --accent-rule: var(--clay);
@@ -182,6 +189,54 @@
   --wordmark-gradient: linear-gradient(100deg, #4A1F3D 0%, #832E0E 100%);
 }
 
+/* ---------------------------------------------------------------------------
+   Red-term schemes, added 2026-08-31. The client wants the definition-list
+   terms red and asked whether the magenta should move to accommodate them.
+
+   Measured, the magenta is not the main obstacle. Red sits 36 degrees of hue
+   from --sage but only 20 from --clay, at near-identical saturation and
+   lightness -- and --clay carries eyebrows, section intros, breadcrumbs, phone
+   numbers and footer links, so it is the colour red would sit beside most
+   often. Red is therefore not a one-token change; both warm accents have to
+   move, which is a re-palette and belongs here for review rather than being
+   applied to the live site on a guess. The magenta itself was a client
+   decision on 2026-08-26.
+
+   Both keep the Clinic grounds -- this is about the accents, not the paper.
+   --------------------------------------------------------------------------- */
+
+/* Clinical Red -- deep teal carries the brand, red is reserved for the terms
+   alone. 172 degrees between them, so the red reads as a deliberate second
+   voice rather than a near miss. --clay becomes a cool slate: a warm brown
+   would reintroduce the exact 20-degree clash this scheme exists to remove. */
+:root[data-theme="clinical-red"] {
+  --sage: #0E4A5A;
+  --clay: #2F4550;
+  --button: #0E4A5A;
+  --button-hover: #0B3B48;
+  --rule: #0E4A5A;
+  --term: #941919;
+  --sage-soft: #4E8DA0;
+  --clay-soft: #6E8794;
+}
+
+/* Ember -- red IS the brand. Headings, buttons, borders and terms all take it,
+   so nothing competes with it by definition. The terms are set apart from body
+   copy by the accent bar and weight 900 rather than by hue, which is what they
+   already rely on most. --clay goes cool slate here too: left warm it would be
+   a muted brown 20 degrees from the primary, reading as a faded version of it
+   rather than as a second colour. */
+:root[data-theme="ember"] {
+  --sage: #8C1616;
+  --clay: #2F4550;
+  --button: #8C1616;
+  --button-hover: #741212;
+  --rule: #8C1616;
+  --term: #8C1616;
+  --sage-soft: #C06A6A;
+  --clay-soft: #6E8794;
+}
+
 /* Vital Spectrum — near-neutral grounds and a near-black primary, so the
    seven --tc-* stops carry all the colour. They are used structurally here,
    as band fills and heading rules, never as body text: white on every stop
@@ -261,22 +316,7 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sage: var(--sage);
-  /* Exposed 2026-08-31 so `text-tc-6` / `border-tc-6` exist. --tc-6 is one of
-     the seven wordmark stops -- the blue in PEMF -- and had been
-     gradient-and-heading-only until the definition-list terms needed a second
-     accent colour. Using a stop the site already owns keeps that colour inside
-     the palette rather than introducing an eighth, and it is a value already
-     picked to clear 7:1 on every ground. Its pairs are registered in
-     scripts/verify-contrast.mjs.
-
-     It replaced --tc-1 (red) the same day. Red measured 36 degrees of hue from
-     --sage and 20 from --clay, all three at 29-34% lightness, which put three
-     saturated warm darks in a 56-degree arc -- close enough to read as a near
-     miss rather than a deliberate pair, and --clay is everywhere (eyebrows,
-     intros, breadcrumbs, phone numbers) so the two were constantly adjacent.
-     --tc-6 sits 102 degrees from --sage and 158 from --clay and competes with
-     neither. */
-  --color-tc-6: var(--tc-6);
+  --color-term: var(--term);
   --color-clay: var(--clay);
   --color-sage-soft: var(--sage-soft);
   --color-clay-soft: var(--clay-soft);
