@@ -22,7 +22,11 @@ export const routes: Route[] = [
   // rendered anywhere. The rest of the page's copy is verbatim.
   { path: "/mental-health", label: "Wellness", title: "PEMF Improves Mental Health" },
   { path: "/energy", label: "Energy", title: "PEMF Increases Your Energy" },
-  { path: "/sports-health", label: "Sports Health", title: "Sports Health" },
+    /* Label shortened to "Athletic Performance" 2026-08-31 at the client's
+     request; the page's h1 carries the full "PEMF Enhances Athletic
+     Performance". `title` still records the document's own page heading,
+     which is what this field is for and is not rendered. */
+  { path: "/sports-health", label: "Athletic Performance", title: "Sports Health" },
   { path: "/sleep-health", label: "Sleep Health", title: "PEMF Promotes Good Sleep" },
   { path: "/pets-health", label: "Pets Health", title: "PEMF for Pets Health" },
   { path: "/products", label: "Products", title: "Products" },

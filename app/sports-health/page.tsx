@@ -7,7 +7,7 @@ import { athletic, boosts, intro } from "@/lib/content/sports-health";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Sports Health",
+  title: "Athletic Performance",
   description:
     "The IMRS Prime accelerates rejuvenation after physical activity, thus allowing you to train harder, perform better and compete more often.",
   path: "/sports-health",
@@ -19,7 +19,9 @@ export default function SportsHealthPage() {
       <Breadcrumbs
         trail={[
           { name: "Home", path: "/" },
-          { name: "Sports Health", path: "/sports-health" },
+                    /* Matches the nav label, the convention every page follows. Short
+             form here and in the <title>; the h1 carries the full claim. */
+          { name: "Athletic Performance", path: "/sports-health" },
         ]}
       />
       <Section id="sports-health" title={intro.title} titleAs="h1" rhythm="heading" />
@@ -40,8 +42,9 @@ export default function SportsHealthPage() {
           upscale was tested on performance.png before the layout was approved:
           they are flat art with no fine detail to lose, and they survive it
           cleanly. No derived assets -- the document's own files ship as-is. */}
+      {/* No `heading`: it became the page's h1 on 2026-08-31 (see
+          lib/content/sports-health.ts), so this band sits directly under it. */}
       <SplitBand
-        heading={athletic.heading}
         image={athletic.image}
         paragraphs={athletic.paragraphs}
         frame="open"
