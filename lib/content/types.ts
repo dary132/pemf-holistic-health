@@ -25,6 +25,17 @@ export type Panel = {
   items?: { term: string; text: string }[];
 };
 
+/** One full-width image-and-text band. The document's three-column blocks
+ *  collapse to this on /sports-health: a Panel is a column in a row of three,
+ *  a Band is a row of its own with the image at ~55% of the content width.
+ *  Same fields, different container -- which is the whole change, since the
+ *  copy is verbatim either way. */
+export type Band = {
+  title?: string;
+  image: Img;
+  paragraphs: string[];
+};
+
 /** A Smart Pulser frequency zone. */
 export type Zone = {
   range: string;
