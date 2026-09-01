@@ -33,19 +33,6 @@ export const themes: Theme[] = [
       "The site as it stands today: cool grounds alternating band by band, deep teal brand, red reserved for topic words.",
     swatch: ["#FCFDFE", "#0E4A5A", "#2F4550"],
   },
-  /* The palette this replaced on 2026-08-31, kept so a brand-colour change
-     that only just landed can be flipped back and compared. Drop it once the
-     client is settled. */
-  {
-    id: "magenta",
-    name: "Magenta & Clay",
-    tagline: "The previous palette — deep magenta headings and rust accents, before the move to teal.",
-    /* Cool ground, not the warm #FAF6EF this palette originally shipped on:
-       the block overrides accents only and inherits the Clinic grounds, so
-       this is the site exactly as it stood before the teal, not a rewind to
-       2026-08-30. verify-themes caught the difference. */
-    swatch: ["#FCFDFE", "#96005A", "#763A1D"],
-  },
   {
     id: "ocean",
     name: "Deep Ocean",
