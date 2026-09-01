@@ -119,11 +119,36 @@
      full seven-colour spectrum, Ocean and Sunrise run two. */
   /* The definition-list term and its accent bar (components/TriPanel.tsx).
      A named role rather than a raw stop, added 2026-08-31: it started as
-     --sage, went --tc-1 (red), then --tc-6 (indigo), and each move meant
-     editing the component. It is a palette decision, so it belongs in the
-     palette -- and a theme cannot re-colour something a component hardcodes,
-     which is what blocked previewing red-term schemes on /themes. */
-  --term: #941919;
+     --sage, went --tc-1 (red), then --tc-6 (indigo), then to the Clinical Red
+     palette's own red, and each move before the token existed meant editing
+     the component. It is a palette decision, so it belongs in the palette --
+     and a theme cannot re-colour something a component hardcodes.
+
+     Brightened from #941919 to #9C0000 on 2026-08-31 at the client's request.
+     Pure hue at full saturation: R goes 148 -> 156 and green/blue 25 -> 0,
+     which is what makes it read as a brighter red rather than a lighter one.
+
+     The useful part is that it costs nothing. #9C0000 measures 7.58:1 on this
+     palette's --sand against #941919's 7.59 -- identical margin, more vivid
+     colour -- because dropping the green and blue channels buys back exactly
+     what raising the red spends. Desaturated reds at this lightness do worse,
+     not better: #A11818 and #A31212 look similar and measure 6.88 and 6.90.
+
+     The ceiling is lower than the default palette alone suggests, and
+     verify-contrast is what found that. --term is defined once here and
+     INHERITED by every theme, and ocean and sunrise define their own darker
+     --sand (#E3ECF2, #F7E6D5). #A30000 was tried first: it clears this
+     palette's grounds at 7.16 but measures 6.86 and 6.74 on theirs and failed
+     the build. The binding ground for this token is the darkest --sand on the
+     site, not the one the default happens to use.
+
+     Worth knowing if a future brightening is wanted: these terms only ever
+     render inside a u-plate, which is --white in every palette (8.14:1 here),
+     so the --sand pairs are a guard rather than a rendered pairing. Narrowing
+     the guard to --white alone would allow about #B01414 -- but that sits at
+     1.4% over the floor on white AND fails --sand outright, so it would be
+     brighter and markedly more fragile at the same time. Not taken. */
+  --term: #9C0000;
   --band: var(--sage);
   --band-ink: var(--white);
   --accent-rule: var(--clay);
