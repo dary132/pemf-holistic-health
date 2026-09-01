@@ -26,18 +26,34 @@
   /* Text — every pair against cream and sand is >= 7:1 (AAA) */
   --ink: #2A2E27;
   --ink-soft: #3A4237;
-  /* "Primary dark" -- the name is historical (see the theme note below), and
-     since 2026-08-26 it is magenta rather than green, at the client's request
-     to replace the green areas. It drives every h1/h2/h3, the sticky contact
-     bar at the top of every page, and --band (the closing CTA band and the
-     coloured cap on each PlateCard), so this one line turns all of them.
-     Same #96005A as --button, so the page reads as one accent: 7.97:1 on
-     --cream, 7.01:1 on --sand, 8.59:1 for the white text that sits on it. */
-  --sage: #96005A;
-  /* Darkened from the brief's #7E3F20: that value measures 6.54:1 on --sand,
-     short of the 7:1 AAA floor this block claims. #763A1D clears --sand at
-     7.16:1 and --cream at 8.15:1. See task-5-report.md for the full ratios. */
-  --clay: #763A1D;
+  /* "Primary dark" -- the name is historical (see the theme note below) and
+     has now outlived two hues. It was green until 2026-08-26, magenta #96005A
+     from then, and deep teal from 2026-08-31 when the client adopted the
+     Clinical Red palette off /themes.
+
+     Why it moved: the client wanted the definition-list topic words in red,
+     and red could not coexist with the warm accents. Red sits 36 degrees of
+     hue from the magenta and only 20 from the old --clay, at near identical
+     saturation and lightness, and --clay is on every page carrying eyebrows,
+     section intros, breadcrumbs, phone numbers and footer links. Moving the
+     primary alone would have left the worse clash in place, so both warm
+     accents went cool and red became the site's one warm colour, reserved for
+     --term. 172 degrees now separate the brand from the emphasis.
+
+     This drives every h1/h2/h3, the sticky contact bar, and --band (the
+     closing CTA band and the cap on each PlateCard), so this one line turns
+     all of them. 9.61:1 on --cream, 8.53:1 on --sand, 9.79:1 for the white
+     text that sits on it -- a wider margin than the magenta had at 7.97/7.01. */
+  --sage: #0E4A5A;
+  /* Cool slate since 2026-08-31, was the rust #763A1D. This is the token that
+     forced the palette change rather than the primary: at hue 20 it sat 20
+     degrees from the red the client wanted for --term, at almost the same
+     saturation and lightness, and it appears on every page as eyebrows,
+     section intros, breadcrumbs, phone numbers and footer links -- the text
+     red would have been adjacent to most often. Left warm, no amount of
+     changing the primary would have fixed the clash.
+     9.88:1 on --cream, 8.77:1 on --sand. */
+  --clay: #2F4550;
 
   /* Technicolor wordmark stops. Each one is a *text* colour, so each clears
      7:1 on --cream on its own — the headline is AAA wherever the gradient
@@ -67,14 +83,14 @@
 
   /* Decorative only. Never a text colour, never a fill behind text.
      scripts/verify-contrast.mjs fails the build if that rule is broken. */
-  --sage-soft: #6E8F70;
-  --clay-soft: #C9784F;
+  --sage-soft: #4E8DA0;
+  --clay-soft: #6E8794;
   /* Magenta bordering, client request 2026-08-26. Decorative-only, so it is
      exempt from the 7:1 floor -- but it is the SAME hue as --button below, so
      the borders and the buttons read as one deliberate accent rather than two
      unrelated pinks. Only the default palette is changed: the three alternate
      themes each define their own --rule and are internal review tooling. */
-  --rule: #96005A;
+  --rule: #0E4A5A;
 
   /* Buttons. A dedicated token rather than reusing --clay or --sage, because
      both of those carry far more than buttons: --sage is every h1/h2/h3 and
@@ -90,9 +106,9 @@
      why the pairs below are registered in verify-contrast.mjs rather than
      trusted -- a future palette tweak that nudges --sand lighter will fail
      the build instead of silently voiding the AAA claim. */
-  --button: #96005A;
+  --button: #0E4A5A;
   --button-ink: var(--white);
-  --button-hover: #7B1450;
+  --button-hover: #0B3B48;
 
   /* Emphasis. --band is a full-colour section fill and --band-ink is the only
      text colour allowed on it, so the pair is held to the same 7:1 floor.
@@ -107,7 +123,7 @@
      editing the component. It is a palette decision, so it belongs in the
      palette -- and a theme cannot re-colour something a component hardcodes,
      which is what blocked previewing red-term schemes on /themes. */
-  --term: var(--tc-6);
+  --term: #941919;
   --band: var(--sage);
   --band-ink: var(--white);
   --accent-rule: var(--clay);
@@ -189,52 +205,23 @@
   --wordmark-gradient: linear-gradient(100deg, #4A1F3D 0%, #832E0E 100%);
 }
 
-/* ---------------------------------------------------------------------------
-   Red-term schemes, added 2026-08-31. The client wants the definition-list
-   terms red and asked whether the magenta should move to accommodate them.
-
-   Measured, the magenta is not the main obstacle. Red sits 36 degrees of hue
-   from --sage but only 20 from --clay, at near-identical saturation and
-   lightness -- and --clay carries eyebrows, section intros, breadcrumbs, phone
-   numbers and footer links, so it is the colour red would sit beside most
-   often. Red is therefore not a one-token change; both warm accents have to
-   move, which is a re-palette and belongs here for review rather than being
-   applied to the live site on a guess. The magenta itself was a client
-   decision on 2026-08-26.
-
-   Both keep the Clinic grounds -- this is about the accents, not the paper.
+/* Clinical Red was adopted into :root above on 2026-08-31; its preview block
+   and Ember's are gone with it. The previous live palette is kept below as
+   "magenta" so the client can flip back and compare a brand-colour change
+   that only just landed -- drop it once they are settled. Both red schemes
+   remain in git.
    --------------------------------------------------------------------------- */
 
-/* Clinical Red -- deep teal carries the brand, red is reserved for the terms
-   alone. 172 degrees between them, so the red reads as a deliberate second
-   voice rather than a near miss. --clay becomes a cool slate: a warm brown
-   would reintroduce the exact 20-degree clash this scheme exists to remove. */
-:root[data-theme="clinical-red"] {
-  --sage: #0E4A5A;
-  --clay: #2F4550;
-  --button: #0E4A5A;
-  --button-hover: #0B3B48;
-  --rule: #0E4A5A;
-  --term: #941919;
-  --sage-soft: #4E8DA0;
-  --clay-soft: #6E8794;
-}
-
-/* Ember -- red IS the brand. Headings, buttons, borders and terms all take it,
-   so nothing competes with it by definition. The terms are set apart from body
-   copy by the accent bar and weight 900 rather than by hue, which is what they
-   already rely on most. --clay goes cool slate here too: left warm it would be
-   a muted brown 20 degrees from the primary, reading as a faded version of it
-   rather than as a second colour. */
-:root[data-theme="ember"] {
-  --sage: #8C1616;
-  --clay: #2F4550;
-  --button: #8C1616;
-  --button-hover: #741212;
-  --rule: #8C1616;
-  --term: #8C1616;
-  --sage-soft: #C06A6A;
-  --clay-soft: #6E8794;
+/* Magenta & Clay -- the live palette until 2026-08-31. Kept for comparison. */
+:root[data-theme="magenta"] {
+  --sage: #96005A;
+  --clay: #763A1D;
+  --button: #96005A;
+  --button-hover: #7B1450;
+  --rule: #96005A;
+  --term: var(--tc-6);
+  --sage-soft: #6E8F70;
+  --clay-soft: #C9784F;
 }
 
 /* Vital Spectrum — near-neutral grounds and a near-black primary, so the

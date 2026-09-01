@@ -28,9 +28,22 @@ export type Theme = {
 export const themes: Theme[] = [
   {
     id: "",
-    name: "Clinic",
+    name: "Clinical Red",
     tagline:
-      "The site as it stands today: cool near-white grounds alternating band by band, deep magenta, rust.",
+      "The site as it stands today: cool grounds alternating band by band, deep teal brand, red reserved for topic words.",
+    swatch: ["#FCFDFE", "#0E4A5A", "#2F4550"],
+  },
+  /* The palette this replaced on 2026-08-31, kept so a brand-colour change
+     that only just landed can be flipped back and compared. Drop it once the
+     client is settled. */
+  {
+    id: "magenta",
+    name: "Magenta & Clay",
+    tagline: "The previous palette — deep magenta headings and rust accents, before the move to teal.",
+    /* Cool ground, not the warm #FAF6EF this palette originally shipped on:
+       the block overrides accents only and inherits the Clinic grounds, so
+       this is the site exactly as it stood before the teal, not a rewind to
+       2026-08-30. verify-themes caught the difference. */
     swatch: ["#FCFDFE", "#96005A", "#763A1D"],
   },
   {
@@ -50,24 +63,6 @@ export const themes: Theme[] = [
      block in globals.css was promoted into :root. Paper is dropped rather than
      kept as a runner-up: /themes is for decisions still open, and a palette
      nobody is choosing between is clutter. Both are in git if wanted back. */
-  /* Red-term schemes, 2026-08-31. Both answer the same question -- can the
-     definition-list terms be red -- and both had to move --clay as well as the
-     primary, because red sits 20 degrees from clay against 36 from the
-     magenta. See the block comment on them in app/globals.css. */
-  {
-    id: "clinical-red",
-    name: "Clinical Red",
-    tagline:
-      "Deep teal carries the brand and red is reserved for the topic words alone, 172° apart.",
-    swatch: ["#FCFDFE", "#0E4A5A", "#2F4550"],
-  },
-  {
-    id: "ember",
-    name: "Ember",
-    tagline:
-      "Red is the brand — headings, buttons, borders and topic words all take it, so nothing competes.",
-    swatch: ["#FCFDFE", "#8C1616", "#2F4550"],
-  },
   {
     id: "spectrum",
     name: "Vital Spectrum",
