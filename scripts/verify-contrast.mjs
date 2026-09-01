@@ -31,11 +31,11 @@ const TEXT_PAIRS = [
   // what stops a future darkening of --white (or a theme that redefines it)
   // from quietly dropping these terms below AAA.
   ["--sage", "--white"],
-  // --tc-1 on --white: the definition-list term and its accent bar
-  // (components/TriPanel.tsx) went red on 2026-08-31 and sit inside a u-plate,
-  // so this stop is now a text colour on the plate ground as well as a
-  // wordmark stop. 8.71:1.
-  ["--tc-1", "--white"],
+  // --tc-6 on --white: the definition-list term and its accent bar
+  // (components/TriPanel.tsx) sit inside a u-plate, so this stop is a text
+  // colour on the plate ground as well as a wordmark stop. 9.85:1 -- the
+  // widest margin of any accent the site uses.
+  ["--tc-6", "--white"],
   // Technicolor wordmark stops. The gradient only ever fills text on --cream,
   // so each stop is held to the text floor against cream alone.
   ["--tc-1", "--cream"],

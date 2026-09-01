@@ -137,7 +137,7 @@ export function PanelGrid({
                        why the bar sits on this wrapper and not on the <dt>.
 
                        The bar takes the SAME colour as the term it marks --
-                       both --tc-1 since 2026-08-31, both --sage before that.
+                       both --tc-6 since 2026-08-31; --tc-1 and --sage before it.
                        The bar and the term are one emphasis on one object, so
                        two colours there would read as a mistake; when the
                        client asked for the terms in red the bar followed
@@ -145,8 +145,8 @@ export function PanelGrid({
                        up from space-y-3 because the bars make each entry a
                        visible block, and blocks need more room between them
                        than lines do. */
-                    <div key={item.term} className="border-l-4 border-tc-1 pl-4">
-                      <dt className="text-lg font-black text-tc-1">{item.term}</dt>
+                    <div key={item.term} className="border-l-4 border-tc-6 pl-4">
+                      <dt className="text-lg font-black text-tc-6">{item.term}</dt>
                       {item.text && <dd className="mt-1 text-ink-soft">{item.text}</dd>}
                     </div>
                   ))}

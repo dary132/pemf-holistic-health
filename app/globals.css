@@ -261,13 +261,22 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-sage: var(--sage);
-  /* Exposed 2026-08-31 so `text-tc-1` / `border-tc-1` exist. --tc-1 is one of
-     the seven wordmark stops and had been gradient-and-heading-only until the
-     client asked for the definition-list terms in red; using the stop the site
-     already owns keeps that red inside the palette instead of introducing an
-     eighth colour, and it is a value already picked to clear 7:1 on every
-     ground. Its pairs are registered in scripts/verify-contrast.mjs. */
-  --color-tc-1: var(--tc-1);
+  /* Exposed 2026-08-31 so `text-tc-6` / `border-tc-6` exist. --tc-6 is one of
+     the seven wordmark stops -- the blue in PEMF -- and had been
+     gradient-and-heading-only until the definition-list terms needed a second
+     accent colour. Using a stop the site already owns keeps that colour inside
+     the palette rather than introducing an eighth, and it is a value already
+     picked to clear 7:1 on every ground. Its pairs are registered in
+     scripts/verify-contrast.mjs.
+
+     It replaced --tc-1 (red) the same day. Red measured 36 degrees of hue from
+     --sage and 20 from --clay, all three at 29-34% lightness, which put three
+     saturated warm darks in a 56-degree arc -- close enough to read as a near
+     miss rather than a deliberate pair, and --clay is everywhere (eyebrows,
+     intros, breadcrumbs, phone numbers) so the two were constantly adjacent.
+     --tc-6 sits 102 degrees from --sage and 158 from --clay and competes with
+     neither. */
+  --color-tc-6: var(--tc-6);
   --color-clay: var(--clay);
   --color-sage-soft: var(--sage-soft);
   --color-clay-soft: var(--clay-soft);
