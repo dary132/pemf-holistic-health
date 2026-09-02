@@ -63,8 +63,8 @@ export default function Home() {
                ceiling there.
 
                Then twice more the same day, ending here: the client asked
-               for PEMF to be the SAME size as the PULSED ELECTRO MAGNETIC
-               FIELD line under it, so the two now read as a single lockup
+               for PEMF to be the SAME size as the Pulsed Electro Magnetic
+               Field line under it, so the two now read as a single lockup
                rather than as a heading with a caption. 27.5px on desktop,
                23.6px on a phone -- the full arc today was 121 -> 71.5 -> 60.8
                -> 27.5.
@@ -113,7 +113,14 @@ export default function Home() {
               -- nearly the 52px above the whole lockup -- so the two read as
               separate elements rather than as one unit. 1.25 closes that. It
               also tightens the wrap on phones, where this line breaks in two. */}
-          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold uppercase leading-tight tracking-[0.16em] text-clay">
+          {/* Mixed case, client request 2026-09-02: this line was set in
+              capitals from the start, and the client wants it written as the
+              document writes it, "Pulsed Electro Magnetic Field". The
+              0.16em tracking went with the capitals -- wide letter-spacing is
+              a small-caps convention and reads as gappy on lower-case -- so
+              it steps down to 0.04em, still a touch open so the line keeps
+              its lockup feel beside the tracked wordmark. */}
+          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold leading-tight tracking-[0.04em] text-clay">
             {hero.expansion}
           </p>
         </div>

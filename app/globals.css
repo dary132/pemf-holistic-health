@@ -60,19 +60,11 @@
      happens to land on a given letter. scripts/verify-contrast.mjs holds
      these to the same floor as every other pair.
 
-     --tc-1 and --tc-4 were darkened on 2026-08-30, from #9E1B1B and #1F5A2E.
-     They are two of the four the PEMF wordmark treatment uses (see
-     components/PemfWord.tsx), and that treatment moved off the hero onto
-     every heading that opens with the word. Cream was the only ground it had
-     to clear while it lived in the hero; a heading also lands on sand, blush
-     and mist, and on ocean's and spectrum's cooler sands, where the old red
-     measured 6.52:1 and the old green 6.69:1 — both under the floor. The new
-     values are the smallest darkening that clears 7:1 on every one of those
-     ten grounds, hue and saturation held, so the wordmark looks unchanged.
-     The other five stops are gradient-only and still cream-only.
-     verify-contrast.mjs now registers all four against all four grounds, so
-     a future nudge to any of them fails loudly instead of quietly dropping
-     a heading below AAA. */
+     --tc-1 and --tc-4 were darkened on 2026-08-30, from #9E1B1B and #1F5A2E,
+     while four of these stops doubled as the PEMF wordmark's letter colours
+     and so had to clear 7:1 on sand as well as cream. That job moved to the
+     --pemf-* tokens below on 2026-09-02; the stops are gradient-only again
+     and the darker values simply stay. */
   --tc-1: #941919;
   --tc-2: #7A3D00;
   --tc-3: #5E4D00;
@@ -80,6 +72,26 @@
   --tc-5: #0F5560;
   --tc-6: #1B3E8F;
   --tc-7: #6B1F6B;
+
+  /* The four letters of the PEMF wordmark (components/PemfWord.tsx), one
+     token per letter, in the EXACT colours the source document sets them in:
+     "Website Exiga Jasmin 2026.docx" colours P, E, M and F as separate runs
+     in Word's standard purple, green, red and blue, and the client asked on
+     2026-09-02 for the page to match the document rather than the darkened
+     --tc-* stops that stood in for them from 2026-08-28.
+
+     These are the one deliberate exception to the 7:1 floor. On cream they
+     measure purple 7.9:1, blue 5.1:1, red 3.9:1 and green 2.8:1, so the
+     green and red are below even AA for text -- the client was shown those
+     numbers and chose the document's colours anyway. They are therefore NOT
+     registered in scripts/verify-contrast.mjs, and must not be used for
+     anything but the four letters: every other heading and body colour on
+     the site still has to clear the floor. The whole heading is also carried
+     as an sr-only copy, so assistive tech never depends on these. */
+  --pemf-p: #7030A0;
+  --pemf-e: #00B050;
+  --pemf-m: #FF0000;
+  --pemf-f: #0070C0;
 
   /* Decorative only. Never a text colour, never a fill behind text.
      scripts/verify-contrast.mjs fails the build if that rule is broken. */

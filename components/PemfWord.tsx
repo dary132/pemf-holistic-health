@@ -6,14 +6,14 @@
  *  scheme as the hero" is the requirement, so a second copy of these four
  *  token names would be a bug waiting to happen.
  *
- *  Each is an existing --tc-* stop rather than a freely picked hue because
- *  those stops are the brightest purple/green/red/blue that clear the site's
- *  7:1 AAA floor, and scripts/verify-contrast.mjs holds all four against
- *  every ground a heading can land on. Two of them, --tc-1 and --tc-4, were
- *  darkened a step when this treatment left the hero: they cleared 7:1 on
- *  cream, which was all the hero needed, but not on sand, blush or mist.
- *  See the note beside them in globals.css. */
-export const PEMF_LETTER_TOKENS = ["--tc-7", "--tc-4", "--tc-1", "--tc-6"] as const;
+ *  Until 2026-09-02 these were four of the --tc-* gradient stops, chosen as
+ *  the brightest purple/green/red/blue that clear the site's 7:1 AAA floor.
+ *  They are now the --pemf-* tokens in globals.css, which carry the EXACT
+ *  colours the source document sets the four letters in; the client chose
+ *  fidelity to the document over the contrast floor for these four letters
+ *  only, knowing the green and red fall below it. The note beside the tokens
+ *  has the numbers. */
+export const PEMF_LETTER_TOKENS = ["--pemf-p", "--pemf-e", "--pemf-m", "--pemf-f"] as const;
 
 /** Every standalone "PEMF" in a string, wherever it falls. This began as a
  *  leading-word-only match, which fitted the hero (where the word stands

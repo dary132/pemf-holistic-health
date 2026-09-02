@@ -47,12 +47,15 @@ const TEXT_PAIRS = [
   ["--tc-5", "--cream"],
   ["--tc-6", "--cream"],
   ["--tc-7", "--cream"],
-  // Four of those stops are also the PEMF wordmark's letter colours
-  // (components/PemfWord.tsx), and since 2026-08-30 that treatment is on
-  // every heading opening with the word, not just the home hero. A heading
-  // sits on any of the four grounds, so all four pairs are held for each --
-  // the same treatment --sage and --clay get above. This is what caught
-  // --tc-1 at 6.52:1 and --tc-4 at 6.69:1 on sand when the change was made.
+  // These four stops were the PEMF wordmark's letter colours from 2026-08-30
+  // to 2026-09-02, when a heading carrying the word could sit on sand as well
+  // as cream; that is what caught --tc-1 at 6.52:1 and --tc-4 at 6.69:1 on
+  // sand and darkened them. The letters now read from --pemf-p/e/m/f
+  // (globals.css), which are the source document's exact colours and are
+  // DELIBERATELY not registered here: the client chose the document's green
+  // and red over the floor for those four letters alone, with the numbers in
+  // front of them. The sand pairs stay held so the stops cannot quietly
+  // regress if the letters ever return to them.
   ["--tc-7", "--sand"],
   ["--tc-4", "--sand"],
   ["--tc-1", "--sand"],
