@@ -119,6 +119,11 @@ export default function Home() {
               -- nearly the 52px above the whole lockup -- so the two read as
               separate elements rather than as one unit. 1.25 closes that. It
               also tightens the wrap on phones, where this line breaks in two. */}
+          {/* mt-0, client request 2026-09-02: "too much spacing" between the
+              wordmark and this line. The mt-3 (16.5px) is gone; what remains
+              is the ~7px of line-box slack the inline-block wordmark leaves
+              beneath itself, which is enough to keep the descenders clear.
+              Measured 23px box-to-box before, 7px after, at 1440 and 390. */}
           {/* Mixed case, client request 2026-09-02: this line was set in
               capitals from the start, and the client wants it written as the
               document writes it, "Pulsed Electro Magnetic Field". The
@@ -126,7 +131,7 @@ export default function Home() {
               a small-caps convention and reads as gappy on lower-case -- so
               it steps down to 0.04em, still a touch open so the line keeps
               its lockup feel beside the tracked wordmark. */}
-          <p className="mx-auto mt-3 text-[length:var(--step-hero-lockup)] font-bold leading-tight tracking-[0.04em] text-clay">
+          <p className="mx-auto mt-0 text-[length:var(--step-hero-lockup)] font-bold leading-tight tracking-[0.04em] text-clay">
             {hero.expansion}
           </p>
         </div>
