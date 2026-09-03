@@ -95,6 +95,12 @@ export default function Home() {
               <span
                 key={i}
                 aria-hidden="true"
+                /* notranslate: same reason as in PemfWord.tsx -- with a
+                   language cookie set, Google's widget respaced these four
+                   spans as "P E M F" and, in Chinese, replaced them with a
+                   transliteration in the first span's colour. */
+                className="notranslate"
+                translate="no"
                 style={{
                   color: `var(${PEMF_LETTER_TOKENS[i % PEMF_LETTER_TOKENS.length]})`,
                 }}

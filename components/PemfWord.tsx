@@ -74,7 +74,18 @@ function splitOnPemf(text: string) {
  *  with a regex, and an inline `</>;` followed by more code on the same line
  *  reads to it as a text child of `"; return ("`, which it then reports as
  *  invented copy. React renders a returned string identically, so the guard
- *  keeps working and this component stops setting it off. */
+ *  keeps working and this component stops setting it off.
+ *
+ *  Each letter span is `notranslate` / translate="no". Found on the live site
+ *  2026-09-02 with a language cookie set: Google's widget treats the whole
+ *  heading as one sentence and hands the translated words back to the spans
+ *  in order, so in Spanish the header read "PEMF" in purple, "para" in green
+ *  and "la" in red, and in Chinese the hero became a transliteration in
+ *  purple alone. Marked untranslatable, the four letters stay put and keep
+ *  their colours while the rest of the heading still translates; PEMF is an
+ *  acronym and was never meant to be translated anyway. The sr-only copy is
+ *  left translatable on purpose, so a screen reader in Spanish still hears
+ *  the whole sentence in Spanish. */
 export function HeadingText({ text = "" }: { text?: string }) {
   const parts = splitOnPemf(text);
   if (!parts.some((part) => part.isWord)) return text;
@@ -85,7 +96,12 @@ export function HeadingText({ text = "" }: { text?: string }) {
         {parts.map((part, p) =>
           part.isWord ? (
             ["P", "E", "M", "F"].map((letter, i) => (
-              <span key={`${p}-${i}`} style={{ color: `var(${PEMF_LETTER_TOKENS[i]})` }}>
+              <span
+                key={`${p}-${i}`}
+                className="notranslate"
+                translate="no"
+                style={{ color: `var(${PEMF_LETTER_TOKENS[i]})` }}
+              >
                 {letter}
               </span>
             ))
