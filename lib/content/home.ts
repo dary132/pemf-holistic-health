@@ -29,6 +29,14 @@ export const hero = {
    heading is rendered once, centred over the cards; the flower band goes
    unheaded. Card two's first sentence and "balance and" in its second are
    new to the edit -- see docs/edit-holistic-health-2026-09.txt. */
+/* The removed page's own title, now the h2 over the flower band -- the site
+   owner asked for "a header right above the holistic section labeled PEMF
+   for Holistic Health" on 2026-09-04, the same request that removed the
+   "PEMF for Health and Wellness" block. hero.title and hero.paragraphs above
+   are no longer rendered on this page; they stay for the /designs comps and
+   the meta description. */
+export const holisticHealth = { title: "PEMF for Holistic Health" };
+
 export const approach = { title: "PEMF - Holistic Approach" };
 
 /* Block one: the flower beside the three paragraphs in their original

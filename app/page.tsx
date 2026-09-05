@@ -15,6 +15,7 @@ import {
   approachPanels,
   hero,
   holisticAnatomy,
+  holisticHealth,
   teasers,
 } from "@/lib/content/home";
 import { HeadingText, PEMF_LETTER_TOKENS } from "@/components/PemfWord";
@@ -263,30 +264,13 @@ export default function Home() {
               Visit Us
             </Link>
           </div>
-          {/* The pitch keeps the page-wide left-aligned treatment: centred
-              multi-line paragraphs are harder for the elderly audience this
-              site is sized for, so only the display block above is centred.
-
-              Flush with the container's left edge, not mx-auto, since
-              2026-09-04: this box is narrower than the container, so
-              centring it put the heading's PEMF about 165px in from where
-              the nav bar's PEMF and every inner page's h1 start. That was
-              always so, but the nav wordmark grew to the hero's size the
-              same day and the offset became plain (owner: "no longer looks
-              even with the nav bar"). Now the three PEMFs down the page --
-              nav, heading -- share one left edge, with only the hero lockup
-              centred, as on every inner page. */}
-          <div className="mt-12 max-w-3xl text-left">
-            <h2>
-              <HeadingText text={hero.title} />
-            </h2>
-            <span className="u-accent-rule" />
-            {hero.paragraphs.map((p) => (
-              <p key={p} className="mt-6 max-w-[52ch] text-xl text-ink-soft">
-                {p}
-              </p>
-            ))}
-          </div>
+          {/* The "PEMF for Health and Wellness" h2 and its pitch paragraph
+              stood here until 2026-09-04, when the site owner had them
+              removed; the hero now runs lockup, photograph, buttons, and the
+              page's first section heading is "PEMF for Holistic Health" over
+              the flower band below. The copy stays in lib/content/home.ts
+              (hero.title, hero.paragraphs) for the /designs comps and for
+              app/layout.tsx's meta description. */}
         </div>
       </section>
 
@@ -294,14 +278,16 @@ export default function Home() {
 
       {/* The Holistic Approach content, moved here from /holistic-health at
           the site owner's request on 2026-09-04 when that page was removed:
-          beneath "PEMF for Health and Wellness" (the CredentialStrip is
-          chrome, not content, and keeps its place under the hero) and above
-          Holistic Anatomy. Until then this was three text-only plates of the
+          under the hero and the CredentialStrip (chrome, keeps its place) and
+          above Holistic Anatomy, headed "PEMF for Holistic Health" -- the
+          removed page's own title -- since the "PEMF for Health and
+          Wellness" block above it went the same day. Until then this was three text-only plates of the
           same paragraphs. No heading on the flower band; the one h2 sits
           centred over the cards, as it did on the page. Plate frame on the
           flower: its ground is near-white, and inside the white plate it has
           no visible edge on either band ground. */}
       <SplitBand
+        heading={holisticHealth.title}
         image={approachBand.image}
         paragraphs={approachBand.paragraphs}
       />

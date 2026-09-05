@@ -18,7 +18,9 @@ const ROUTES = [
     path: "/",
     jsonLd: ["LocalBusiness", "WebSite"],
     mustContain: [
-      "Try adding a holistic approach by laying on the PEMF body mat.",
+      // "Try adding a holistic approach by laying on the PEMF body mat." was
+      // the proof phrase until 2026-09-04, when that pitch left the page.
+      "PEMF for Holistic Health",
       "A holistic approach recognizes that your physical, mental, emotional, and spiritual well-being are deeply intertwined.",
       // The Holistic Approach block moved here from /holistic-health on
       // 2026-09-04; this is the one sentence new to the client's edit.
