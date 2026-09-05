@@ -18,7 +18,8 @@ export default function Header() {
   // click. It must therefore also close on Escape and on an outside click.
   useEffect(() => {
     if (!groupOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setGroupOpen(false);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setGroupOpen(false);
     const onClick = (e: MouseEvent) => {
       if (groupRef.current && !groupRef.current.contains(e.target as Node))
         setGroupOpen(false);
@@ -33,7 +34,9 @@ export default function Header() {
 
   const linkClass = (href: string) =>
     `inline-flex min-h-[48px] items-center whitespace-nowrap px-2 font-bold no-underline ${
-      pathname === href ? "text-clay underline underline-offset-8" : "text-ink-soft hover:text-clay"
+      pathname === href
+        ? "text-clay underline underline-offset-8"
+        : "text-ink-soft hover:text-clay"
     }`;
 
   /* Which part pins is breakpoint-dependent, and that follows from the
@@ -84,25 +87,21 @@ export default function Header() {
 
       <header className="sticky top-0 z-50 border-b-2 border-rule bg-cream md:static md:z-auto">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-          {/* Two things this must not do, both found on screen at the raised
-              base size. It must never be whitespace-nowrap: pinned to one line
-              it overflowed its flex track at 1024px and drew straight through
-              the nav links. And it stays one step down until 2xl, because the
-              full nav and the four-word practice name do not share a line
-              below about 1400px, and a wrapped wordmark reads as broken.
-              Below xl the nav collapses to the Menu button, which is the
-              easier target at this text size anyway. */}
-          <Link href="/" className="min-w-0 text-xl font-semibold no-underline 2xl:text-2xl">
-            {/* The wordmark's four letter colours, client request
-                2026-08-30, replacing the sage half of the sage/clay split.
-                Only the word changes: "for Holistic Health" keeps its clay,
-                which is what still separates the practice name from the
-                wordmark at a glance. */}
+          {/* The wordmark alone, site owner's request 2026-09-04: "for
+              Holistic Health" came off the nav bar. The full practice name
+              still stands in the footer, the page titles and lib/site.ts,
+              which is why this is a literal here rather than site.name.
+              The size step (xl until 2xl) and the no-nowrap rule predate
+              the trim and are kept: at the raised base size the wordmark
+              still shares its line with six nav links, and whitespace-nowrap
+              once drew it straight through them at 1024px. */}
+          <Link
+            href="/"
+            className="min-w-0 text-xl font-semibold no-underline 2xl:text-2xl"
+          >
+            {/* The wordmark's four letter colours, client request 2026-08-30. */}
             <span className="font-[family-name:var(--font-display)]">
               <HeadingText text="PEMF" />
-            </span>{" "}
-            <span className="font-[family-name:var(--font-display)] text-clay">
-              for Holistic Health
             </span>
           </Link>
 
@@ -112,7 +111,9 @@ export default function Header() {
                 <Link
                   key={entry.route.path}
                   href={entry.route.path}
-                  aria-current={pathname === entry.route.path ? "page" : undefined}
+                  aria-current={
+                    pathname === entry.route.path ? "page" : undefined
+                  }
                   className={linkClass(entry.route.path)}
                 >
                   {entry.route.label}
@@ -147,7 +148,7 @@ export default function Header() {
                     </ul>
                   )}
                 </div>
-              )
+              ),
             )}
           </nav>
 
@@ -169,20 +170,24 @@ export default function Header() {
             className="border-t-2 border-rule bg-white px-5 py-3 xl:hidden"
           >
             <ul>
-              {navGroups.flatMap((entry) =>
-                entry.kind === "link" ? [entry.route] : [...entry.children]
-              ).map((route) => (
-                <li key={route.path}>
-                  <Link
-                    href={route.path}
-                    onClick={() => setMenuOpen(false)}
-                    aria-current={pathname === route.path ? "page" : undefined}
-                    className="flex min-h-[56px] items-center border-b border-rule font-bold text-ink-soft no-underline"
-                  >
-                    {route.label}
-                  </Link>
-                </li>
-              ))}
+              {navGroups
+                .flatMap((entry) =>
+                  entry.kind === "link" ? [entry.route] : [...entry.children],
+                )
+                .map((route) => (
+                  <li key={route.path}>
+                    <Link
+                      href={route.path}
+                      onClick={() => setMenuOpen(false)}
+                      aria-current={
+                        pathname === route.path ? "page" : undefined
+                      }
+                      className="flex min-h-[56px] items-center border-b border-rule font-bold text-ink-soft no-underline"
+                    >
+                      {route.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </nav>
         )}
