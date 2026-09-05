@@ -7,7 +7,12 @@ import { PhoneButton } from "@/components/PhoneButton";
 import { PlateCard } from "@/components/PlateCard";
 import { Section } from "@/components/Section";
 import { images } from "@/lib/content/images";
-import { hero, holisticAnatomy, holisticApproach, teasers } from "@/lib/content/home";
+import {
+  hero,
+  holisticAnatomy,
+  holisticApproach,
+  teasers,
+} from "@/lib/content/home";
 import { HeadingText, PEMF_LETTER_TOKENS } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
@@ -89,7 +94,10 @@ export default function Home() {
 
                Still a local override, so the /designs comps keep the full-size
                --step-wordmark that .u-wordmark was built for. */
-            style={{ ["--step-wordmark" as string]: "calc(var(--step-hero-lockup) * 1.3)" }}
+            style={{
+              ["--step-wordmark" as string]:
+                "calc(var(--step-hero-lockup) * 1.3)",
+            }}
           >
             {hero.wordmark.split("").map((letter, i) => (
               <span
@@ -135,7 +143,7 @@ export default function Home() {
             {hero.expansion}
           </p>
         </div>
-          {/* No plate around the photograph, client request 2026-08-29: the
+        {/* No plate around the photograph, client request 2026-08-29: the
               bordered white frame and its 12px padding are gone, so the image
               sits directly on the cream ground and carries the block itself.
               Same open treatment SplitBand's frame="open" uses elsewhere. */}
@@ -233,11 +241,21 @@ export default function Home() {
           </div>
           {/* The pitch keeps the page-wide left-aligned treatment: centred
               multi-line paragraphs are harder for the elderly audience this
-              site is sized for, so only the display block above is centred. */}
-          <div className="mx-auto mt-12 max-w-3xl text-left">
+              site is sized for, so only the display block above is centred.
+
+              Flush with the container's left edge, not mx-auto, since
+              2026-09-04: this box is narrower than the container, so
+              centring it put the heading's PEMF about 165px in from where
+              the nav bar's PEMF and every inner page's h1 start. That was
+              always so, but the nav wordmark grew to the hero's size the
+              same day and the offset became plain (owner: "no longer looks
+              even with the nav bar"). Now the three PEMFs down the page --
+              nav, heading -- share one left edge, with only the hero lockup
+              centred, as on every inner page. */}
+          <div className="mt-12 max-w-3xl text-left">
             <h2>
-            <HeadingText text={hero.title} />
-          </h2>
+              <HeadingText text={hero.title} />
+            </h2>
             <span className="u-accent-rule" />
             {hero.paragraphs.map((p) => (
               <p key={p} className="mt-6 max-w-[52ch] text-xl text-ink-soft">
