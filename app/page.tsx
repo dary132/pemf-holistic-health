@@ -162,28 +162,26 @@ export default function Home() {
             lg:h-[60vh] and object-cover, the client saw it live and asked for
             the whole frame back.
 
-            lg and up: the photograph spans the content container (max-w-6xl
-            with px-5 -- the same edges the nav bar, headings and every band
-            run to), not the viewport, and its height follows from the aspect
-            ratio. Note the root font size is 22px here, so max-w-6xl is
-            1584px, not Tailwind's default 1152: measured, the photograph is
-            1385x780 at 1440, 1311x738 at 1366, and caps at 1529x861 from
-            1584px up. Two owner requests on 2026-09-04 got here. First,
-            "make it fully fit on the page when the user lands": full bleed
-            was 810px tall at 1440 and 1081px at 1920, three scrolls to
-            pass, so the photograph was capped to the viewport less the
-            chrome above it (calc(100vh - 19rem), width following). Seen
-            live, that came out small on shorter screens -- about 620px wide
-            at 1366x768 -- and the follow-up was "expand it to the width of
-            the page and scale it 25% larger", which the container width
-            gives: about 31% taller than the cap at 1440x900, 59% at
-            1366x768. Accepted consequence: the bottom of the frame is below
-            the fold again on most desktops (275px of chrome + ~780px), though
-            a full screen less than before full bleed. Neither version is the
-            2026-08-31 object-cover cap the client rejected: nothing is
-            cropped. Upscale of the 1000px file is 1.39x at 1440 and 1.53x
-            from 1584 up, a shade under full bleed's 1.44x-1.92x; the
-            softness described below is essentially unchanged.
+            lg and up: the photograph runs to 12px short of each viewport
+            edge, at any desktop width, with its height from the aspect
+            ratio -- uncropped. Three owner requests on 2026-09-04 got here.
+            First, "make it fully fit on the page when the user lands": full
+            bleed was 810px tall at 1440 and 1081px at 1920, three scrolls to
+            pass, so the photograph was capped to the viewport less the chrome
+            above it. Seen live, that was small on shorter screens, and the
+            follow-up was "expand it to the width of the page and scale it
+            25% larger", which put it in the content container (27.5px
+            gutters at 1440, capped at 1529px wide). Then "scale it a bit
+            larger so there's minimal margin visible between the image and
+            the ends of the page", which is this: a fixed 12px gutter, no
+            width cap, so the gutter stays minimal on wide monitors too
+            rather than growing past 1584px. Measured: 1416x797 at 1440,
+            1896x1067 at 1920 -- within 2% of full bleed, so the "three
+            scrolls" consequence is back on large monitors, by the owner's
+            choice. Neither is the 2026-08-31 object-cover cap the client
+            rejected: nothing is cropped. The upscale of the 1000px file is
+            1.42x at 1440 and 1.9x at 1920, so the softness described below
+            stands.
 
             Below sm: h-[32vh] with object-cover, client request 2026-08-31.
             Width is already 100vw on a phone, so "bigger" has only one lever
@@ -229,7 +227,7 @@ export default function Home() {
             than mt-0 -- zero margin would still not touch, and going negative
             to close the last few pixels would clip the descenders on a font
             that has none here today but would the moment the copy changed. */}
-        <div className="mt-1 lg:mx-auto lg:max-w-6xl lg:px-5">
+        <div className="mt-1 lg:px-[12px]">
           <Image
             src={images.imrsModel3.src}
             {...blurFor(images.imrsModel3.src)}
