@@ -91,13 +91,17 @@ export default function Header() {
               Holistic Health" came off the nav bar. The full practice name
               still stands in the footer, the page titles and lib/site.ts,
               which is why this is a literal here rather than site.name.
-              The size step (xl until 2xl) and the no-nowrap rule predate
-              the trim and are kept: at the raised base size the wordmark
-              still shares its line with six nav links, and whitespace-nowrap
-              once drew it straight through them at 1024px. */}
+
+              Sized to the home hero's PEMF -- 36px from md up, 30px on
+              phones, against the hero's 36/31 -- so the two read as one
+              mark. It was text-xl/2xl while it shared the line with the
+              four-word practice name; alone at that size it sat lost in the
+              corner (owner: "still looks odd"), and the constraint that
+              kept it small is gone. No whitespace-nowrap, as before: pinned
+              to one line the old wordmark drew through the links at 1024px. */}
           <Link
             href="/"
-            className="min-w-0 text-xl font-semibold no-underline 2xl:text-2xl"
+            className="min-w-0 text-3xl font-semibold no-underline md:text-4xl"
           >
             {/* The wordmark's four letter colours, client request 2026-08-30. */}
             <span className="font-[family-name:var(--font-display)]">

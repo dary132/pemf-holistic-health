@@ -4,8 +4,20 @@ export type Route = { path: string; label: string; title: string };
 
 export const routes: Route[] = [
   { path: "/", label: "Home", title: "PEMF for Health and Wellness" },
-  { path: "/pemf", label: "PEMF", title: "PEMF for Healthy Lifestyle" },
-  { path: "/holistic-health", label: "Holistic Health", title: "PEMF for Holistic Health" },
+  /* Label "Healthy Lifestyle" since 2026-09-04, from the document's own page
+     heading "PEMF for Healthy Lifestyle": with the nav wordmark trimmed to
+     "PEMF" alone the same day, a "PEMF" link beside it read as a duplicate.
+     The page's h1, URL and copy are unchanged. */
+  {
+    path: "/pemf",
+    label: "Healthy Lifestyle",
+    title: "PEMF for Healthy Lifestyle",
+  },
+  {
+    path: "/holistic-health",
+    label: "Holistic Health",
+    title: "PEMF for Holistic Health",
+  },
   // The nav label for this page has moved twice at the client's direction:
   // "Mental Health" (the document's word) -> "Brain Health" (2026-08-28) ->
   // "Wellness" (2026-08-31), the client's decision that this IS the wellness
@@ -20,14 +32,26 @@ export const routes: Route[] = [
   // real price for a cosmetic gain. The `title` below still records the
   // document's own page heading, which is what this field is for; it is not
   // rendered anywhere. The rest of the page's copy is verbatim.
-  { path: "/mental-health", label: "Wellness", title: "PEMF Improves Mental Health" },
+  {
+    path: "/mental-health",
+    label: "Wellness",
+    title: "PEMF Improves Mental Health",
+  },
   { path: "/energy", label: "Energy", title: "PEMF Increases Your Energy" },
-    /* Label shortened to "Athletic Performance" 2026-08-31 at the client's
+  /* Label shortened to "Athletic Performance" 2026-08-31 at the client's
      request; the page's h1 carries the full "PEMF Enhances Athletic
      Performance". `title` still records the document's own page heading,
      which is what this field is for and is not rendered. */
-  { path: "/sports-health", label: "Athletic Performance", title: "Sports Health" },
-  { path: "/sleep-health", label: "Sleep Health", title: "PEMF Promotes Good Sleep" },
+  {
+    path: "/sports-health",
+    label: "Athletic Performance",
+    title: "Sports Health",
+  },
+  {
+    path: "/sleep-health",
+    label: "Sleep Health",
+    title: "PEMF Promotes Good Sleep",
+  },
   { path: "/pets-health", label: "Pets Health", title: "PEMF for Pets Health" },
   { path: "/products", label: "Products", title: "Products" },
   { path: "/contact", label: "Contact", title: "Contact" },

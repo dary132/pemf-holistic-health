@@ -17,7 +17,9 @@ import { HeadingText } from "@/components/PemfWord";
 import { blurFor } from "@/lib/content/blur";
 
 export const metadata = pageMetadata({
-  title: "PEMF",
+  /* Matches the nav label, the convention every page follows. "Healthy
+     Lifestyle" since 2026-09-04 -- see lib/routes.ts for why. */
+  title: "Healthy Lifestyle",
   description:
     "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
   path: "/pemf",
@@ -28,17 +30,24 @@ export const metadata = pageMetadata({
  * text-only panel nested into the neighbouring band's text column, and the
  * five essentials tiles lost their card borders. */
 export default function PemfPage() {
-  const [earthField, vitalForHealth, fieldWeakening] = essentialForHealth.panels;
+  const [earthField, vitalForHealth, fieldWeakening] =
+    essentialForHealth.panels;
   const [radiationSources, protection, magnetPoles] = importanceOfField.panels;
   return (
     <main id="main">
       <Breadcrumbs
         trail={[
           { name: "Home", path: "/" },
-          { name: "PEMF", path: "/pemf" },
+          { name: "Healthy Lifestyle", path: "/pemf" },
         ]}
       />
-      <Section id="pemf" title={intro.title} titleAs="h1" rhythm="heading" intro={intro.paragraphs[0]}>
+      <Section
+        id="pemf"
+        title={intro.title}
+        titleAs="h1"
+        rhythm="heading"
+        intro={intro.paragraphs[0]}
+      >
         <ul className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {essentials.map(({ label, image }) => (
             <li key={image.src}>
@@ -72,7 +81,6 @@ export default function PemfPage() {
         titleAs="h3"
         paragraphs={earthField.paragraphs}
         frame="open"
-       
       >
         <h3 className="mt-10 text-3xl">
           <HeadingText text={vitalForHealth.title} />
@@ -90,7 +98,6 @@ export default function PemfPage() {
         titleAs="h3"
         paragraphs={fieldWeakening.paragraphs}
         frame="open"
-       
       />
 
       <SplitBand
@@ -125,7 +132,6 @@ export default function PemfPage() {
         title={mimicsEarth.title}
         paragraphs={mimicsEarth.paragraphs}
         frame="open"
-       
       />
 
       <CTA />
