@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { CallPopup } from "@/components/CallPopup";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -101,6 +102,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <RevealOnScroll />
+        {/* Every page: the 45-second call prompt, once per session. See the
+            component for why it is worded with the CTA block's copy. */}
+        <CallPopup />
         <Footer />
         <JsonLd data={[localBusinessSchema(), websiteSchema()]} />
       </body>
