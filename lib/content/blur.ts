@@ -50,6 +50,8 @@ export const blurDataURLs: Record<string, string> = {
     "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoMAAYAAwBSJYgCdAEUu+J1qHzAAP6J60XnXOOw0TUUoC8YEtoK3fjMr6oX95L3VwojV27Ygk3XCunIF8kUMZ1G23KouMkCUyEgUAAA",
   "/images/holistic-balance-stones.png":
     "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoMAAgAAwBSJbACdADZlhSAAP3joUcdM7x4FkFUvBxQxedAJ20xvDULXMhrUnAiHzJ+6+LnAZPUFJdkXijOU8FXjulfiAfXXcTlD5gA",
+  "/images/holistic-health-flower.png":
+    "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoMAAwAAwBSJaACdAEfUm5ECScAAAD++PojHvUo4gBnm2n3hA2Z5IOk/fsAGGfHra/rUS5KeX+NS8apnToXFTwzVoIQQCIAqkyn0ya4a3yyMBeP0MAAAA==",
   "/images/holistic-mind-body-spirit.png":
     "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAQCdASoMAAoAAwBSJZwAAlJ0aIYAAP7v/POaRlwVrAj/j/85kjBf6LsguuJVU807Y/3LKroib7JXajFy5ueFB6dW1nNTs5tosBWBAAA=",
   "/images/holistic-six-dimensions-wheel.png":

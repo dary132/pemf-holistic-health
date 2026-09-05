@@ -47,6 +47,19 @@ export const images = {
      than sit in bars, losing a sliver of sky and sea at either side. It is
      also only 257px wide, which the card slot upscales about 1.4x; a larger
      copy has been requested from the client. */
+  /* The six-petal flower for the top block of /holistic-health. The client's
+     2026-09-04 edit document carries the Exiga Jasmin document's flat teal
+     flower (word/media image2, the file holistic-flower.svg above once
+     redrew); the site owner supplied this colour version of the same
+     diagram on 2026-09-04 to stand in for it -- one colour per petal, same
+     six labels, same icons. 1024px square on a #FEFEFE ground with the
+     labels and centre title burnt in, so `contain`, and shown inside a white
+     plate so the ground has no visible edge. */
+  holisticHealthFlower: {
+    src: "/images/holistic-health-flower.png",
+    alt: "Flower diagram of the six aspects of holistic health, one colour per petal: physical, mental, social, spiritual, intellectual and emotional",
+    contain: true,
+  },
   holisticMindBodySpirit: {
     src: "/images/holistic-mind-body-spirit.png",
     alt: "Mind, body and spirit joined by circling arrows, captioned: Holistic Health = Total Wellbeing",
@@ -180,6 +193,9 @@ export const images = {
      as bars: padding the file out to 4/3 would mean inventing 200px of empty
      margin, and every practice label is burnt in, so `contain` is required
      and cropping to fill is not available. */
+  /* Unplaced since 2026-09-04, when the client's edit document replaced the
+     whole of /holistic-health. Kept like eightDimensions below: the client's
+     own artwork, and this entry is the record of it. */
   wellnessPractices: {
     src: "/images/wellness-practices.png",
     alt: "Twelve wellness practices in three labelled groups. Physical: restorative sleep, nourishing foods, hydration, movement and exercise. Mental: practicing gratitude, meaningful connections, time in nature, mindful presence. Emotional: supportive relationships, intentional rest, personal growth, inner reflection",

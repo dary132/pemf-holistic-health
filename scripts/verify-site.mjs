@@ -34,7 +34,9 @@ const ROUTES = [
     path: "/holistic-health",
     jsonLd: ["BreadcrumbList"],
     mustContain: [
-      "Holistic health is a wellness approach that considers a person's physical, intellectual, mental, emotional, social, and spiritual well-being, recognizing these interconnected aspects as essential for optimal health and balance.",
+      // The client's 2026-09-04 edit replaced the page; this sentence is
+      // the one line new to that edit, so its presence proves the new page.
+      "A holistic perspective is a way of viewing a person as a complete and interconnected whole.",
     ],
   },
   {
