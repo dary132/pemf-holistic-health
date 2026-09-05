@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { PhoneButton } from "./PhoneButton";
 
-/** Call prompt, 45 seconds after the page loads. Site owner's request,
+/** Call prompt, 30 seconds after the page loads. Site owner's request,
  *  2026-09-04: "a javascript popup that full screens after 45 seconds
  *  directing the user to call now ... that they have to close" -- then,
  *  seeing it live, "a small call to action button but with some visibility
@@ -37,7 +37,8 @@ import { PhoneButton } from "./PhoneButton";
  *  and buttons, so every text pair on it is one already registered in
  *  scripts/verify-contrast.mjs; the backdrop carries no text. z-[90]: above
  *  the sticky header (z-50), below the skip link's focus z-[100]. */
-const DELAY_MS = 45_000;
+// 45s at first; the owner asked for 30 the same day.
+const DELAY_MS = 30_000;
 const STORAGE_KEY = "pemf-call-popup-shown";
 
 export function CallPopup() {

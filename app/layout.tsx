@@ -102,7 +102,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <RevealOnScroll />
-        {/* Every page: the 45-second call prompt, once per session. See the
+        {/* Every page: the 30-second call prompt, once per session. See the
             component for why it is worded with the CTA block's copy. */}
         <CallPopup />
         <Footer />
