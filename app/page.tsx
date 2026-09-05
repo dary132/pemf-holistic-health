@@ -147,9 +147,10 @@ export default function Home() {
               bordered white frame and its 12px padding are gone, so the image
               sits directly on the cream ground and carries the block itself.
               Same open treatment SplitBand's frame="open" uses elsewhere. */}
-        {/* Full bleed at EVERY width, client request 2026-08-31, extending the
-            2026-08-30 phone-only version: the photograph now runs to both
-            viewport edges on desktop too, with no margin either side. The
+        {/* Full bleed below lg, client request 2026-08-31, extending the
+            2026-08-30 phone-only version: the photograph runs to both
+            viewport edges on phones and tablets, with no margin either side.
+            (It did on desktop too until 2026-09-04; see the lg paragraph.) The
             corners are square at every width for the same reason they were
             square on phones -- a rounded corner against the screen edge is
             what made it read as a card floating in the cream rather than as
@@ -161,25 +162,28 @@ export default function Home() {
             lg:h-[60vh] and object-cover, the client saw it live and asked for
             the whole frame back.
 
-            lg and up, since 2026-09-04: the whole frame still, but SCALED to
-            fit the first screen. Full bleed at desktop widths made the hero
-            about 810px tall at 1440 and 1081px at 1920, so on essentially
-            every desktop the photograph overran the viewport and it took
-            three scrolls to get past it (owner: "make it fully fit on the
-            page when the user lands"). The height is now the viewport less
-            the chrome above the photograph -- top bar, header and lockup
-            measure 275px at 1440, so 19rem (304px) leaves the bottom edge
-            visible with a little air -- and the width follows from the
-            aspect ratio, centred, so nothing is cropped. This is NOT the
-            2026-08-31 cap coming back: that one used object-cover and cut
-            the frame, which is what the client rejected; this one shrinks
-            it. At 1440x900 the photograph renders about 1059px wide, close
-            to the content container; at 1920x1080 about 1378px. Both are
-            smaller upscales of the 1000px file than full bleed was, so the
-            desktop softness below eases as a side effect. object-contain is
-            there for the tall-and-narrow case where max-w-full clamps the
-            width before the height is reached: it letterboxes on the cream
-            rather than distorting.
+            lg and up: the photograph spans the content container (max-w-6xl
+            with px-5 -- the same edges the nav bar, headings and every band
+            run to), not the viewport, and its height follows from the aspect
+            ratio. Note the root font size is 22px here, so max-w-6xl is
+            1584px, not Tailwind's default 1152: measured, the photograph is
+            1385x780 at 1440, 1311x738 at 1366, and caps at 1529x861 from
+            1584px up. Two owner requests on 2026-09-04 got here. First,
+            "make it fully fit on the page when the user lands": full bleed
+            was 810px tall at 1440 and 1081px at 1920, three scrolls to
+            pass, so the photograph was capped to the viewport less the
+            chrome above it (calc(100vh - 19rem), width following). Seen
+            live, that came out small on shorter screens -- about 620px wide
+            at 1366x768 -- and the follow-up was "expand it to the width of
+            the page and scale it 25% larger", which the container width
+            gives: about 31% taller than the cap at 1440x900, 59% at
+            1366x768. Accepted consequence: the bottom of the frame is below
+            the fold again on most desktops (275px of chrome + ~780px), though
+            a full screen less than before full bleed. Neither version is the
+            2026-08-31 object-cover cap the client rejected: nothing is
+            cropped. Upscale of the 1000px file is 1.39x at 1440 and 1.53x
+            from 1584 up, a shade under full bleed's 1.44x-1.92x; the
+            softness described below is essentially unchanged.
 
             Below sm: h-[32vh] with object-cover, client request 2026-08-31.
             Width is already 100vw on a phone, so "bigger" has only one lever
@@ -225,7 +229,7 @@ export default function Home() {
             than mt-0 -- zero margin would still not touch, and going negative
             to close the last few pixels would clip the descenders on a font
             that has none here today but would the moment the copy changed. */}
-        <div className="mt-1">
+        <div className="mt-1 lg:mx-auto lg:max-w-6xl lg:px-5">
           <Image
             src={images.imrsModel3.src}
             {...blurFor(images.imrsModel3.src)}
@@ -234,7 +238,7 @@ export default function Home() {
             width={1000}
             height={563}
             sizes="100vw"
-            className="h-[32vh] w-full object-cover sm:h-auto lg:mx-auto lg:h-[calc(100vh-19rem)] lg:w-auto lg:max-w-full lg:object-contain"
+            className="h-[32vh] w-full object-cover sm:h-auto"
           />
         </div>
 
