@@ -4,9 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { PhoneButton } from "./PhoneButton";
 
-/** Full-screen call prompt, 45 seconds after the page loads. Site owner's
- *  request, 2026-09-04: "a javascript popup that full screens after 45
- *  seconds directing the user to call now ... that they have to close".
+/** Call prompt, 45 seconds after the page loads. Site owner's request,
+ *  2026-09-04: "a javascript popup that full screens after 45 seconds
+ *  directing the user to call now ... that they have to close" -- then,
+ *  seeing it live, "a small call to action button but with some visibility
+ *  of the page", so it is a compact card over a dimmed, still-visible page
+ *  rather than a full-screen panel. Bottom of the screen on phones, centred
+ *  from sm up.
  *
  *  Copy: the client's own call-to-action block, exactly as components/CTA.tsx
  *  renders it -- "Call | Text | WhatsApp", "Certified PEMF Expert Sharon",
@@ -29,10 +33,10 @@ import { PhoneButton } from "./PhoneButton";
  *  - The timer is per page load, not accumulated across pages: simple, and
  *    the once-per-session rule means at most one prompt per visit anyway.
  *
- *  Colours are the CTA band's (--band / --band-ink), already registered as a
- *  text pair in scripts/verify-contrast.mjs; the inverse PhoneButton exists
- *  for exactly this surface. z-[90]: above the sticky header (z-50), below
- *  the skip link's focus z-[100]. */
+ *  The card is a u-plate (white in every palette) with the site's normal ink
+ *  and buttons, so every text pair on it is one already registered in
+ *  scripts/verify-contrast.mjs; the backdrop carries no text. z-[90]: above
+ *  the sticky header (z-50), below the skip link's focus z-[100]. */
 const DELAY_MS = 45_000;
 const STORAGE_KEY = "pemf-call-popup-shown";
 
@@ -82,39 +86,39 @@ export function CallPopup() {
   if (!open) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="call-popup-title"
-      className="fixed inset-0 z-[90] flex items-center justify-center overflow-y-auto bg-band px-5 py-10 text-band-ink"
-    >
-      <button
-        ref={closeRef}
-        type="button"
-        onClick={() => setOpen(false)}
-        className="absolute right-5 top-5 inline-flex min-h-[56px] items-center justify-center rounded-full border-2 border-band-ink/60 px-8 text-lg font-bold text-band-ink hover:bg-band-ink/10"
+    /* Dimmed backdrop with the page visible through it, and a compact card
+       rather than a full-screen panel -- owner, 2026-09-04, after seeing the
+       full-screen version live: "a small call to action button but with
+       some visibility of the page". The backdrop is inert on purpose; only
+       the Close button (or Escape) dismisses. */
+    <div className="fixed inset-0 z-[90] flex items-end justify-center bg-ink/50 p-4 sm:items-center">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="call-popup-title"
+        className="u-plate relative w-full max-w-sm bg-white p-6 pt-7 text-center shadow-xl sm:p-8"
       >
-        Close
-      </button>
-      <div className="w-full max-w-2xl text-center">
-        {/* Explicit colour for the same reason as in CTA.tsx: the global
-            heading rule would otherwise paint this sage on sage. */}
-        <h2
-          id="call-popup-title"
-          className="text-4xl text-band-ink sm:text-5xl"
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={() => setOpen(false)}
+          className="absolute right-3 top-3 inline-flex min-h-[44px] items-center justify-center rounded-full border-2 border-button px-5 text-base font-bold text-button hover:bg-sand"
         >
+          Close
+        </button>
+        <h2 id="call-popup-title" className="mt-8 text-2xl sm:text-3xl">
           Call | Text | WhatsApp
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-band-ink/90">
+        <p className="mx-auto mt-3 leading-relaxed text-ink-soft">
           Certified PEMF Expert Sharon
           <br />
           for Appointment {site.officePhone}
         </p>
-        <div className="mx-auto mt-10 grid max-w-md gap-4">
-          <PhoneButton variant="inverse" />
+        <div className="mt-6 grid gap-3">
+          <PhoneButton />
           <a
             href={site.whatsappHref}
-            className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-band-ink/40 px-8 py-3.5 font-bold text-band-ink transition hover:bg-band-ink/10"
+            className="inline-flex min-h-[56px] items-center justify-center rounded-full border-[3px] border-button px-8 text-lg font-bold text-button no-underline hover:bg-sand"
           >
             WhatsApp {site.whatsapp}
           </a>
