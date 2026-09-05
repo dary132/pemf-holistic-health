@@ -38,11 +38,12 @@ const STORAGE_KEY = "pemf-call-popup-shown";
 
 export function CallPopup() {
   const [open, setOpen] = useState(false);
-  // Both typed with a `| null` union rather than a bare `<HTMLButtonElement>`:
-  // verify-jsx-copy's tag scanner reads a bare generic as a JSX opening tag
-  // and then checks the following code as page copy.
-  const closeRef = useRef<HTMLButtonElement | null>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
+  // Typed by casting the initial value, not with `useRef<...>()` generics:
+  // verify-jsx-copy's tag scanner reads `<HTMLButtonElement>` (and the `|
+  // null` form too) as a JSX opening tag and then checks the code after it
+  // as page copy. No angle brackets, no false match.
+  const closeRef = useRef(null as HTMLButtonElement | null);
+  const restoreFocusRef = useRef(null as HTMLElement | null);
 
   useEffect(() => {
     try {
