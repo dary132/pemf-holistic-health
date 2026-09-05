@@ -5,7 +5,6 @@ import { Section } from "@/components/Section";
 import { SplitBand } from "@/components/SplitBand";
 import { PanelGrid } from "@/components/TriPanel";
 import {
-  approach,
   approachBand,
   approachPanels,
   intro,
@@ -39,16 +38,15 @@ export default function HolisticHealthPage() {
         titleAs="h1"
         rhythm="heading"
       />
-      {/* Plate frame, not open: the flower's ground is near-white and this is
-          the page's second band, which is --sand, so the open frame would show
-          the file's square edge. Inside the white plate it has none. */}
+      {/* No section heading: the document heads both blocks "PEMF - Holistic
+          Approach", and the site owner asked on 2026-09-04 for that tag to go,
+          so the page runs from the h1 straight into the flower band. Plate
+          frame, not open: the flower's ground is near-white and this band is
+          --sand, so the open frame would show the file's square edge. */}
       <SplitBand
-        heading={approach.title}
         image={approachBand.image}
         paragraphs={approachBand.paragraphs}
       />
-      {/* No heading of its own: the document repeats "PEMF - Holistic
-          Approach" over this block too, but one h2 already names both. */}
       <PanelGrid panels={approachPanels} />
       <CTA />
       <Disclaimer />

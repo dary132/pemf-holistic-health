@@ -10,10 +10,8 @@ import type { Band, Panel } from "./types";
 export const intro = { title: "PEMF for Holistic Health" };
 
 /* The document's two blocks, in its order. Both are headed "PEMF - Holistic
-   Approach" there; here the heading is rendered once, over the first block,
-   because two identical h2s in a row read as a mistake on the web. */
-export const approach = { title: "PEMF - Holistic Approach" };
-
+   Approach" there; the site owner asked on 2026-09-04 for that tag to be
+   removed, so neither block carries a heading on the page. */
 /* Block one: the flower diagram beside the three paragraphs in their original
    wording. The picture is the site owner's colour version of the document's
    flower -- see images.holisticHealthFlower. */
