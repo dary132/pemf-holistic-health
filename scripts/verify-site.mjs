@@ -20,6 +20,9 @@ const ROUTES = [
     mustContain: [
       "Try adding a holistic approach by laying on the PEMF body mat.",
       "A holistic approach recognizes that your physical, mental, emotional, and spiritual well-being are deeply intertwined.",
+      // The Holistic Approach block moved here from /holistic-health on
+      // 2026-09-04; this is the one sentence new to the client's edit.
+      "A holistic perspective is a way of viewing a person as a complete and interconnected whole.",
     ],
   },
   {
@@ -28,15 +31,6 @@ const ROUTES = [
     mustContain: [
       "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
       "Magnetic field is an essential environmental factor for human existence.",
-    ],
-  },
-  {
-    path: "/holistic-health",
-    jsonLd: ["BreadcrumbList"],
-    mustContain: [
-      // The client's 2026-09-04 edit replaced the page; this sentence is
-      // the one line new to that edit, so its presence proves the new page.
-      "A holistic perspective is a way of viewing a person as a complete and interconnected whole.",
     ],
   },
   {
@@ -65,7 +59,9 @@ const ROUTES = [
   {
     path: "/sleep-health",
     jsonLd: ["BreadcrumbList"],
-    mustContain: ["Deep sleep is crucial for physical and mental rejuvenation."],
+    mustContain: [
+      "Deep sleep is crucial for physical and mental rejuvenation.",
+    ],
   },
   {
     path: "/pets-health",
@@ -93,7 +89,8 @@ const ROUTES = [
 
 const REDIRECTS = [
   { from: "/what-is-pemf", to: "/pemf" },
-  { from: "/benefits", to: "/holistic-health" },
+  { from: "/benefits", to: "/" },
+  { from: "/holistic-health", to: "/" },
 ];
 
 let failures = 0;
@@ -114,7 +111,9 @@ const check = (cond, okMsg, failMsg) => {
 // matching so this stays a check on rendered content, not on markup escaping.
 function decodeEntities(s) {
   return s
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
+      String.fromCodePoint(parseInt(hex, 16)),
+    )
     .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
@@ -129,7 +128,7 @@ function decodeEntities(s) {
 if (ROUTES.length !== routes.length) {
   console.error(
     `\nFAIL ROUTES (scripts/verify-site.mjs) has ${ROUTES.length} entries but ` +
-      `routes (lib/routes.ts) has ${routes.length}. Keep them in sync.`
+      `routes (lib/routes.ts) has ${routes.length}. Keep them in sync.`,
   );
   process.exit(1);
 }
@@ -157,7 +156,8 @@ async function checkRoute({ path, jsonLd, mustContain = [] }) {
 
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   if (!title) fail("no <title>");
-  else if (titles.has(title)) fail(`duplicate title, also on ${titles.get(title)}`);
+  else if (titles.has(title))
+    fail(`duplicate title, also on ${titles.get(title)}`);
   else {
     titles.set(title, path);
     pass(`title: ${title}`);
@@ -173,11 +173,13 @@ async function checkRoute({ path, jsonLd, mustContain = [] }) {
   check(
     !/youtube|youtu\.be/i.test(html),
     "no YouTube embed",
-    "page contains a YouTube embed"
+    "page contains a YouTube embed",
   );
 
   const blocks = [
-    ...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs),
+    ...html.matchAll(
+      /<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs,
+    ),
   ].map((m) => m[1]);
   const types = [];
   for (const b of blocks) {
@@ -207,12 +209,14 @@ async function checkRoute({ path, jsonLd, mustContain = [] }) {
     .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, " ")
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ")
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ");
-  const visible = decodeEntities(bodyOnly.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "));
+  const visible = decodeEntities(
+    bodyOnly.replace(/<[^>]+>/g, " ").replace(/\s+/g, " "),
+  );
   for (const phrase of mustContain) {
     check(
       visible.includes(phrase),
       `contains "${phrase.slice(0, 40)}…"`,
-      `missing verbatim phrase: "${phrase}"`
+      `missing verbatim phrase: "${phrase}"`,
     );
   }
 
@@ -235,11 +239,15 @@ else {
   check(
     locs.length === ROUTES.length,
     `sitemap has ${locs.length} urls`,
-    `sitemap has ${locs.length} urls, expected ${ROUTES.length}`
+    `sitemap has ${locs.length} urls, expected ${ROUTES.length}`,
   );
   for (const { path } of ROUTES) {
     if (path === "/") continue;
-    check(locs.some((l) => l.endsWith(path)), `sitemap ${path}`, `sitemap missing ${path}`);
+    check(
+      locs.some((l) => l.endsWith(path)),
+      `sitemap ${path}`,
+      `sitemap missing ${path}`,
+    );
   }
 }
 
@@ -247,15 +255,27 @@ const rb = await fetch(BASE + "/robots.txt");
 if (rb.status !== 200) fail(`/robots.txt -> ${rb.status}`);
 else {
   const body = await rb.text();
-  check(body.includes("Sitemap:"), "robots links sitemap", "robots has no Sitemap:");
+  check(
+    body.includes("Sitemap:"),
+    "robots links sitemap",
+    "robots has no Sitemap:",
+  );
 }
 
 console.log("\nredirects");
 for (const { from, to } of REDIRECTS) {
   const res = await fetch(BASE + from, { redirect: "manual" });
-  check(res.status === 308, `${from} -> 308`, `${from} returned ${res.status}, expected 308`);
+  check(
+    res.status === 308,
+    `${from} -> 308`,
+    `${from} returned ${res.status}, expected 308`,
+  );
   const location = res.headers.get("location") ?? "";
-  check(location.endsWith(to), `${from} -> ${to}`, `${from} points at ${location}`);
+  check(
+    location.endsWith(to),
+    `${from} -> ${to}`,
+    `${from} points at ${location}`,
+  );
 }
 
 console.log(failures ? `\n${failures} FAILURE(S)` : "\nAll checks passed");

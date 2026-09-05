@@ -1,4 +1,4 @@
-/** The ten pages of the client's 2026 document, in document order.
+/** The pages of the client's 2026 document, in document order.
  *  Single source for the nav, the sitemap and scripts/verify-site.mjs. */
 export type Route = { path: string; label: string; title: string };
 
@@ -13,11 +13,10 @@ export const routes: Route[] = [
     label: "Healthy Lifestyle",
     title: "PEMF for Healthy Lifestyle",
   },
-  {
-    path: "/holistic-health",
-    label: "Holistic Health",
-    title: "PEMF for Holistic Health",
-  },
+  /* /holistic-health was removed on 2026-09-04 at the site owner's request;
+     its content lives on the home page between "PEMF for Health and
+     Wellness" and "Holistic Anatomy", and next.config.ts redirects the old
+     path there. Nine routes now, not the document's ten. */
   // The nav label for this page has moved twice at the client's direction:
   // "Mental Health" (the document's word) -> "Brain Health" (2026-08-28) ->
   // "Wellness" (2026-08-31), the client's decision that this IS the wellness
@@ -73,7 +72,6 @@ const byPath = (p: string) => routes.find((r) => r.path === p)!;
 export const navGroups = [
   { kind: "link", route: byPath("/") },
   { kind: "link", route: byPath("/pemf") },
-  { kind: "link", route: byPath("/holistic-health") },
   {
     kind: "group",
     label: "Wellness",

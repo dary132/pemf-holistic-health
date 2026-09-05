@@ -1,6 +1,6 @@
 /** Home page copy. Source: "Website Exiga Jasmin 2026.docx", page 1.
  *  Verbatim. Do not reword — the client cites FDA exposure. */
-import type { Teaser } from "./types";
+import type { Band, Panel, Teaser } from "./types";
 // Explicit .ts extension: `scripts/verify-copy.mjs` dynamically imports content
 // modules with Node's native ESM loader (no bundler), which requires a fully
 // specified relative specifier. `allowImportingTsExtensions` in tsconfig.json
@@ -20,13 +20,60 @@ export const hero = {
   ],
 };
 
-export const holisticApproach = {
-  title: "PEMF - Holistic Approach",
+/* "PEMF - Holistic Approach". Source: "Edit PEMF for Holistic Health
+   Page.docx" (2026-09-04), the client's revision of this section into two
+   blocks -- the flower diagram beside the three paragraphs, then the same
+   copy as three picture cards. It was built as /holistic-health first, then
+   the site owner had that page removed and its content moved here, between
+   "PEMF for Health and Wellness" and "Holistic Anatomy" (2026-09-04). The
+   heading is rendered once, centred over the cards; the flower band goes
+   unheaded. Card two's first sentence and "balance and" in its second are
+   new to the edit -- see docs/edit-holistic-health-2026-09.txt. */
+export const approach = { title: "PEMF - Holistic Approach" };
+
+/* Block one: the flower beside the three paragraphs in their original
+   wording. The picture is the site owner's colour version of the document's
+   flower -- see images.holisticHealthFlower. */
+export const approachBand: Band = {
+  image: images.holisticHealthFlower,
   paragraphs: [
     "A holistic approach to health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person, viewing them as interconnected parts of overall well-being.",
     "This perspective recognizes that imbalances in one area can affect others. PEMF is a holistic approach to promote a state of total wellness.",
     "Holistic health using PEMF, aims to achieve overall well-being by addressing interconnected aspects of life, such as mental health, emotional health, intellectual health, physical health, social health and spiritual health.",
   ],
+};
+
+/* Block two: three cards, each with its own picture above one paragraph,
+   "to make it colorful on cellphone". */
+export const approachPanels: Panel[] = [
+  {
+    image: images.holisticMindBodySpirit,
+    paragraphs: [
+      "A holistic approach to health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person, viewing them as interconnected parts of overall well-being.",
+    ],
+  },
+  {
+    image: images.holisticBalanceStones,
+    paragraphs: [
+      "A holistic perspective is a way of viewing a person as a complete and interconnected whole.",
+      "This perspective recognizes that imbalances in one area can affect others. PEMF is a holistic approach to promote a state of balance and total wellness.",
+    ],
+  },
+  {
+    image: images.holisticSixDimensionsWheel,
+    paragraphs: [
+      "Holistic health using PEMF, aims to achieve overall well-being by addressing interconnected aspects of life, such as mental health, emotional health, intellectual health, physical health, social health and spiritual health.",
+    ],
+  },
+];
+
+/* The pre-2026-09-04 shape of the section -- title plus the three
+   paragraphs -- kept for the /designs comps (clinical, editorial,
+   photographic), which are review tooling that still renders it as text
+   plates. Derived, not duplicated: the strings are approachBand's. */
+export const holisticApproach = {
+  title: approach.title,
+  paragraphs: approachBand.paragraphs,
 };
 
 export const holisticAnatomy = {
@@ -36,7 +83,8 @@ export const holisticAnatomy = {
   ],
 };
 
-/** Link cards to the other nine pages. Titles and bodies are the document's own
+/** Link cards to the other pages (eight since /holistic-health was folded
+ *  into this page on 2026-09-04). Titles and bodies are the document's own
  *  page headings and sentences — no marketing copy is invented here, with one
  *  registered exception: the /mental-health card says "Wellness" where the
  *  document says "Mental Health", matching that page's own H1. See ALLOWED_EDITS
@@ -47,12 +95,6 @@ export const teasers: Teaser[] = [
     body: "Air, food, water, sunshine and Earth’s Magnetic Field Energy are natural essentials for human health.",
     href: "/pemf",
     image: images.earthFieldAurora,
-  },
-  {
-    title: "PEMF for Holistic Health",
-    body: "PEMF is a holistic approach to promote a state of total wellness.",
-    href: "/holistic-health",
-    image: images.eightDimensionsWheel,
   },
   {
     /* Follows the page it links to, and moved with it twice on 2026-08-31 --

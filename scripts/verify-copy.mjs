@@ -42,7 +42,7 @@ const SOURCES = [
   // in the file's own header.
   "docs/imrs-prime-swissbionic.txt",
   // The client's 2026-09-04 revision of the "PEMF - Holistic Approach"
-  // block: three image-and-paragraph cards for /holistic-health, with one
+  // block: three image-and-paragraph cards (now on the home page), with one
   // new sentence and one amended phrase that the Exiga Jasmin 2026 document
   // does not contain. Approved by the site owner on 2026-09-04. Provenance
   // is recorded in the file's own header.

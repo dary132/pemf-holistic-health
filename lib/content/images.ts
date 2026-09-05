@@ -39,7 +39,8 @@ export const images = {
   },
   /* The three pictures from "Edit PEMF for Holistic Health Page.docx"
      (word/media image2-4), client-supplied 2026-09-04 for the three
-     "PEMF - Holistic Approach" cards on /holistic-health -- "added image to
+     "PEMF - Holistic Approach" cards (built on /holistic-health, on the home
+     page since that page was folded in later the same day) -- "added image to
      make it colorful on cellphone", in the document's own words. None of
      them is in the Exiga Jasmin 2026 document. The two diagrams have their
      labels burnt in on a white ground, so `contain`; the stones photograph
@@ -47,7 +48,8 @@ export const images = {
      than sit in bars, losing a sliver of sky and sea at either side. It is
      also only 257px wide, which the card slot upscales about 1.4x; a larger
      copy has been requested from the client. */
-  /* The six-petal flower for the top block of /holistic-health. The client's
+  /* The six-petal flower for the Holistic Approach band (home page; built on
+     /holistic-health, folded into the home page 2026-09-04). The client's
      2026-09-04 edit document carries the Exiga Jasmin document's flat teal
      flower (word/media image2, the file holistic-flower.svg above once
      redrew); the site owner supplied this colour version of the same
@@ -235,6 +237,8 @@ export const images = {
      4/3 canvas filled with the diagram's own #FAF8F1 ground. The result fills
      the slot edge to edge with no bars and no cut words, and the eight
      descriptions it drops were unreadable at card size anyway. */
+  /* Unplaced since 2026-09-04, when the /holistic-health teaser card it
+     illustrated went with the page. Kept like eightDimensions below. */
   eightDimensionsWheel: {
     src: "/images/eight-dimensions-wheel.png",
     alt: "Wheel of the eight dimensions of wellness: environmental, spiritual, social, physical, intellectual, vocational, emotional and financial",

@@ -6,11 +6,15 @@ import { Disclaimer } from "@/components/Disclaimer";
 import { PhoneButton } from "@/components/PhoneButton";
 import { PlateCard } from "@/components/PlateCard";
 import { Section } from "@/components/Section";
+import { SplitBand } from "@/components/SplitBand";
+import { PanelGrid } from "@/components/TriPanel";
 import { images } from "@/lib/content/images";
 import {
+  approach,
+  approachBand,
+  approachPanels,
   hero,
   holisticAnatomy,
-  holisticApproach,
   teasers,
 } from "@/lib/content/home";
 import { HeadingText, PEMF_LETTER_TOKENS } from "@/components/PemfWord";
@@ -288,15 +292,24 @@ export default function Home() {
 
       <CredentialStrip />
 
-      <Section id="approach" title={holisticApproach.title}>
-        <div className="grid gap-8 md:grid-cols-3">
-          {holisticApproach.paragraphs.map((p) => (
-            <p key={p} className="u-plate p-6 leading-relaxed text-ink-soft">
-              {p}
-            </p>
-          ))}
-        </div>
-      </Section>
+      {/* The Holistic Approach content, moved here from /holistic-health at
+          the site owner's request on 2026-09-04 when that page was removed:
+          beneath "PEMF for Health and Wellness" (the CredentialStrip is
+          chrome, not content, and keeps its place under the hero) and above
+          Holistic Anatomy. Until then this was three text-only plates of the
+          same paragraphs. No heading on the flower band; the one h2 sits
+          centred over the cards, as it did on the page. Plate frame on the
+          flower: its ground is near-white, and inside the white plate it has
+          no visible edge on either band ground. */}
+      <SplitBand
+        image={approachBand.image}
+        paragraphs={approachBand.paragraphs}
+      />
+      <PanelGrid
+        heading={approach.title}
+        headingAlign="center"
+        panels={approachPanels}
+      />
 
       <Section id="anatomy" title={holisticAnatomy.title}>
         {/* Same 55/45 image-favouring split as SplitBand (2026-08-28, larger
