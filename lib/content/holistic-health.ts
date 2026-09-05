@@ -10,8 +10,11 @@ import type { Band, Panel } from "./types";
 export const intro = { title: "PEMF for Holistic Health" };
 
 /* The document's two blocks, in its order. Both are headed "PEMF - Holistic
-   Approach" there; the site owner asked on 2026-09-04 for that tag to be
-   removed, so neither block carries a heading on the page. */
+   Approach" there. On the page only the cards carry it, centred: the owner
+   first asked (2026-09-04) for the tag to go, then for it back over the
+   three pictures alone. */
+export const approach = { title: "PEMF - Holistic Approach" };
+
 /* Block one: the flower diagram beside the three paragraphs in their original
    wording. The picture is the site owner's colour version of the document's
    flower -- see images.holisticHealthFlower. */

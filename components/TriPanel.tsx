@@ -15,8 +15,14 @@ export function PanelGrid({
   panelTitleAs = "h3",
   rhythm = "normal",
   columns = 3,
+  headingAlign = "left",
 }: {
   heading?: string;
+  /** "center" sets the h2 over the middle of the row rather than flush
+   *  left with the first panel. Added 2026-09-04 for the /holistic-health
+   *  cards at the site owner's request; every other grid keeps the site's
+   *  left-set headings. */
+  headingAlign?: "left" | "center";
   panels: Panel[];
   /** Desktop column count, default 3. Use 2 when the panel count is a
    *  multiple of two (e.g. the four /products accessories), so the grid
@@ -36,7 +42,11 @@ export function PanelGrid({
     <div className={bandClass()}>
       <div className={`mx-auto max-w-6xl px-5 ${RHYTHM[rhythm]}`}>
         {heading && (
-          <h2 className="mb-10">
+          <h2
+            className={
+              headingAlign === "center" ? "mb-10 text-center" : "mb-10"
+            }
+          >
             <HeadingText text={heading} />
           </h2>
         )}
@@ -145,9 +155,16 @@ export function PanelGrid({
                        up from space-y-3 because the bars make each entry a
                        visible block, and blocks need more room between them
                        than lines do. */
-                    <div key={item.term} className="border-l-4 border-term pl-4">
-                      <dt className="text-lg font-black text-term">{item.term}</dt>
-                      {item.text && <dd className="mt-1 text-ink-soft">{item.text}</dd>}
+                    <div
+                      key={item.term}
+                      className="border-l-4 border-term pl-4"
+                    >
+                      <dt className="text-lg font-black text-term">
+                        {item.term}
+                      </dt>
+                      {item.text && (
+                        <dd className="mt-1 text-ink-soft">{item.text}</dd>
+                      )}
                     </div>
                   ))}
                 </dl>

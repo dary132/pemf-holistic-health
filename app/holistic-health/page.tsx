@@ -5,6 +5,7 @@ import { Section } from "@/components/Section";
 import { SplitBand } from "@/components/SplitBand";
 import { PanelGrid } from "@/components/TriPanel";
 import {
+  approach,
   approachBand,
   approachPanels,
   intro,
@@ -38,16 +39,21 @@ export default function HolisticHealthPage() {
         titleAs="h1"
         rhythm="heading"
       />
-      {/* No section heading: the document heads both blocks "PEMF - Holistic
-          Approach", and the site owner asked on 2026-09-04 for that tag to go,
-          so the page runs from the h1 straight into the flower band. Plate
+      {/* No heading on this band: the page runs from the h1 straight into
+          the flower. The document heads both blocks "PEMF - Holistic
+          Approach"; on the page it sits, centred, over the cards below only,
+          which is where the site owner asked for it on 2026-09-04. Plate
           frame, not open: the flower's ground is near-white and this band is
           --sand, so the open frame would show the file's square edge. */}
       <SplitBand
         image={approachBand.image}
         paragraphs={approachBand.paragraphs}
       />
-      <PanelGrid panels={approachPanels} />
+      <PanelGrid
+        heading={approach.title}
+        headingAlign="center"
+        panels={approachPanels}
+      />
       <CTA />
       <Disclaimer />
     </main>
