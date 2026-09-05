@@ -147,10 +147,11 @@ export default function Home() {
               bordered white frame and its 12px padding are gone, so the image
               sits directly on the cream ground and carries the block itself.
               Same open treatment SplitBand's frame="open" uses elsewhere. */}
-        {/* Full bleed below lg, client request 2026-08-31, extending the
-            2026-08-30 phone-only version: the photograph runs to both
-            viewport edges on phones and tablets, with no margin either side.
-            (It did on desktop too until 2026-09-04; see the lg paragraph.) The
+        {/* 12px gutters at every width since 2026-09-04 (owner, after the
+            desktop change below: "do the same for the mobile view"). Before
+            that the photograph was full bleed -- client request 2026-08-31,
+            extending the 2026-08-30 phone-only version -- running to both
+            viewport edges with no margin either side. The
             corners are square at every width for the same reason they were
             square on phones -- a rounded corner against the screen edge is
             what made it read as a card floating in the cream rather than as
@@ -163,8 +164,8 @@ export default function Home() {
             the whole frame back.
 
             lg and up: the photograph runs to 12px short of each viewport
-            edge, at any desktop width, with its height from the aspect
-            ratio -- uncropped. Three owner requests on 2026-09-04 got here.
+            edge (as it now does at every width), with its height from the
+            aspect ratio -- uncropped. Three owner requests on 2026-09-04 got here.
             First, "make it fully fit on the page when the user lands": full
             bleed was 810px tall at 1440 and 1081px at 1920, three scrolls to
             pass, so the photograph was capped to the viewport less the chrome
@@ -184,7 +185,8 @@ export default function Home() {
             stands.
 
             Below sm: h-[32vh] with object-cover, client request 2026-08-31.
-            Width is already 100vw on a phone, so "bigger" has only one lever
+            Width was already 100vw on a phone (100vw less 24px since the
+            gutters), so "bigger" has only one lever
             left, and it is height -- which necessarily crops, because the
             source is wide. 32vh is not a round number, it is the measured
             ceiling. At 390x844 it renders 270px against a natural 220px
@@ -227,7 +229,7 @@ export default function Home() {
             than mt-0 -- zero margin would still not touch, and going negative
             to close the last few pixels would clip the descenders on a font
             that has none here today but would the moment the copy changed. */}
-        <div className="mt-1 lg:px-[12px]">
+        <div className="mt-1 px-[12px]">
           <Image
             src={images.imrsModel3.src}
             {...blurFor(images.imrsModel3.src)}
