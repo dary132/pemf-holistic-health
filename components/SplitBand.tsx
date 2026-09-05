@@ -22,11 +22,17 @@ export function SplitBand({
   bullets = [],
   reverse = false,
   frame = "plate",
+  headingRule = false,
   children,
 }: {
   /** Section-level h2 above the band, inside the same block -- exactly as on
    *  PanelGrid. Use with `titleAs="h3"` so the band's own title nests under it. */
   heading?: string;
+  /** Draw the u-accent-rule under `heading`, as <Section> does under its
+   *  title. Added 2026-09-04 for the home page's "PEMF for Holistic Health"
+   *  band so it matches the Section headings around it; off by default so
+   *  the /pemf bands, which never had the rule, are unchanged. */
+  headingRule?: boolean;
   image: Img;
   title?: string;
   /** "h3" when the band sits under a section-level h2 (its own `heading`, or
@@ -55,9 +61,12 @@ export function SplitBand({
     <div className={bandClass()}>
       <div className="mx-auto max-w-6xl px-5 py-14">
         {heading && (
-          <h2 data-reveal className="mb-10">
-            <HeadingText text={heading} />
-          </h2>
+          <div data-reveal className="mb-10">
+            <h2>
+              <HeadingText text={heading} />
+            </h2>
+            {headingRule && <span className="u-accent-rule" />}
+          </div>
         )}
         {/* 55/45 in the image's favour (was 50/50) -- the client asked for
             larger images, 2026-08-28. The template flips with `reverse`

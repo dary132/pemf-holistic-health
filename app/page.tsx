@@ -288,6 +288,7 @@ export default function Home() {
           no visible edge on either band ground. */}
       <SplitBand
         heading={holisticHealth.title}
+        headingRule
         image={approachBand.image}
         paragraphs={approachBand.paragraphs}
       />
