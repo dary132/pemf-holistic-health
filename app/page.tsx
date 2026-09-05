@@ -156,14 +156,30 @@ export default function Home() {
             the hero -- so the old sm:rounded-2xl is gone rather than kept for
             desktop.
 
-            sm and up: no crop, no height cap. The photograph is shown whole
+            sm to lg: no crop, no height cap. The photograph is shown whole
             at its natural 16:9. It shipped earlier on 2026-08-31 with
             lg:h-[60vh] and object-cover, the client saw it live and asked for
-            the whole frame back. Consequence, accepted deliberately: on a
-            1920px monitor the hero is about 1081px tall, so it fills the
-            screen and the buttons and the pitch sit below the fold on
-            essentially every desktop. Do not reintroduce a cap here to "fix"
-            that -- it is the thing that was asked for, twice.
+            the whole frame back.
+
+            lg and up, since 2026-09-04: the whole frame still, but SCALED to
+            fit the first screen. Full bleed at desktop widths made the hero
+            about 810px tall at 1440 and 1081px at 1920, so on essentially
+            every desktop the photograph overran the viewport and it took
+            three scrolls to get past it (owner: "make it fully fit on the
+            page when the user lands"). The height is now the viewport less
+            the chrome above the photograph -- top bar, header and lockup
+            measure 275px at 1440, so 19rem (304px) leaves the bottom edge
+            visible with a little air -- and the width follows from the
+            aspect ratio, centred, so nothing is cropped. This is NOT the
+            2026-08-31 cap coming back: that one used object-cover and cut
+            the frame, which is what the client rejected; this one shrinks
+            it. At 1440x900 the photograph renders about 1059px wide, close
+            to the content container; at 1920x1080 about 1378px. Both are
+            smaller upscales of the 1000px file than full bleed was, so the
+            desktop softness below eases as a side effect. object-contain is
+            there for the tall-and-narrow case where max-w-full clamps the
+            width before the height is reached: it letterboxes on the cream
+            rather than distorting.
 
             Below sm: h-[32vh] with object-cover, client request 2026-08-31.
             Width is already 100vw on a phone, so "bigger" has only one lever
@@ -218,7 +234,7 @@ export default function Home() {
             width={1000}
             height={563}
             sizes="100vw"
-            className="h-[32vh] w-full object-cover sm:h-auto"
+            className="h-[32vh] w-full object-cover sm:h-auto lg:mx-auto lg:h-[calc(100vh-19rem)] lg:w-auto lg:max-w-full lg:object-contain"
           />
         </div>
 
