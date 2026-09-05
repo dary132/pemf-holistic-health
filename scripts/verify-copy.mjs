@@ -41,6 +41,12 @@ const SOURCES = [
   // rendered string traceable to a source document. Provenance is recorded
   // in the file's own header.
   "docs/imrs-prime-swissbionic.txt",
+  // The client's 2026-09-04 revision of the "PEMF - Holistic Approach"
+  // block: three image-and-paragraph cards for /holistic-health, with one
+  // new sentence and one amended phrase that the Exiga Jasmin 2026 document
+  // does not contain. Approved by the site owner on 2026-09-04. Provenance
+  // is recorded in the file's own header.
+  "docs/edit-holistic-health-2026-09.txt",
 ];
 
 // lib/site.ts holds sitewide prose (disclaimer, address, business name) that
@@ -119,7 +125,8 @@ export const ALLOWED_EDITS = [
     // and leave no record that the site says something the document does not.
     // Applies to both places the heading appears: components/CTA.tsx, the
     // closing band on every page, and app/contact/page.tsx.
-    reason: "Client asked for pipe separators in the sitewide CTA heading, 2026-08-30",
+    reason:
+      "Client asked for pipe separators in the sitewide CTA heading, 2026-08-30",
   },
   {
     site: "PEMF Improves Wellness",
@@ -141,7 +148,8 @@ export const ALLOWED_EDITS = [
     // uses "wellness" throughout, including in this page's own copy. Only
     // lib/routes.ts still carries "Mental Health", deliberately: that field
     // records the document's own page heading and is not rendered anywhere.
-    reason: "Client renamed this the Wellness page, 2026-08-31; H1 follows the nav",
+    reason:
+      "Client renamed this the Wellness page, 2026-08-31; H1 follows the nav",
   },
 ];
 
@@ -150,10 +158,7 @@ export const ALLOWED_EDITS = [
  *  same word in different places, and site copy must match the exact
  *  character used at each source location, not just its ASCII equivalent. */
 export function normalise(s) {
-  return s
-    .replace(/ /g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  return s.replace(/ /g, " ").replace(/\s+/g, " ").trim();
 }
 
 /** Strip a single trailing period so class-2 punctuation edits pass. */
@@ -219,7 +224,8 @@ async function main() {
 
   const dir = "lib/content";
   const fileFlagIndex = process.argv.indexOf("--file");
-  const onlyFile = fileFlagIndex !== -1 ? process.argv[fileFlagIndex + 1] : null;
+  const onlyFile =
+    fileFlagIndex !== -1 ? process.argv[fileFlagIndex + 1] : null;
 
   // types.ts is types, index.ts is re-exports, images.ts is src paths and alt
   // text (descriptions of pictures, not the document's prose), and blur.ts is
@@ -231,13 +237,13 @@ async function main() {
   let files = readdirSync(dir).filter(
     (f) =>
       f.endsWith(".ts") &&
-      !["types.ts", "index.ts", "images.ts", "blur.ts"].includes(f)
+      !["types.ts", "index.ts", "images.ts", "blur.ts"].includes(f),
   );
   if (onlyFile) {
     files = files.filter((f) => f === onlyFile);
     if (files.length === 0) {
       console.error(
-        `FAIL --file ${onlyFile}: no such module in ${dir}/ (typo? this would silently pass without this check)`
+        `FAIL --file ${onlyFile}: no such module in ${dir}/ (typo? this would silently pass without this check)`,
       );
       process.exit(1);
     }
@@ -262,17 +268,24 @@ async function main() {
   // skip the sitewide check too, rather than always tacking it on.
   if (!onlyFile) {
     const siteMod = await import(new URL(`../${SITE_FILE}`, import.meta.url));
-    for (const { key, text, problem } of checkSiteObject(siteMod.site, haystack)) {
+    for (const { key, text, problem } of checkSiteObject(
+      siteMod.site,
+      haystack,
+    )) {
       console.error(`FAIL ${SITE_FILE} (${key}): ${problem}\n      "${text}"`);
       failures++;
     }
     const checked = Object.keys(siteMod.site).filter(
-      (k) => !SITE_NON_COPY_KEYS.has(k) && !SITE_EXEMPT.has(k)
+      (k) => !SITE_NON_COPY_KEYS.has(k) && !SITE_EXEMPT.has(k),
     );
-    console.log(`  checked ${SITE_FILE} (${checked.length} copy key(s): ${checked.join(", ")})`);
+    console.log(
+      `  checked ${SITE_FILE} (${checked.length} copy key(s): ${checked.join(", ")})`,
+    );
   }
 
-  console.log(failures ? `\n${failures} COPY FAILURE(S)` : "\nAll copy verbatim");
+  console.log(
+    failures ? `\n${failures} COPY FAILURE(S)` : "\nAll copy verbatim",
+  );
   process.exit(failures ? 1 : 0);
 }
 
@@ -288,7 +301,11 @@ function selfTest(haystack) {
       true,
     ],
     ["rejects invented copy", "PEMF cures chronic pain in six weeks", false],
-    ["rejects a paraphrase", "PEMF is great for your overall health and wellness", false],
+    [
+      "rejects a paraphrase",
+      "PEMF is great for your overall health and wellness",
+      false,
+    ],
     ["rejects a reworded heading", "PEMF for Health & Wellness", false],
   ];
   let failures = 0;
@@ -296,7 +313,9 @@ function selfTest(haystack) {
     const passed = checkString(input, haystack) === null;
     if (passed === shouldPass) console.log(`  ok   ${name}`);
     else {
-      console.error(`  FAIL ${name}: expected ${shouldPass ? "accept" : "reject"}`);
+      console.error(
+        `  FAIL ${name}: expected ${shouldPass ? "accept" : "reject"}`,
+      );
       failures++;
     }
   }
@@ -309,7 +328,10 @@ function selfTest(haystack) {
   const siteCases = [
     [
       "checks a key nobody allow-listed (the deny-list's whole point)",
-      { somethingBrandNew: "We guarantee PEMF will heal your arthritis in 30 days." },
+      {
+        somethingBrandNew:
+          "We guarantee PEMF will heal your arthritis in 30 days.",
+      },
       false,
     ],
     [
@@ -332,18 +354,25 @@ function selfTest(haystack) {
     const passed = checkSiteObject(obj, haystack).length === 0;
     if (passed === shouldPass) console.log(`  ok   ${name}`);
     else {
-      console.error(`  FAIL ${name}: expected ${shouldPass ? "accept" : "reject"}`);
+      console.error(
+        `  FAIL ${name}: expected ${shouldPass ? "accept" : "reject"}`,
+      );
       failures++;
     }
   }
 
-  console.log(failures ? `\n${failures} SELF-TEST FAILURE(S)` : "\nSelf-test passed");
+  console.log(
+    failures ? `\n${failures} SELF-TEST FAILURE(S)` : "\nSelf-test passed",
+  );
   process.exit(failures ? 1 : 0);
 }
 
 // Only run the CLI when this file is the entry point — importing the
 // exports above (e.g. from another script) must not trigger a full run
 // and a process.exit() as a side effect.
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main();
 }

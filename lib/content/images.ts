@@ -37,6 +37,30 @@ export const images = {
     alt: "Flower diagram of the six aspects of holistic health: physical, mental, emotional, intellectual, social and spiritual",
     contain: true,
   },
+  /* The three pictures from "Edit PEMF for Holistic Health Page.docx"
+     (word/media image2-4), client-supplied 2026-09-04 for the three
+     "PEMF - Holistic Approach" cards on /holistic-health -- "added image to
+     make it colorful on cellphone", in the document's own words. None of
+     them is in the Exiga Jasmin 2026 document. The two diagrams have their
+     labels burnt in on a white ground, so `contain`; the stones photograph
+     has no text and is 3:2, so it is left to `cover` the 4/3 slot rather
+     than sit in bars, losing a sliver of sky and sea at either side. It is
+     also only 257px wide, which the card slot upscales about 1.4x; a larger
+     copy has been requested from the client. */
+  holisticMindBodySpirit: {
+    src: "/images/holistic-mind-body-spirit.png",
+    alt: "Mind, body and spirit joined by circling arrows, captioned: Holistic Health = Total Wellbeing",
+    contain: true,
+  },
+  holisticBalanceStones: {
+    src: "/images/holistic-balance-stones.png",
+    alt: "A stack of stones balanced on a beach, with the sea and sky behind",
+  },
+  holisticSixDimensionsWheel: {
+    src: "/images/holistic-six-dimensions-wheel.png",
+    alt: "Six-segment colour wheel of the dimensions of holistic health: emotional, intellectual, social, spiritual, environmental and physical",
+    contain: true,
+  },
   // Client-supplied 2026-08-29 for the home page's anatomy section: the
   // labelled organ-function chart the holisticAnatomy SVG below once stood
   // in for. The SVG stays for the /designs comps, which still render it.
@@ -368,8 +392,16 @@ export const images = {
     alt: "The Exagon FIR far-infrared applicator mat",
     contain: true,
   },
-  exagonPad: { src: "/images/exagon-pad.png", alt: "The Exagon Pad applicator", contain: true },
-  exagonSpot: { src: "/images/exagon-spot.png", alt: "The Exagon Spot applicator", contain: true },
+  exagonPad: {
+    src: "/images/exagon-pad.png",
+    alt: "The Exagon Pad applicator",
+    contain: true,
+  },
+  exagonSpot: {
+    src: "/images/exagon-spot.png",
+    alt: "The Exagon Spot applicator",
+    contain: true,
+  },
   exagonSplitMode: {
     src: "/images/exagon-split-mode.png",
     alt: "Two people using one iMRS prime control unit at the same time in split mode",
@@ -407,5 +439,9 @@ export const images = {
     alt: "Earth in space ringed by pulsed electromagnetic field lines, captioned PEMF: Pulsed Electro Magnetic Fields",
     contain: true,
   },
-  wechatQr: { src: "/images/wechat-qr.png", alt: "WeChat QR code", contain: true },
+  wechatQr: {
+    src: "/images/wechat-qr.png",
+    alt: "WeChat QR code",
+    contain: true,
+  },
 } satisfies Record<string, Img>;

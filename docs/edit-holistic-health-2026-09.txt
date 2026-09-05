@@ -1,0 +1,24 @@
+Source: "Edit PEMF for Holistic Health Page.docx", sent by the client and
+added to the repository on 2026-09-04. Extracted with the same paragraph walk
+as scripts/extract-doc.py. Approved by the site owner on 2026-09-04 as a
+verbatim copy source for the "PEMF - Holistic Approach" block on
+/holistic-health: the document revises that section into three image-and-
+paragraph cards and adds copy the Exiga Jasmin 2026 document does not contain
+("A holistic perspective is a way of viewing a person as a complete and
+interconnected whole." and "a state of balance and total wellness"). The
+first table in the document is the previous layout, marked "SEE EDIT BELOW";
+the second is the edit. Both are kept here so either wording is traceable.
+
+SEE EDIT BELOW_- ADDED IMAGE TO MAKE IT COLORFUL ON CELLPHONE
+___ PEMF - Holistic Approach
+A holistic approach to health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person, viewing them as interconnected parts of overall well-being
+This perspective recognizes that imbalances in one area can affect others. PEMF is a holistic approach to promote a state of total wellness
+Holistic health using PEMF, aims to achieve overall well-being by addressing interconnected aspects of life, such as mental health, emotional health, intellectual health, physical health, social health and spiritual health
+PEMF - Holistic Approach
+PEMF - Holistic Approach
+A holistic approach to health considers and integrates the mental, emotional, physical, intellectual, social, and spiritual aspects of a person, viewing them as interconnected parts of overall well-being
+PEMF - Holistic Approach
+A holistic perspective is a way of viewing a person as a complete and interconnected whole.
+This perspective recognizes that imbalances in one area can affect others. PEMF is a holistic approach to promote a state of balance and total wellness
+PEMF - Holistic Approach
+Holistic health using PEMF, aims to achieve overall well-being by addressing interconnected aspects of life, such as mental health, emotional health, intellectual health, physical health, social health and spiritual health

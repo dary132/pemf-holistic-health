@@ -48,6 +48,12 @@ export const blurDataURLs: Record<string, string> = {
     "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoMAAQAAwBSJaQAAudQDTgAAP71PcWOGMBQgRQ+umhPI30eN7s1kgAA",
   "/images/hero-mat-fireplace.png":
     "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoMAAYAAwBSJYgCdAEUu+J1qHzAAP6J60XnXOOw0TUUoC8YEtoK3fjMr6oX95L3VwojV27Ygk3XCunIF8kUMZ1G23KouMkCUyEgUAAA",
+  "/images/holistic-balance-stones.png":
+    "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAQCdASoMAAgAAwBSJbACdADZlhSAAP3joUcdM7x4FkFUvBxQxedAJ20xvDULXMhrUnAiHzJ+6+LnAZPUFJdkXijOU8FXjulfiAfXXcTlD5gA",
+  "/images/holistic-mind-body-spirit.png":
+    "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACwAQCdASoMAAoAAwBSJZwAAlJ0aIYAAP7v/POaRlwVrAj/j/85kjBf6LsguuJVU807Y/3LKroib7JXajFy5ueFB6dW1nNTs5tosBWBAAA=",
+  "/images/holistic-six-dimensions-wheel.png":
+    "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQAgCdASoMAAsAAwBSJbACdH8D2MCIWJz48LZkKr8AAP7rxdosNowT88NRdDnIc9tFrASyRyEtb1qsvSGWUA4hNPWFs+9+ng3r9zza7Ugr1Zx+oopUWGvozWeN6RZr2+/gVdoR9GNybUL0OTRhtNld2qfDNBVmNJYtfm80EiGIu2OK1bkAAA==",
   "/images/horse-area-applicator.png":
     "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoMAAcAAwBSJYgAAsfy5+kQAP7qSupL1fLYgT3Gx9q/DhImDJNzFI6/YOcy69Q3Jrc79iMBCQ8pcAAA",
   "/images/horse-leg-applicator-2026.png":
