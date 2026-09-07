@@ -144,7 +144,17 @@ export default function Home() {
               a small-caps convention and reads as gappy on lower-case -- so
               it steps down to 0.04em, still a touch open so the line keeps
               its lockup feel beside the tracked wordmark. */}
-          <p className="mx-auto mt-0 text-[length:var(--step-hero-lockup)] font-bold leading-tight tracking-[0.04em] text-clay">
+          {/* Red, client request 2026-09-07: "bold red" for this line. It
+              was already font-bold, so what changed is the colour -- from
+              --clay to --tc-1 (#941919), the red that clears the site's 7:1
+              floor on cream and is already registered for that pair in
+              scripts/verify-contrast.mjs. NOT --pemf-m (#FF0000): that token
+              measures 3.9:1 on cream and its comment in globals.css scopes it
+              to the four wordmark letters, which are backed by an sr-only
+              copy; a whole line of running text has no such cover. --tc-1
+              reads as red beside the wordmark's pure red without dropping
+              below AAA. */}
+          <p className="mx-auto mt-0 text-[length:var(--step-hero-lockup)] font-bold leading-tight tracking-[0.04em] text-[var(--tc-1)]">
             {hero.expansion}
           </p>
         </div>
